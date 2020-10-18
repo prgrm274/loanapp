@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(
-      new Center(
-        child: new MyApp(),
-      )
-  );
-}
+void main() => runApp(new MyApp());
+
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Flutter Demo',
+      title: '21 Basic Layout',
       home: new Scaffold(
         appBar: new AppBar(
-          title: new Text('AppBar title'),
+          title: new Text('Basic Layout'),
         ),
-        body: new Center(
-          child: new RaisedButton(
-            onPressed: null,
-            child: new Text('RaisedButton'),
+        body: new Container(
+          padding: const EdgeInsets.all(32),
+
+          child: new Center(
+            child: new Column(
+              children: <Widget>[
+                new Text('array text 0'),
+                new Text('array text 1'),
+                new Text('array text 2'),
+              ],
+            ),
           ),
         ),
       ),
