@@ -21,6 +21,15 @@ class MyApp extends StatelessWidget {
                 new Text('array text 0'),
                 new Text('array text 1'),
                 new Text('array text 2'),
+                new Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    new Text('array text in row 0'),
+                    new Text('array text in row 1'),
+                    new Text('array text in row 2'),
+                  ],
+                )
               ],
             ),
           ),
