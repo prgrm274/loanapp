@@ -17,6 +17,9 @@ class MyApp extends StatelessWidget {
         appBar: new AppBar(
           title: new Text('AppBar title'),
         ),
+        body: new Center(
+          child: new Text('Text in Center of body'),
+        ),
       ),
     );
   }
