@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    new Center(
-      child: new MyApp(),
-    )
+      new Center(
+        child: new MyApp(),
+      )
   );
 }
 
@@ -18,7 +18,10 @@ class MyApp extends StatelessWidget {
           title: new Text('AppBar title'),
         ),
         body: new Center(
-          child: new Text('Text in Center of body'),
+          child: new RaisedButton(
+            onPressed: null,
+            child: new Text('RaisedButton'),
+          ),
         ),
       ),
     );
