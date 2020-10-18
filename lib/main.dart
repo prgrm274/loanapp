@@ -13,7 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Flutter Demo',
-      home: new Scaffold(),
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: new Text('AppBar title'),
+        ),
+      ),
     );
   }
 }
