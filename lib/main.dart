@@ -16,11 +16,14 @@ class MyApp extends StatefulWidget {///WONT CHANGE
 ///_ IS PRIVATE
 class _Statenya extends State<MyApp> {///WILL CHANGE
   String _title = 'App Bar demo';
-  String _myState = '';
+  String _myState = 'NO STATE';
 
   void _pressed(String message) {
-    print(message);
-
+    setState(() {
+      _myState = message;
+    });
+    // _myState = message;///! WRONG
+    print(_myState);
   }
 
   @override
@@ -32,17 +35,35 @@ class _Statenya extends State<MyApp> {///WILL CHANGE
         appBar: new AppBar(
           title: new Text(_title),
           actions: <Widget>[
+            /// Everything is a widget so you can do this text
+            new Text('this is text'),
             new IconButton(
                 icon: new Icon(Icons.add_alert),
                 onPressed: (){
                   _pressed('Alert pressed');
-                })
+                }),
+            new IconButton(
+                icon: new Icon(Icons.access_alarm),
+                onPressed: (){
+                  _pressed('2');
+                }),
+            new IconButton(
+                icon: new Icon(Icons.access_alarms_rounded),
+                onPressed: (){
+                  _pressed('other');
+                }),
+            new RaisedButton(
+              child: new Text('Button'),
+              onPressed: () {
+                _pressed('BUTTON PRESSED');
+              },
+            )
           ],
         ),
         body: new Container(
           padding: const EdgeInsets.all(32),
           child: new Center(
-            child: new Text('Hai'),
+            child: new Text(_myState),
           ),
         ),
       ),
