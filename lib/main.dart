@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voidrealm/helloworld.dart';
 
 void main() => runApp(new MyApp());
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    new Container(
+                    /*new Container(
                       padding: const EdgeInsets.all(5),
                       child: new Column(
                         children: <Widget>[
@@ -34,27 +35,10 @@ class MyApp extends StatelessWidget {
                           new Text('array text 2'),
                         ],
                       ),
-                    ),
-                    new Container(
-                      padding: const EdgeInsets.all(5),
-                      child: new Column(
-                        children: <Widget>[
-                          new Text('array text 0'),
-                          new Text('array text 1'),
-                          new Text('array text 2'),
-                        ],
-                      ),
-                    ),
-                    new Container(
-                      padding: const EdgeInsets.all(5),
-                      child: new Column(
-                        children: <Widget>[
-                          new Text('array text 0'),
-                          new Text('array text 1'),
-                          new Text('array text 2'),
-                        ],
-                      ),
-                    ),
+                    ),*/
+                    new hello(),
+                    new hello(),
+                    new hello(),
                   ],
                 )
               ],
