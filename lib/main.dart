@@ -25,9 +25,36 @@ class MyApp extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    new Text('array text in row 0'),
-                    new Text('array text in row 1'),
-                    new Text('array text in row 2'),
+                    new Container(
+                      padding: const EdgeInsets.all(5),
+                      child: new Column(
+                        children: <Widget>[
+                          new Text('array text 0'),
+                          new Text('array text 1'),
+                          new Text('array text 2'),
+                        ],
+                      ),
+                    ),
+                    new Container(
+                      padding: const EdgeInsets.all(5),
+                      child: new Column(
+                        children: <Widget>[
+                          new Text('array text 0'),
+                          new Text('array text 1'),
+                          new Text('array text 2'),
+                        ],
+                      ),
+                    ),
+                    new Container(
+                      padding: const EdgeInsets.all(5),
+                      child: new Column(
+                        children: <Widget>[
+                          new Text('array text 0'),
+                          new Text('array text 1'),
+                          new Text('array text 2'),
+                        ],
+                      ),
+                    ),
                   ],
                 )
               ],
