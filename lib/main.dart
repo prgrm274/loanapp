@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/login.dart';
+import 'package:voidrealm/numpads/custom_numpad2.dart';
 import 'package:voidrealm/settings.dart';
+import 'package:voidrealm/numpads/numpad1.dart';
 
 void main() => runApp(new MyApp());
 
@@ -15,6 +17,8 @@ class _Statenya extends State<MyApp> {
   login _login;
   settings _settings;
   bool _authenticated;
+
+  Numpad1 _numpad1;
 
   _Statenya() {
     _login = new login(onSubmit: (){
@@ -81,7 +85,9 @@ class _Statenya extends State<MyApp> {
                 onPressed: _logout),
           ],
         ),
-        body: _screen,
+        // body: Numpad1(),
+        // body: WidgetCustomKeyboard(),
+        body: WidgetCustomKeyboard(),
       ),
     );
   }
