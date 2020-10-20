@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/login.dart';
 import 'package:voidrealm/numpads/custom_numpad2.dart';
+import 'package:voidrealm/numpads/custom_numpad3.dart';
 import 'package:voidrealm/settings.dart';
 import 'package:voidrealm/numpads/numpad1.dart';
+import 'package:voidrealm/sliders/slider1.dart';
 
 void main() => runApp(new MyApp());
 
@@ -87,7 +89,8 @@ class _Statenya extends State<MyApp> {
         ),
         // body: Numpad1(),
         // body: WidgetCustomKeyboard(),
-        body: WidgetCustomKeyboard(),
+        // body: JCustomNumpad(),
+        body: Slider1(),
       ),
     );
   }
