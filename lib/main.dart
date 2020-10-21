@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:voidrealm/appbars/appbar1.dart';
+import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
+import 'package:voidrealm/images/j_image1.dart';
 import 'package:voidrealm/login.dart';
 import 'package:voidrealm/numpads/custom_numpad2.dart';
 import 'package:voidrealm/numpads/custom_numpad3.dart';
 import 'package:voidrealm/settings.dart';
 import 'package:voidrealm/numpads/numpad1.dart';
+import 'package:voidrealm/sliders/jslider_widget2.dart';
 import 'package:voidrealm/sliders/slider1.dart';
+import 'package:voidrealm/sliders/slider2roundthumb.dart';
+import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
+import 'package:voidrealm/sliders/jslider_widget.dart';
+
+import 'dropdownbuttons/j_dropdown1.dart';
 
 void main() => runApp(new MyApp());
 
-class MyApp extends StatefulWidget {///WONT CHANGE
+class MyApp extends StatefulWidget {///STATEFUL WONT CHANGE
 
   _Statenya createState() => new _Statenya();
 }
@@ -22,6 +31,9 @@ class _Statenya extends State<MyApp> {
 
   Numpad1 _numpad1;
 
+  SliderWidget _sliderWidget;
+  SliderWidget2 _sliderWidget2;
+
   _Statenya() {
     _login = new login(onSubmit: (){
       onSubmit();
@@ -30,6 +42,16 @@ class _Statenya extends State<MyApp> {
     _screen = _login;
     _authenticated = false;
     print('constructor _Statenya');
+  }
+
+  void _showSliderWidget1(){
+    print('Slider Widget 1');
+    _screen = _sliderWidget;
+  }
+
+  void _showSliderWidget2(){
+    print('Slider Widget 2');
+    _screen = _sliderWidget2;
   }
 
   void onSubmit() {
@@ -76,7 +98,7 @@ class _Statenya extends State<MyApp> {
     return new MaterialApp(
       title: 'Login',
       home: new Scaffold(
-        appBar: new AppBar(
+        /*appBar: new AppBar(
           title: new Text(_title),
           actions: <Widget>[
             new IconButton(
@@ -85,12 +107,32 @@ class _Statenya extends State<MyApp> {
             new IconButton(
                 icon: new Icon(Icons.exit_to_app),
                 onPressed: _logout),
+            new IconButton(
+                icon: new Icon(Icons.slideshow),
+                onPressed: _showSliderWidget1),
+            new IconButton(
+                icon: new Icon(Icons.slideshow_outlined),
+                onPressed: _showSliderWidget2),
           ],
-        ),
+        ),*/
+
+        appBar: new Appbar1(),
+
         // body: Numpad1(),
         // body: WidgetCustomKeyboard(),
         // body: JCustomNumpad(),
-        body: Slider1(),
+        // body: Slider1(),
+        // body: SliderWidget(),
+        // body: SliderWidget2(),
+
+        /// IMAGE CONTAINER
+        // body: Image1(),
+
+        /// DROPDOWN LIST
+        // body: Dropdown1(),
+
+        /// CUSTOM APPBAR
+        // body: Appbar1(),
       ),
     );
   }
