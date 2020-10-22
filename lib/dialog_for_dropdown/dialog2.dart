@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Dialog1 extends StatefulWidget {
-  Dialog1({Key key}) : super(key: key);
+class Dialog2 extends StatefulWidget {
+  Dialog2({Key key}) : super(key: key);
 
   @override
-  _Dialog1State createState() => _Dialog1State();
+  _Dialog2State createState() => _Dialog2State();
 }
 
-class _Dialog1State extends State<Dialog1> {
+class _Dialog2State extends State<Dialog2> {
   @override
   Widget build(BuildContext context) {
     /// ng coba naruh sini pengganti return, bisa

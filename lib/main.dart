@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/appbars/appbar1.dart';
+import 'package:voidrealm/cameras/camera1.dart';
+import 'package:voidrealm/cameras/camera2.dart';
+import 'package:voidrealm/cameras/camera3_official.dart';
+import 'package:voidrealm/cameras/camera4.dart';
+import 'package:voidrealm/dialog_for_dropdown/dialog1.dart';
+import 'package:voidrealm/drawers/drawer1.dart';
+import 'package:voidrealm/drawers/drawer2.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
 import 'package:voidrealm/images/j_image1.dart';
 import 'package:voidrealm/login.dart';
@@ -131,8 +138,21 @@ class _Statenya extends State<MyApp> {
         /// DROPDOWN LIST
         // body: Dropdown1(),
 
-        /// CUSTOM APPBAR
+        /// CUSTOM APPBAR, GA BISA
         // body: Appbar1(),
+
+        /// COBA CUSTOM DIALOG FOR KOTA DROPDOWN
+        // body: Dialog1()
+
+        /// CAMERA
+        body: CameraScreen(), /// camera4 bisa
+        // body: CameraApp(),///CameraExampleHome  /// camera3_official
+        // body: TakePictureScreen(),
+        // body: Camera1(),
+
+        /// DRAWER
+        // drawer: Drawer1(),
+        drawer: Drawer2(),
       ),
     );
   }
