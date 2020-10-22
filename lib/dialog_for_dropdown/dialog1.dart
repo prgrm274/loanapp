@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
 
 class Dialog1 extends StatefulWidget {
   Dialog1({Key key}) : super(key: key);
@@ -8,6 +9,7 @@ class Dialog1 extends StatefulWidget {
 }
 
 class _Dialog1State extends State<Dialog1> {
+
   @override
   Widget build(BuildContext context) {
     /// ng coba naruh sini pengganti return, bisa
@@ -36,16 +38,28 @@ class _Dialog1State extends State<Dialog1> {
               color: Colors.white,
               child: Column(
                 children: [
-                  RaisedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      "Save",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    color: const Color(0xFF1BC0C5),
-                  )
+                  Container(
+                    color: Colors.amber[200],
+                    height: 60,
+                    child: new Dropdown1(),
+                  ),
+
+                  // RaisedButton(
+                  //   onPressed: () {/// CUMA PRESS HASILNYA TUTUP DIALOG
+                  //     Navigator.of(context).pop();
+                  //   },
+                  //   /**
+                  //    * ! salah
+                  //    */
+                  //   /*onPressed: () {
+                  //     _dropdown1;
+                  //   },*/
+                  //   child: Text(
+                  //     "Save",
+                  //     style: TextStyle(color: Colors.white),
+                  //   ),
+                  //   color: const Color(0xFF1BC0C5),
+                  // ),
                 ],
               ),
             ),

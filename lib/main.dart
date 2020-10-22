@@ -142,10 +142,10 @@ class _Statenya extends State<MyApp> {
         // body: Appbar1(),
 
         /// COBA CUSTOM DIALOG FOR KOTA DROPDOWN
-        // body: Dialog1()
+        body: Dialog1(),
 
         /// CAMERA
-        body: CameraScreen(), /// camera4 bisa
+        // body: CameraScreen(), /// camera4 bisa
         // body: CameraApp(),///CameraExampleHome  /// camera3_official
         // body: TakePictureScreen(),
         // body: Camera1(),
