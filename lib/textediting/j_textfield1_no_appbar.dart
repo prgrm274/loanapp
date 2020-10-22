@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class JnTextField extends StatefulWidget {
-  JnTextField({Key key}) : super(key: key);
+class TextField1NoAppbar extends StatefulWidget {
+  TextField1NoAppbar({Key key}) : super(key: key);
 
   @override
-  _JnTextFieldState createState() => _JnTextFieldState();
+  _TextField1NoAppbarState createState() => _TextField1NoAppbarState();
 }
 
 // Define a corresponding State class.
 // This class holds data related to the Form.
-class _JnTextFieldState extends State<JnTextField> {
+class _TextField1NoAppbarState extends State<TextField1NoAppbar> {
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
   final tec = TextEditingController();
@@ -36,9 +36,6 @@ class _JnTextFieldState extends State<JnTextField> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Retrieve Text Input'),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

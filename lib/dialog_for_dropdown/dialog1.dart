@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
+import 'package:voidrealm/textediting/j_textfield1.dart';
+import 'package:voidrealm/textediting/j_textfield1_no_appbar.dart';
 
 class Dialog1 extends StatefulWidget {
   Dialog1({Key key}) : super(key: key);
@@ -39,9 +41,12 @@ class _Dialog1State extends State<Dialog1> {
               child: Column(
                 children: [
                   Container(
-                    color: Colors.amber[200],
-                    height: 60,
-                    child: new Dropdown1(),
+                    height: 200,
+                    child: new TextField1NoAppbar(),
+
+                    /// UNTUK DROPDOWN HEIGHT 60 PAS
+                    // height: 60,
+                    // child: new Dropdown1(),
                   ),
 
                   // RaisedButton(
