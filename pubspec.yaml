@@ -29,17 +29,22 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
+  # JUNED
   flutter_numpad_widget: 0.1.1
   sliding_up_panel: ^1.0.2
   mobx: ^1.2.1+3
   flutter_mobx: 1.1.0+2
   gradient_text: ^1.0.2
   autocomplete_textfield: ^1.7.3
-  camera: ^0.5.8+10
+  camera: ^0.5.8+11
   path_provider:
   path:
   video_player: ^0.11.1+2
   esys_flutter_share:
+  sqflite: ^1.3.1+2
+  sqlite3: any
+  sqlite3_flutter_libs: ^0.2.0
+  dart_sqlite3: ^0.3.0
 
 dev_dependencies:
   flutter_test:

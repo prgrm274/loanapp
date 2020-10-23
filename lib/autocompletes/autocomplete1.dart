@@ -5,12 +5,27 @@ import 'package:flutter/material.dart';
  * * https://pub.dev/packages/autocomplete_textfield/example
  */
 
-class Autocomplete1 extends StatefulWidget {
+void main() => runApp(new MyApp());
+
+class MyApp extends StatelessWidget {
   @override
-  State<StatefulWidget> createState() => _Autocomplete1State();
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Auto Complete TextField Demo',
+      theme: new ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: new MyHomePage(),
+    );
+  }
 }
 
-class _Autocomplete1State extends State<Autocomplete1> {
+class MyHomePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   List<Widget> pages = [new FirstPage(), new SecondPage()];
   int selectedIndex = 0;
 

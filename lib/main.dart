@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/appbars/appbar1.dart';
+import 'package:voidrealm/autocompletes/autocomplete1.dart';
+import 'package:voidrealm/autocompletes/j_autocomplete1.dart';
 import 'package:voidrealm/cameras/camera1.dart';
 import 'package:voidrealm/cameras/camera2.dart';
 import 'package:voidrealm/cameras/camera3_official.dart';
@@ -151,7 +153,7 @@ class _Statenya extends State<MyApp> {
         // body: Camera1(),
 
         /// AUTOCOMPLETE TEXT
-        body: new MyApp(),
+        body: new Autocomplete1(),
 
         /// DRAWER
         // drawer: Drawer1(),
