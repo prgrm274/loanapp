@@ -21,6 +21,7 @@ import 'package:voidrealm/sliders/slider1.dart';
 import 'package:voidrealm/sliders/slider2roundthumb.dart';
 import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
 import 'package:voidrealm/sliders/jslider_widget.dart';
+import 'package:voidrealm/sqflites/homepage.dart';
 
 import 'dropdownbuttons/j_dropdown1.dart';
 
@@ -153,7 +154,10 @@ class _Statenya extends State<MyApp> {
         // body: Camera1(),
 
         /// AUTOCOMPLETE TEXT
-        body: new Autocomplete1(),
+        // body: new Autocomplete1(),
+
+        /// SQFLITE
+        body: new Sqflite1(),
 
         /// DRAWER
         // drawer: Drawer1(),

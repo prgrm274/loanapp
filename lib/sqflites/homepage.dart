@@ -8,15 +8,15 @@ import 'package:voidrealm/sqflites/employee_list.dart';
  */
 
 /// main.dart
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class Sqflite1 extends StatefulWidget {
+  Sqflite1({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _Sqflite1State createState() => new _Sqflite1State();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _Sqflite1State extends State<Sqflite1> {
 
   Employee employee = new Employee("", "", "", "");
 
