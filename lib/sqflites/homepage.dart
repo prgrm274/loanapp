@@ -78,8 +78,13 @@ class _Sqflite1State extends State<Sqflite1> {
                 val.length ==0 ? 'Enter Email Id' : null,
                 onSaved: (val) => this.emailId = val,
               ),
-              new Container(margin: const EdgeInsets.only(top: 10.0),child: new RaisedButton(onPressed: _submit,
-                child: new Text('Login'),),)
+              new Container(
+                margin: const EdgeInsets.only(top: 10.0),
+                child: new RaisedButton(
+                  onPressed: _submit,
+                  child: new Text('Login'),
+                ),
+              )
 
             ],
           ),
