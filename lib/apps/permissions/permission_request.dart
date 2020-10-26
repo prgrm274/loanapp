@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PermissionRequest extends StatefulWidget {
@@ -15,6 +16,7 @@ class _PermissionRequestState extends State<PermissionRequest> {
     return Container(
       height: MediaQuery.of(context).size.height * 1,
       width: MediaQuery.of(context).size.width * 1,
+
       /// 'BARIS' UTAMA
       child: ListView(
         scrollDirection: Axis.vertical,
@@ -34,15 +36,76 @@ class _PermissionRequestState extends State<PermissionRequest> {
             color: Colors.lightBlueAccent[200],
             child: Text(
               'Izinkan kami menggunakan beberapa informasi pribadi dan non-pribadi '
-                  'Anda untuk memproses aplikasi Anda dan menyediakan layanan kami',
+              'Anda untuk memproses aplikasi Anda dan menyediakan layanan kami',
               textAlign: TextAlign.center,
               style: TextStyle(color: Colors.white, fontSize: 12),
             ),
           ),
-          Row()
+          Row(children: <Widget>[
+            Expanded(
+              child: Row(children: <Widget>[
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
+                  child: Icon(Icons.call),
+                ),
+                Expanded(
+                  child: Container(
+                    /// IF ALL COMPONENTS ARE DONE TRY CHANGE THE 42
+                      padding: EdgeInsets.fromLTRB(0, 42, 15, 15),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Informasi telepon',
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            Text(
+                              'Kami mencatat dan menggunakan informasi ponsel Anda, seperti IMEI, informasi perangkat lunak, dll. '
+                                  'Untuk mendapatkan data statistik dan menganalisis pengiriman layanan Aplikasi dan untuk '
+                                  'meningkatkan kinerja aplikasi di wilayah Anda',
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                            ),
+                          ]
+                      )
+                  ),
+                )
+              ]),
+            ),
+          ]),
+          Row(children: <Widget>[
+            Expanded(
+              child: Row(children: <Widget>[
+                Container(
+                  padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
+                  child: Icon(Icons.pin_drop),
+                ),
+                Expanded(
+                  child: Container(
+                      padding: EdgeInsets.fromLTRB(0, 15, 15, 15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Posisi geografis',
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(color: Colors.black),
+                            ),
+                            Text(
+                              'Kami mencatat dan menggunakan posisi Anda untuk meningkatkan kinerja aplikasi di wilayah Anda',
+                              textAlign: TextAlign.justify,
+                              style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                            ),
+                          ]
+                      )
+                  ),
+                )
+              ]),
+            ),
+          ])
         ],
       ),
-
     );
   }
 }
