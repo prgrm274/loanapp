@@ -54,7 +54,8 @@ class DBHelper {
 
   Future<List<Employee>> getEmployees() async {
     var dbClient = await db;
-    List<Map> list = await dbClient.rawQuery('SELECT * FROM Employee');
+    List<Map> list = await dbClient.rawQuery('SELECT * FROM villages');
+    // List<Map> list = await dbClient.rawQuery('SELECT * FROM Employee');
     List<Employee> employees = new List();
     for (int i = 0; i < list.length; i++) {
       employees.add(new Employee(list[i]["firstname"], list[i]["lastname"], list[i]["mobileno"], list[i]["emailid"]));

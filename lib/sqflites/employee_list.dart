@@ -3,9 +3,12 @@ import 'package:voidrealm/sqflites/db_helper.dart';
 import 'dart:async';
 
 import 'package:voidrealm/sqflites/employee.dart';
+import 'package:voidrealm/sqflites_asset/db_helper_asset.dart';
 
 Future<List<Employee>> fetchEmployeesFromDatabase() async {
-  var dbHelper = DBHelper();
+  var dbHelper = DbHelperAsset();
+  // var dbHelper = DBHelper();
+  // Future<List<Employee>> employees = dbHelper.load();
   Future<List<Employee>> employees = dbHelper.getEmployees();
   return employees;
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/appbars/appbar1.dart';
-import 'package:voidrealm/apps/splash.dart';
 import 'package:voidrealm/autocompletes/autocomplete1.dart';
 import 'package:voidrealm/autocompletes/j_autocomplete1.dart';
 import 'package:voidrealm/cameras/camera1.dart';
@@ -34,10 +33,80 @@ class MyApp extends StatefulWidget {///STATEFUL WONT CHANGE
 }
 
 class _Statenya extends State<MyApp> {
+  String _title = 'Please login';
+  Widget _screen;
+  login _login;
+  settings _settings;
+  bool _authenticated;
+
+  Numpad1 _numpad1;
+
+  SliderWidget _sliderWidget;
+  SliderWidget2 _sliderWidget2;
+
+  _Statenya() {
+    _login = new login(onSubmit: (){
+      onSubmit();
+    });
+    _settings = new settings();
+    _screen = _login;
+    _authenticated = false;
+    print('constructor _Statenya');
+  }
+
+  void _showSliderWidget1(){
+    print('Slider Widget 1');
+    _screen = _sliderWidget;
+  }
+
+  void _showSliderWidget2(){
+    print('Slider Widget 2');
+    _screen = _sliderWidget2;
+  }
+
+  void onSubmit() {
+    print('Login with: '+_login.username+ ' ' +_login.password);
+    if (_login.username == 'user' && _login.password == 'pass') {
+      _setAuthenticated(true);
+    }
+  }
+
+  void _goHome() {
+    print('go home $_authenticated');
+    setState(() {
+      if (_authenticated == true) {
+        _screen = _settings;
+
+      } else {
+        _screen = _login;
+
+      }
+    });
+  }
+
+  void _logout() {
+    print('logout');
+    _setAuthenticated(false);
+  }
+
+  void _setAuthenticated(bool auth) {
+    setState(() {
+      if (auth == true) {
+        _screen = _settings;
+        _title = 'Welcome';
+        _authenticated = true;
+      } else {
+        _screen = _login;
+        _title = 'Please login!';
+        _authenticated = false;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
+      title: 'Login',
       home: new Scaffold(
         /*appBar: new AppBar(
           title: new Text(_title),
@@ -57,7 +126,7 @@ class _Statenya extends State<MyApp> {
           ],
         ),*/
 
-        // appBar: new Appbar1(),
+        appBar: new Appbar1(),
 
         // body: Numpad1(),
         // body: WidgetCustomKeyboard(),
@@ -88,10 +157,7 @@ class _Statenya extends State<MyApp> {
         // body: new Autocomplete1(),
 
         /// SQFLITE
-        // body: new Sqflite1(),
-
-        /// SPLASH
-        body: Splash(),
+        body: new Sqflite1(),
 
         /// DRAWER
         // drawer: Drawer1(),
