@@ -18,7 +18,7 @@ class _SplashState extends State<Splash> {
         image: DecorationImage(
               image: AssetImage(
                   'lib/assets/splash.jpg'),
-              fit: BoxFit.fill,
+              fit: BoxFit.cover,
             ),
         // shape: BoxShape.circle,
       ),

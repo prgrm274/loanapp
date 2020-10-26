@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/appbars/appbar1.dart';
+import 'package:voidrealm/apps/permissions/permission_request.dart';
 import 'package:voidrealm/apps/splash.dart';
 import 'package:voidrealm/autocompletes/autocomplete1.dart';
 import 'package:voidrealm/autocompletes/j_autocomplete1.dart';
@@ -91,7 +92,10 @@ class _Statenya extends State<MyApp> {
         // body: new Sqflite1(),
 
         /// SPLASH
-        body: Splash(),
+        // body: Splash(),
+
+        /// PERMISSION REQUEST
+        body: PermissionRequest(),
 
         /// DRAWER
         // drawer: Drawer1(),
