@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class PermissionRequest extends StatefulWidget {
@@ -10,48 +12,37 @@ class PermissionRequest extends StatefulWidget {
 class _PermissionRequestState extends State<PermissionRequest> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        /// ROW UTAMA
-        child: Container(
-          child: Container(
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  /// ROW 1
-                  Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        Text('Selamat datang', style: TextStyle(
-                          backgroundColor: Colors.amber
-                        ),),
-                      ]
-                  ),
-                  /// ROW 2
-                  Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        Text('Text icon dan permission', style: TextStyle(
-                            backgroundColor: Colors.red
-                        ),),
-                      ]
-                  ),
-                  /// ROW 3
-                  Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        Text('text dan button terima', style: TextStyle(
-                            backgroundColor: Colors.green
-                        ),)
-                      ]
-                  ),
-                ]
+    return Container(
+      height: MediaQuery.of(context).size.height * 1,
+      width: MediaQuery.of(context).size.width * 1,
+      /// 'BARIS' UTAMA
+      child: ListView(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        children: <Widget>[
+          /// 'BARIS' SELAMAT DATANG
+          ListTile(
+            dense: true,
+            contentPadding: EdgeInsets.fromLTRB(15, 0, 15, 7),
+            tileColor: Colors.lightBlueAccent[200],
+            title: Text('Selamat datang di danafix',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white, fontSize: 22)),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
+            color: Colors.lightBlueAccent[200],
+            child: Text(
+              'Izinkan kami menggunakan beberapa informasi pribadi dan non-pribadi '
+                  'Anda untuk memproses aplikasi Anda dan menyediakan layanan kami',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white, fontSize: 12),
             ),
           ),
-        )
-      )
+          Row()
+        ],
+      ),
+
     );
   }
 }
