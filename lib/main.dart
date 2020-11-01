@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/appbars/appbar1.dart';
+import 'package:voidrealm/apps/home/home.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
 import 'package:voidrealm/apps/splash.dart';
 import 'package:voidrealm/autocompletes/autocomplete1.dart';
@@ -95,7 +96,10 @@ class _Statenya extends State<MyApp> {
         // body: Splash(),
 
         /// PERMISSION REQUEST
-        body: PermissionRequest(),
+        // body: PermissionRequest(),
+
+        /// HOME / PINJAMAN
+        body: Home(),
 
         /// DRAWER
         // drawer: Drawer1(),

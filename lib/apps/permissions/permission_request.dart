@@ -29,27 +29,27 @@ class _PermissionRequestState extends State<PermissionRequest> {
               /// 'BARIS' SELAMAT DATANG
               ListTile(
                 dense: true,
-                contentPadding: EdgeInsets.fromLTRB(15, 0, 15, 7),
-                tileColor: Colors.lightBlueAccent[200],
+                contentPadding: EdgeInsets.fromLTRB(15, 0, 15, 2),
+                tileColor: Colors.cyan[400],
                 title: Text('Selamat datang di danafix',
                     textAlign: TextAlign.center,
                     style: TextStyle(color: Colors.white, fontSize: 22)),
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
-                color: Colors.lightBlueAccent[200],
+                color: Colors.cyan[400],
                 child: Text(
                   'Izinkan kami menggunakan beberapa informasi pribadi dan non-pribadi '
                       'Anda untuk memproses aplikasi Anda dan menyediakan layanan kami',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 12),
+                  style: TextStyle(color: Colors.yellow[50], fontSize: 12),
                 ),
               ),
 
               Row(
                 children: <Widget>[
                   Container(
-                    height: 40,
+                    height: 60,
                   ),
                   Spacer(),
                 ]
@@ -77,16 +77,18 @@ class _PermissionRequestState extends State<PermissionRequest> {
                                   style: TextStyle(color: Colors.black),
                                 ),
                                 Text(
-                                  'Kami mencatat dan menggunakan informasi ponsel Anda, seperti IMEI, '
-                                      'informasi perangkat lunak, dll. '
-                                      'Untuk mendapatkan data statistik dan menganalisis pengiriman '
-                                      'layanan Aplikasi dan untuk '
+                                  'Kami mencatat dan menggunakan informasi ponsel Anda, '
+                                      'seperti IMEI, informasi perangkat lunak, dll. '
+                                      'Untuk mendapatkan data statistik dan menganalisis '
+                                      'pengiriman layanan Aplikasi dan untuk '
                                       'meningkatkan kinerja aplikasi di wilayah Anda',
                                   textAlign: TextAlign.justify,
                                   style: TextStyle(
                                       color: Colors.grey[600], fontSize: 12),
                                 ),
-                              ])),
+                              ]
+                          )
+                      ),
                     )
                   ]),
                 ),
@@ -170,7 +172,7 @@ class _PermissionRequestState extends State<PermissionRequest> {
           /// layout terima
           Container(
             margin: EdgeInsets.fromLTRB(10, 100, 10, 0),
-            height: 100,
+            height: 150,
             child: ListView(children: <Widget>[
               Container(
                 child: Stack(
@@ -186,6 +188,7 @@ class _PermissionRequestState extends State<PermissionRequest> {
                         ],
                       ),
                     ),
+
                     Container(
                       margin: EdgeInsets.fromLTRB(0, 20, 0, 5),
                       child: Text(
@@ -193,22 +196,33 @@ class _PermissionRequestState extends State<PermissionRequest> {
                             "dilakukan secara otomatis. "
                             "Data Anda dienkripsi, diamankan, dan dikendalikan "
                             "untuk diakses oleh standar "
-                            "yang berlaku dan merujuk pada",
+                            "yang berlaku dan merujuk pada Syarat dan Ketentuan "
+                            "dan Kebijakan Privasi",
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    RaisedButton(
-                      textColor: Colors.yellowAccent,
-                      color: Colors.blue[800],
-                      // color: Theme.of(context).backgroundColor,
-                      onPressed: () {},
-                      child: Text(
-                        'TERIMA',
-                        style: TextStyle(
-                            color: Colors.white
+
+                    Container(
+                      width: double.infinity,
+                      margin: EdgeInsets.fromLTRB(0, 95, 0, 5),
+                      child: RaisedButton(
+                        textColor: Colors.yellowAccent,
+                        padding: EdgeInsets.all(15),
+                        color: Colors.blue[800],
+                        // color: Theme.of(context).backgroundColor,
+                        onPressed: () {},
+                        child: Text(
+                          'TERIMA',
+                          style: TextStyle(
+                              color: Colors.white
+                          ),
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(5),
                         ),
                       ),
                     ),
+
                   ],
                 ),
               )

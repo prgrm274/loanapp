@@ -12,14 +12,21 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(
-            color: Colors.green
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.cyan,
+              Colors.blue[400],
+              Colors.purple[300]
+            ]
         ),
+        // border: Border.all(color: Colors.green),
         image: DecorationImage(
-              image: AssetImage(
-                  'lib/assets/splash.jpg'),
-              fit: BoxFit.cover,
-            ),
+          // image: AssetImage('lib/assets/splash_logo.webp'),///bisa
+          image: AssetImage('lib/assets/splash_logo_025.png'),
+          fit: BoxFit.scaleDown,
+        ),
         // shape: BoxShape.circle,
       ),
     );
