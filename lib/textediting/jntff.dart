@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Jntff extends StatefulWidget {
-  Jntff({Key key}) : super(key: key);
+class TextField3 extends StatefulWidget {
+  TextField3({Key key}) : super(key: key);
 
   @override
-  _JntffState createState() => _JntffState();
+  _TextField3State createState() => _TextField3State();
 }
 
-class _JntffState extends State<Jntff> {
+class _TextField3State extends State<TextField3> {
   final _formKey = GlobalKey<FormState>();
   final tec = TextEditingController();
 

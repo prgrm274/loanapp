@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:voidrealm/appbars/appbar040.dart';
+import 'package:voidrealm/appbars/appbar040_body.dart';
 import 'package:voidrealm/appbars/appbar1.dart';
 import 'package:voidrealm/apps/home/home.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
@@ -19,11 +21,13 @@ import 'package:voidrealm/numpads/custom_numpad2.dart';
 import 'package:voidrealm/numpads/custom_numpad3.dart';
 import 'package:voidrealm/settings.dart';
 import 'package:voidrealm/numpads/numpad1.dart';
+import 'package:voidrealm/sliders/dfix/jslider7.dart';
 import 'package:voidrealm/sliders/jslider_widget2.dart';
 import 'package:voidrealm/sliders/slider1.dart';
 import 'package:voidrealm/sliders/slider2roundthumb.dart';
 import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
 import 'package:voidrealm/sliders/jslider_widget.dart';
+import 'package:voidrealm/sliders/slider6.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
 
 import 'dropdownbuttons/j_dropdown1.dart';
@@ -59,12 +63,18 @@ class _Statenya extends State<MyApp> {
           ],
         ),*/
 
-        // appBar: new Appbar1(),
+        appBar: new Appbar040(),
+
+        /// 040 BODY
+        body: Appbar040Body(),
 
         // body: Numpad1(),
         // body: WidgetCustomKeyboard(),
         // body: JCustomNumpad(),
-        // body: Slider1(),
+
+        /// SLIDERS
+        // body: Slider6(),
+        // body: Slider7(),
         // body: SliderWidget(),
         // body: SliderWidget2(),
 
@@ -99,7 +109,7 @@ class _Statenya extends State<MyApp> {
         // body: PermissionRequest(),
 
         /// HOME / PINJAMAN
-        body: Home(),
+        // body: Home(),
 
         /// DRAWER
         // drawer: Drawer1(),

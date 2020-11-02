@@ -35,6 +35,7 @@ class _Slider1State extends State<Slider1> {
             trackShape: RectangularSliderTrackShape(),
             trackHeight: 4.0,
             thumbColor: Colors.white,
+            /// LINGKARAN PENENTU SLIDER
             thumbShape: RoundSliderThumbShape(
                 enabledThumbRadius: 20.0),
             overlayColor: Colors.white.withAlpha(32),
