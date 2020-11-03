@@ -8,6 +8,13 @@ class NumpadOnlyExample extends StatelessWidget {
     this._controller.addListener(_controllerListener);
   }
 
+  /// NG GET SET
+  get numpad2text => print('get text1');
+
+  set controller(value) {
+    print(value);
+  }
+
   void _controllerListener() {
     //Do things with the data in the controller.
   }

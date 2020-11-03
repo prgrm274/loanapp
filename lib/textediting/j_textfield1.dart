@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:voidrealm/numpads/custom_numpad1.dart';
+import 'package:voidrealm/numpads/custom_numpad2.dart';
 
 class TextField1 extends StatefulWidget {
   TextField1({Key key}) : super(key: key);
@@ -14,14 +16,16 @@ class TextField1 extends StatefulWidget {
 class _TextField1State extends State<TextField1> {
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
+  // final tecHape = NumpadOnlyExample();
   final tecHape = TextEditingController();
+  // final tecPasw = CustomNumpad2();
   final tecPasw = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     tecHape.addListener(_printLatestValue);
-    tecPasw.addListener(_printLatestValue);
+    tecPasw.addListener(_printLatestValue2);
   }
 
   @override
@@ -38,7 +42,7 @@ class _TextField1State extends State<TextField1> {
   }
 
   _printLatestValue2() {
-    print("Second text field: ${tecPasw.text}");
+    print("Second text field: ${tecPasw.value}");
   }
 
   @override
@@ -145,6 +149,12 @@ class _TextField1State extends State<TextField1> {
                         fontSize: 16,
                       ),
                     ),
+                  ),
+                  /// NUMPAD
+                  Container(
+                    height: 200,
+                    // child: CustomNumpad2(),
+                    child: NumpadOnlyExample(),
                   )
                 ],
               ),

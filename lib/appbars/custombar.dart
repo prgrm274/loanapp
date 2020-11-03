@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// NOT APPBAR, BUT MAKES CUSTOM BAR IN BODY
+
 // ignore: must_be_immutable
 class CustomBarWidget extends StatelessWidget {
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/appbars/progress/progress_indicator1.dart';
 
-class Appbar1 extends StatefulWidget implements PreferredSizeWidget {
+class Appbar050 extends StatefulWidget implements PreferredSizeWidget {
 
-  Appbar1({Key key})
+  Appbar050({Key key})
       : preferredSize = Size.fromHeight(60.0),
   // : preferredSize = Size.fromHeight(kToolbarHeight),
         super(key: key);
@@ -15,10 +15,10 @@ class Appbar1 extends StatefulWidget implements PreferredSizeWidget {
   ///default is 56.0
 
   @override
-  _Appbar1State createState() => _Appbar1State();
+  _Appbar050State createState() => _Appbar050State();
 }
 
-class _Appbar1State extends State<Appbar1> {
+class _Appbar050State extends State<Appbar050> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

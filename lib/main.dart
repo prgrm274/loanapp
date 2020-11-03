@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/appbars/appbar040.dart';
 import 'package:voidrealm/appbars/appbar040_body.dart';
-import 'package:voidrealm/appbars/appbar1.dart';
+import 'package:voidrealm/appbars/appbar050.dart';
+import 'package:voidrealm/appbars/custombar.dart';
 import 'package:voidrealm/apps/home/home.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
 import 'package:voidrealm/apps/splash.dart';
@@ -63,10 +64,14 @@ class _Statenya extends State<MyApp> {
           ],
         ),*/
 
-        appBar: new Appbar040(),
+        // appBar: new Appbar040(),
+        appBar: new Appbar050(),
 
         /// 040 BODY
-        body: Appbar040Body(),
+        // body: Appbar040Body(),
+
+        /// 050
+        body: CustomBarWidget(),
 
         // body: Numpad1(),
         // body: WidgetCustomKeyboard(),

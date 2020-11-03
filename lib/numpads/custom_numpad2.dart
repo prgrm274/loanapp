@@ -12,7 +12,7 @@ getCustomKeyboard(reactiveClass, classType, _pc, value, parameter, showDecimal,
   output = value.toString();
   // reactiveKeyboard.setValue(value);
 
-  return WidgetCustomKeyboard(
+  return CustomNumpad2(
       // reactiveClass: reactiveClass,
       classType: classType,
       pc: _pc,
@@ -23,7 +23,8 @@ getCustomKeyboard(reactiveClass, classType, _pc, value, parameter, showDecimal,
   );
 }
 
-class WidgetCustomKeyboard extends StatefulWidget {
+/// aslinya WidgetCustomKeyboard
+class CustomNumpad2 extends StatefulWidget {
 
   // final reactiveClass;
   final classType;
@@ -33,7 +34,7 @@ class WidgetCustomKeyboard extends StatefulWidget {
   final showDecimal;
   final property;
 
-  WidgetCustomKeyboard({Key key,
+  CustomNumpad2({Key key,
     // @required this.reactiveClass,
     this.classType,
     this.pc,
@@ -43,10 +44,10 @@ class WidgetCustomKeyboard extends StatefulWidget {
     this.property,
   }) : super(key: key);
 
-  _WidgetCustomKeyboardState createState() => _WidgetCustomKeyboardState();
+  _CustomNumpad2State createState() => _CustomNumpad2State();
 }
 
-class _WidgetCustomKeyboardState extends State<WidgetCustomKeyboard> {
+class _CustomNumpad2State extends State<CustomNumpad2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
