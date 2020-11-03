@@ -9,12 +9,13 @@ class ProgressIndicator1 extends StatelessWidget {
         '20% terisi\n',
         style: TextStyle(
           fontSize: 12,
+          color: Colors.grey
         ),
       ),
       new LinearProgressIndicator(
         backgroundColor: Colors.red[200],
         valueColor: new AlwaysStoppedAnimation<Color>(
-          Colors.orangeAccent,
+          Colors.grey[300],
         ),
         value: 100,
       ),

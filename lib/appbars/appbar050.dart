@@ -23,15 +23,12 @@ class _Appbar050State extends State<Appbar050> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: setAppbar(),
-      body: new Container(
-
-      ),
     );
   }
 
   Widget setAppbar() {
     return new AppBar(
-        //backgroundColor: Colors.blue,
+        backgroundColor: Colors.white,
         //automaticallyImplyLeading: true
         elevation: 0.0,
         // for elevation
@@ -49,8 +46,9 @@ class _Appbar050State extends State<Appbar050> {
         ],
         //Action icon search as search icon, notification icon
         leading: new Material(
-          //Custom leading icon, such as back icon or other icon
-          color: Colors.transparent,
+          /// Custom leading icon, such as back navigation icon or other
+          /// warna kotaknya navigation icon
+          color: Colors.white24,
           child: new InkWell(
             onTap: () {
               Navigator.of(context).pop();
@@ -58,10 +56,12 @@ class _Appbar050State extends State<Appbar050> {
             splashColor: Colors.red,
             // splashColor: UniQueryColors.colorGradientEnd.withOpacity(.5),
             child: new Container(
+              /// kotaknya navigation icon
+              // color: Colors.red,
                 padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-                child: Icon(Icons.arrow_back)
+                child: Icon(Icons.arrow_back_rounded)
                 // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
-                ),
+            ),
           ),
         )
     );

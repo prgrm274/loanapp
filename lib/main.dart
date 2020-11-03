@@ -5,6 +5,7 @@ import 'package:voidrealm/appbars/appbar050.dart';
 import 'package:voidrealm/appbars/custombar.dart';
 import 'package:voidrealm/apps/home/home.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
+import 'package:voidrealm/apps/registrasi/reg050.dart';
 import 'package:voidrealm/apps/splash.dart';
 import 'package:voidrealm/autocompletes/autocomplete1.dart';
 import 'package:voidrealm/autocompletes/j_autocomplete1.dart';
@@ -71,7 +72,7 @@ class _Statenya extends State<MyApp> {
         // body: Appbar040Body(),
 
         /// 050
-        body: CustomBarWidget(),
+        body: Reg050(),
 
         // body: Numpad1(),
         // body: WidgetCustomKeyboard(),
