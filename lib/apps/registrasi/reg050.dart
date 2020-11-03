@@ -14,72 +14,66 @@ class _Reg050State extends State<Reg050> {
         color: Colors.white,
         // height: MediaQuery.of(context).size.height * 1,
         child: Column(children: <Widget>[
+          /// BAWAH APPBAR
           Container(
             padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
             color: Colors.grey[100],
             child: Row(children: <Widget>[
               Expanded(
-                child: Text('Saya terima\nRp 1.500.000'),
+                child: Text(
+                  'Saya terima\nRp 1.500.000',
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                  ),
+                ),
               ),
               Expanded(
-                child: Text('Nilai angsuran\nRp 525.000'),
+                child: Text(
+                  'Nilai angsuran\nRp 525.000',
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                  ),
+                ),
               ),
               Expanded(
-                child: Text('Bayar pertama\n27.10.2020'),
+                child: Text(
+                  'Bayar pertama\n27.10.2020',
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                  ),
+                ),
               ),
             ]),
           ),
+
+          /// LABEL DAN NAMA KTP EDIT
           Expanded(
             child: Padding(
               padding: EdgeInsets.all(20),
               child: Column(children: <Widget>[
-
                 Row(children: <Widget>[
                   Container(
-                    child: Text('Nama lengkap sesuai KTP',
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),),
-                  ),
-                ]),
-                Row(children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        // color: Colors.grey,
-                      ),
-                      // margin: EdgeInsets.fromLTRB(40, 0, 40, 20),
-                      child: TextField(
-                        // controller: tecHape,
-                        decoration: InputDecoration(
-                          fillColor: Colors.grey[200],
-                          focusColor: Colors.yellow,
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.red,
-                              width: 3,
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
+                    margin: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                    child: Text(
+                      'Nama lengkap sesuai KTP',
+                      style: TextStyle(
+                        color: Colors.grey[600],
                       ),
                     ),
                   ),
+                ]),
+                Row(children: <Widget>[
                   Expanded(
                     child: Container(
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.grey[200],
-                          shape: BoxShape.rectangle
-                      ),
+                          shape: BoxShape.rectangle),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Dian Permata Fransiska',
-                          hintStyle: TextStyle(
-                              color: Colors.blue
-                          ),
+                          hintStyle: TextStyle(color: Colors.grey),
                           suffixIcon: IconButton(
                             // onPressed: () => tecHape.clear(),
                             icon: Icon(Icons.clear),
@@ -90,12 +84,16 @@ class _Reg050State extends State<Reg050> {
                   ),
                 ]),
 
+                /// LABEL DAN TANGGAL EDIT
                 Row(children: <Widget>[
                   Container(
-                    child: Text('Tanggal lahir',
-                    style: TextStyle(
-                      color: Colors.grey,
-                    ),),
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                    child: Text(
+                      'Tanggal lahir',
+                      style: TextStyle(
+                        color: Colors.grey[600],
+                      ),
+                    ),
                   ),
                 ]),
                 Row(children: <Widget>[
@@ -103,18 +101,47 @@ class _Reg050State extends State<Reg050> {
                     child: Container(
                       padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle
-                      ),
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                          shape: BoxShape.rectangle),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: '24.05.1986',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          suffixIcon: IconButton(
+                            // onPressed: () => tecHape.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ]),
+
+                /// LABEL DAN RADIO JENIS KELAMIN
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 20, 0, 15),
+                    child: Text(
+                      'Jenis kelamin',
+                      style: TextStyle(color: Colors.grey[600], fontSize: 18),
+                    ),
+                  ),
+                ]),
+                Row(children: <Widget>[
+                  Column(children: <Widget>[
+                    Text('simple text'),
+                  ]),
+                  Column(children: <Widget>[
+                    Text('simple text'),
+                  ]),
+                  Column(children: <Widget>[
+                    Text('simple text'),
+                  ]),
+                  Column(children: <Widget>[
+                    Text('simple text'),
+                  ]),
+                ])
               ]),
             ),
           )
