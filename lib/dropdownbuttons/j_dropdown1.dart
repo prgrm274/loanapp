@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Dropdown1 extends StatefulWidget {
-  Dropdown1({Key key}) : super(key: key);
+class Dropdown1Scaffold extends StatefulWidget {
+  Dropdown1Scaffold({Key key}) : super(key: key);
 
   @override
-  _Dropdown1State createState() => _Dropdown1State();
+  _Dropdown1ScaffoldState createState() => _Dropdown1ScaffoldState();
 }
 
-class _Dropdown1State extends State<Dropdown1> {
+class _Dropdown1ScaffoldState extends State<Dropdown1Scaffold> {
 
   List<String> _sekolah = [
     'Sekolah Dasar (SD)',
