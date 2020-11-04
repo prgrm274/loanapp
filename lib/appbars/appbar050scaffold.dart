@@ -4,7 +4,7 @@ import 'package:voidrealm/appbars/progress/progress_indicator1.dart';
 class Appbar050 extends StatefulWidget implements PreferredSizeWidget {
 
   Appbar050({Key key})
-      : preferredSize = Size.fromHeight(30.0),
+      : preferredSize = Size.fromHeight(60.0),
   // : preferredSize = Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -21,9 +21,17 @@ class Appbar050 extends StatefulWidget implements PreferredSizeWidget {
 class _Appbar050State extends State<Appbar050> {
   @override
   Widget build(BuildContext context) {
-    /// di file appbar050scaffold yg appbarnya di scaffold, ga bisa digabung
-    return AppBar(
-        backgroundColor: Colors.cyanAccent,
+    return new Scaffold(
+      appBar: setAppbar(
+        /// APPBAR YG PAKE SCAFFOLD GA BISA JADI SATU DI REG050
+
+      ),
+    );
+  }
+
+  Widget setAppbar() {
+    return new AppBar(
+        backgroundColor: Colors.white,
         //automaticallyImplyLeading: true
         elevation: 0.0,
         // for elevation
@@ -55,7 +63,7 @@ class _Appbar050State extends State<Appbar050> {
               // color: Colors.red,
                 padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
                 child: Icon(Icons.arrow_back_rounded)
-              // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
+                // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
             ),
           ),
         )

@@ -47,32 +47,15 @@ class _Statenya extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       home: new Scaffold(
-        /*appBar: new AppBar(
-          title: new Text(_title),
-          actions: <Widget>[
-            new IconButton(
-                icon: new Icon(Icons.home),
-                onPressed: _goHome),
-            new IconButton(
-                icon: new Icon(Icons.exit_to_app),
-                onPressed: _logout),
-            new IconButton(
-                icon: new Icon(Icons.slideshow),
-                onPressed: _showSliderWidget1),
-            new IconButton(
-                icon: new Icon(Icons.slideshow_outlined),
-                onPressed: _showSliderWidget2),
-          ],
-        ),*/
-
         // appBar: new Appbar040(),
-        appBar: new Appbar050(),
+        // appBar: new Appbar050(),
 
         /// 040 BODY
         // body: Appbar040Body(),
 
         /// 050
         body: Reg050(),
+        // body: PermissionRequest(),
 
         // body: Numpad1(),
         // body: WidgetCustomKeyboard(),

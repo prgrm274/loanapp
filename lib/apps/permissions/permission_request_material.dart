@@ -3,14 +3,14 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class PermissionRequest extends StatefulWidget {
-  PermissionRequest({Key key}) : super(key: key);
+class PermissionRequest2 extends StatefulWidget {
+  PermissionRequest2({Key key}) : super(key: key);
 
   @override
-  _PermissionRequestState createState() => _PermissionRequestState();
+  _PermissionRequest2State createState() => _PermissionRequest2State();
 }
 
-class _PermissionRequestState extends State<PermissionRequest> {
+class _PermissionRequest2State extends State<PermissionRequest2> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
