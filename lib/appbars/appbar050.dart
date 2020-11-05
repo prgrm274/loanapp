@@ -4,7 +4,7 @@ import 'package:voidrealm/appbars/progress/progress_indicator1.dart';
 class Appbar050 extends StatefulWidget implements PreferredSizeWidget {
 
   Appbar050({Key key})
-      : preferredSize = Size.fromHeight(30.0),
+      : preferredSize = Size.fromHeight(60.0),
   // : preferredSize = Size.fromHeight(kToolbarHeight),
         super(key: key);
 

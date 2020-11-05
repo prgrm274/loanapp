@@ -22,20 +22,19 @@ class _Dropdown1JmlAnakState extends State<Dropdown1JmlAnak> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
-      // margin: EdgeInsets.all(10),
-      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
       decoration: BoxDecoration(
           border: Border.all(
               width: 2,
               color: Colors.grey[200]
           ),
           borderRadius: BorderRadius.all(
-            Radius.circular(15),
+            Radius.circular(10),
           )
       ),
       child: DropdownButton(
-        hint: Text('Jumlah anak'),
+        hint: Text('0'),
         value: _selectedLocation,
         onChanged: (newValue) {
           setState(() {
@@ -49,7 +48,7 @@ class _Dropdown1JmlAnakState extends State<Dropdown1JmlAnak> {
           );
         }).toList(),
         isDense: true,
-        isExpanded: true,/// supaya panah di tepi kanan
+        isExpanded: true,/// supaya panah dropdown bisa berada di tepi kanan
       ),
     );
   }

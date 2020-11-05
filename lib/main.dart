@@ -17,6 +17,7 @@ import 'package:voidrealm/dialog_for_dropdown/dialog1.dart';
 import 'package:voidrealm/drawers/drawer1.dart';
 import 'package:voidrealm/drawers/drawer2.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
+import 'package:voidrealm/gradients/gradient2.dart';
 import 'package:voidrealm/images/j_image1.dart';
 import 'package:voidrealm/login.dart';
 import 'package:voidrealm/numpads/custom_numpad2.dart';
@@ -31,6 +32,7 @@ import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
 import 'package:voidrealm/sliders/jslider_widget.dart';
 import 'package:voidrealm/sliders/slider6.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
+import 'package:voidrealm/visibilities/coba_visibility.dart';
 
 import 'dropdownbuttons/j_dropdown1.dart';
 
@@ -46,7 +48,7 @@ class _Statenya extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new Scaffold(
+      home: new Scaffold(appBar: Appbar050(),
         // appBar: new Appbar040(),
         // appBar: new Appbar050(),
 
@@ -55,7 +57,15 @@ class _Statenya extends State<MyApp> {
 
         /// 050
         body: Reg050(),
+
+
         // body: PermissionRequest(),
+
+        /// VISIBILITY
+        // body: ControlleApp(),
+
+        /// GRADIENTS
+        // body: Gradient2(),
 
         // body: Numpad1(),
         // body: WidgetCustomKeyboard(),
