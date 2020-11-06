@@ -5,6 +5,7 @@ import 'package:voidrealm/appbars/appbar050.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold_jmlanak.dart';
+import 'package:voidrealm/radios/j_radio_custom.dart';
 import 'package:voidrealm/regexes/alphanumeric.dart';
 import 'package:voidrealm/validations/date_input_text_field.dart';
 import 'package:voidrealm/validations/date_validator.dart';
@@ -19,8 +20,10 @@ class Reg050 extends StatefulWidget {
 class _Reg050State extends State<Reg050> {
   TextEditingController _textController = TextEditingController();
   TextEditingController _textControllerNama = TextEditingController();
+  TextEditingController _textControllerTempat = TextEditingController();
 
   bool tampilkanText = false;
+  bool tampilkanTempat = false;
 
   void _changed(bool visibility, String field) {
     setState(() {
@@ -32,11 +35,16 @@ class _Reg050State extends State<Reg050> {
 
   bool isNamaCorrect = false;
   bool isNamaEmpty = false;
+  bool isTempatEmpty = false;
 
   /// VARIABEL UNTUK KONDISI TEXT FIELD
   final boxDecorationNamaBenar = BoxDecoration(
       borderRadius: BorderRadius.circular(10),
       color: Colors.blue[200],
+      shape: BoxShape.rectangle);
+  final boxDecorationNamaBenarButEmpty = BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.yellow[200],
       shape: BoxShape.rectangle);
   final boxDecorationNamaSalah = BoxDecoration(
       borderRadius: BorderRadius.circular(10),
@@ -59,7 +67,6 @@ class _Reg050State extends State<Reg050> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -173,7 +180,10 @@ class _Reg050State extends State<Reg050> {
                       padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                       decoration:
 
-                      isNamaCorrect ? boxDecorationNamaBenar : boxDecorationNamaSalah,
+                      isNamaCorrect ? (_textControllerNama.text.isEmpty
+                      ?
+                      boxDecorationNamaBenarButEmpty : boxDecorationNamaBenar) :
+                      boxDecorationNamaSalah,
 
                       // isNamaEmpty
                       // ?
@@ -229,10 +239,11 @@ class _Reg050State extends State<Reg050> {
                         decoration: InputDecoration(
                           hintText: 'Dian Permata Fransiska',
                           hintStyle: TextStyle(color: Colors.grey),
-                          suffixIcon: IconButton(
+                          suffixIcon: _textControllerNama.text.isNotEmpty ?
+                          IconButton(
                             onPressed: () => _textControllerNama.clear(),
                             icon: Icon(Icons.clear),
-                          ),
+                          ) : null,
                         ),
                       ),
                     ),
@@ -386,28 +397,125 @@ class _Reg050State extends State<Reg050> {
               ]),
               Row(children: <Widget>[
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        fillColor: Colors.yellowAccent,
-                        focusColor: Colors.yellowAccent,
-                        hintText: 'Masukkan tempat lahir',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
-                        ),
+                  child: Focus(
+                    onFocusChange: (punyaFokus){
+                      setState(() {
+                          isTempatEmpty = punyaFokus;
+                      });
+                    },
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                          shape: BoxShape.rectangle),
+                      child: TextField(
+                        controller: _textControllerTempat,
+                        decoration: isTempatEmpty ?
+                        new InputDecoration(
+                          fillColor: Colors.yellowAccent,
+                          focusColor: Colors.yellowAccent,
+                          hintText: 'Masukkan tempat lahir',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          suffixIcon: IconButton(
+                            onPressed: () => _textControllerTempat.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
+                        ) :
+                        (_textControllerTempat.text.isNotEmpty ?
+                        new InputDecoration(
+                          fillColor: Colors.yellowAccent,
+                          focusColor: Colors.yellowAccent,
+                          hintText: 'Masukkan tempat lahir',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          suffixIcon: IconButton(
+                            onPressed: () => _textControllerTempat.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
+                        ):new InputDecoration(
+                          fillColor: Colors.yellowAccent,
+                          focusColor: Colors.yellowAccent,
+                          hintText: 'Masukkan tempat lahir',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          suffixIcon: null,
+                        )),
                       ),
                     ),
-                  ),
+                  )
                 ),
               ]),
+
+              /// LABEL DAN RADIO JENIS KELAMIN
+              // Row(children: <Widget>[
+              //   Container(
+              //     margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+              //     padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+              //     alignment: Alignment.topLeft,
+              //     child: Text(
+              //       'Jenis kelamin',
+              //       style: TextStyle(
+              //           color: Colors.grey,
+              //           fontSize: 15
+              //       ),
+              //     ),
+              //   ),
+              // ]),
+              // /// RADIOS
+              // Container(
+              //   margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+              //   child: Row(
+              //     children: <Widget>[
+              //       Container(
+              //         margin: EdgeInsets.fromLTRB(0, 0, 40, 0),
+              //         child: Row(
+              //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //             children: <Widget>[
+              //               Radio(
+              //                 /// IF NOT TOGGLEABLE IT WILL CAN NOT BE UNSELECTED
+              //                 toggleable: true,
+              //                 mouseCursor: MouseCursor.defer,
+              //                 materialTapTargetSize: MaterialTapTargetSize.padded,
+              //                 activeColor: Colors.grey[600],
+              //                 value: 0,
+              //                 groupValue: _radioValue1,
+              //                 onChanged: _handleRadioValueChange1,
+              //               ),
+              //               Text(
+              //                 'Laki-laki',
+              //                 style: TextStyle(
+              //                     color: Colors.grey[400],
+              //                     fontSize: 13
+              //                 ),
+              //               ),
+              //             ]
+              //         ),
+              //       ),
+              //       Row(
+              //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //           children: <Widget>[
+              //             Radio(
+              //               toggleable: true,
+              //               mouseCursor: MouseCursor.defer,
+              //               materialTapTargetSize: MaterialTapTargetSize.padded,
+              //               activeColor: Colors.grey[600],
+              //               /// THESE THREE BELOW ARE RELATED TO EACH OTHER
+              //               value: 1,
+              //               onChanged: _handleRadioValueChange2,
+              //               groupValue: _radioValue2,
+              //             ),
+              //             Text(
+              //               'Perempuan',
+              //               style: TextStyle(
+              //                   color: Colors.grey[400],
+              //                   fontSize: 13
+              //               ),
+              //             ),
+              //           ]
+              //       ),
+              //     ],
+              //   ),
+              // ),
 
               /// LABEL DAN RADIO JENIS KELAMIN
               Row(children: <Widget>[
@@ -435,16 +543,13 @@ class _Reg050State extends State<Reg050> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Radio(
-                              toggleable: true,
-                              mouseCursor: MouseCursor.defer,
-                              materialTapTargetSize: MaterialTapTargetSize.padded,
-                              activeColor: Colors.grey[600],
-                              value: Pendidikan.Sekolah_Dasar,
-                              groupValue: _pendidikan,
-                              onChanged: (Pendidikan value) {
+                              value: gender.l,
+                              groupValue: _gender,
+                              onChanged: (gender value) {
                                 setState(() {
-                                  _pendidikan = value;
+                                  _gender = value;
                                 });
+                                print('Laki-laki');
                               },
                             ),
                             Text(
@@ -458,16 +563,13 @@ class _Reg050State extends State<Reg050> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Radio(
-                            toggleable: true,
-                            mouseCursor: MouseCursor.defer,
-                            materialTapTargetSize: MaterialTapTargetSize.padded,
-                            activeColor: Colors.grey[600],
-                            value: Pendidikan.Sekolah_Dasar,
-                            groupValue: _pendidikan,
-                            onChanged: (Pendidikan value) {
+                            value: gender.p,
+                            groupValue: _gender,
+                            onChanged: (gender value) {
                               setState(() {
-                                _pendidikan = value;
+                                _gender = value;
                               });
+                              print('perempuan');
                             },
                           ),
                           Text(
@@ -479,6 +581,30 @@ class _Reg050State extends State<Reg050> {
                   ],
                 ),
               ),
+
+              /// SHOWING RESULT OF WHICH RADIO IS CHOSEN, LATER DOESN'T USE THIS
+              Row(children: <Widget>[
+                Container(
+                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                  alignment: Alignment.topLeft,
+                  child:
+                  Text((
+                          () {
+                            switch (_gender) {
+                              case gender.l:
+                                return'L.';
+                                case gender.p:
+                                  return'P.';
+                            }
+                          } ()
+                  ),
+                    style: TextStyle(fontSize: 12),
+                  ),
+                  /// or
+                  //Text(_gender == gender.l ?'This person is a man.' :'This person is a woman.')
+                ),
+              ]),
 
               /// LABEL DAN DROPDOWN JUMLAH ANAK
               Row(children: <Widget>[
@@ -626,7 +752,51 @@ class _Reg050State extends State<Reg050> {
     );
   }
 
+  gender _gender = gender.l;
+
+  int _radioValue1 = -1;
+  int correctScore = 0;
+  int _radioValue2 = -1;
+
+  void _handleRadioValueChange1(int value) {
+    setState(() {
+      _radioValue1 = value;
+
+      switch (_radioValue1) {
+        case 0:
+          // Fluttertoast.showToast(msg: 'Correct !',toastLength: Toast.LENGTH_SHORT);
+          print('Case 0');
+          correctScore++;
+          break;
+        case 1:
+          print('Case 1');
+          break;
+      }
+    });
+  }
+
+  void _handleRadioValueChange2(int value) {
+    setState(() {
+      _radioValue2 = value;
+
+      switch (_radioValue2) {
+        case 0:
+          // Fluttertoast.showToast(msg: 'Correct !',toastLength: Toast.LENGTH_SHORT);
+          print('Case 0');
+          correctScore++;
+          break;
+        case 1:
+          print('Case 1');
+          break;
+      }
+    });
+  }
+
   Pendidikan _pendidikan = Pendidikan.Sekolah_Dasar;
+}
+
+enum gender {
+  l, p
 }
 
 enum Pendidikan {

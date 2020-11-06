@@ -6,6 +6,9 @@ import 'package:voidrealm/appbars/custombar.dart';
 import 'package:voidrealm/apps/home/home.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
 import 'package:voidrealm/apps/registrasi/reg050.dart';
+import 'package:voidrealm/apps/registrasi/reg060.dart';
+import 'package:voidrealm/apps/registrasi/reg070.dart';
+import 'package:voidrealm/apps/registrasi/reg080.dart';
 import 'package:voidrealm/apps/splash.dart';
 import 'package:voidrealm/autocompletes/autocomplete1.dart';
 import 'package:voidrealm/autocompletes/j_autocomplete1.dart';
@@ -48,7 +51,8 @@ class _Statenya extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: new Scaffold(appBar: Appbar050(),
+      home: new Scaffold(
+        appBar: Appbar050(),
         // appBar: new Appbar04pubs0(),
         // appBar: new Appbar050(),
 
@@ -57,6 +61,15 @@ class _Statenya extends State<MyApp> {
 
         /// 050
         body: Reg050(),
+
+        /// 060
+        // body: Reg060(),
+
+        /// 070
+        // body: Reg070(),
+
+        /// 080
+        // body: Reg080(),
 
 
         // body: PermissionRequest(),
