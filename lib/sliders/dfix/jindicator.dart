@@ -44,19 +44,40 @@ class MyIndicator extends StatelessWidget {
         height: circleDiameter,
         child: Stack(
           children: <Widget>[
+            /// index 0
             Head(
-              color: Color(0xFFf4b897),
+              /// misal ijo, maka ke kiri akan semakin menghijau
+              /// misal merah, maka ke kiri akan semakin memerah
+              color: Color.fromARGB(200, 240, 120, 123),
+              // color: Color(0xFFf4b897),
               hasShadow: true,
             ),
+
+            /// index 1, dst
+            /// WARNA UNTUK KE KANAN, OPASITAS INI SEAKAN AKAN PENYEIMBANGNYA
+            /// MISAL OPASITAS KUNING MAKA DARI HEAD MERAH DIGESER KE KANAN AKAN SEMAKIN MENGUNING
             Opacity(
               opacity: opacityOfYellow,
               child: Head(
-                color: Color(0xFFfee385),
+                color: Color.fromARGB(150, 180, 250, 25),
+                // color: Color(0xFFfee385),
               ),
             ),
+
+            // position == 2 ? Face(
+            //   animationValue: animationValue,
+            // ) :
+            // null,/// a Stack's children mustn't contain any null values, but a null value was found at index 2
+            // false,/// b type 'bool' is not a subtype of type 'Widget'
+            // (){/// c type '()=>Null' is not a subtype of type 'Widget'
+            //   print('Position is not 2');
+            // },
+
             Face(
               animationValue: animationValue,
-            )
+            ),
+
+            Text('coba'),
           ],
         ),
       ),
