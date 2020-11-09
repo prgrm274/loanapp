@@ -18,7 +18,7 @@ class Face extends StatelessWidget {
       height: circleDiameter,
       width: circleDiameter,
       child: Image(
-        image: AssetImage('lib/assets/info_48.png'),
+        image: AssetImage('lib/assets/calculator_thumb_bonus.png'),
         // height: 12,
         // width: 12,
       ),

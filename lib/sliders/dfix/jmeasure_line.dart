@@ -41,12 +41,24 @@ class SliderGaris extends StatelessWidget {
                   scale: scale,
                   child: Stack(
                     children: [
-                      Head(),
-                      Face(
-                        color: Colors.purple[200],
-                        // color: Colors.white,
-                        animationValue: index.toDouble(),
-                      )
+                      // Head(),
+
+                      // Face(
+                      //     color: Colors.purple[200],
+                      //     // color: Colors.white,
+                      //     animationValue: index.toDouble()
+                      // ),
+
+                      /// BUAT CIRCLE PUTIH (DAN BIRU UNTUK 3M,6M,10M)
+                      Container(
+                        /// LEBAR DAN PANJANG POINT
+                        width: 20,//12
+                        height: 65,
+                        decoration: new BoxDecoration(
+                          color: Colors.grey,
+                          shape: BoxShape.circle,
+                        ),
+                      ),
                     ],
                   )),
               Padding(

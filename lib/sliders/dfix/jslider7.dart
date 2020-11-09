@@ -16,7 +16,10 @@ class Slider7 extends StatefulWidget {
 
 class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
   double initialReviewValue = 2;
-  final List<String> reviews = [
+  // double initialReviewValue = 2;
+
+  /// KALO UBAH NILAI HARUS HOT RESTART BARU TAMBAH TITIKNYA
+  final List<String> pinjaman = [
     '500K',
     '1M',
     '1.5M',
@@ -75,7 +78,7 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
     var newAnimatedValue = _calcAnimatedValueFormDragX(
       details.globalPosition.dx,
     );
-    if (newAnimatedValue > 0 && newAnimatedValue < reviews.length - 1) {
+    if (newAnimatedValue > 0 && newAnimatedValue < pinjaman.length - 1) {
       setState(() {
         _animationValue = newAnimatedValue;
         },
@@ -85,7 +88,7 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
 
   _calcAnimatedValueFormDragX(x) {
     return (x - circleDiameter / 2 - paddingSize * 2) /
-        _innerWidth * reviews.length;
+        _innerWidth * pinjaman.length;
   }
 
   _onDragEnd(_) {
@@ -111,8 +114,20 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
         padding: EdgeInsets.symmetric(horizontal: paddingSize),
         height: 200,
         child: Stack(children: <Widget>[
+          Container(
+            child: Text(
+              pinjaman[],// set to 1.5M
+              // pinjaman[2],// set to 1.5M
+              key: ((){
+                print('');
+              }()),
+            ),
+            key: ((){
+
+            }()),// NG NULIS GINI, GA ERROR
+          ),
           SliderGaris(
-            states: reviews,
+            states: pinjaman,
             handleTap: handleTap,
             animationValue: _animationValue,
             width: _innerWidth,
