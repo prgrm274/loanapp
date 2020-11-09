@@ -3,8 +3,10 @@ import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart';
 import 'package:voidrealm/sliders/dfix/jface.dart';
 import 'package:voidrealm/sliders/dfix/jhead.dart';
 
-class MeasureLine extends StatelessWidget {
-  MeasureLine({this.handleTap, this.animationValue, this.states, this.width});
+/// GARIS SLIDER
+/// MeasureLine
+class SliderGaris extends StatelessWidget {
+  SliderGaris({this.handleTap, this.animationValue, this.states, this.width});
 
   final double animationValue;
   final Function handleTap;
@@ -41,7 +43,8 @@ class MeasureLine extends StatelessWidget {
                     children: [
                       Head(),
                       Face(
-                        color: Colors.white,
+                        color: Colors.purple[200],
+                        // color: Colors.white,
                         animationValue: index.toDouble(),
                       )
                     ],
@@ -74,8 +77,10 @@ class MeasureLine extends StatelessWidget {
           width: width - 40,
           child: Container(
             width: width,
-            color: Color(0xFFeceeef),
-            height: 3,
+            color: Colors.blue[100],
+            // color: Color(0xFFeceeef),
+            height: 6,
+            // height: 3,
           ),
         ),
         Row(

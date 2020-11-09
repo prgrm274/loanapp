@@ -4,7 +4,8 @@ import 'package:voidrealm/sliders/dfix/jpainter.dart';
 
 class Face extends StatelessWidget {
   Face({
-    this.color = const Color(0xFF616154),
+    this.color = const Color.fromARGB(150, 150, 0, 150),
+    // this.color = const Color(0xFF616154),
     this.animationValue,
   });
 
@@ -17,11 +18,9 @@ class Face extends StatelessWidget {
       height: circleDiameter,
       width: circleDiameter,
       child: Image(
+        image: AssetImage('lib/assets/info_48.png'),
         // height: 12,
         // width: 12,
-        image: AssetImage(
-          'lib/assets/info_48.png'
-        ),
       ),
       // child: CustomPaint(
       //   size: Size(300, 300),

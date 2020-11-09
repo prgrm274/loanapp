@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/appbars/appbar040.dart';
-import 'package:voidrealm/appbars/appbar040_body.dart';
+import 'package:voidrealm/appbars/j_login040_appbar.dart';
+import 'package:voidrealm/appbars/j_login040_body.dart';
 import 'package:voidrealm/appbars/appbar050.dart';
 import 'package:voidrealm/appbars/custombar.dart';
 import 'package:voidrealm/apps/home/home.dart';
@@ -52,15 +52,16 @@ class _Statenya extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       home: new Scaffold(
-        appBar: Appbar050(),
+        appBar: Login040Appbar(),
+        // appBar: Appbar050(),
         // appBar: new Appbar04pubs0(),
         // appBar: new Appbar050(),
 
         /// 040 BODY
-        // body: Appbar040Body(),
+        // body: Login040Body(),
 
         /// 050
-        body: Reg050(),
+        // body: Reg050(),
 
         /// 060
         // body: Reg060(),
@@ -85,8 +86,8 @@ class _Statenya extends State<MyApp> {
         // body: JCustomNumpad(),
 
         /// SLIDERS
-        // body: Slider6(),
-        // body: Slider7(),
+        // body: Slider6(),/// emoji
+        body: Slider7(),
         // body: SliderWidget(),
         // body: SliderWidget2(),
 

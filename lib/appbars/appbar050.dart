@@ -21,7 +21,7 @@ class Appbar050 extends StatefulWidget implements PreferredSizeWidget {
 class _Appbar050State extends State<Appbar050> {
   @override
   Widget build(BuildContext context) {
-    /// di file appbar050scaffold yg appbarnya di scaffold, ga bisa digabung
+    /// ga bisa digabung dengan di file appbar050scaffold yg appbarnya di scaffold
     return AppBar(
         backgroundColor: Colors.cyanAccent,
         //automaticallyImplyLeading: true
@@ -45,7 +45,7 @@ class _Appbar050State extends State<Appbar050> {
           /// warna kotaknya navigation icon
           color: Colors.white24,
           child: new InkWell(
-            onTap: () {
+            onTap: (){
               Navigator.of(context).pop();
             },
             splashColor: Colors.red,

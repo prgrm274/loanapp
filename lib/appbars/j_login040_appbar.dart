@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/appbars/appbar040_body.dart';
+import 'package:voidrealm/appbars/j_login040_body.dart';
 import 'package:voidrealm/appbars/progress/progress_indicator1.dart';
 import 'package:voidrealm/appbars/title040.dart';
-import 'package:voidrealm/textediting/j_textfield1.dart';
+import 'package:voidrealm/textediting/login_040_textfield_numpad.dart';
 
-class Appbar040 extends StatefulWidget implements PreferredSizeWidget {
+class Login040Appbar extends StatefulWidget implements PreferredSizeWidget {
 
-  Appbar040({Key key}): preferredSize = Size.fromHeight(60.0),
+  Login040Appbar({Key key}): preferredSize = Size.fromHeight(60.0),
         super(key: key);
 
   @override
@@ -14,17 +14,17 @@ class Appbar040 extends StatefulWidget implements PreferredSizeWidget {
   // Size get preferredSize => preferredSize;
 
   @override
-  _Appbar040State createState() => _Appbar040State();
+  _Login040AppbarState createState() => _Login040AppbarState();
 }
 
-class _Appbar040State extends State<Appbar040> {
+class _Login040AppbarState extends State<Login040Appbar> {
   @override
   Widget build(BuildContext context) {
     var appbar = setAppbar();
 
     return new Scaffold(
       appBar: setAppbar(),
-      body: Appbar040Body(),
+      // body: Login040Body(),
     );
   }
 

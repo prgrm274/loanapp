@@ -290,8 +290,7 @@ class _Reg050State extends State<Reg050> {
               // ]),
 
               /// LABEL DAN TANGGAL EDIT DGN PENGESAHAN PENATAAN
-              tampilkanText
-                  ?
+              tampilkanText ?
               Row(children: <Widget>[
                 Container(
                   margin: EdgeInsets.fromLTRB(10, 5, 10, 0),

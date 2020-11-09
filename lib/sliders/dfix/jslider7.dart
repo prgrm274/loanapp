@@ -76,16 +76,16 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
       details.globalPosition.dx,
     );
     if (newAnimatedValue > 0 && newAnimatedValue < reviews.length - 1) {
-      setState(
-            () {
-          _animationValue = newAnimatedValue;
+      setState(() {
+        _animationValue = newAnimatedValue;
         },
       );
     }
   }
 
   _calcAnimatedValueFormDragX(x) {
-    return (x - circleDiameter / 2 - paddingSize * 2) / _innerWidth * reviews.length;
+    return (x - circleDiameter / 2 - paddingSize * 2) /
+        _innerWidth * reviews.length;
   }
 
   _onDragEnd(_) {
@@ -111,7 +111,7 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
         padding: EdgeInsets.symmetric(horizontal: paddingSize),
         height: 200,
         child: Stack(children: <Widget>[
-          MeasureLine(
+          SliderGaris(
             states: reviews,
             handleTap: handleTap,
             animationValue: _animationValue,

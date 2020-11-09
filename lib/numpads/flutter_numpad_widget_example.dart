@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_numpad_widget/flutter_numpad_widget.dart';
 
-class NumpadOnlyExample extends StatelessWidget {
+class FlutterNumpadWidgetExample extends StatelessWidget {
   final _controller = NumpadController();
 
-  NumpadOnlyExample() {
+  FlutterNumpadWidgetExample() {
     this._controller.addListener(_controllerListener);
   }
 
