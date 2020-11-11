@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:voidrealm/appbars/appbar050.dart';
+import 'package:voidrealm/db/DBHelper.dart';
+import 'package:voidrealm/db/db.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold_agama.dart';
@@ -20,6 +22,10 @@ class Reg060 extends StatefulWidget {
 }
 
 class _Reg060State extends State<Reg060> {
+  DBHelper dbHelper = new DBHelper();
+
+  List<DropdownMenuItem<String>> list;
+
   TextEditingController _textController = TextEditingController();
   TextEditingController _textControllerNama = TextEditingController();
 
@@ -27,7 +33,7 @@ class _Reg060State extends State<Reg060> {
 
   void _changed(bool visibility, String field) {
     setState(() {
-      if (field == "tag"){
+      if (field == "tag") {
         tampilkanText = visibility;
       }
     });
@@ -52,7 +58,7 @@ class _Reg060State extends State<Reg060> {
 
   void _cekNama(bool benar, String text) {
     setState(() {
-      if (Regex1.checkAlphabet(text)){
+      if (Regex1.checkAlphabet(text)) {
         isNamaCorrect = benar;
       }
     });
@@ -66,264 +72,311 @@ class _Reg060State extends State<Reg060> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
+    list = [];
+
+    /// KELAS Db
+    // Db.initialize().then((status) {
+    //   if (status) {
+    //     Db.getData().then((listmap) {
+    //       listmap.map((e) {
+    //         print(e.toString());
+    //         return getDropDownWidget(e);
+    //       }).forEach((dropdownItem) {
+    //         list.add(dropdownItem);
+    //       });
+    //       setState(() {
+    //
+    //       });
+    //     });
+    //   }
+    // });
   }
+
+  /// DBHELPER
+
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       /// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
       home: SingleChildScrollView(
-        // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: Container(
-            // height: MediaQuery.of(context).size.height,
-            // width: MediaQuery.of(context).size.width,
-            color: Colors.white,
-            // height: MediaQuery.of(context).size.height * 1,
-            child: Column(children: <Widget>[
-              /// APPBAR
-              // Appbar050(),
+      // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      child: Container(
+        // height: MediaQuery.of(context).size.height,
+        // width: MediaQuery.of(context).size.width,
+        color: Colors.white,
+        // height: MediaQuery.of(context).size.height * 1,
+        child: Column(children: <Widget>[
+          /// APPBAR
+          // Appbar050(),
 
-              /// BAWAH APPBAR
-              Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                color: Colors.grey[100],
-                child: Row(children: <Widget>[
-                  Flexible(
-                    flex: 1,
-                    child: Text(
-                      'Saya terima\nRp 1.500.000',
-                      style: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 12,
-                          fontFamily: 'Sans'
-                      ),
-                    ),
+          /// BAWAH APPBAR
+          Container(
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+            color: Colors.grey[100],
+            child: Row(
+              children: <Widget>[
+                Flexible(
+                  flex: 1,
+                  child: Text(
+                    'Saya terima\nRp 1.500.000',
+                    style: TextStyle(
+                        color: Colors.grey[400],
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
                   ),
-                  Flexible(
-                      flex: 1,
-                      child: Container(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              GestureDetector(
-                                child: Image(
-                                  image: AssetImage('lib/assets/info_48.png',),
-                                  width: 12,
-                                  height: 12,
+                ),
+                Flexible(
+                    flex: 1,
+                    child: Container(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            GestureDetector(
+                              child: Image(
+                                image: AssetImage(
+                                  'lib/assets/info_48.png',
                                 ),
-                                onTap: (){
-                                  print('onTap info nilai angsuran');
-                                },
+                                width: 12,
+                                height: 12,
                               ),
-                              /// SPASI ANTARA LOGO INFO DAN NILAI ANGSURAN
-                              Container(width: 10,),
-                              Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    GestureDetector(
-                                      child: Text(
-                                        'Nilai angsuran',
-                                        style: TextStyle(
-                                            decoration: TextDecoration.underline,
-                                            color: Colors.cyan,
-                                            fontSize: 12,
-                                            fontFamily: 'Sans'
-                                        ),
-                                      ),
-                                      onTap: (){
-                                        print('onTap nilai angsuran');
-                                      },
-                                    ),
-                                    Text(
-                                      'Rp 525.000',
+                              onTap: () {
+                                print('onTap info nilai angsuran');
+                              },
+                            ),
+
+                            /// SPASI ANTARA LOGO INFO DAN NILAI ANGSURAN
+                            Container(
+                              width: 10,
+                            ),
+                            Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  GestureDetector(
+                                    child: Text(
+                                      'Nilai angsuran',
                                       style: TextStyle(
-                                          color: Colors.grey[400],
+                                          decoration: TextDecoration.underline,
+                                          color: Colors.cyan,
                                           fontSize: 12,
-                                          fontFamily: 'Sans'
-                                      ),
+                                          fontFamily: 'Sans'),
                                     ),
-                                  ]
-                              )
-                            ]
-                        ),
+                                    onTap: () {
+                                      print('onTap nilai angsuran');
+                                    },
+                                  ),
+                                  Text(
+                                    'Rp 525.000',
+                                    style: TextStyle(
+                                        color: Colors.grey[400],
+                                        fontSize: 12,
+                                        fontFamily: 'Sans'),
+                                  ),
+                                ])
+                          ]),
+                    )),
+                Flexible(
+                  flex: 1,
+                  child: Text(
+                    'Bayar pertama\n27.10.2020',
+                    style: TextStyle(
+                        color: Colors.grey[400],
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
+                  ),
+                ),
+              ],
+              mainAxisSize: MainAxisSize.max,
+
+              /// MEMBAGI RUANG UNTUK KONTEN CHILD SESUAI JUMLAH CHILD DARI ROW
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            ),
+          ),
+
+          /// LABEL DAN DROPDOWN JUMLAH ANAK
+          Row(children: <Widget>[
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+              padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Propinsi',
+                style: TextStyle(color: Colors.grey, fontSize: 12),
+              ),
+            ),
+          ]),
+          Row(children: <Widget>[
+            Expanded(
+                child: Row(children: <Widget>[
+              Expanded(
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          width: 2,
+                          color: Colors.grey[200]
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
                       )
                   ),
-                  Flexible(
-                    flex: 1,
-                    child: Text(
-                      'Bayar pertama\n27.10.2020',
-                      style: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 12,
-                          fontFamily: 'Sans'
-                      ),
+
+                  child: DropdownButton(
+                    hint: Text('Silahkan pilih'),
+                    onTap: (){
+                      dbHelper.initDB();
+                    },
+                    items: list,
+                    isDense: true,
+                    isExpanded: true,/// supaya panah dropdown bisa berada di tepi kanan
+                  ),
+                  // child: DropdownButton(
+                  //   hint: Text('Silahkan pilih'),
+                  //   onChanged: (value) {},
+                  //   value: 'aaaa',
+                  //   items: list,
+                  //   isDense: true,
+                  //   isExpanded: true,/// supaya panah dropdown bisa berada di tepi kanan
+                  // ),
+                ),
+
+                /// DROPDOWN PROPINSI COBA
+                // child: DropdownPropinsi(),
+              ),
+            ]))
+          ]),
+
+          /// LABEL DAN DROPDOWN KOTA / KEC / LURAH
+          Row(children: <Widget>[
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+              padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Kota / Kecamatan / Kelurahan',
+                style: TextStyle(color: Colors.grey, fontSize: 12),
+              ),
+            ),
+          ]),
+          Row(children: <Widget>[
+            Expanded(
+                child: Row(children: <Widget>[
+              Expanded(
+                child: DropdownPropinsi(),
+              ),
+            ]))
+          ]),
+
+          /// LABEL DAN TEXTFIELD ALAMAT LENGKAP
+          Row(children: <Widget>[
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+              padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Alamat lengkap (nama jalan/nomor rumah)',
+                style: TextStyle(color: Colors.grey, fontSize: 12),
+              ),
+            ),
+          ]),
+          Row(children: <Widget>[
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Colors.grey[200],
+                    shape: BoxShape.rectangle),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Silahkan isi alamatnya',
+                    hintStyle: TextStyle(color: Colors.grey[400]),
+                    suffixIcon: IconButton(
+                      // onPressed: () => tecHape.clear(),
+                      icon: Icon(Icons.clear),
                     ),
                   ),
-                ],
-                  mainAxisSize: MainAxisSize.max,
-                  /// MEMBAGI RUANG UNTUK KONTEN CHILD SESUAI JUMLAH CHILD DARI ROW
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
               ),
+            ),
+          ]),
 
-              /// LABEL DAN DROPDOWN JUMLAH ANAK
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Propinsi',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                    child: Row(children: <Widget>[
-                      Expanded(
-                        child: DropdownPropinsi(),
-                      ),
-                    ]))
-              ]),
-
-              /// LABEL DAN DROPDOWN KOTA / KEC / LURAH
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Kota / Kecamatan / Kelurahan',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                    child: Row(children: <Widget>[
-                      Expanded(
-                        child: DropdownPropinsi(),
-                      ),
-                    ]))
-              ]),
-
-              /// LABEL DAN TEXTFIELD ALAMAT LENGKAP
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Alamat lengkap (nama jalan/nomor rumah)',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Silahkan isi alamatnya',
-                        hintStyle: TextStyle(color: Colors.grey[400]),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ]),
-
-              /// LABEL DAN DROPDOWN LAMA TINGGAL
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Lama tinggal',
-                    style: TextStyle(
-                        color: Colors.cyan[600],
-                        fontSize: 12
-                    ),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                    child: Row(children: <Widget>[
-                      Expanded(
-                        child: DropdownLamatinggal(),
-                      )
-                    ]))
-              ]),
-
-              /// LABEL DAN DROPDOWN LAMA TINGGAL
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Agama',
-                    style: TextStyle(
-                        color: Colors.cyan[600],
-                        fontSize: 12
-                    ),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                    child: Row(children: <Widget>[
-                      Expanded(
-                        child: DropdownAgama(),
-                      )
-                    ]))
-              ]),
-
-              /// BUTTON BERIKUTNYA
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(15, 40, 15, 20),
-                  child: RaisedButton(
-                    padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
-                    onPressed: (){},
-                    textColor: Colors.white,
-                    color: Colors.cyan,
-                    child: Text('Berikutnya'),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(45.0),
-                        side: BorderSide(color: Colors.cyan)
-                    ),
-                  ),
-                ),
+          /// LABEL DAN DROPDOWN LAMA TINGGAL
+          Row(children: <Widget>[
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+              padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Lama tinggal',
+                style: TextStyle(color: Colors.cyan[600], fontSize: 12),
+              ),
+            ),
+          ]),
+          Row(children: <Widget>[
+            Expanded(
+                child: Row(children: <Widget>[
+              Expanded(
+                child: DropdownLamatinggal(),
               )
-            ]),
-        ),
-      )
+            ]))
+          ]),
+
+          /// LABEL DAN DROPDOWN LAMA TINGGAL
+          Row(children: <Widget>[
+            Container(
+              margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+              padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Agama',
+                style: TextStyle(color: Colors.cyan[600], fontSize: 12),
+              ),
+            ),
+          ]),
+          Row(children: <Widget>[
+            Expanded(
+                child: Row(children: <Widget>[
+              Expanded(
+                child: DropdownAgama(),
+              )
+            ]))
+          ]),
+
+          /// BUTTON BERIKUTNYA
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              margin: EdgeInsets.fromLTRB(15, 40, 15, 20),
+              child: RaisedButton(
+                padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+                onPressed: () {},
+                textColor: Colors.white,
+                color: Colors.cyan,
+                child: Text('Berikutnya'),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(45.0),
+                    side: BorderSide(color: Colors.cyan)),
+              ),
+            ),
+          )
+        ]),
+      ),
+    ));
+  }
+
+  DropdownMenuItem<String> getDropDownWidget(Map<String, dynamic> map) {
+    return DropdownMenuItem<String>(
+      value: map['ITEM'],
+      child: Text(map['ITEM']),
+      onTap: (){
+        print('getDropDownWidget is tapped');
+      },
     );
   }
 

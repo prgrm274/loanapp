@@ -52,9 +52,9 @@ class _Statenya extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       home: new Scaffold(
-        appBar: Login040Appbar(),
-        // appBar: Appbar050(),
-        // appBar: new Appbar04pubs0(),
+        // appBar: Login040Appbar(),
+        appBar: Appbar050(),
+        // appBar: new Appbar040(),
         // appBar: new Appbar050(),
 
         /// 040 BODY
@@ -64,7 +64,7 @@ class _Statenya extends State<MyApp> {
         // body: Reg050(),
 
         /// 060
-        // body: Reg060(),
+        body: Reg060(),
 
         /// 070
         // body: Reg070(),
@@ -87,7 +87,7 @@ class _Statenya extends State<MyApp> {
 
         /// SLIDERS
         // body: Slider6(),/// emoji
-        body: Slider7(),
+        // body: Slider7(),/// CUSTOM SLIDER
         // body: SliderWidget(),
         // body: SliderWidget2(),
 

@@ -114,23 +114,35 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
         padding: EdgeInsets.symmetric(horizontal: paddingSize),
         height: 200,
         child: Stack(children: <Widget>[
-          Container(
+          Container(/// NG ADD
+            margin: EdgeInsets.fromLTRB(10, 50, 0, 0),
             child: Text(
-              pinjaman[],// set to 1.5M
-              // pinjaman[2],// set to 1.5M
-              key: ((){
-                print('');
+              ((){
+                for (int i=0; i<pinjaman.length; i++){
+                  return pinjaman[i];
+                };;;;;;
               }()),
-            ),
-            key: ((){
+              // pinjaman[2],// set to 1.5M
 
+              key: ((){
+                print('key');
+              }()),
+
+              style: TextStyle(
+                color: Colors.deepPurple,
+                fontSize: 18
+              ),
+            ),
+
+            key: ((){
             }()),// NG NULIS GINI, GA ERROR
           ),
+
           SliderGaris(
-            states: pinjaman,
-            handleTap: handleTap,
-            animationValue: _animationValue,
-            width: _innerWidth,
+            statesnya: pinjaman,
+            handleTapnya: handleTap,
+            nilaiAnimasi: _animationValue,
+            lebar: _innerWidth,
           ),
           MyIndicator(
             animationValue: _animationValue,

@@ -11,9 +11,10 @@ class MyIndicator extends StatelessWidget {
     this.onDrag,
     this.onDragStart,
     this.onDragEnd,
-  })  : width = width - circleDiameter,
+  }) : width = width - circleDiameter,
         position = animationValue == 0 ? 0 : animationValue / 4;
 
+  /// POSITION IS COORDINATE OF WHEN YOU MOVE THE SLIDER THUMB
   final double position;
   final Function onDrag;
   final Function onDragStart;
@@ -73,11 +74,17 @@ class MyIndicator extends StatelessWidget {
             //   print('Position is not 2');
             // },
 
-            Face(
-              animationValue: animationValue,
-            ),
+            Face(animationValue: animationValue,),
 
-            Text('coba'),
+            /// NG
+            /// POSITION IS COORDINATE OF WHEN YOU MOVE THE SLIDER THUMB
+            /// SO 500K = 0.0
+            /// 1M = 0.25
+            /// 1.5M = 0.5
+            /// 2M = 0.75
+            /// 3M = 1.0
+            /// WHEN YOU ARE BETWEEN TWO VALUES THE COORDINATE WILL BE LIKE 0.0 .. 0.25 LIKE 0.12345678..
+            Text(position.toString()),
           ],
         ),
       ),

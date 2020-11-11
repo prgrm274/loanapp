@@ -6,19 +6,19 @@ import 'package:voidrealm/sliders/dfix/jhead.dart';
 /// GARIS SLIDER
 /// MeasureLine
 class SliderGaris extends StatelessWidget {
-  SliderGaris({this.handleTap, this.animationValue, this.states, this.width});
+  SliderGaris({this.handleTapnya, this.nilaiAnimasi, this.statesnya, this.lebar});
 
-  final double animationValue;
-  final Function handleTap;
-  final List<String> states;
-  final double width;
+  final double nilaiAnimasi;
+  final Function handleTapnya;
+  final List<String> statesnya;
+  final double lebar;
 
   List<Widget> _buildUnits() {
     var res = <Widget>[];
-    var animatingUnitIndex = animationValue.round();
-    var unitAnimatingValue = (animationValue * 10 % 10 / 10 - 0.5).abs() * 2;
+    var animatingUnitIndex = nilaiAnimasi.round();
+    var unitAnimatingValue = (nilaiAnimasi * 10 % 10 / 10 - 0.5).abs() * 2;
 
-    states.asMap().forEach((index, text) {
+    statesnya.asMap().forEach((index, text) {
       var paddingTop = 0.0;
       var scale = 0.7;
       var opacity = .3;
@@ -32,7 +32,7 @@ class SliderGaris extends StatelessWidget {
         maxWidth: circleDiameter,
         child: GestureDetector(
           onTap: () {
-            handleTap(index);
+            handleTapnya(index);
           },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -52,12 +52,16 @@ class SliderGaris extends StatelessWidget {
                       /// BUAT CIRCLE PUTIH (DAN BIRU UNTUK 3M,6M,10M)
                       Container(
                         /// LEBAR DAN PANJANG POINT
-                        width: 20,//12
+                        width: 25,//20 teks ga cukup, misal 1M jadinya 1 dibawah M
                         height: 65,
                         decoration: new BoxDecoration(
                           color: Colors.grey,
                           shape: BoxShape.circle,
                         ),
+
+                        /// NG ADD
+                        child: Text(text),/// 0 1 2 3 4
+                        // child: Text(index.toString()),/// 0 1 2 3 4
                       ),
                     ],
                   )),
@@ -86,9 +90,9 @@ class SliderGaris extends StatelessWidget {
         Positioned(
           top: circleDiameter / 2,
           left: 20,
-          width: width - 40,
+          width: lebar - 40,
           child: Container(
-            width: width,
+            width: lebar,
             color: Colors.blue[100],
             // color: Color(0xFFeceeef),
             height: 6,
