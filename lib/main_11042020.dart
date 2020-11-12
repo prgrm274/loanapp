@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/appbars/j_login040_appbar.dart';
 import 'package:voidrealm/appbars/j_login040_body.dart';
-import 'package:voidrealm/appbars/appbar050.dart';
+import 'package:voidrealm/appbars/appbar_progress.dart';
 import 'package:voidrealm/appbars/custombar.dart';
 import 'package:voidrealm/apps/home/home.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
@@ -66,7 +66,7 @@ class _Statenya extends State<MyApp> {
         ),*/
 
         // appBar: new Appbar040(),
-        appBar: new Appbar050(),
+        appBar: new AppbarProgress(),
 
         /// 040 BODY
         // body: Appbar040Body(),
