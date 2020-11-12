@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:voidrealm/appbars/appbar_progress.dart';
+import 'package:voidrealm/apps/registrasi/reg070_button.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold_agama.dart';
@@ -77,435 +78,424 @@ class _Reg070State extends State<Reg070> {
     return MaterialApp(
         home: Material(/// BERI MATERIAL AGAR TEXTFIELD TIDAK MUNCUL KUNING
 
-        child: SingleChildScrollView(
-          /// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
-          // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-          child: Container(
-            // height: MediaQuery.of(context).size.height,
-            // width: MediaQuery.of(context).size.width,
-            color: Colors.white,
-            // height: MediaQuery.of(context).size.height * 1,
-            child: Column(children: <Widget>[
-              /// APPBAR
-              // Appbar050(),
+        child: Scaffold(
+          appBar: AppbarProgress(),
+          body: SingleChildScrollView(/// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
+            // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: Container(
+              // height: MediaQuery.of(context).size.height,
+              // width: MediaQuery.of(context).size.width,
+              color: Colors.white,
+              // height: MediaQuery.of(context).size.height * 1,
+              child: Column(children: <Widget>[
+                /// APPBAR
+                // Appbar050(),
 
-              /// BAWAH APPBAR
-              Container(
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                color: Colors.grey[100],
-                child: Row(
-                  children: <Widget>[
-                    Flexible(
-                      flex: 1,
-                      child: Text(
-                        'Saya terima\nRp 1.500.000',
-                        style: TextStyle(
-                            color: Colors.grey[400],
-                            fontSize: 12,
-                            fontFamily: 'Sans'),
-                      ),
-                    ),
-                    Flexible(
+                /// BAWAH APPBAR
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                  color: Colors.grey[100],
+                  child: Row(
+                    children: <Widget>[
+                      Flexible(
                         flex: 1,
-                        child: Container(
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                GestureDetector(
-                                  child: Image(
-                                    image: AssetImage(
-                                      'lib/assets/info_48.png',
+                        child: Text(
+                          'Saya terima\nRp 1.500.000',
+                          style: TextStyle(
+                              color: Colors.grey[400],
+                              fontSize: 12,
+                              fontFamily: 'Sans'),
+                        ),
+                      ),
+                      Flexible(
+                          flex: 1,
+                          child: Container(
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  GestureDetector(
+                                    child: Image(
+                                      image: AssetImage(
+                                        'lib/assets/info_48.png'),
+                                      width: 12,
+                                      height: 12,
                                     ),
-                                    width: 12,
-                                    height: 12,
+                                    onTap: () {
+                                      print('onTap info nilai angsuran');
+                                    },
                                   ),
-                                  onTap: () {
-                                    print('onTap info nilai angsuran');
-                                  },
-                                ),
 
-                                /// SPASI ANTARA LOGO INFO DAN NILAI ANGSURAN
-                                Container(
-                                  width: 10,
-                                ),
-                                Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      GestureDetector(
-                                        child: Text(
-                                          'Nilai angsuran',
+                                  /// SPASI ANTARA LOGO INFO DAN NILAI ANGSURAN
+                                  Container(width: 10),
+
+                                  Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        GestureDetector(
+                                          child: Text(
+                                            'Nilai angsuran',
+                                            style: TextStyle(
+                                                decoration:
+                                                TextDecoration.underline,
+                                                color: Colors.cyan,
+                                                fontSize: 12,
+                                                fontFamily: 'Sans'),
+                                          ),
+                                          onTap: () {
+                                            print('onTap nilai angsuran');
+                                          },
+                                        ),
+                                        Text(
+                                          'Rp 525.000',
                                           style: TextStyle(
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              color: Colors.cyan,
+                                              color: Colors.grey[400],
                                               fontSize: 12,
                                               fontFamily: 'Sans'),
                                         ),
-                                        onTap: () {
-                                          print('onTap nilai angsuran');
-                                        },
-                                      ),
-                                      Text(
-                                        'Rp 525.000',
-                                        style: TextStyle(
-                                            color: Colors.grey[400],
-                                            fontSize: 12,
-                                            fontFamily: 'Sans'),
-                                      ),
-                                    ])
-                              ]),
-                        )),
-                    Flexible(
-                      flex: 1,
-                      child: Text(
-                        'Bayar pertama\n27.10.2020',
-                        style: TextStyle(
-                            color: Colors.grey[400],
-                            fontSize: 12,
-                            fontFamily: 'Sans'),
+                                      ]
+                                  )
+                                ]
+                            ),
+                          )
                       ),
-                    ),
-                  ],
-                  mainAxisSize: MainAxisSize.max,
 
-                  /// MEMBAGI RUANG UNTUK KONTEN CHILD SESUAI JUMLAH CHILD DARI ROW
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                ),
-              ),
+                      Flexible(
+                        flex: 1,
+                        child: Text(
+                          'Bayar pertama\n27.10.2020',
+                          style: TextStyle(
+                              color: Colors.grey[400],
+                              fontSize: 12,
+                              fontFamily: 'Sans'),
+                        ),
+                      ),
+                    ],
+                    mainAxisSize: MainAxisSize.max,
 
-              /// LABEL DAN DROPDOWN PEKERJAAN
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Pekerjaan',
-                    style: TextStyle(color: Colors.cyan, fontSize: 12),
+                    /// MEMBAGI RUANG UNTUK KONTEN CHILD SESUAI JUMLAH CHILD DARI ROW
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
                 ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                    child: Row(children: <Widget>[
+
+                /// LABEL DAN DROPDOWN PEKERJAAN
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Pekerjaan',
+                      style: TextStyle(color: Colors.cyan, fontSize: 12),
+                    ),
+                  ),
+                ]),
+                Row(children: <Widget>[
                   Expanded(
-                    child: DropdownPekerjaan(),
-                  ),
-                ]))
-              ]),
+                      child: Row(children: <Widget>[
+                        Expanded(
+                          child: DropdownPekerjaan(),
+                        ),
+                      ]))
+                ]),
 
-              /// LABEL DAN DROPDOWN BIDANG INDUSTRI
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Bidang industri',
-                    style: TextStyle(color: Colors.cyan, fontSize: 12),
+                /// LABEL DAN DROPDOWN BIDANG INDUSTRI
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Bidang industri',
+                      style: TextStyle(color: Colors.cyan, fontSize: 12),
+                    ),
                   ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                    child: Row(children: <Widget>[
+                ]),
+                Row(children: <Widget>[
                   Expanded(
-                    child: DropdownBidangindustri(),
-                  ),
-                ]))
-              ]),
-
-              /// LABEL DAN TEXTFIELD NAMA PERUSAHAAN
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Nama perusahaan',
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextFormField(
-                      cursorColor: Colors.black,
-                      // keyboardType: inputType,
-                      decoration: new InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: 'Ketik nama perusahaan',
-                        hintStyle: TextStyle(color: Colors.grey[400]),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
+                      child: Row(children: <Widget>[
+                        Expanded(
+                          child: DropdownBidangindustri(),
                         ),
-                      ),
+                      ]))
+                ]),
+
+                /// LABEL DAN TEXTFIELD NAMA PERUSAHAAN
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Nama perusahaan',
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
                     ),
                   ),
-                ),
-              ]),
-
-              /// LABEL DAN TEXTFIELD POSISI DI PERUSAHAAN
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Posisi di perusahaan',
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextFormField(
-                      cursorColor: Colors.black,
-                      // keyboardType: inputType,
-                      decoration: new InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: 'Ketik nama jabatan anda',
-                        hintStyle: TextStyle(color: Colors.grey[400]),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
-                        ),
-                      ),
-                    ),
-
-                    // child: TextField(
-                    //   decoration: InputDecoration(
-                    //     hintText: 'Ketik nama jabatan anda',
-                    //     hintStyle: TextStyle(color: Colors.grey[400]),
-                    //     suffixIcon: IconButton(
-                    //       // onPressed: () => tecHape.clear(),
-                    //       icon: Icon(Icons.clear),
-                    //     ),
-                    //   ),
-                    // ),
-                  ),
-                ),
-              ]),
-
-              /// LABEL DAN TEXTFIELD PENDAPATAN BULANAN
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Pendapatan bulanan',
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextFormField(
-                      cursorColor: Colors.black,
-                      // keyboardType: inputType,
-                      decoration: new InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: 'Ketik jumlah yang Anda terima per bulan (Rp)',
-                        hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
-                        ),
-                      ),
-                    ),
-
-                    /// KALO HANYA TEXTFIELD, AKAN MUNCUL UNDERLINE BIRU
-                    // child: TextField(
-                    //   decoration: InputDecoration(
-                    //     hintText: 'Ketik jumlah yang Anda terima per bulan (Rp)',
-                    //     hintStyle: TextStyle(color: Colors.grey[400]),
-                    //     suffixIcon: IconButton(
-                    //       // onPressed: () => tecHape.clear(),
-                    //       icon: Icon(Icons.clear),
-                    //     ),
-                    //   ),
-                    // ),
-                  ),
-                ),
-              ]),
-
-              /// LABEL DAN DROPDOWN LAMA BEKERJA
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Lama bekerja',
-                    style: TextStyle(color: Colors.cyan, fontSize: 12),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                    child: Row(children: <Widget>[
+                ]),
+                Row(children: <Widget>[
                   Expanded(
-                    child: DropdownLamabekerja(),
-                  )
-                ]))
-              ]),
-
-              /// LABEL DAN TEXTFIELD PENDAPATAN BULANAN
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Nomor telepon perusahaan',
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextFormField(
-                      cursorColor: Colors.black,
-                      // keyboardType: inputType,
-                      decoration: new InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: '0810 1234 4567',
-                        hintStyle: TextStyle(color: Colors.grey[400]),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
-                        ),
-                      ),
-                    ),
-
-                    // child: TextField(
-                    //   decoration: InputDecoration(
-                    //     hintText: '0810 1234 4567',
-                    //     hintStyle: TextStyle(color: Colors.grey[400]),
-                    //     suffixIcon: IconButton(
-                    //       // onPressed: () => tecHape.clear(),
-                    //       icon: Icon(Icons.clear),
-                    //     ),
-                    //   ),
-                    // ),
-                  ),
-                ),
-              ]),
-
-              /// LABEL DAN TEXTFIELD ALAMAT KANTOR
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Alamat kantor',
-                    style: TextStyle(color: Colors.grey, fontSize: 12),
-                  ),
-                ),
-              ]),
-              Row(children: <Widget>[
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextFormField(
-                      cursorColor: Colors.black,
-                      // keyboardType: inputType,
-                      decoration: new InputDecoration(
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        hintText: 'Alamat kantor',
-                        hintStyle: TextStyle(color: Colors.grey[400]),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                          shape: BoxShape.rectangle),
+                      child: TextFormField(
+                        cursorColor: Colors.black,
+                        // keyboardType: inputType,
+                        decoration: new InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: 'Ketik nama perusahaan',
+                          hintStyle: TextStyle(color: Colors.grey[400]),
+                          suffixIcon: IconButton(
+                            // onPressed: () => tecHape.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ]),
+                ]),
 
-              /// BUTTON BERIKUTNYA
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(15, 50, 15, 20),
-                  child: RaisedButton(
-                    padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
-                    onPressed: () {},
-                    textColor: Colors.white,
-                    color: Colors.cyan,
-                    child: Text('Berikutnya'),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(45.0),
-                        side: BorderSide(color: Colors.cyan)),
+                /// LABEL DAN TEXTFIELD POSISI DI PERUSAHAAN
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Posisi di perusahaan',
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    ),
                   ),
-                ),
-              )
-            ]),
+                ]),
+                Row(children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                          shape: BoxShape.rectangle),
+                      child: TextFormField(
+                        cursorColor: Colors.black,
+                        // keyboardType: inputType,
+                        decoration: new InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: 'Ketik nama jabatan anda',
+                          hintStyle: TextStyle(color: Colors.grey[400]),
+                          suffixIcon: IconButton(
+                            // onPressed: () => tecHape.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
+                        ),
+                      ),
+
+                      // child: TextField(
+                      //   decoration: InputDecoration(
+                      //     hintText: 'Ketik nama jabatan anda',
+                      //     hintStyle: TextStyle(color: Colors.grey[400]),
+                      //     suffixIcon: IconButton(
+                      //       // onPressed: () => tecHape.clear(),
+                      //       icon: Icon(Icons.clear),
+                      //     ),
+                      //   ),
+                      // ),
+                    ),
+                  ),
+                ]),
+
+                /// LABEL DAN TEXTFIELD PENDAPATAN BULANAN
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Pendapatan bulanan',
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    ),
+                  ),
+                ]),
+                Row(children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                          shape: BoxShape.rectangle),
+                      child: TextFormField(
+                        cursorColor: Colors.black,
+                        // keyboardType: inputType,
+                        decoration: new InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: 'Ketik jumlah yang Anda terima per bulan (Rp)',
+                          hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
+                          suffixIcon: IconButton(
+                            // onPressed: () => tecHape.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
+                        ),
+                      ),
+
+                      /// KALO HANYA TEXTFIELD, AKAN MUNCUL UNDERLINE BIRU
+                      // child: TextField(
+                      //   decoration: InputDecoration(
+                      //     hintText: 'Ketik jumlah yang Anda terima per bulan (Rp)',
+                      //     hintStyle: TextStyle(color: Colors.grey[400]),
+                      //     suffixIcon: IconButton(
+                      //       // onPressed: () => tecHape.clear(),
+                      //       icon: Icon(Icons.clear),
+                      //     ),
+                      //   ),
+                      // ),
+                    ),
+                  ),
+                ]),
+
+                /// LABEL DAN DROPDOWN LAMA BEKERJA
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Lama bekerja',
+                      style: TextStyle(color: Colors.cyan, fontSize: 12),
+                    ),
+                  ),
+                ]),
+                Row(children: <Widget>[
+                  Expanded(
+                      child: Row(children: <Widget>[
+                        Expanded(
+                          child: DropdownLamabekerja(),
+                        )
+                      ]))
+                ]),
+
+                /// LABEL DAN TEXTFIELD PENDAPATAN BULANAN
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Nomor telepon perusahaan',
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    ),
+                  ),
+                ]),
+                Row(children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                          shape: BoxShape.rectangle),
+                      child: TextFormField(
+                        cursorColor: Colors.black,
+                        // keyboardType: inputType,
+                        decoration: new InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: '0810 1234 4567',
+                          hintStyle: TextStyle(color: Colors.grey[400]),
+                          suffixIcon: IconButton(
+                            // onPressed: () => tecHape.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
+                        ),
+                      ),
+
+                      // child: TextField(
+                      //   decoration: InputDecoration(
+                      //     hintText: '0810 1234 4567',
+                      //     hintStyle: TextStyle(color: Colors.grey[400]),
+                      //     suffixIcon: IconButton(
+                      //       // onPressed: () => tecHape.clear(),
+                      //       icon: Icon(Icons.clear),
+                      //     ),
+                      //   ),
+                      // ),
+                    ),
+                  ),
+                ]),
+
+                /// LABEL DAN TEXTFIELD ALAMAT KANTOR
+                Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Alamat kantor',
+                      style: TextStyle(color: Colors.grey, fontSize: 12),
+                    ),
+                  ),
+                ]),
+                Row(children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                          shape: BoxShape.rectangle),
+                      child: TextFormField(
+                        cursorColor: Colors.black,
+                        // keyboardType: inputType,
+                        decoration: new InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                          hintText: 'Alamat kantor',
+                          hintStyle: TextStyle(color: Colors.grey[400]),
+                          suffixIcon: IconButton(
+                            // onPressed: () => tecHape.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ]),
+
+                /// BUTTON BERIKUTNYA
+                Reg070Button()
+              ]),
+            ),
           ),
-        ),
+        )
     ));
   }
 

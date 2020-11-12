@@ -48,7 +48,7 @@ class _Dropdown1JmlAnakState extends State<Dropdown1JmlAnak> {
             );
           }).toList(),
           isDense: true,
-          isExpanded: true,/// supaya panah dropdown bisa berada di tepi kanan
+          isExpanded: true,/// supaya panah di tepi kanan
         ),
       ),
     );

@@ -8,7 +8,7 @@ import 'package:voidrealm/apps/permissions/permission_request.dart';
 import 'package:voidrealm/apps/registrasi/reg050.dart';
 import 'package:voidrealm/apps/registrasi/reg060.dart';
 import 'package:voidrealm/apps/registrasi/reg070.dart';
-import 'package:voidrealm/apps/registrasi/reg080.dart';
+import 'package:voidrealm/apps/registrasi/reg080_saudara_kontak.dart';
 import 'package:voidrealm/apps/splash.dart';
 import 'package:voidrealm/autocompletes/autocomplete1.dart';
 import 'package:voidrealm/autocompletes/j_autocomplete1.dart';

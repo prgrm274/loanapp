@@ -58,7 +58,7 @@ class _AppbarProgressState extends State<AppbarProgress> {
               /// kotaknya navigation icon
               // color: Colors.red,
                 padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-                child: Image(image: AssetImage('lib/assets/grey_arrow.png'),)
+                child: Image(image: AssetImage('lib/assets/grey_arrow_white.png'),)
                 // child: Icon(Icons.arrow_back_rounded)
               // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
             ),
