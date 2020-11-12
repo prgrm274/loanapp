@@ -3,14 +3,26 @@ import 'package:voidrealm/appbars/progress/progress_indicator1.dart';
 import 'package:voidrealm/appbars/progress/sful_linearprogressindicator.dart';
 
 class AppbarProgress extends StatefulWidget implements PreferredSizeWidget {
+  AppbarProgress(
+      {Key key,
 
-  AppbarProgress({Key key})
+      ///NG
+      @required double progres,
+      String namaLengkap = '',
+      String tanggalLahir,
+      String tempatLahir,
+      double jenisKelamin,
+      double jumlahAnak,
+      String namaIbu,
+      double pendidikanTerakhir,
+      String email})
       : preferredSize = Size.fromHeight(60.0),
-  // : preferredSize = Size.fromHeight(kToolbarHeight),
+        // : preferredSize = Size.fromHeight(kToolbarHeight),
         super(key: key);
 
   @override
   final Size preferredSize;
+
   // Size get preferredSize => preferredSize;
 
   ///default is 56.0
@@ -31,15 +43,18 @@ class _AppbarProgressState extends State<AppbarProgress> {
         titleSpacing: 0.0,
         // if you want remove title spacing with back button
         title: new SfulLinearprogressindicator(),
+        // title: new SfulLinearprogressindicator(),
         // title: new ProgressIndicator1(),
         // title: Text('Custom Appbar'),
         // title:  UtilCommonWidget.addTextMedium('About US', Colors.white, 20.0, 1),
         actions: <Widget>[
           new Container(
               padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-              child: Image(image: AssetImage('lib/assets/chat_bubble_cyan.png'),)
+              child: Image(
+                image: AssetImage('lib/assets/chat_bubble_cyan.png'),
+              )
               // child: Icon(Icons.message)
-          ),
+              ),
           // addAppBarActionWidgetProfile(icon, 30.0, 30.0, 15.0) // add your custom action widget
         ],
         //Action icon search as search icon, notification icon
@@ -49,7 +64,7 @@ class _AppbarProgressState extends State<AppbarProgress> {
           /// warna kotaknya navigation icon
           color: Colors.white,
           child: new InkWell(
-            onTap: (){
+            onTap: () {
               Navigator.of(context).pop();
 
               // Navigator.pop(context);// 2020
@@ -57,15 +72,17 @@ class _AppbarProgressState extends State<AppbarProgress> {
             splashColor: Colors.red,
             // splashColor: UniQueryColors.colorGradientEnd.withOpacity(.5),
             child: new Container(
-              /// kotaknya navigation icon
-              // color: Colors.red,
+
+                /// kotaknya navigation icon
+                // color: Colors.red,
                 padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-                child: Image(image: AssetImage('lib/assets/grey_arrow_white.png'),)
+                child: Image(
+                  image: AssetImage('lib/assets/grey_arrow_white.png'),
+                )
                 // child: Icon(Icons.arrow_back_rounded)
-              // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
-            ),
+                // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
+                ),
           ),
-        )
-    );
+        ));
   }
 }

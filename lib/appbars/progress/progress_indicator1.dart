@@ -23,18 +23,24 @@ class ProgressIndicator1 extends StatelessWidget {
         ),
       ),
       new LinearProgressIndicator(
-        key: ((){///NG FOR KEY WITH LISTVIEW BUILDER
-          ListView.builder(
-            itemCount: appbarModel.length,
-            itemBuilder: (context, index) {
-              return Text(appbarModel[index].persenTerisi);
-              // return ListTile(
-              //   title: Text(appbarModel[index].persenTerisi),
-              // );
-            },
-          );
-          print('appbarModel = '+appbarModel.length.toString());///NG BS
+        semanticsValue: ((){
+          'Semantics value '+appbarModel.length.toString();
         }()),
+        semanticsLabel: ((){
+          'Semantics label '+appbarModel.length.toString();
+        }()),
+        // key: ((){///NG FOR KEY WITH LISTVIEW BUILDER
+        //   ListView.builder(
+        //     itemCount: appbarModel.length,
+        //     itemBuilder: (context, index) {
+        //       return Text(appbarModel[index].persenTerisi);
+        //       // return ListTile(
+        //       //   title: Text(appbarModel[index].persenTerisi),
+        //       // );
+        //     },
+        //   );
+        //   print('appbarModel = '+appbarModel.length.toString());///NG BS
+        // }()),
         backgroundColor: Colors.red[200],
         valueColor: new AlwaysStoppedAnimation<Color>(
           Colors.grey[300],

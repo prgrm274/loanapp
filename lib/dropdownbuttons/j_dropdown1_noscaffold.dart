@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Dropdown1 extends StatefulWidget {
-  Dropdown1({Key key}) : super(key: key);
+class DropdownPendidikanTerakhir050 extends StatefulWidget {
+  DropdownPendidikanTerakhir050({Key key}) : super(key: key);
 
   @override
-  _Dropdown1State createState() => _Dropdown1State();
+  _DropdownPendidikanTerakhir050State createState() => _DropdownPendidikanTerakhir050State();
 }
 
-class _Dropdown1State extends State<Dropdown1> {
+class _DropdownPendidikanTerakhir050State extends State<DropdownPendidikanTerakhir050> {
 
   List<String> _sekolah = [
     'Sekolah Dasar (SD)',
@@ -33,25 +33,27 @@ class _Dropdown1State extends State<Dropdown1> {
             Radius.circular(10),
           )
       ),
-      child: DropdownButton(
-        /*onTap: () {///! salah
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+          /*onTap: () {///! salah
                 Navigator.of(context).pop();
               },*/
-        hint: Text('Sekolah Dasar (SD)'),
-        value: _selectedLocation,
-        onChanged: (newValue) {
-          setState(() {
-            _selectedLocation = newValue;
-          });
-        },
-        items: _sekolah.map((s) {
-          return DropdownMenuItem(
-            child: new Text(s),
-            value: s,
-          );
-        }).toList(),
-        isDense: true,
-        isExpanded: true,/// supaya panah di tepi kanan
+          hint: Text('Sekolah Dasar (SD)'),
+          value: _selectedLocation,
+          onChanged: (newValue) {
+            setState(() {
+              _selectedLocation = newValue;
+            });
+          },
+          items: _sekolah.map((s) {
+            return DropdownMenuItem(
+              child: new Text(s),
+              value: s,
+            );
+          }).toList(),
+          isDense: true,
+          isExpanded: true,/// supaya panah di tepi kanan
+        ),
       ),
     );
   }
