@@ -51,78 +51,86 @@ class _Statenya extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      home: Splash(),
+      /// KARENA APPBAR BUTUH SCAFFOLD, JADI SET AJA MAIN GA PAKE SCAFFOLD
+      /// BARU DI TIAP TIAP PAGE PKAE SCAFFOLDNYA
+      home: Scaffold(
+        // appBar: Login040Appbar(),
+        appBar: AppbarProgress(),
+        // appBar: new Appbar040(),
+        // appBar: new Appbar050(),
 
-      /// WELCOME & PERMISSION REQUEST
-      // body: PermissionRequest(),
 
-      /// 040 BODY
-      // body: Login040Body(),
+        /// WELCOME & PERMISSION REQUEST
+        // body: PermissionRequest(),
 
-      /// 050
-      // body: Reg050(),
+        /// 040 BODY
+        // body: Login040Body(),
 
-      /// 060
-      // body: Reg060(),
+        /// 050
+        // body: Reg050(),
 
-      /// 070
-      // body: Reg070(),
+        /// 060
+        // body: Reg060(),
 
-      /// 080
-      // body: Reg080(),
+        /// 070
+        // body: Reg070(),
 
-      /// VISIBILITY
-      // body: ControlleApp(),
+        /// 080
+        // body: Reg080(),
 
-      /// GRADIENTS
-      // body: Gradient2(),
+        /// VISIBILITY
+        // body: ControlleApp(),
 
-      // body: Numpad1(),
-      // body: WidgetCustomKeyboard(),
-      // body: JCustomNumpad(),
+        /// GRADIENTS
+        // body: Gradient2(),
 
-      /// SLIDERS
-      // body: Slider6(),/// emoji
-      // body: Slider7(),/// CUSTOM SLIDER
-      // body: SliderWidget(),
-      // body: SliderWidget2(),
+        // body: Numpad1(),
+        // body: WidgetCustomKeyboard(),
+        // body: JCustomNumpad(),
 
-      /// IMAGE CONTAINER
-      // body: Image1(),
+        /// SLIDERS
+        // body: Slider6(),/// emoji
+        // body: Slider7(),/// CUSTOM SLIDER
+        // body: SliderWidget(),
+        // body: SliderWidget2(),
 
-      /// DROPDOWN LIST
-      // body: Dropdown1(),
+        /// IMAGE CONTAINER
+        // body: Image1(),
 
-      /// CUSTOM APPBAR, GA BISA
-      // body: Appbar1(),
+        /// DROPDOWN LIST
+        // body: Dropdown1(),
 
-      /// COBA CUSTOM DIALOG FOR KOTA DROPDOWN
-      // body: Dialog1(),
+        /// CUSTOM APPBAR, GA BISA
+        // body: Appbar1(),
 
-      /// CAMERA
-      // body: CameraScreen(), /// camera4 bisa
-      // body: CameraApp(),///CameraExampleHome  /// camera3_official
-      // body: TakePictureScreen(),
-      // body: Camera1(),
+        /// COBA CUSTOM DIALOG FOR KOTA DROPDOWN
+        // body: Dialog1(),
 
-      /// AUTOCOMPLETE TEXT
-      // body: new Autocomplete1(),
+        /// CAMERA
+        // body: CameraScreen(), /// camera4 bisa
+        // body: CameraApp(),///CameraExampleHome  /// camera3_official
+        // body: TakePictureScreen(),
+        // body: Camera1(),
 
-      /// SQFLITE
-      // body: new Sqflite1(),
+        /// AUTOCOMPLETE TEXT
+        // body: new Autocomplete1(),
 
-      /// SPLASH
-      // body: Splash(),
+        /// SQFLITE
+        // body: new Sqflite1(),
 
-      /// PERMISSION REQUEST
-      // body: PermissionRequest(),
+        /// SPLASH
+        // body: Splash(),
 
-      /// HOME / PINJAMAN
-      // body: Home(),
+        /// PERMISSION REQUEST
+        // body: PermissionRequest(),
 
-      /// DRAWER
-      // drawer: Drawer1(),
-      // drawer: Drawer2(),
+        /// HOME / PINJAMAN
+        // body: Home(),
+
+        /// DRAWER
+        // drawer: Drawer1(),
+        drawer: Drawer2(),
+      ),
     );
   }
 }

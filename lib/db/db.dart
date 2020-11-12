@@ -39,7 +39,7 @@ class Db {
       // Load database from asset and copy
       ByteData data = await rootBundle.load(join('lib/assets', 'territories.db'));
       List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-      print("cetak ${bytes}");
+      print("cetak ${bytes}");///BS
 
       _bytes = bytes;///NG
 

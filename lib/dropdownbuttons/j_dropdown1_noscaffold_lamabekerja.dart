@@ -23,7 +23,7 @@ class _DropdownLamabekerjaState extends State<DropdownLamabekerja> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      padding: EdgeInsets.fromLTRB(15, 12, 15, 12),
       decoration: BoxDecoration(
           border: Border.all(
               width: 2,
@@ -33,11 +33,12 @@ class _DropdownLamabekerjaState extends State<DropdownLamabekerja> {
             Radius.circular(10),
           )
       ),
-      child: DropdownButton(
-        /*onTap: () {///! salah
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+            /*onTap: () {///! salah
                 Navigator.of(context).pop();
               },*/
-        hint: Text('kurang dari 1 tahun'),
+            hint: Text('kurang dari 1 tahun'),
         value: _selectedLocation,
         onChanged: (newValue) {
           setState(() {
@@ -51,8 +52,10 @@ class _DropdownLamabekerjaState extends State<DropdownLamabekerja> {
           );
         }).toList(),
         isDense: true,
-        isExpanded: true,/// supaya panah di tepi kanan
+        isExpanded: true,
+
+        /// supaya panah di tepi kanan
       ),
-    );
+    ),);
   }
 }

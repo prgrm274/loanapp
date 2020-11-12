@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:voidrealm/appbars/appbar050.dart';
+import 'package:voidrealm/appbars/appbar_progress.dart';
+import 'package:voidrealm/apps/registrasi/reg060.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold_jmlanak.dart';
@@ -21,21 +22,28 @@ class _Reg050State extends State<Reg050> {
   TextEditingController _textController = TextEditingController();
   TextEditingController _textControllerNama = TextEditingController();
   TextEditingController _textControllerTempat = TextEditingController();
+  TextEditingController _textControllerNamaIbu = TextEditingController();
+  TextEditingController _textControllerEmail = TextEditingController();
 
   bool tampilkanText = false;
   bool tampilkanTempat = false;
 
   void _changed(bool visibility, String field) {
     setState(() {
-      if (field == "tag"){
+      if (field == "tag") {
         tampilkanText = visibility;
       }
     });
   }
 
-  bool isNamaCorrect = false;
-  bool isNamaEmpty = false;
-  bool isTempatEmpty = false;
+  // bool isNamaCorrect, isNamaEmpty = false;///IF THIS, isNamaCorrect IS NOT INITIALIZED
+  bool isNamaCorrect = false, isNamaEmpty = false;
+
+  bool isTempatLahirCorrect, isTempatLahirEmpty = false;
+
+  bool isTextFieldNamaIbuCorrect = false, isTextFieldNamaIbuEmpty = false;
+
+  bool isTextFieldEmailCorrect, isTextFieldEmailEmpty = false;
 
   /// VARIABEL UNTUK KONDISI TEXT FIELD
   final boxDecorationNamaBenar = BoxDecoration(
@@ -43,8 +51,22 @@ class _Reg050State extends State<Reg050> {
       color: Colors.blue[200],
       shape: BoxShape.rectangle);
   final boxDecorationNamaBenarButEmpty = BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey[800].withOpacity(0.5),
+          spreadRadius: 0.2,
+
+          /// SEBERAPA JAUH PENDARAN SHADOW
+          // spreadRadius: 5,
+          blurRadius: 7,
+
+          /// DX PENDAR KE SAMPING, DY PENDAR KE BAWAH
+          offset: Offset(0, 1), // changes position of shadow
+          // offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
       borderRadius: BorderRadius.circular(10),
-      color: Colors.yellow[200],
+      color: Colors.white,
       shape: BoxShape.rectangle);
   final boxDecorationNamaSalah = BoxDecoration(
       borderRadius: BorderRadius.circular(10),
@@ -53,8 +75,16 @@ class _Reg050State extends State<Reg050> {
 
   void _cekNama(bool benar, String text) {
     setState(() {
-      if (Regex1.checkAlphabet(text)){
+      if (Regex1.checkAlphabet(text)) {
         isNamaCorrect = benar;
+      }
+    });
+  }
+
+  void _cekNamaIbuKandung(bool benar, String text) {
+    setState(() {
+      if (Regex1.checkAlphabet(text)) {
+        isTextFieldNamaIbuCorrect = benar;
       }
     });
   }
@@ -73,10 +103,14 @@ class _Reg050State extends State<Reg050> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      /// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
-      home: SingleChildScrollView(
-        // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: Container(
+        // home: Material(
+      home: Scaffold(
+        appBar: AppbarProgress(),
+        body: SingleChildScrollView(
+          /// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
+          // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+
+          child: Container(
             // height: MediaQuery.of(context).size.height,
             // width: MediaQuery.of(context).size.width,
             color: Colors.white,
@@ -90,67 +124,84 @@ class _Reg050State extends State<Reg050> {
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                 color: Colors.grey[100],
-                child: Row(children: <Widget>[
-                  Flexible(
-                    flex: 1,
-                    child: Text(
-                      'Saya terima\nRp 1.500.000',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 12),
-                    ),
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          GestureDetector(
-                            child: Image(
-                              image: AssetImage('lib/assets/info_48.png',),
-                              width: 12,
-                              height: 12,
-                            ),
-                            onTap: (){
-                              print('onTap info nilai angsuran');
-                            },
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              GestureDetector(
-                                child: Text(
-                                  'Nilai angsuran',
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Colors.cyan,
-                                    fontSize: 12
-                                  ),
-                                ),
-                                onTap: (){
-                                  print('onTap nilai angsuran');
-                                },
-                              ),
-                              Text(
-                                'Rp 525.000',
-                                style: TextStyle(color: Colors.grey[600], fontSize: 12),
-                              ),
-                            ]
-                          )
-                        ]
-                      ),
-                    )
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Text(
-                      'Bayar pertama\n27.10.2020',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 12),
-                    ),
-                  ),
-                ],
+                child: Row(
                   mainAxisSize: MainAxisSize.max,
+
                   /// MEMBAGI RUANG UNTUK KONTEN CHILD SESUAI JUMLAH CHILD DARI ROW
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                  children: <Widget>[
+                    Flexible(
+                      flex: 1,
+                      child: Text(
+                        'Saya terima\nRp 1.500.000',
+                        style: TextStyle(
+                            color: Colors.grey[400],
+                            fontSize: 12,
+                            fontFamily: 'Sans'),
+                      ),
+                    ),
+                    Flexible(
+                        flex: 1,
+                        child: Container(
+                          child: Row(
+
+                            ///spaceEvenly
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                              /// CENTER MEREKATKAN ICON INFO DAN NILAI ANGSURAN
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                GestureDetector(
+                                  child: Image(
+                                    image: AssetImage(
+                                      'lib/assets/info_48.png',
+                                    ),
+                                    width: 12,
+                                    height: 12,
+                                  ),
+                                  onTap: () {
+                                    print('onTap info nilai angsuran');
+                                  },
+                                ),
+                                Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      GestureDetector(
+                                        child: Text(
+                                          'Nilai angsuran',
+                                          style: TextStyle(
+                                              decoration:
+                                              TextDecoration.underline,
+                                              color: Colors.cyan,
+                                              fontSize: 12,
+                                              fontFamily: 'Sans'),
+                                        ),
+                                        onTap: () {
+                                          print('onTap nilai angsuran');
+                                        },
+                                      ),
+                                      Text(
+                                        'Rp 525.000',
+                                        style: TextStyle(
+                                            color: Colors.grey[400],
+                                            fontSize: 12,
+                                            fontFamily: 'Sans'),
+                                      ),
+                                    ])
+                              ]),
+                        )),
+                    Flexible(
+                      flex: 1,
+                      child: Text(
+                        'Bayar pertama\n27.10.2020',
+                        style: TextStyle(
+                            color: Colors.grey[400],
+                            fontSize: 12,
+                            fontFamily: 'Sans'),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
@@ -162,93 +213,133 @@ class _Reg050State extends State<Reg050> {
                 child: Text(
                   'Nama lengkap sesuai KTP',
                   style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12
-                  ),
+                      color: Colors.grey[400], fontSize: 12, fontFamily: 'Sans'),
                 ),
               ),
               Row(children: <Widget>[
                 Expanded(
-                  child: Focus(
-                    onFocusChange: (punyaFokus){
-                      setState(() {
-                        isNamaCorrect = punyaFokus;
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                      decoration:
+                    child: Focus(
+                      onFocusChange: (punyaFokus) {
+                        setState(() {
+                          isNamaCorrect = punyaFokus;
+                        });
+                      },
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                        decoration: isNamaCorrect
+                            ? (_textControllerNama.text.isEmpty
+                            ? boxDecorationNamaBenarButEmpty
+                            : boxDecorationNamaBenar)
+                            : boxDecorationNamaSalah,
 
-                      isNamaCorrect ? (_textControllerNama.text.isEmpty
-                      ?
-                      boxDecorationNamaBenarButEmpty : boxDecorationNamaBenar) :
-                      boxDecorationNamaSalah,
+                        // isNamaEmpty
+                        // ?
+                        // boxDecorationNamaBenar
+                        // :
+                        // boxDecorationNamaSalah,
 
-                      // isNamaEmpty
-                      // ?
-                      // boxDecorationNamaBenar
-                      // :
-                      // boxDecorationNamaSalah,
+                        // (
+                        //     // (
+                        //         _textControllerNama.text.isNotEmpty
+                        //         // && _textControllerNama.text == 'a'
+                        //     // )
+                        //         ?
+                        //     BoxDecoration(
+                        //         borderRadius: BorderRadius.circular(10),
+                        //         color: Colors.grey[200],
+                        //         shape: BoxShape.rectangle) :
+                        //         (){ print('False'); }
+                        // ),
 
-                      // (
-                      //     // (
-                      //         _textControllerNama.text.isNotEmpty
-                      //         // && _textControllerNama.text == 'a'
-                      //     // )
-                      //         ?
-                      //     BoxDecoration(
-                      //         borderRadius: BorderRadius.circular(10),
-                      //         color: Colors.grey[200],
-                      //         shape: BoxShape.rectangle) :
-                      //         (){ print('False'); }
-                      // ),
+                        // (
+                        //     Regex1.checkAlphabet(_textControllerNama.text) ?
+                        // BoxDecoration(
+                        //     borderRadius: BorderRadius.circular(10),
+                        //     color: Colors.grey[200],
+                        //     shape: BoxShape.rectangle)
+                        //     :
+                        //   BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(10),
+                        //       color: Colors.red[200],
+                        //       shape: BoxShape.rectangle)
+                        // ),
 
-                      // (
-                      //     Regex1.checkAlphabet(_textControllerNama.text) ?
-                      // BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(10),
-                      //     color: Colors.grey[200],
-                      //     shape: BoxShape.rectangle)
-                      //     :
-                      //   BoxDecoration(
-                      //       borderRadius: BorderRadius.circular(10),
-                      //       color: Colors.red[200],
-                      //       shape: BoxShape.rectangle)
-                      // ),
+                        child: TextFormField(
+                          controller: _textControllerNama,
+                          onChanged: (String value) {
+                            if (_textControllerNama.text.isNotEmpty) {
+                              print('text name is not empty');
+                            } else {
+                              isNamaEmpty = true;
+                              print('text name is empty');
+                            }
 
-                      child: TextField(
-                        controller: _textControllerNama,
-                        onChanged: (String value) {
-                          if (_textControllerNama.text.isNotEmpty) {
-                            print('text name is not empty');
-                          } else {
-                            isNamaEmpty = true;
-                            print('text name is empty');
-                          }
+                            // _textControllerNama.text.isEmpty ?
+                            //     isNamaEmpty : !isNamaEmpty;
 
+                            /// ngbs
+                            // _textControllerNama.text.isEmpty ?
+                            //     print('nama is empty') :
+                            // print('nama is correct');
+                          },
+                          cursorColor: Colors.black,
+                          // keyboardType: inputType,
+                          decoration: InputDecoration(
+                            hintText: 'Dian Permata Fransiska',
+                            hintStyle: TextStyle(color: Colors.grey[400]),
 
-                          // _textControllerNama.text.isEmpty ?
-                          //     isNamaEmpty : !isNamaEmpty;
-
-                          /// ngbs
-                          // _textControllerNama.text.isEmpty ?
-                          //     print('nama is empty') :
-                          // print('nama is correct');
-                        },
-                        decoration: InputDecoration(
-                          hintText: 'Dian Permata Fransiska',
-                          hintStyle: TextStyle(color: Colors.grey),
-                          suffixIcon: _textControllerNama.text.isNotEmpty ?
-                          IconButton(
-                            onPressed: () => _textControllerNama.clear(),
-                            icon: Icon(Icons.clear),
-                          ) : null,
+                            /// NG
+                            /// X MUNCUL HANYA JIKA
+                            /// NOT EMPTY
+                            /// DAN
+                            /// LOST FOCUS
+                            suffixIcon: _textControllerNama.text.isNotEmpty
+                                ? IconButton(
+                              onPressed: () => _textControllerNama.clear(),
+                              icon: Icon(Icons.clear),
+                            )
+                                : null,
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                          ),
                         ),
+
+                        /// TEXTFIELD NAMA LENGKAP
+                        // child: TextField(
+                        //   controller: _textControllerNama,
+                        //   onChanged: (String value) {
+                        //     if (_textControllerNama.text.isNotEmpty) {
+                        //       print('text name is not empty');
+                        //     } else {
+                        //       isNamaEmpty = true;
+                        //       print('text name is empty');
+                        //     }
+                        //
+                        //     // _textControllerNama.text.isEmpty ?
+                        //     //     isNamaEmpty : !isNamaEmpty;
+                        //
+                        //     /// ngbs
+                        //     // _textControllerNama.text.isEmpty ?
+                        //     //     print('nama is empty') :
+                        //     // print('nama is correct');
+                        //   },
+                        //   decoration: InputDecoration(
+                        //     hintText: 'Dian Permata Fransiska',
+                        //     hintStyle: TextStyle(color: Colors.grey),
+                        //     suffixIcon: _textControllerNama.text.isNotEmpty
+                        //         ? IconButton(
+                        //       onPressed: () => _textControllerNama.clear(),
+                        //       icon: Icon(Icons.clear),
+                        //     )
+                        //         : null,
+                        //   ),
+                        // ),
                       ),
-                    ),
-                  )
-                ),
+                    )),
               ]),
 
               //// LABEL DAN TANGGAL EDIT
@@ -290,23 +381,19 @@ class _Reg050State extends State<Reg050> {
               // ]),
 
               /// LABEL DAN TANGGAL EDIT DGN PENGESAHAN PENATAAN
-              tampilkanText ?
-              Row(children: <Widget>[
+              tampilkanText
+                  ? Row(children: <Widget>[
                 Container(
                   margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
                   padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Masukkan data dengan benar',
-                    style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.red, fontSize: 12),
                   ),
                 ),
               ])
-                  :
-              Row(children: <Widget>[
+                  : Row(children: <Widget>[
                 Container(
                   margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
                   padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
@@ -314,9 +401,9 @@ class _Reg050State extends State<Reg050> {
                   child: Text(
                     'Tanggal lahir',
                     style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                        color: Colors.grey[400],
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
                   ),
                 ),
               ]),
@@ -325,20 +412,22 @@ class _Reg050State extends State<Reg050> {
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                    decoration: tampilkanText ? ///ng bs
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                    decoration: tampilkanText
+                        ?
+
+                    ///ng bs
                     BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.red[200],
-                        shape: BoxShape.rectangle
-                    ) : BoxDecoration(
+                        shape: BoxShape.rectangle)
+                        : BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[200],
-                        shape: BoxShape.rectangle
-                    ),
+                        shape: BoxShape.rectangle),
                     //// WITH IMPORT
                     // child: DateInputTextField(),
-                    child: TextField(
+                    child: TextFormField(
                       controller: _textController,
                       decoration: InputDecoration(
                         /// ng bs JIKA PERLU ERROR TEXT
@@ -349,14 +438,27 @@ class _Reg050State extends State<Reg050> {
                         //     :  'Masukkan data dengan benar',
                         errorStyle: TextStyle(
                             color: Colors.redAccent,
-                            backgroundColor: Colors.redAccent
-                        ),
-                        suffixIcon: tampilkanText ? ///ngbs
+                            backgroundColor: Colors.redAccent),
+                        hintText: '01.01.1970',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        suffixIcon: tampilkanText
+                            ?
+
+                        ///ngbs
                         IconButton(
-                          onPressed: () => _textController.clear(),///ngbs
+                          onPressed: () => _textController.clear(),
+
+                          ///ngbs
                           icon: Icon(Icons.clear),
-                        ) : null,
+                        )
+                            : null,
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
                       ),
+
                       /// MAXLENGTH MENAMPILKAN 10/10
                       // maxLength: 10,
                       keyboardType: TextInputType.number,
@@ -388,61 +490,77 @@ class _Reg050State extends State<Reg050> {
                   child: Text(
                     'Tempat lahir',
                     style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                        color: Colors.grey[400],
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
                   ),
                 ),
               ]),
               Row(children: <Widget>[
                 Expanded(
-                  child: Focus(
-                    onFocusChange: (punyaFokus){
-                      setState(() {
-                          isTempatEmpty = punyaFokus;
-                      });
-                    },
-                    child: Container(
-                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey[200],
-                          shape: BoxShape.rectangle),
-                      child: TextField(
-                        controller: _textControllerTempat,
-                        decoration: isTempatEmpty ?
-                        new InputDecoration(
-                          fillColor: Colors.yellowAccent,
-                          focusColor: Colors.yellowAccent,
-                          hintText: 'Masukkan tempat lahir',
-                          hintStyle: TextStyle(color: Colors.grey),
-                          suffixIcon: IconButton(
-                            onPressed: () => _textControllerTempat.clear(),
-                            icon: Icon(Icons.clear),
-                          ),
-                        ) :
-                        (_textControllerTempat.text.isNotEmpty ?
-                        new InputDecoration(
-                          fillColor: Colors.yellowAccent,
-                          focusColor: Colors.yellowAccent,
-                          hintText: 'Masukkan tempat lahir',
-                          hintStyle: TextStyle(color: Colors.grey),
-                          suffixIcon: IconButton(
-                            onPressed: () => _textControllerTempat.clear(),
-                            icon: Icon(Icons.clear),
-                          ),
-                        ):new InputDecoration(
-                          fillColor: Colors.yellowAccent,
-                          focusColor: Colors.yellowAccent,
-                          hintText: 'Masukkan tempat lahir',
-                          hintStyle: TextStyle(color: Colors.grey),
-                          suffixIcon: null,
-                        )),
+                    child: Focus(
+                      onFocusChange: (punyaFokus) {
+                        setState(() {
+                          isTempatLahirEmpty = punyaFokus;
+                        });
+                      },
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.grey[200],
+                            shape: BoxShape.rectangle),
+                        child: TextFormField(
+                          controller: _textControllerTempat,
+                          decoration: isTempatLahirEmpty
+                              ? new InputDecoration(
+                            fillColor: Colors.yellowAccent,
+                            focusColor: Colors.yellowAccent,
+                            hintText: 'Masukkan tempat lahir',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            suffixIcon: IconButton(
+                              onPressed: () => _textControllerTempat.clear(),
+                              icon: Icon(Icons.clear),
+                            ),
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                          )
+                              : (_textControllerTempat.text.isNotEmpty
+                              ? new InputDecoration(
+                            fillColor: Colors.yellowAccent,
+                            focusColor: Colors.yellowAccent,
+                            hintText: 'Masukkan tempat lahir',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            suffixIcon: IconButton(
+                              onPressed: () =>
+                                  _textControllerTempat.clear(),
+                              icon: Icon(Icons.clear),
+                            ),
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                          )
+                              : new InputDecoration(
+                            fillColor: Colors.yellowAccent,
+                            focusColor: Colors.yellowAccent,
+                            hintText: 'Masukkan tempat lahir',
+                            hintStyle: TextStyle(color: Colors.grey),
+                            suffixIcon: null,
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                          )),
+                        ),
                       ),
-                    ),
-                  )
-                ),
+                    )),
               ]),
 
               /// LABEL DAN RADIO JENIS KELAMIN
@@ -525,12 +643,11 @@ class _Reg050State extends State<Reg050> {
                   child: Text(
                     'Jenis kelamin',
                     style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 15
-                    ),
+                        color: Colors.grey, fontSize: 15, fontFamily: 'Sans'),
                   ),
                 ),
               ]),
+
               /// RADIOS
               Container(
                 margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -553,57 +670,61 @@ class _Reg050State extends State<Reg050> {
                             ),
                             Text(
                               'Laki-laki',
-                              style: TextStyle(color: Colors.grey[400], fontSize: 13),
+                              style: TextStyle(
+                                  color: Colors.grey[400],
+                                  fontSize: 15,
+                                  fontFamily: 'Sans'),
                             ),
-                          ]
-                      ),
+                          ]),
                     ),
                     Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Radio(
-                            value: gender.p,
-                            groupValue: _gender,
-                            onChanged: (gender value) {
-                              setState(() {
-                                _gender = value;
-                              });
-                              print('perempuan');
-                            },
-                          ),
-                          Text(
-                            'Perempuan',
-                            style: TextStyle(color: Colors.grey[400], fontSize: 13),
-                          ),
-                        ]
+                      children: <Widget>[
+                        Radio(
+                          value: gender.p,
+                          groupValue: _gender,
+                          onChanged: (gender value) {
+                            setState(() {
+                              _gender = value;
+                            });
+                            print('perempuan');
+                          },
+                        ),
+                        Text(
+                          'Perempuan',
+                          style: TextStyle(
+                              color: Colors.grey[400],
+                              fontSize: 15,
+                              fontFamily: 'Sans'),
+                        ),
+                      ],
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     ),
                   ],
                 ),
               ),
 
               /// SHOWING RESULT OF WHICH RADIO IS CHOSEN, LATER DOESN'T USE THIS
-              Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child:
-                  Text((
-                          () {
-                            switch (_gender) {
-                              case gender.l:
-                                return'L.';
-                                case gender.p:
-                                  return'P.';
-                            }
-                          } ()
-                  ),
-                    style: TextStyle(fontSize: 12),
-                  ),
-                  /// or
-                  //Text(_gender == gender.l ?'This person is a man.' :'This person is a woman.')
-                ),
-              ]),
+              // Row(children: <Widget>[
+              //   Container(
+              //     margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+              //     padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+              //     alignment: Alignment.topLeft,
+              //     child: Text(
+              //       (() {
+              //         switch (_gender) {
+              //           case gender.l:
+              //             return 'L.';
+              //           case gender.p:
+              //             return 'P.';
+              //         }
+              //       }()),
+              //       style: TextStyle(fontSize: 12),
+              //     ),
+              //
+              //     /// or
+              //     //Text(_gender == gender.l ?'This person is a man.' :'This person is a woman.')
+              //   ),
+              // ]),
 
               /// LABEL DAN DROPDOWN JUMLAH ANAK
               Row(children: <Widget>[
@@ -615,8 +736,8 @@ class _Reg050State extends State<Reg050> {
                     'Jumlah anak',
                     style: TextStyle(
                         color: Colors.cyan[600],
-                        fontSize: 12
-                    ),
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
                   ),
                 ),
               ]),
@@ -629,7 +750,7 @@ class _Reg050State extends State<Reg050> {
                     ]))
               ]),
 
-              /// LABEL DAN EMAIL
+              /// LABEL DAN NAMA IBU KANDUNG
               Row(children: <Widget>[
                 Container(
                   margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
@@ -638,28 +759,58 @@ class _Reg050State extends State<Reg050> {
                   child: Text(
                     'Nama ibu kandung',
                     style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                        color: Colors.grey[400],
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
                   ),
                 ),
               ]),
               Row(children: <Widget>[
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Nama ibu kandung',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
+                  child: Focus(
+                    onFocusChange: (hasFokus) {
+                      setState(() {
+                        isTextFieldNamaIbuCorrect = hasFokus;
+                      });
+                    },
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                      decoration: isTextFieldNamaIbuCorrect
+                          ? (_textControllerNamaIbu.text.isEmpty
+                          ? boxDecorationNamaBenarButEmpty
+                          : boxDecorationNamaBenar)
+                          : boxDecorationNamaSalah,
+                      // decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(10),
+                      //     color: Colors.grey[200],
+                      //     shape: BoxShape.rectangle
+                      // ),
+                      child: TextField(
+                        controller: _textControllerNamaIbu,
+                        onChanged: (String value) {
+                          if (_textControllerNamaIbu.text.isNotEmpty) {
+                            print('name Ibu is not empty');
+                          } else {
+                            isTextFieldNamaIbuEmpty = true;
+                            print('name Ibu is empty');
+                          }
+                        },
+                        cursorColor: Colors.black,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          fillColor: Colors.yellowAccent,
+                          focusColor: Colors.yellowAccent,
+                          hintText: 'Nama ibu kandung',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          suffixIcon: IconButton(
+                            onPressed: () => _textControllerNamaIbu.clear(),
+                            icon: Icon(Icons.clear),
+                          ),
                         ),
                       ),
                     ),
@@ -677,8 +828,8 @@ class _Reg050State extends State<Reg050> {
                     'Pendidikan terakhir',
                     style: TextStyle(
                         color: Colors.cyan[600],
-                        fontSize: 12
-                    ),
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
                   ),
                 ),
               ]),
@@ -700,28 +851,45 @@ class _Reg050State extends State<Reg050> {
                   child: Text(
                     'E-mail',
                     style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                        color: Colors.grey[400],
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
                   ),
                 ),
               ]),
               Row(children: <Widget>[
                 Expanded(
-                  child: Container(
-                    margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Masukkan email aktif Anda dengan benar',
-                        hintStyle: TextStyle(color: Colors.grey),
-                        suffixIcon: IconButton(
-                          // onPressed: () => tecHape.clear(),
-                          icon: Icon(Icons.clear),
+                  child: Focus(
+                    onFocusChange: (hasFokus) {
+                      setState(() {
+                        isTextFieldEmailCorrect = hasFokus;
+                      });
+                    },
+                    child: Container(
+                      margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                      padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.grey[200],
+                          shape: BoxShape.rectangle),
+                      child: TextField(
+                        controller: _textControllerEmail,
+                        decoration: InputDecoration(
+                          /// SELAIN TEXTFORMFIELD, TEXTFIELD JUGA BISA PAKE InputBorder.none
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+
+                          hintText: 'Masukkan email aktif Anda dengan benar',
+                          hintStyle: TextStyle(color: Colors.grey),
+                          suffixIcon: IconButton(
+                            onPressed: () => _textControllerEmail.clear(),
+                            icon: _textControllerEmail.text.isNotEmpty
+                                ? Icon(Icons.clear)
+                                : new Icon(null),
+                          ),
                         ),
                       ),
                     ),
@@ -731,23 +899,30 @@ class _Reg050State extends State<Reg050> {
               Align(
                 alignment: Alignment.center,
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(15, 40, 15, 20),
+                  margin: EdgeInsets.fromLTRB(15, 50, 15, 20),
                   child: RaisedButton(
-                    padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
-                    onPressed: (){},
+                    padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
+                    onPressed: () {
+                      /// NAVIGATE TO ANOTHER CLASS ROUTE
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Reg060()),
+                      );
+                    },
                     textColor: Colors.white,
                     color: Colors.cyan,
                     child: Text('Berikutnya'),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(45.0),
-                        side: BorderSide(color: Colors.cyan)
-                    ),
+                        side: BorderSide(color: Colors.cyan)),
                   ),
                 ),
               )
             ]),
+          ),
         ),
-      )
+      ),
+    // )
     );
   }
 
@@ -794,9 +969,7 @@ class _Reg050State extends State<Reg050> {
   Pendidikan _pendidikan = Pendidikan.Sekolah_Dasar;
 }
 
-enum gender {
-  l, p
-}
+enum gender { l, p }
 
 enum Pendidikan {
   Sekolah_Dasar,

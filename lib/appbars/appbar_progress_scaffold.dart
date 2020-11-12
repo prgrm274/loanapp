@@ -43,7 +43,8 @@ class _Appbar050State extends State<Appbar050> {
         actions: <Widget>[
           new Container(
               padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-              child: Icon(Icons.message)
+              child: Image(image: AssetImage('lib/assets/grey_arrow.png'),)
+              // child: Icon(Icons.message)
           ),
           // addAppBarActionWidgetProfile(icon, 30.0, 30.0, 15.0) // add your custom action widget
         ],
@@ -62,7 +63,8 @@ class _Appbar050State extends State<Appbar050> {
               /// kotaknya navigation icon
               // color: Colors.red,
                 padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-                child: Icon(Icons.arrow_back_rounded)
+                child: Image(image: AssetImage('lib/assets/chat_bubble_cyan.png'),)
+                // child: Icon(Icons.arrow_back_rounded)
                 // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
             ),
           ),

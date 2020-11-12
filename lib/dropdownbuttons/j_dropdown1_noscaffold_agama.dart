@@ -24,7 +24,7 @@ class _DropdownAgamaState extends State<DropdownAgama> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      padding: EdgeInsets.fromLTRB(15, 12, 15, 12),
       decoration: BoxDecoration(
           border: Border.all(
               width: 2,
@@ -34,25 +34,27 @@ class _DropdownAgamaState extends State<DropdownAgama> {
             Radius.circular(10),
           )
       ),
-      child: DropdownButton(
-        /*onTap: () {///! salah
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+          /*onTap: () {///! salah
                 Navigator.of(context).pop();
               },*/
-        hint: Text('Islam'),
-        value: _selectedLocation,
-        onChanged: (newValue) {
-          setState(() {
-            _selectedLocation = newValue;
-          });
-        },
-        items: _agama.map((s) {
-          return DropdownMenuItem(
-            child: new Text(s),
-            value: s,
-          );
-        }).toList(),
-        isDense: true,
-        isExpanded: true,/// supaya panah di tepi kanan
+          hint: Text('Islam'),
+          value: _selectedLocation,
+          onChanged: (newValue) {
+            setState(() {
+              _selectedLocation = newValue;
+            });
+          },
+          items: _agama.map((s) {
+            return DropdownMenuItem(
+              child: new Text(s),
+              value: s,
+            );
+          }).toList(),
+          isDense: true,
+          isExpanded: true,/// supaya panah di tepi kanan
+        ),
       ),
     );
   }

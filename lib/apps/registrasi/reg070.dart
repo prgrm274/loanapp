@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:voidrealm/appbars/appbar050.dart';
+import 'package:voidrealm/appbars/appbar_progress.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold_agama.dart';
@@ -30,7 +30,7 @@ class _Reg070State extends State<Reg070> {
 
   void _changed(bool visibility, String field) {
     setState(() {
-      if (field == "tag"){
+      if (field == "tag") {
         tampilkanText = visibility;
       }
     });
@@ -55,7 +55,7 @@ class _Reg070State extends State<Reg070> {
 
   void _cekNama(bool benar, String text) {
     setState(() {
-      if (Regex1.checkAlphabet(text)){
+      if (Regex1.checkAlphabet(text)) {
         isNamaCorrect = benar;
       }
     });
@@ -69,17 +69,18 @@ class _Reg070State extends State<Reg070> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      /// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
-      home: SingleChildScrollView(
-        // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-        child: Container(
+        home: Material(/// BERI MATERIAL AGAR TEXTFIELD TIDAK MUNCUL KUNING
+
+        child: SingleChildScrollView(
+          /// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
+          // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+          child: Container(
             // height: MediaQuery.of(context).size.height,
             // width: MediaQuery.of(context).size.width,
             color: Colors.white,
@@ -93,80 +94,81 @@ class _Reg070State extends State<Reg070> {
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
                 color: Colors.grey[100],
-                child: Row(children: <Widget>[
-                  Flexible(
-                    flex: 1,
-                    child: Text(
-                      'Saya terima\nRp 1.500.000',
-                      style: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 12,
-                          fontFamily: 'Sans'
-                      ),
-                    ),
-                  ),
-                  Flexible(
+                child: Row(
+                  children: <Widget>[
+                    Flexible(
                       flex: 1,
-                      child: Container(
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              GestureDetector(
-                                child: Image(
-                                  image: AssetImage('lib/assets/info_48.png',),
-                                  width: 12,
-                                  height: 12,
-                                ),
-                                onTap: (){
-                                  print('onTap info nilai angsuran');
-                                },
-                              ),
-                              /// SPASI ANTARA LOGO INFO DAN NILAI ANGSURAN
-                              Container(width: 10,),
-                              Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    GestureDetector(
-                                      child: Text(
-                                        'Nilai angsuran',
-                                        style: TextStyle(
-                                            decoration: TextDecoration.underline,
-                                            color: Colors.cyan,
-                                            fontSize: 12,
-                                            fontFamily: 'Sans'
-                                        ),
-                                      ),
-                                      onTap: (){
-                                        print('onTap nilai angsuran');
-                                      },
-                                    ),
-                                    Text(
-                                      'Rp 525.000',
-                                      style: TextStyle(
-                                          color: Colors.grey[400],
-                                          fontSize: 12,
-                                          fontFamily: 'Sans'
-                                      ),
-                                    ),
-                                  ]
-                              )
-                            ]
-                        ),
-                      )
-                  ),
-                  Flexible(
-                    flex: 1,
-                    child: Text(
-                      'Bayar pertama\n27.10.2020',
-                      style: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 12,
-                          fontFamily: 'Sans'
+                      child: Text(
+                        'Saya terima\nRp 1.500.000',
+                        style: TextStyle(
+                            color: Colors.grey[400],
+                            fontSize: 12,
+                            fontFamily: 'Sans'),
                       ),
                     ),
-                  ),
-                ],
+                    Flexible(
+                        flex: 1,
+                        child: Container(
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                GestureDetector(
+                                  child: Image(
+                                    image: AssetImage(
+                                      'lib/assets/info_48.png',
+                                    ),
+                                    width: 12,
+                                    height: 12,
+                                  ),
+                                  onTap: () {
+                                    print('onTap info nilai angsuran');
+                                  },
+                                ),
+
+                                /// SPASI ANTARA LOGO INFO DAN NILAI ANGSURAN
+                                Container(
+                                  width: 10,
+                                ),
+                                Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      GestureDetector(
+                                        child: Text(
+                                          'Nilai angsuran',
+                                          style: TextStyle(
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              color: Colors.cyan,
+                                              fontSize: 12,
+                                              fontFamily: 'Sans'),
+                                        ),
+                                        onTap: () {
+                                          print('onTap nilai angsuran');
+                                        },
+                                      ),
+                                      Text(
+                                        'Rp 525.000',
+                                        style: TextStyle(
+                                            color: Colors.grey[400],
+                                            fontSize: 12,
+                                            fontFamily: 'Sans'),
+                                      ),
+                                    ])
+                              ]),
+                        )),
+                    Flexible(
+                      flex: 1,
+                      child: Text(
+                        'Bayar pertama\n27.10.2020',
+                        style: TextStyle(
+                            color: Colors.grey[400],
+                            fontSize: 12,
+                            fontFamily: 'Sans'),
+                      ),
+                    ),
+                  ],
                   mainAxisSize: MainAxisSize.max,
+
                   /// MEMBAGI RUANG UNTUK KONTEN CHILD SESUAI JUMLAH CHILD DARI ROW
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
@@ -180,20 +182,17 @@ class _Reg070State extends State<Reg070> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Pekerjaan',
-                    style: TextStyle(
-                        color: Colors.cyan,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.cyan, fontSize: 12),
                   ),
                 ),
               ]),
               Row(children: <Widget>[
                 Expanded(
                     child: Row(children: <Widget>[
-                      Expanded(
-                        child: DropdownPekerjaan(),
-                      ),
-                    ]))
+                  Expanded(
+                    child: DropdownPekerjaan(),
+                  ),
+                ]))
               ]),
 
               /// LABEL DAN DROPDOWN BIDANG INDUSTRI
@@ -204,20 +203,17 @@ class _Reg070State extends State<Reg070> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Bidang industri',
-                    style: TextStyle(
-                        color: Colors.cyan,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.cyan, fontSize: 12),
                   ),
                 ),
               ]),
               Row(children: <Widget>[
                 Expanded(
                     child: Row(children: <Widget>[
-                      Expanded(
-                        child: DropdownBidangindustri(),
-                      ),
-                    ]))
+                  Expanded(
+                    child: DropdownBidangindustri(),
+                  ),
+                ]))
               ]),
 
               /// LABEL DAN TEXTFIELD NAMA PERUSAHAAN
@@ -228,10 +224,7 @@ class _Reg070State extends State<Reg070> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Nama perusahaan',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                 ),
               ]),
@@ -239,13 +232,21 @@ class _Reg070State extends State<Reg070> {
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[200],
                         shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      // keyboardType: inputType,
+                      decoration: new InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                         hintText: 'Ketik nama perusahaan',
                         hintStyle: TextStyle(color: Colors.grey[400]),
                         suffixIcon: IconButton(
@@ -266,10 +267,7 @@ class _Reg070State extends State<Reg070> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Posisi di perusahaan',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                 ),
               ]),
@@ -277,13 +275,21 @@ class _Reg070State extends State<Reg070> {
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[200],
                         shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      // keyboardType: inputType,
+                      decoration: new InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                         hintText: 'Ketik nama jabatan anda',
                         hintStyle: TextStyle(color: Colors.grey[400]),
                         suffixIcon: IconButton(
@@ -292,6 +298,17 @@ class _Reg070State extends State<Reg070> {
                         ),
                       ),
                     ),
+
+                    // child: TextField(
+                    //   decoration: InputDecoration(
+                    //     hintText: 'Ketik nama jabatan anda',
+                    //     hintStyle: TextStyle(color: Colors.grey[400]),
+                    //     suffixIcon: IconButton(
+                    //       // onPressed: () => tecHape.clear(),
+                    //       icon: Icon(Icons.clear),
+                    //     ),
+                    //   ),
+                    // ),
                   ),
                 ),
               ]),
@@ -304,10 +321,7 @@ class _Reg070State extends State<Reg070> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Pendapatan bulanan',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                 ),
               ]),
@@ -315,21 +329,41 @@ class _Reg070State extends State<Reg070> {
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[200],
                         shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      // keyboardType: inputType,
+                      decoration: new InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                         hintText: 'Ketik jumlah yang Anda terima per bulan (Rp)',
-                        hintStyle: TextStyle(color: Colors.grey[400]),
+                        hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
                         suffixIcon: IconButton(
                           // onPressed: () => tecHape.clear(),
                           icon: Icon(Icons.clear),
                         ),
                       ),
                     ),
+
+                    /// KALO HANYA TEXTFIELD, AKAN MUNCUL UNDERLINE BIRU
+                    // child: TextField(
+                    //   decoration: InputDecoration(
+                    //     hintText: 'Ketik jumlah yang Anda terima per bulan (Rp)',
+                    //     hintStyle: TextStyle(color: Colors.grey[400]),
+                    //     suffixIcon: IconButton(
+                    //       // onPressed: () => tecHape.clear(),
+                    //       icon: Icon(Icons.clear),
+                    //     ),
+                    //   ),
+                    // ),
                   ),
                 ),
               ]),
@@ -342,20 +376,17 @@ class _Reg070State extends State<Reg070> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Lama bekerja',
-                    style: TextStyle(
-                        color: Colors.cyan,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.cyan, fontSize: 12),
                   ),
                 ),
               ]),
               Row(children: <Widget>[
                 Expanded(
                     child: Row(children: <Widget>[
-                      Expanded(
-                        child: DropdownLamabekerja(),
-                      )
-                    ]))
+                  Expanded(
+                    child: DropdownLamabekerja(),
+                  )
+                ]))
               ]),
 
               /// LABEL DAN TEXTFIELD PENDAPATAN BULANAN
@@ -366,10 +397,7 @@ class _Reg070State extends State<Reg070> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Nomor telepon perusahaan',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                 ),
               ]),
@@ -377,13 +405,21 @@ class _Reg070State extends State<Reg070> {
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[200],
                         shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      // keyboardType: inputType,
+                      decoration: new InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                         hintText: '0810 1234 4567',
                         hintStyle: TextStyle(color: Colors.grey[400]),
                         suffixIcon: IconButton(
@@ -392,6 +428,17 @@ class _Reg070State extends State<Reg070> {
                         ),
                       ),
                     ),
+
+                    // child: TextField(
+                    //   decoration: InputDecoration(
+                    //     hintText: '0810 1234 4567',
+                    //     hintStyle: TextStyle(color: Colors.grey[400]),
+                    //     suffixIcon: IconButton(
+                    //       // onPressed: () => tecHape.clear(),
+                    //       icon: Icon(Icons.clear),
+                    //     ),
+                    //   ),
+                    // ),
                   ),
                 ),
               ]),
@@ -404,10 +451,7 @@ class _Reg070State extends State<Reg070> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'Alamat kantor',
-                    style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 12
-                    ),
+                    style: TextStyle(color: Colors.grey, fontSize: 12),
                   ),
                 ),
               ]),
@@ -415,13 +459,21 @@ class _Reg070State extends State<Reg070> {
                 Expanded(
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                    padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                    padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey[200],
                         shape: BoxShape.rectangle),
-                    child: TextField(
-                      decoration: InputDecoration(
+                    child: TextFormField(
+                      cursorColor: Colors.black,
+                      // keyboardType: inputType,
+                      decoration: new InputDecoration(
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                        // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
                         hintText: 'Alamat kantor',
                         hintStyle: TextStyle(color: Colors.grey[400]),
                         suffixIcon: IconButton(
@@ -438,24 +490,23 @@ class _Reg070State extends State<Reg070> {
               Align(
                 alignment: Alignment.center,
                 child: Container(
-                  margin: EdgeInsets.fromLTRB(15, 40, 15, 20),
+                  margin: EdgeInsets.fromLTRB(15, 50, 15, 20),
                   child: RaisedButton(
                     padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
-                    onPressed: (){},
+                    onPressed: () {},
                     textColor: Colors.white,
                     color: Colors.cyan,
                     child: Text('Berikutnya'),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(45.0),
-                        side: BorderSide(color: Colors.cyan)
-                    ),
+                        side: BorderSide(color: Colors.cyan)),
                   ),
                 ),
               )
             ]),
+          ),
         ),
-      )
-    );
+    ));
   }
 
   Pendidikan _pendidikan = Pendidikan.Sekolah_Dasar;

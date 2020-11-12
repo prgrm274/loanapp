@@ -9,7 +9,6 @@ class Dropdown1JmlAnak extends StatefulWidget {
 }
 
 class _Dropdown1JmlAnakState extends State<Dropdown1JmlAnak> {
-
   List<String> _sekolah = [
     '0',
     '1',
@@ -23,7 +22,7 @@ class _Dropdown1JmlAnakState extends State<Dropdown1JmlAnak> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      padding: EdgeInsets.fromLTRB(15, 12, 15, 12),
       decoration: BoxDecoration(
           border: Border.all(
               width: 2,
@@ -33,22 +32,24 @@ class _Dropdown1JmlAnakState extends State<Dropdown1JmlAnak> {
             Radius.circular(10),
           )
       ),
-      child: DropdownButton(
-        hint: Text('0'),
-        value: _selectedLocation,
-        onChanged: (newValue) {
-          setState(() {
-            _selectedLocation = newValue;
-          });
-        },
-        items: _sekolah.map((s) {
-          return DropdownMenuItem(
-            child: new Text(s),
-            value: s,
-          );
-        }).toList(),
-        isDense: true,
-        isExpanded: true,/// supaya panah dropdown bisa berada di tepi kanan
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+          hint: Text('0'),
+          value: _selectedLocation,
+          onChanged: (newValue) {
+            setState(() {
+              _selectedLocation = newValue;
+            });
+          },
+          items: _sekolah.map((s) {
+            return DropdownMenuItem(
+              child: new Text(s),
+              value: s,
+            );
+          }).toList(),
+          isDense: true,
+          isExpanded: true,/// supaya panah dropdown bisa berada di tepi kanan
+        ),
       ),
     );
   }

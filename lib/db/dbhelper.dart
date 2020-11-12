@@ -38,4 +38,34 @@ class DBHelper {
 
     await openDatabase(path);
   }
+
+
+
+
+  /// BATAS ORIG analog info
+
+  /// NG
+
+  static Database db_SqliteApi;
+
+  static Future<bool> initialize() async {
+    if (db_SqliteApi == null) {
+      db_SqliteApi = DBHelper() as Database;
+
+      var rows = await getData();
+
+      if (rows.isEmpty) {
+        print('ROWS IS EMPTYYYYyyYyyyYy');
+        // loadSampleData();
+      } else {
+        print(rows.length.toString());/// NG BELUM MUNCUL
+      }
+    }
+
+    return db_SqliteApi.isOpen;
+  }
+
+  static Future<List<Map<String, dynamic>>> getData() async {
+    return await db_SqliteApi.rawQuery('SELECT * FROM villages');
+  }
 }

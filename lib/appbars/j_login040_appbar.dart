@@ -59,7 +59,8 @@ class _Login040AppbarState extends State<Login040Appbar> {
             child: new Container(
               color: Colors.cyan,
                 padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-                child: Icon(Icons.arrow_back)
+                child: Image(image: AssetImage('lib/assets/chat_bubble_cyan.png'),)
+                // child: Icon(Icons.arrow_back)
                 // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
             ),
           ),

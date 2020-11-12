@@ -23,7 +23,7 @@ class _Dropdown1State extends State<Dropdown1> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-      padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+      padding: EdgeInsets.fromLTRB(15, 12, 15, 12),
       decoration: BoxDecoration(
           border: Border.all(
               width: 2,
