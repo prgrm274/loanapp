@@ -24,8 +24,8 @@ class Reg070 extends StatefulWidget {
 }
 
 class _Reg070State extends State<Reg070> {
-  TextEditingController _textController = TextEditingController();
-  TextEditingController _textControllerNama = TextEditingController();
+  TextEditingController _tECNamaPerusahaan = TextEditingController();
+  TextEditingController _tECPosisiPerusahaan = TextEditingController();
 
   bool tampilkanText = false;
 
@@ -37,27 +37,44 @@ class _Reg070State extends State<Reg070> {
     });
   }
 
-  bool isNamaCorrect = false;
-  bool isNamaEmpty = false;
+  bool isNamaPerusahaanFokus = false;
+  bool isNamaPerusahaanCorrect = false;
+  bool isPosisiPerusahaanFokus = false;
+  bool isPosisiPerusahaanCorrect = false;
 
   /// VARIABEL UNTUK KONDISI TEXT FIELD
-  final boxDecorationNamaBenar = BoxDecoration(
+  final boxDecorationPerusahaanBenar = BoxDecoration(
       borderRadius: BorderRadius.circular(10),
       color: Colors.blue[200],
       shape: BoxShape.rectangle);
-  final boxDecorationNamaBenarButEmpty = BoxDecoration(
-      borderRadius: BorderRadius.circular(10),
-      color: Colors.yellow[200],
-      shape: BoxShape.rectangle);
-  final boxDecorationNamaSalah = BoxDecoration(
+  final boxDecorationPerusahaanSalah = BoxDecoration(
       borderRadius: BorderRadius.circular(10),
       color: Colors.red[200],
+      shape: BoxShape.rectangle);
+  final boxDecorationPerusahaanJustOnFocus = BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey[800].withOpacity(0.5),
+          spreadRadius: 0.2,
+
+          /// SEBERAPA JAUH PENDARAN SHADOW
+          // spreadRadius: 5,
+          blurRadius: 7,
+
+          /// DX PENDAR KE SAMPING, DY PENDAR KE BAWAH
+          /// changes position of shadow
+          offset: Offset(0, 1),
+          // offset: Offset(0, 3),
+        ),
+      ],
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.white,
       shape: BoxShape.rectangle);
 
   void _cekNama(bool benar, String text) {
     setState(() {
       if (Regex1.checkAlphabet(text)) {
-        isNamaCorrect = benar;
+        isNamaPerusahaanCorrect = benar;
       }
     });
   }
@@ -68,8 +85,20 @@ class _Reg070State extends State<Reg070> {
     });
   }
 
+  double progress = 0;
+
   @override
   void initState() {
+    setState(() {
+      if (isNamaPerusahaanCorrect) {
+        progress += 1;
+      } else {
+        if (progress > 0) {
+          progress -= 5;
+        }
+      }
+    });
+
     super.initState();
   }
 
@@ -79,7 +108,68 @@ class _Reg070State extends State<Reg070> {
         home: Material(/// BERI MATERIAL AGAR TEXTFIELD TIDAK MUNCUL KUNING
 
         child: Scaffold(
-          appBar: AppbarProgress(),
+          /// SEMENTARA APPBAR JADI SATU (NGGA IMPORT) UNTUK NGETES VALUE TERISI LANGSUNG DISINI
+          appBar: AppBar(
+              backgroundColor: Colors.white,
+              //automaticallyImplyLeading: true
+              elevation: 0.0,
+              // for elevation
+              titleSpacing: 0.0,
+              // if you want remove title spacing with back button
+              title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      '$progress terisi\n',
+                      // '$_progres terisi\n',
+                      style: TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
+                    LinearProgressIndicator(
+                      backgroundColor: Colors.cyanAccent,
+                      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                      value: progress,
+                      // value: _progres,
+                    )
+                  ]),
+              // title: new SfulLinearprogressindicator(),
+              // title: new ProgressIndicator1(),
+              // title: Text('Custom Appbar'),
+              // title:  UtilCommonWidget.addTextMedium('About US', Colors.white, 20.0, 1),
+              actions: <Widget>[
+                new Container(
+                    padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
+                    child: Image(
+                      image: AssetImage('lib/assets/chat_bubble_cyan.png'),
+                    )
+                  // child: Icon(Icons.message)
+                ),
+                // addAppBarActionWidgetProfile(icon, 30.0, 30.0, 15.0) // add your custom action widget
+              ],
+              //Action icon search as search icon, notification icon
+              leading: new Material(
+                /// BACK NAVIGATION ICON
+                /// Custom leading icon, such as back navigation icon or other
+                /// warna kotaknya navigation icon
+                color: Colors.white,
+                child: new InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+
+                    // Navigator.pop(context);// 2020
+                  },
+                  splashColor: Colors.red,
+                  // splashColor: UniQueryColors.colorGradientEnd.withOpacity(.5),
+                  child: new Container(/// kotaknya navigation icon
+                    // color: Colors.red,
+                      padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
+                      child: Image(
+                          image: AssetImage('lib/assets/grey_arrow_white.png'))
+                    // child: Icon(Icons.arrow_back_rounded)
+                    // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
+                  ),
+                ),
+              )),
+          // appBar: AppbarProgress(),
           body: SingleChildScrollView(/// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
             // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Container(
@@ -105,9 +195,7 @@ class _Reg070State extends State<Reg070> {
                           style: TextStyle(
                               color: Colors.grey[400],
                               fontSize: 12,
-                              fontFamily: 'Sans'),
-                        ),
-                      ),
+                              fontFamily: 'Sans'))),
                       Flexible(
                           flex: 1,
                           child: Container(
@@ -151,12 +239,9 @@ class _Reg070State extends State<Reg070> {
                                           style: TextStyle(
                                               color: Colors.grey[400],
                                               fontSize: 12,
-                                              fontFamily: 'Sans'),
-                                        ),
-                                      ]
-                                  )
-                                ]
-                            ),
+                                              fontFamily: 'Sans')),
+                                      ])
+                                ]),
                           )
                       ),
 
@@ -186,8 +271,7 @@ class _Reg070State extends State<Reg070> {
                     alignment: Alignment.topLeft,
                     child: Text(
                       'Pekerjaan',
-                      style: TextStyle(color: Colors.cyan, fontSize: 12),
-                    ),
+                      style: TextStyle(color: Colors.cyan, fontSize: 12)),
                   ),
                 ]),
                 Row(children: <Widget>[
@@ -220,7 +304,7 @@ class _Reg070State extends State<Reg070> {
                       ]))
                 ]),
 
-                /// LABEL DAN TEXTFIELD NAMA PERUSAHAAN
+                /// LABEL NAMA PERUSAHAAN
                 Row(children: <Widget>[
                   Container(
                     margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
@@ -232,6 +316,7 @@ class _Reg070State extends State<Reg070> {
                     ),
                   ),
                 ]),
+                /// TEXTFIELD NAMA PERUSAHAAN
                 Row(children: <Widget>[
                   Expanded(
                     child: Container(
@@ -241,21 +326,37 @@ class _Reg070State extends State<Reg070> {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.grey[200],
                           shape: BoxShape.rectangle),
-                      child: TextFormField(
-                        cursorColor: Colors.black,
-                        // keyboardType: inputType,
-                        decoration: new InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: 'Ketik nama perusahaan',
-                          hintStyle: TextStyle(color: Colors.grey[400]),
-                          suffixIcon: IconButton(
-                            // onPressed: () => tecHape.clear(),
-                            icon: Icon(Icons.clear),
+                      child: FocusScope(
+                        onFocusChange: (focus) => print("focus NAMA PERUSAHAAN: $focus"),
+                        child: TextFormField(
+                          controller: _tECNamaPerusahaan,
+                          onChanged: (String s) {
+
+                            setState(() {
+
+                              if (_tECNamaPerusahaan.text.isNotEmpty) {
+                                isNamaPerusahaanCorrect = true;
+                                print('isNamaPerusahaanCorrect $isNamaPerusahaanCorrect');
+                              }
+                            });
+                          },
+                          cursorColor: Colors.black,
+                          // keyboardType: inputType,
+                          decoration: new InputDecoration(
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                            hintText: 'Ketik nama perusahaan',
+                            hintStyle: TextStyle(color: Colors.grey[400]),
+                            suffixIcon: IconButton(
+                              // onPressed: () => tecHape.clear(),
+                              icon: Icon(Icons.clear),
+                            ),
+                            focusColor: Colors.greenAccent,
+                            fillColor: Colors.green
                           ),
                         ),
                       ),
@@ -280,25 +381,74 @@ class _Reg070State extends State<Reg070> {
                     child: Container(
                       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey[200],
-                          shape: BoxShape.rectangle),
-                      child: TextFormField(
-                        cursorColor: Colors.black,
-                        // keyboardType: inputType,
-                        decoration: new InputDecoration(
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                          // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                          hintText: 'Ketik nama jabatan anda',
-                          hintStyle: TextStyle(color: Colors.grey[400]),
-                          suffixIcon: IconButton(
-                            // onPressed: () => tecHape.clear(),
-                            icon: Icon(Icons.clear),
+                      decoration: boxDecorationPerusahaanBenar,
+                      // isPosisiPerusahaanFokus ?
+                      //     boxDecorationPerusahaanJustOnFocus :
+                      // (
+                      //     isPosisiPerusahaanCorrect ?
+                      //     boxDecorationPerusahaanBenar :
+                      //     boxDecorationPerusahaanSalah
+                      // ),
+                      child: FocusScope(
+                        onFocusChange: (focus) {
+                          isPosisiPerusahaanFokus = focus;
+                          print("focus POSISI PERUSAHAAN: $focus");
+                          print("isPosisiPerusahaanFokus: $isPosisiPerusahaanFokus");
+                        },
+                        child: TextFormField(
+                          autofocus: false,
+                          onTap: (){
+                            // if (!isPosisiPerusahaanFokus) {
+                            //   isPosisiPerusahaanFokus = true;
+                            // }
+                          },
+                          onChanged: (String value) {
+                            if (_tECPosisiPerusahaan.text.isNotEmpty) {
+                              isPosisiPerusahaanCorrect = true;
+                            }
+                          },
+                          controller: _tECPosisiPerusahaan,
+                          cursorColor: Colors.black,
+                          // keyboardType: inputType,
+                          decoration: isPosisiPerusahaanFokus ?
+                          new InputDecoration(
+                              filled: true,
+                              focusColor: Colors.green,
+                              fillColor: Colors.deepPurple,
+                              border: InputBorder.none,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                    color: Colors.yellowAccent,
+                                    width: 2,
+                                    style: BorderStyle.solid))
+                          ) :
+                          new InputDecoration(
+                            filled: false,
+                            // filled: isPosisiPerusahaanFokus ? true : false,
+                            // filled: isPosisiPerusahaanFokus ? true :
+                            // (
+                            //   isPosisiPerusahaanCorrect ?
+                            //       false : false
+                            // ),
+                            focusColor: Colors.green,
+                            border: InputBorder.none,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                  color: Colors.yellowAccent,
+                                  width: 2,
+                                  style: BorderStyle.solid)),
+                            // focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            // contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                            hintText: 'Ketik nama jabatan anda',
+                            hintStyle: TextStyle(color: Colors.grey[400]),
+                            suffixIcon: IconButton(
+                              onPressed: () => _tECPosisiPerusahaan.clear(),
+                              icon: Icon(Icons.clear)),
                           ),
                         ),
                       ),

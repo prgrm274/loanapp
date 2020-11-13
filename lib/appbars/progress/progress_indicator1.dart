@@ -14,6 +14,9 @@ class ProgressIndicator1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: <Widget>[
+      Container(/// JUST SPACE
+        height: 200,
+      ),
       new Text(
         // '$appbarModel terisi\n',
         '20% terisi\n',
@@ -48,7 +51,7 @@ class ProgressIndicator1 extends StatelessWidget {
         value: 100,
       ),
     ],
-    crossAxisAlignment: CrossAxisAlignment.start,);
+    crossAxisAlignment: CrossAxisAlignment.start);
     /*return Container(
       child: LinearProgressIndicator(
         backgroundColor: Colors.red[200],

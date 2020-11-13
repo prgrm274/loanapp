@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:voidrealm/models/appbar_model.dart';
 
@@ -26,6 +28,11 @@ class SfulLinearprogressindicator extends StatefulWidget {
 
 class _SfulLinearprogressindicatorState
     extends State<SfulLinearprogressindicator> with SingleTickerProviderStateMixin{
+  double progress;
+
+  void _pressed(double p){
+    print('nilai $p');
+  }
 
   final appbarModel = List<AppbarModel>.generate(
     20,
@@ -34,30 +41,37 @@ class _SfulLinearprogressindicatorState
         'A description of what needs to be done for AppbarModel $i'
     ),
   );
-  var list = List<double>();///NG
 
   AnimationController controller;
   Animation<double> animation;
+  double beginAnim = 0.0;
+  double endAnim = 1.0;
+  bool isButtonpressed = false;
 
   @override
   void initState() {
     super.initState();
 
-    list.add(1);
-    list.add(2);
-    list.add(3);
-    list.add(4);
-    list.add(5);
+    /// INISIALISASI DISINI MAKA SAAT BUTTON DIKLIK
+    /// NULL TERISI AKAN BERTAMBAH MENJADI 1 TERISI, 2 TERISI
+    progress = 0;
 
     controller = AnimationController(
       /// DURATION ITU KECEPATAN ANIMASI SLIDER
-      duration: const Duration(milliseconds: 500),
-      vsync: this
-    );
-    animation = Tween(begin: 0.0, end: 1.0).animate(controller)
+      duration: const Duration(seconds: 2),
+      vsync: this);
+    animation = Tween(begin: beginAnim, end: endAnim).animate(controller)
       ..addListener(() {
         setState(() {
           // the state that has changed here is the animation object’s value
+          // progress = 2;/// NG
+          // progress += 1;/// NG
+          controller.forward();///NG
+
+          // if (isButtonpressed) {
+          //   // progress += 1;/// NG
+          //   controller.forward();///NG
+          // }
         });
       });
     controller.repeat();
@@ -71,20 +85,44 @@ class _SfulLinearprogressindicatorState
 
   @override
   Widget build(BuildContext context) {
-    return LinearProgressIndicator(
-      /// NG
-      // semanticsValue: ((){
-      //   'Semantics value '+appbarModel.length.toString();
-      // }()),
-      /// NG
-      // semanticsLabel: ((){
-      //   'Semantics label '+appbarModel.length.toString();
-      // }()),
-      backgroundColor: Colors.cyanAccent,
-      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-      value: list[2].toDouble(),
-      // value: animation.value,
-      // value: _progres,
+    return Container(
+      color: Colors.white,
+      child: Column(
+          children: <Widget>[
+            Container(
+              height: 200,
+            ),
+            Text(
+                '$progress terisi',
+              style: TextStyle(
+                fontSize: 12
+              ),
+            ),
+            RaisedButton(onPressed: (){
+              progress += 1;
+              _pressed(progress);
+            }),
+            Container(
+              height: 200,
+            ),
+            LinearProgressIndicator(
+              /// NG
+              // semanticsValue: ((){
+              //   'Semantics value '+appbarModel.length.toString();
+              // }()),
+              /// NG
+              // semanticsLabel: ((){
+              //   'Semantics label '+appbarModel.length.toString();
+              // }()),
+              semanticsValue: progress.toString(),
+              backgroundColor: Colors.cyanAccent,
+              valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+              // value: list[2].toDouble(),
+              value: animation.value,
+              // value: progress,
+            ),
+          ]
+      ),
     );
   }
 }
