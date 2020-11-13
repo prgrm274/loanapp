@@ -21,39 +21,52 @@ class Reg050 extends StatefulWidget {
 }
 
 class _Reg050State extends State<Reg050> {
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
+
   TextEditingController _textControllerTanggal = TextEditingController();
   TextEditingController _textControllerNama = TextEditingController();
   TextEditingController _textControllerTempat = TextEditingController();
   TextEditingController _textControllerNamaIbu = TextEditingController();
   TextEditingController _textControllerEmail = TextEditingController();
 
-  bool tampilkanText = false;
+  // bool isTextMasukkanDataTanggalDgnBnrShowed = false;
   bool tampilkanTempat = false;
 
   void _changed(bool visibility, String field) {
     setState(() {
       if (field == "tag") {
-        tampilkanText = visibility;
+        // isTextMasukkanDataTanggalDgnBnrShowed = visibility;
+        isTextFieldTanggalCorrect = visibility;
       }
     });
   }
 
   // bool isNamaCorrect, isNamaEmpty = false;///IF THIS, isNamaCorrect IS NOT INITIALIZED
-  bool fokus = false, isNamaCorrect = false, isNamaEmpty = false;
-  bool isTanggalCorrect = false, isTanggalEmpty = false;
+  // bool fokus = false; /// CUMA UNTUK COBA FOCUS UMUM, KALO PAKE INI DI TIAP TEXTFIELD GANTI WARNYA JADI BARENG SEMUA
+  bool isNamaFokus = false, isTanggalFokus = false, isTempatFokus = false;
 
-  bool isTempatLahirCorrect = false, isTempatLahirEmpty = false;
-
+  bool isTextFieldNamaCorrect = false, isTextFieldNamaEmpty = false;
+  bool isTextFieldTanggalCorrect = false;//, isTextFieldTanggalEmpty = false;
+  /// TEMPAT LAHIR TIDAK ADA VALIDASI
+  bool isTextFieldTempatLahirEmpty = false;
   bool isTextFieldNamaIbuCorrect = false, isTextFieldNamaIbuEmpty = false;
-
   bool isTextFieldEmailCorrect = false, isTextFieldEmailEmpty = false;
 
   /// VARIABEL UNTUK KONDISI TEXT FIELD
-  final boxDecorationNamaBenar = BoxDecoration(
+  final boxDecorationBenar = BoxDecoration(
       borderRadius: BorderRadius.circular(10),
       color: Colors.blue[200],
       shape: BoxShape.rectangle);
-  final boxDecorationNamaBenarButEmpty = BoxDecoration(
+  final boxDecorationSalah = BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.red[200],
+      shape: BoxShape.rectangle);
+  final boxDecorationJustOnFocus = BoxDecoration(
       boxShadow: [
         BoxShadow(
           color: Colors.grey[800].withOpacity(0.5),
@@ -64,22 +77,19 @@ class _Reg050State extends State<Reg050> {
           blurRadius: 7,
 
           /// DX PENDAR KE SAMPING, DY PENDAR KE BAWAH
-          offset: Offset(0, 1), // changes position of shadow
-          // offset: Offset(0, 3), // changes position of shadow
+          /// changes position of shadow
+          offset: Offset(0, 1),
+          // offset: Offset(0, 3),
         ),
       ],
       borderRadius: BorderRadius.circular(10),
       color: Colors.white,
       shape: BoxShape.rectangle);
-  final boxDecorationNamaSalah = BoxDecoration(
-      borderRadius: BorderRadius.circular(10),
-      color: Colors.red[200],
-      shape: BoxShape.rectangle);
 
   void _cekNama(bool benar, String text) {
     setState(() {
       if (Regex1.checkAlphabet(text)) {
-        isNamaCorrect = benar;
+        isTextFieldNamaCorrect = benar;
       }
     });
   }
@@ -113,12 +123,6 @@ class _Reg050State extends State<Reg050> {
   String _email = '';
 
   get getNamaLengkap => _namaLengkap;
-
-  @override
-  void initState() {
-    super.initState();
-    // _progres = 0;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -174,17 +178,14 @@ class _Reg050State extends State<Reg050> {
                 },
                 splashColor: Colors.red,
                 // splashColor: UniQueryColors.colorGradientEnd.withOpacity(.5),
-                child: new Container(
-
-                    /// kotaknya navigation icon
-                    // color: Colors.red,
-                    padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
+                child: new Container(/// kotaknya navigation icon
+                  // color: Colors.red,
+                  padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
                     child: Image(
-                      image: AssetImage('lib/assets/grey_arrow_white.png'),
-                    )
+                      image: AssetImage('lib/assets/grey_arrow_white.png'))
                     // child: Icon(Icons.arrow_back_rounded)
                     // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
-                    ),
+                ),
               ),
             )),
         // appBar: AppbarProgress(
@@ -221,11 +222,12 @@ class _Reg050State extends State<Reg050> {
                 Expanded(
                     child: Focus(
                   onFocusChange: (punyaFokus) {
+                    isTanggalFokus = false;
+                    isTempatFokus = false;
                     setState(() {
-                      fokus = punyaFokus;
-                      print('fokus di nama setstate = $fokus');
+                      isNamaFokus = punyaFokus;
+                      print('fokus di nama setstate = $isNamaFokus');
                       // isNamaCorrect = punyaFokus;
-
                     });
 
                     /// GET FOCUS THEN SET _progres
@@ -243,12 +245,19 @@ class _Reg050State extends State<Reg050> {
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                     padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                    decoration: fokus
-                    // decoration: isNamaCorrect
-                        ? (_textControllerNama.text.isEmpty
-                            ? boxDecorationNamaBenarButEmpty
-                            : boxDecorationNamaBenar)
-                        : boxDecorationNamaSalah,
+                    decoration: isNamaFokus ?
+                    // decoration: isNamaCorrect ?
+                        // (_textControllerNama.text.isEmpty
+                        //     ? boxDecorationJustOnFocus
+                        //     : boxDecorationNamaBenar)
+                        // : boxDecorationNamaSalah,
+
+                    boxDecorationJustOnFocus :
+                    (
+                        isTextFieldNamaCorrect ?
+                        boxDecorationBenar :
+                        boxDecorationSalah
+                    ),
 
                     // isNamaEmpty
                     // ?
@@ -283,6 +292,10 @@ class _Reg050State extends State<Reg050> {
                     // ),
 
                     child: TextFormField(
+                      ///GET FOCUS BY ONTAP
+                      onTap: (){
+                        print('ONTAP NAMA LENGKAP TEXTFIELD');
+                      },
                       controller: _textControllerNama,
                       onChanged: (String value) {
                         /// REGEX CHECKS IF FIELD HAS/CONTAINS SPACE
@@ -290,11 +303,11 @@ class _Reg050State extends State<Reg050> {
                           /// 1, BERARTI MINIMAL 1 HURUF SEBELUM SPASI
                           // if (_textControllerNama.text.indexOf(' ') >= 0) {/// 0, BERARTI IF HURUF PERTAMA ADLAAH SPASI
                           // print('Field contains space, $isNamaCorrect');///DISINI isNamaCorrect LANGSUNG TRUE WALAU DITULIS DI BAWAH
-                          isNamaCorrect = true;
-                          print('Field contains space, $isNamaCorrect');
+                          isTextFieldNamaCorrect = true;
+                          print('Field contains space, $isTextFieldNamaCorrect');
                         } else {
-                          isNamaCorrect = false;
-                          print('Field does not contain space, $isNamaCorrect');
+                          isTextFieldNamaCorrect = false;
+                          print('Field does not contain space, $isTextFieldNamaCorrect');
                         }
 
                         /// _progres BUKAN DI ONCHANGE
@@ -314,6 +327,10 @@ class _Reg050State extends State<Reg050> {
                         // _textControllerNama.text.isEmpty ?
                         //     print('nama is empty') :
                         // print('nama is correct');
+
+                        setState(() {
+
+                        });
                       },
                       cursorColor: Colors.black,
                       // keyboardType: inputType,
@@ -330,7 +347,7 @@ class _Reg050State extends State<Reg050> {
                             ? IconButton(
                                 onPressed: () {
                                   _textControllerNama.clear();
-                                  isNamaEmpty = true;
+                                  isTextFieldNamaEmpty = true;
                                   _progres = _progres - 1;
                                 },
                                 icon: Icon(Icons.clear),
@@ -417,60 +434,72 @@ class _Reg050State extends State<Reg050> {
               // ]),
 
               /// LABEL DAN TANGGAL EDIT DGN PENGESAHAN PENATAAN
-              tampilkanText
-                  ? Row(children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                        padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Masukkan data dengan benar',
-                          style: TextStyle(color: Colors.red, fontSize: 12),
-                        ),
-                      ),
-                    ])
-                  : Row(children: <Widget>[
-                      Container(
-                        margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                        padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Tanggal lahir',
-                          style: TextStyle(
-                              color: Colors.grey[400],
-                              fontSize: 12,
-                              fontFamily: 'Sans'),
-                        ),
-                      ),
-                    ]),
+              isTextFieldTanggalCorrect ?
+              // isTextMasukkanDataTanggalDgnBnrShowed ?
+              new Row(children: <Widget>[
+                Container(
+                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Tanggal lahir',
+                    style: TextStyle(
+                        color: Colors.grey[400],
+                        fontSize: 12,
+                        fontFamily: 'Sans'),
+                  ),
+                ),
+              ]) :
+              new Row(children: <Widget>[
+                Container(
+                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Masukkan data dengan benar',
+                    style: TextStyle(color: Colors.red, fontSize: 12),
+                  ),
+                ),
+              ]),
               // ]) : Container(),/// Container() HNY UTK NMPILIN SPACE KOSONG
               Row(children: <Widget>[
                 Expanded(
                   child: Focus(
                     onFocusChange: (punyaFokus) {
+                      isNamaFokus = false;
                       setState(() {
-                        fokus = punyaFokus;
-                        print('fokus di tanggal setstate = $fokus');
+                        isTanggalFokus = punyaFokus;
+                        print('fokus di tanggal setstate = $isTanggalFokus');
                       });
                     },
                     child: Container(
                       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                      decoration: tampilkanText
-                          ?
+                      decoration: isTanggalFokus ?
+                      boxDecorationJustOnFocus :
+                      (
+                          isTextFieldTanggalCorrect ?
+                          boxDecorationBenar :
+                          boxDecorationSalah
+                      ),
 
-                      ///ng bs
-                      BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.red[200],
-                          shape: BoxShape.rectangle)
-                          : BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.grey[200],
-                          shape: BoxShape.rectangle),
-                      //// WITH IMPORT
+                      // isTextMasukkanDataTanggalDgnBnrShowed
+                      //     ?
+                      //     ///ng bs
+                      //     BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.red[200],
+                      //         shape: BoxShape.rectangle)
+                      //     : BoxDecoration(
+                      //         borderRadius: BorderRadius.circular(10),
+                      //         color: Colors.grey[200],
+                      //         shape: BoxShape.rectangle),
+
                       // child: DateInputTextField(),
                       child: TextFormField(
+                        focusNode: FocusNode(///NG
+                          canRequestFocus: true
+                        ),
                         controller: _textControllerTanggal,
                         decoration: InputDecoration(
                           /// ng bs JIKA PERLU ERROR TEXT
@@ -484,21 +513,19 @@ class _Reg050State extends State<Reg050> {
                               backgroundColor: Colors.redAccent),
                           hintText: '01.01.1970',
                           hintStyle: TextStyle(color: Colors.grey),
-                          suffixIcon: tampilkanText
-                              ?
-
+                          suffixIcon:
+                          // isTextMasukkanDataTanggalDgnBnrShowed ?
+                          isTextFieldTanggalCorrect ?
+                          null :
                           ///ngbs
                           IconButton(
-                            onPressed: () {
-                              _textControllerTanggal.clear();
-                              isTanggalEmpty = true;
-                              _progres = _progres - 1;
-                            },
-
-                            ///ngbs
-                            icon: Icon(Icons.clear),
-                          )
-                              : null,
+                              onPressed: () {
+                                _textControllerTanggal.clear();
+                                _progres = _progres - 1;
+                                },
+                              ///ngbs
+                              icon: Icon(Icons.clear)
+                          ),
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -511,17 +538,28 @@ class _Reg050State extends State<Reg050> {
                         keyboardType: TextInputType.number,
                         inputFormatters: [DateTextFormatter()],
                         onChanged: (String value) {
-                          if (DateHelper.isValidDateBirth(value, 'dd/MM/yyyy')) {
+                          if (DateHelper.isValidDateBirth(
+                              value, 'dd/MM/yyyy')) {
+                            isTextFieldTanggalCorrect = true;/// TRUE;
+
                             _changed(false, "tag");
                             _progres = _progres + 1;
                             print('TANGGAL IS TRUE, progres = ' +
                                 _progres.toString());
-                          } else if (_textControllerTanggal.text.isEmpty) {
-                            isTanggalEmpty = true;
-                            _progres = _progres - 1;
-                            print('TANGGAL IS EMPTY, progres = ' +
-                                _progres.toString());
-                          } else {
+
+                          }
+                          // else if (_textControllerTanggal.text.isEmpty) {
+                          //   isTextFieldTanggalCorrect = false;
+                          //
+                          //   _changed(true, "tag");
+                          //   _progres = _progres - 1;
+                          //   print('TANGGAL IS EMPTY, progres = ' +
+                          //       _progres.toString());
+                          //
+                          // }
+                          else {
+                            isTextFieldTanggalCorrect = false;
+
                             _changed(true, "tag");
                             _progres = _progres - 1;
                             print('False');
@@ -540,7 +578,7 @@ class _Reg050State extends State<Reg050> {
                 ),
               ]),
 
-              /// LABEL DAN TEMPAT LAHIR EDIT
+              /// TEMPAT LAHIR LABEL DAN TEXTFIELD
               Row(children: <Widget>[
                 Container(
                   margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
@@ -559,64 +597,50 @@ class _Reg050State extends State<Reg050> {
                 Expanded(
                     child: Focus(
                   onFocusChange: (punyaFokus) {
+                    isTanggalFokus = false;
+                    isNamaFokus = false;
                     setState(() {
-                      isTempatLahirEmpty = punyaFokus;
+                      isTempatFokus = punyaFokus;
                     });
                   },
                   child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                     padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey[200],
-                        shape: BoxShape.rectangle),
+                    decoration: isTempatFokus ?
+                    boxDecorationJustOnFocus :
+                    (
+                        isTextFieldTempatLahirEmpty ?
+                        boxDecorationBenar :
+                        boxDecorationSalah
+                    ),
+
                     child: TextFormField(
                       controller: _textControllerTempat,
-                      decoration: isTempatLahirEmpty
-                          ? new InputDecoration(
-                              fillColor: Colors.yellowAccent,
-                              focusColor: Colors.yellowAccent,
-                              hintText: 'Masukkan tempat lahir',
-                              hintStyle: TextStyle(color: Colors.grey),
-                              suffixIcon: IconButton(
-                                onPressed: () => _textControllerTempat.clear(),
-                                icon: Icon(Icons.clear),
-                              ),
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                            )
-                          : (_textControllerTempat.text.isNotEmpty
-                              ? new InputDecoration(
-                                  fillColor: Colors.yellowAccent,
-                                  focusColor: Colors.yellowAccent,
-                                  hintText: 'Masukkan tempat lahir',
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  suffixIcon: IconButton(
-                                    onPressed: () =>
-                                        _textControllerTempat.clear(),
-                                    icon: Icon(Icons.clear),
-                                  ),
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                )
-                              : new InputDecoration(
-                                  fillColor: Colors.yellowAccent,
-                                  focusColor: Colors.yellowAccent,
-                                  hintText: 'Masukkan tempat lahir',
-                                  hintStyle: TextStyle(color: Colors.grey),
-                                  suffixIcon: null,
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                )),
+                      onChanged: (String value) {
+                        if (_textControllerTempat.text.length > 0) {
+                          isTextFieldTempatLahirEmpty = false;
+                        } else {
+                          isTextFieldTempatLahirEmpty = true;
+                        }
+                      },
+                      decoration: new InputDecoration(
+                        hintText: 'Masukkan tempat lahir',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        suffixIcon: isTempatFokus ?
+                        IconButton(
+                            onPressed: (){},
+                            icon: null) :
+                        IconButton(
+                            onPressed: () => _textControllerTempat.clear(),
+                            icon: Icon(Icons.clear)
+                        ),
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
+                      ),
+
                     ),
                   ),
                 )),
@@ -837,9 +861,9 @@ class _Reg050State extends State<Reg050> {
                       padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
                       decoration: isTextFieldNamaIbuCorrect
                           ? (_textControllerNamaIbu.text.isEmpty
-                              ? boxDecorationNamaBenarButEmpty
-                              : boxDecorationNamaBenar)
-                          : boxDecorationNamaSalah,
+                              ? boxDecorationJustOnFocus
+                              : boxDecorationBenar)
+                          : boxDecorationSalah,
                       // decoration: BoxDecoration(
                       //     borderRadius: BorderRadius.circular(10),
                       //     color: Colors.grey[200],
