@@ -3,9 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:voidrealm/models/appbar_model.dart';
 
-class SfulLinearprogressindicator extends StatefulWidget {
+class LPI extends StatefulWidget {
 
-  SfulLinearprogressindicator({
+  LPI({
     Key key,
 
     ///NG
@@ -22,12 +22,12 @@ class SfulLinearprogressindicator extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SfulLinearprogressindicatorState createState() =>
-      _SfulLinearprogressindicatorState();
+  _LPIState createState() =>
+      _LPIState();
 }
 
-class _SfulLinearprogressindicatorState
-    extends State<SfulLinearprogressindicator> with SingleTickerProviderStateMixin{
+class _LPIState
+    extends State<LPI> with SingleTickerProviderStateMixin{
   double progress;
 
   void _pressed(double p){
@@ -60,12 +60,15 @@ class _SfulLinearprogressindicatorState
       /// DURATION ITU KECEPATAN ANIMASI SLIDER
       duration: const Duration(seconds: 2),
       vsync: this);
-    animation = Tween(begin: beginAnim, end: endAnim).animate(controller)
+    animation = Tween(begin: progress, end: progress).animate(controller)
+    // animation = Tween(begin: beginAnim, end: endAnim).animate(controller)
+    // animation = Tween(begin: 0, end: progress == 0 ? 1 : progress).animate(controller)
       ..addListener(() {
         setState(() {
           // the state that has changed here is the animation object’s value
           // progress = 2;/// NG
           // progress += 1;/// NG
+
           controller.forward();///NG
 
           // if (isButtonpressed) {
@@ -89,22 +92,15 @@ class _SfulLinearprogressindicatorState
       color: Colors.white,
       child: Column(
           children: <Widget>[
-            Container(
-              height: 200,
-            ),
-            Text(
-                '$progress terisi',
-              style: TextStyle(
-                fontSize: 12
-              ),
-            ),
+            Container(height: 200),
+            Text('$progress terisi',
+                style: TextStyle(
+                fontSize: 12)),
             RaisedButton(onPressed: (){
               progress += 1;
               _pressed(progress);
             }),
-            Container(
-              height: 200,
-            ),
+            Container(height: 200),
             LinearProgressIndicator(
               /// NG
               // semanticsValue: ((){
@@ -115,11 +111,12 @@ class _SfulLinearprogressindicatorState
               //   'Semantics label '+appbarModel.length.toString();
               // }()),
               semanticsValue: progress.toString(),
+              semanticsLabel: progress.toString(),
               backgroundColor: Colors.cyanAccent,
               valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
               // value: list[2].toDouble(),
-              value: animation.value,
-              // value: progress,
+              // value: animation.value,
+              value: progress,
             ),
           ]
       ),

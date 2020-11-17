@@ -3,7 +3,8 @@ import 'package:voidrealm/appbars/j_login040_appbar.dart';
 import 'package:voidrealm/appbars/j_login040_body.dart';
 import 'package:voidrealm/appbars/appbar_progress.dart';
 import 'package:voidrealm/appbars/custombar.dart';
-import 'package:voidrealm/appbars/progress/progress_indicator1.dart';
+import 'package:voidrealm/appbars/progress/lpi_vr.dart';
+import 'package:voidrealm/appbars/progress/sles_progress_indicator1.dart';
 import 'package:voidrealm/appbars/progress/sful_linearprogressindicator.dart';
 import 'package:voidrealm/apps/home/home.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
@@ -43,7 +44,7 @@ import 'dropdownbuttons/j_dropdown1.dart';
 
 void main() => runApp(new MyApp());
 
-class MyApp extends StatefulWidget {///STATEFUL WONT CHANGE
+class MyApp extends StatefulWidget {///A STATEFUL WONT CHANGE
 
   _Statenya createState() => new _Statenya();
 }
@@ -56,7 +57,8 @@ class _Statenya extends State<MyApp> {
       // home: Splash(),
 
       /// PROGRESS INDICATOR
-      home: SfulLinearprogressindicator(),
+      home: LpiVr(),
+      // home: LPI(),
       // home: ProgressIndicator1(),
 
       /// WELCOME & PERMISSION REQUEST
