@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TextMasukkanDataDgnBnr extends StatefulWidget {
+class FalseTextMasukkanDataDgnBnr extends StatefulWidget {
 
-  TextMasukkanDataDgnBnr({Key key}) : super(key: key);
+  FalseTextMasukkanDataDgnBnr({Key key}) : super(key: key);
 
   @override
-  _TextMasukkanDataDgnBnrState createState() => _TextMasukkanDataDgnBnrState();
+  _FalseTextMasukkanDataDgnBnrState createState() => _FalseTextMasukkanDataDgnBnrState();
 }
 
-class _TextMasukkanDataDgnBnrState extends State<TextMasukkanDataDgnBnr> {
+class _FalseTextMasukkanDataDgnBnrState extends State<FalseTextMasukkanDataDgnBnr> {
   @override
   Widget build(BuildContext context) {
     return new Row(children: <Widget>[

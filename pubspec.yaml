@@ -50,6 +50,7 @@ dependencies:
   flutter_conditional_rendering: 1.1.1
   permission_handler: ^5.0.1+1
   provider: ^4.3.2+2
+  fluttertoast: ^7.1.1
 
 dev_dependencies:
   flutter_test:

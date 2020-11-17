@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TextNamaLengkap extends StatefulWidget {
+class TextTempatLahir extends StatefulWidget {
 
-  TextNamaLengkap({Key key}) : super(key: key);
+  TextTempatLahir({Key key}) : super(key: key);
 
   @override
-  _TextNamaLengkapState createState() => _TextNamaLengkapState();
+  _TextTempatLahirState createState() => _TextTempatLahirState();
 }
 
-class _TextNamaLengkapState extends State<TextNamaLengkap> {
+class _TextTempatLahirState extends State<TextTempatLahir> {
   @override
   Widget build(BuildContext context) {
     return new Row(children: <Widget>[
@@ -16,7 +16,7 @@ class _TextNamaLengkapState extends State<TextNamaLengkap> {
         margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
         padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
         alignment: Alignment.topLeft,
-        child: Text('Nama lengkap sesuai KTP',
+        child: Text('Tempat lahir',
           style: TextStyle(color: Colors.grey[400], fontSize: 12, fontFamily: 'Sans'),
         )),
     ]);
