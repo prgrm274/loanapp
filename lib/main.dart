@@ -57,7 +57,7 @@ class _Statenya extends State<MyApp> {
       // home: Splash(),
 
       /// PROGRESS INDICATOR
-      home: LpiVr(),
+      // home: LpiVr(),///bs
       // home: LPI(),
       // home: ProgressIndicator1(),
 
@@ -68,7 +68,7 @@ class _Statenya extends State<MyApp> {
       // body: Login040Body(),
 
       /// 050
-      // body: Reg050(),
+      home: Reg050(),
 
       /// 060
       // home: Reg060(),

@@ -28,15 +28,17 @@ class _Reg050State extends State<Reg050> {
   void initState() {
     emailFocusNode = FocusNode();
 
-    if (isNamaCorrect & isTempatLahirCorrect) {
-      _progres = _namaLengkap + _tempatLahir;
-    }
+    // if (isNamaCorrect & isTempatLahirCorrect) {/// CB
+    //   _progres = _dNamalengkap + _tempatLahir;
+    // }
 
-    if (isNamaCorrect) {
-      progress += 1;
-    } else if (isTempatLahirCorrect) {
-      progress += 1;
-    }
+    // if (isNamaCorrect) {
+    //   progress += 1;
+    // } else if (isTempatLahirCorrect) {
+    //   progress += 1;
+    // }
+
+
 
     super.initState();
   }
@@ -115,10 +117,23 @@ class _Reg050State extends State<Reg050> {
   /// PROGRESS JANGAN DITARUH DI ONCHANGE KARENA ONCHANGE DYNAMIC
   /// JADI INPUT TANGGAL GA SAMPAI SELESAI, SAMPE BENAR TIAP ANGKA AKAN
   /// MEMBUAT PROGRESS DI MIN 1
-  static double _progres;
-  static double progress = 0;
+  // static double _progres;
+  // static double progress = 0;
+  double _value = 0;
+  double _valueTotal;
 
-  double _namaLengkap;
+  /// THIS IS ORIGINALLY USED FOR SLIDER IN onChanged SECTION
+  void _onChanged(double d) {
+    setState(() {
+      _value = d;
+    });
+  }
+
+  double _setDoubleNama(){
+    isNamaCorrect ? 1 : 0;
+  }
+
+  double _dNamalengkap = 0;
   double _tanggalLahir = 0;
   double _tempatLahir;
   double _jenisKelamin = 0;
@@ -127,10 +142,12 @@ class _Reg050State extends State<Reg050> {
   double _pendidikanTerakhir = 0;
   double _email = 0;
 
-  get getNamaLengkap => _namaLengkap;
+  get getNamaLengkap => _dNamalengkap;
 
   @override
   Widget build(BuildContext context) {
+    _valueTotal = _value + _dNamalengkap + 0;
+
     return MaterialApp(
       // home: Material(
       home: Scaffold(
@@ -146,14 +163,17 @@ class _Reg050State extends State<Reg050> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    '$progress terisi $_progres\n',
+                    '$_value terisi, total = $_valueTotal\n',
+                    // '$$progress terisi $_progres\n',
                     // '$_progres terisi\n',
                     style: TextStyle(fontSize: 12, color: Colors.grey),
                   ),
                   LinearProgressIndicator(
                     backgroundColor: Colors.cyanAccent,
                     valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                    value: progress,
+                    value: _valueTotal * .1,
+                    // value: _value * .1,
+                    // value: progress,
                     // value: _progres,
                   )
                 ]),
@@ -253,6 +273,13 @@ class _Reg050State extends State<Reg050> {
                           isNamaFokus = punyaFokus;
                           print('onFocusChange setState NAMA = $isNamaFokus');
                           // isNamaCorrect = punyaFokus;
+
+                          if (isNamaCorrect) {
+                            _dNamalengkap = 1;
+                          } else {
+                            _dNamalengkap = -1;
+                          }
+
                         });
 
                       /// GET FOCUS THEN SET _progres
@@ -267,7 +294,7 @@ class _Reg050State extends State<Reg050> {
                       //   print('fokus di nama = $fokus');
                       // }
                   },
-                  child: Container(
+                      child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                     padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
                     decoration: isNamaFokus ?
@@ -333,7 +360,7 @@ class _Reg050State extends State<Reg050> {
 
                           // isNamaFokus ? isNamaCorrect = false : isNamaCorrect = true;
                           isNamaCorrect = true;
-                          _namaLengkap = 1;
+                          _dNamalengkap = 1;
                           print('Field contains space, $isNamaCorrect');
                         } else {
                           // isNamaFokus ? isNamaCorrect = true : isNamaCorrect = false;
@@ -371,9 +398,7 @@ class _Reg050State extends State<Reg050> {
 
                         /// NG
                         /// X MUNCUL HANYA JIKA
-                        /// NOT EMPTY
-                        /// DAN
-                        /// LOST FOCUS
+                        /// NOT EMPTY DAN LOST FOCUS
                         suffixIcon: _textControllerNama.text.isNotEmpty
                             ? IconButton(
                                 onPressed: () {
@@ -543,7 +568,7 @@ class _Reg050State extends State<Reg050> {
                           IconButton(
                               onPressed: () {
                                 _textControllerTanggal.clear();
-                                _progres = _progres - 1;
+                                // _progres = _progres - 1;
                                 },
                               ///ngbs
                               icon: Icon(Icons.clear)
@@ -565,9 +590,8 @@ class _Reg050State extends State<Reg050> {
                             isTanggalCorrect = true;/// TRUE;
 
                             _changed(false, "tag");
-                            _progres = _progres + 1;
-                            print('TANGGAL IS TRUE, progres = ' +
-                                _progres.toString());
+                            // _progres = _progres + 1;
+                            // print('TANGGAL IS TRUE, progres = ' +_progres.toString());
 
                           }
                           // else if (_textControllerTanggal.text.isEmpty) {
@@ -583,10 +607,9 @@ class _Reg050State extends State<Reg050> {
                             isTanggalCorrect = false;
 
                             _changed(true, "tag");
-                            _progres = _progres - 1;
+                            // _progres = _progres - 1;
                             print('False');
-                            print('TANGGAL IS TRUE, progres = ' +
-                                _progres.toString());
+                            // print('TANGGAL IS TRUE, progres = ' +_progres.toString());
                           }
 
                           setState(() {
