@@ -18,7 +18,7 @@ class _TextMasukkanDataDgnBnrState extends State<TextMasukkanDataDgnBnr> {
         alignment: Alignment.topLeft,
         child: Text(
           'Masukkan data dengan benar',
-          style: TextStyle(color: Colors.red, fontSize: 12),
+          style: TextStyle(color: Colors.red, fontSize: 12, fontFamily: 'Sans'),
         ),
       ),
     ]);

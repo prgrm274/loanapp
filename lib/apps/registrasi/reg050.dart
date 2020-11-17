@@ -6,6 +6,7 @@ import 'package:voidrealm/apps/registrasi/reg060.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1_noscaffold_jmlanak.dart';
+import 'package:voidrealm/errors/t_nama_lengkap_sesuai_ktp.dart';
 import 'package:voidrealm/errors/text_masukkan_data_dgn_bnr.dart';
 import 'package:voidrealm/radios/j_radio_custom.dart';
 import 'package:voidrealm/regexes/alphanumeric.dart';
@@ -37,8 +38,6 @@ class _Reg050State extends State<Reg050> {
     // } else if (isTempatLahirCorrect) {
     //   progress += 1;
     // }
-
-
 
     super.initState();
   }
@@ -75,15 +74,17 @@ class _Reg050State extends State<Reg050> {
       isTanggalFokus = false,
       isTempatFokus = false,
       isNamaIbuFokus = false,
-      isEmailFokus = false
-  ;
+      isEmailFokus = false;
 
   bool isNamaCorrect = false, isTextFieldNamaEmpty = false;
   bool isTanggalCorrect = false;//, isTextFieldTanggalEmpty = false;
   /// TEMPAT LAHIR TIDAK ADA VALIDASI
-  bool isTempatLahirCorrect = false;
-  bool isNamaIbuCorrect = false, isNamaIbuEmpty = false;
-  bool isEmailCorrect = false, isTextFieldEmailEmpty = false;
+  bool isTempatLahirCorrect = false, isNamaIbuCorrect = false, isNamaIbuEmpty = false,
+      isEmailCorrect = false, isTextFieldEmailEmpty = false;
+
+  /// IS onTap CUKUP DIGUNAKAN 1X
+  bool isOnTappedNama = false, isOnTappedTanggal = false;
+
 
   /// VARIABEL UNTUK KONDISI TEXT FIELD
   final boxDecorationBenar = BoxDecoration(
@@ -113,6 +114,10 @@ class _Reg050State extends State<Reg050> {
       borderRadius: BorderRadius.circular(10),
       color: Colors.white,
       shape: BoxShape.rectangle);
+  final boxDecorationDefault = BoxDecoration(
+      borderRadius: BorderRadius.circular(10),
+      color: Colors.grey[200],
+      shape: BoxShape.rectangle);
 
   /// PROGRESS JANGAN DITARUH DI ONCHANGE KARENA ONCHANGE DYNAMIC
   /// JADI INPUT TANGGAL GA SAMPAI SELESAI, SAMPE BENAR TIAP ANGKA AKAN
@@ -133,14 +138,8 @@ class _Reg050State extends State<Reg050> {
     isNamaCorrect ? 1 : 0;
   }
 
-  double _dNamalengkap = 0;
-  double _tanggalLahir = 0;
-  double _tempatLahir;
-  double _jenisKelamin = 0;
-  double _jumlahAnak = 0;
-  double _namaIbu = 0;
-  double _pendidikanTerakhir = 0;
-  double _email = 0;
+  double _dNamalengkap = 0, _tanggalLahir = 0, _tempatLahir, _jenisKelamin = 0,
+      _jumlahAnak = 0, _namaIbu = 0, _pendidikanTerakhir = 0, _email = 0;
 
   get getNamaLengkap => _dNamalengkap;
 
@@ -233,38 +232,14 @@ class _Reg050State extends State<Reg050> {
               // Appbar050(),
 
               /// LABEL DAN NAMA KTP EDIT
-              isNamaCorrect ?
-              (isNamaFokus ?
-              new Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Nama lengkap sesuai KTP',
-                    style: TextStyle(
-                        color: Colors.grey[400],
-                        fontSize: 12,
-                        fontFamily: 'Sans'),
-                  ),
-                )
-              ])
-                  : TextMasukkanDataDgnBnr())
-                  :
-              new Row(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Nama lengkap sesuai KTP',
-                    style: TextStyle(
-                        color: Colors.grey[400],
-                        fontSize: 12,
-                        fontFamily: 'Sans'),
-                  ),
-                )
-              ]),
+              isOnTappedNama ?
+              (isNamaFokus ? TextNamaLengkap() :
+              (isNamaCorrect ? TextNamaLengkap() : TextMasukkanDataDgnBnr()
+              )
+              ) : TextNamaLengkap(),
+              // isNamaCorrect ? TextNamaLengkap() : TextMasukkanDataDgnBnr(),
+              // isNamaCorrect ? (isNamaFokus ? TextNamaLengkap() : TextMasukkanDataDgnBnr()) : TextNamaLengkap(),
+
               Row(children: <Widget>[
                 Expanded(
                     child: Focus(
@@ -279,7 +254,6 @@ class _Reg050State extends State<Reg050> {
                           } else {
                             _dNamalengkap = -1;
                           }
-
                         });
 
                       /// GET FOCUS THEN SET _progres
@@ -297,20 +271,18 @@ class _Reg050State extends State<Reg050> {
                       child: Container(
                     margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                     padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                    decoration: isNamaFokus ?
-                    // decoration: isNamaCorrect ?
-                        // (_textControllerNama.text.isEmpty
-                        //     ? boxDecorationJustOnFocus
-                        //     : boxDecorationNamaBenar)
-                        // : boxDecorationNamaSalah,
+                    decoration:
+                    // isOnTappedNama ? boxDecorationJustOnFocus : boxDecorationDefault,/// WITHOUT CORRECT OR NOT
+                    isOnTappedNama ?
+                    (isNamaCorrect ? boxDecorationBenar : boxDecorationSalah) :
+                    boxDecorationDefault,
 
-                    boxDecorationJustOnFocus : //null,
-                    (
-                        isNamaCorrect ?
-                        boxDecorationBenar :
-                        boxDecorationSalah
-                    ),
+                    /// PREVIOUS CONDITIONS
+                    // isNamaFokus ?
+                    // boxDecorationJustOnFocus : //null,
+                    // (isNamaCorrect ? boxDecorationBenar : boxDecorationSalah),
 
+                    /// PREVIOUS CONDITIONS
                     // isNamaEmpty
                     // ?
                     // boxDecorationNamaBenar
@@ -346,6 +318,8 @@ class _Reg050State extends State<Reg050> {
                     child: TextFormField(
                       ///GET FOCUS BY ONTAP
                       onTap: (){
+                        isOnTappedNama = true;
+
                         // isNamaFokus = true;
                         // isTempatFokus = false;
                         print('onTap NAMA LENGKAP');
@@ -361,11 +335,9 @@ class _Reg050State extends State<Reg050> {
                           // isNamaFokus ? isNamaCorrect = false : isNamaCorrect = true;
                           isNamaCorrect = true;
                           _dNamalengkap = 1;
-                          print('Field contains space, $isNamaCorrect');
                         } else {
                           // isNamaFokus ? isNamaCorrect = true : isNamaCorrect = false;
                           isNamaCorrect = false;
-                          print('Field does not contain space, $isNamaCorrect');
                         }
 
                         /// _progres BUKAN DI ONCHANGE
@@ -386,9 +358,9 @@ class _Reg050State extends State<Reg050> {
                         //     print('nama is empty') :
                         // print('nama is correct');
 
-                        setState(() {
+                        setState(() {});
 
-                        });
+                        print('onChange isNamaCorrect = $isNamaCorrect');
                       },
                       cursorColor: Colors.black,
                       // keyboardType: inputType,
@@ -521,7 +493,7 @@ class _Reg050State extends State<Reg050> {
                     child: Container(
                       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                      decoration: boxDecorationBenar,
+                      decoration: boxDecorationDefault,
                       // decoration: isTanggalFokus ?
                       // boxDecorationJustOnFocus :
                       // (
@@ -544,6 +516,9 @@ class _Reg050State extends State<Reg050> {
 
                       // child: DateInputTextField(),
                       child: TextFormField(
+                        onTap: (){
+                          isOnTappedTanggal = true;
+                        },
                         focusNode: FocusNode(///NG
                           canRequestFocus: true
                         ),
