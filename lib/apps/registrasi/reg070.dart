@@ -70,7 +70,8 @@ class _Reg070State extends State<Reg070> {
       borderRadius: BorderRadius.circular(10),
       color: Colors.white,
       shape: BoxShape.rectangle);
-
+  final boxDecorationDefault = BoxDecoration(borderRadius: BorderRadius.circular(10),
+      color: Colors.grey[200], shape: BoxShape.rectangle);
   void _cekNama(bool benar, String text) {
     setState(() {
       if (Regex1.checkAlphabet(text)) {
@@ -120,7 +121,7 @@ class _Reg070State extends State<Reg070> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      '$progress terisi\n',
+                      '${progress.round()}% terisi\n',
                       // '$_progres terisi\n',
                       style: TextStyle(fontSize: 12, color: Colors.grey),
                     ),
@@ -381,7 +382,7 @@ class _Reg070State extends State<Reg070> {
                     child: Container(
                       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                      decoration: boxDecorationPerusahaanBenar,
+                      decoration: boxDecorationDefault,
                       // isPosisiPerusahaanFokus ?
                       //     boxDecorationPerusahaanJustOnFocus :
                       // (

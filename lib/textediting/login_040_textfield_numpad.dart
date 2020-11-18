@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_grid_button/flutter_grid_button.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:voidrealm/numpads/flutter_numpad_widget_example.dart';
 import 'package:voidrealm/numpads/custom_numpad2.dart';
@@ -171,11 +172,41 @@ class _Login040State extends State<Login040> {
                 ),
               ),
 
+              /// before
               /// NUMPAD
-              Container(
-                height: 200,
-                // child: CustomNumpad2(),
-                child: FlutterNumpadWidgetExample(),
+              // Container(
+              //   height: 200,
+              //   // child: CustomNumpad2(),
+              //   child: FlutterNumpadWidgetExample())
+
+              Flexible(
+                child: Container(
+                  color: Colors.green,
+                  child: GridButton(
+                      hideSurroundingBorder: true,
+                      items: [
+                        [
+                          GridButtonItem(title: '1'),
+                          GridButtonItem(title: '2', child: Text('Text 2')),
+                          GridButtonItem(title: '3', flex: 2),
+                        ],
+                        [
+                          GridButtonItem(title: '4'),
+                          GridButtonItem(
+                              title: '5',
+                              child: Text('Text 5')),
+                          GridButtonItem(title: '6', flex: 2),
+                        ],
+                        [
+                          GridButtonItem(title: '7', value: '100', longPressValue: 'long'),
+                          GridButtonItem(
+                              title: '8',
+                              color: Colors.deepPurple,
+                              child: Text('Text 8')),
+                          GridButtonItem(title: '9', flex: 4),
+                        ],
+                      ]),
+                ),
               )
             ],
           ),

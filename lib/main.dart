@@ -28,6 +28,7 @@ import 'package:voidrealm/images/j_image1.dart';
 import 'package:voidrealm/login.dart';
 import 'package:voidrealm/numpads/custom_numpad2.dart';
 import 'package:voidrealm/numpads/custom_numpad3.dart';
+import 'package:voidrealm/numpads/gridbuttons/grid_button1.dart';
 import 'package:voidrealm/settings.dart';
 import 'package:voidrealm/numpads/numpad1.dart';
 import 'package:voidrealm/sliders/dfix/jslider7.dart';
@@ -62,22 +63,19 @@ class _Statenya extends State<MyApp> {
       // home: ProgressIndicator1(),
 
       /// WELCOME & PERMISSION REQUEST
-      // body: PermissionRequest(),
+      // home: PermissionRequest(),
 
       /// 040 BODY
-      // body: Login040Body(),
+      home: Login040Body(),
 
       /// 050
-      home: Reg050(),
-
+      // home: Reg050(),
       /// 060
       // home: Reg060(),
-
       /// 070
       // home: Reg070(),
-
       /// 080
-      // body: Reg080(),
+      // home: Reg080(),
 
       /// VISIBILITY
       // body: ControlleApp(),
@@ -85,9 +83,11 @@ class _Statenya extends State<MyApp> {
       /// GRADIENTS
       // body: Gradient2(),
 
-      // body: Numpad1(),
-      // body: WidgetCustomKeyboard(),
-      // body: JCustomNumpad(),
+      // home: GridButton1(),/// BS
+      // home: Numpad1(),
+      // home: CustomNumpad2(),
+      // home: WidgetCustomKeyboard(),
+      // home: JCustomNumpad(),
 
       /// SLIDERS
       // body: Slider6(),/// emoji

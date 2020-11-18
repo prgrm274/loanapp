@@ -104,19 +104,89 @@ class _Reg060State extends State<Reg060> {
     dbHelp.db;
   }
 
+  double _value = 0, _valueTotal;
+
+  /// THIS IS ORIGINALLY USED FOR SLIDER IN onChanged SECTION
+  void _onChanged(double d) {
+    setState(() {
+      _value = d;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    _valueTotal = _value + 0 + 0;
+
     int _cobaVar = 0;
 
     /// KELAS DBHelper
     // dbHelper.initDB();/// NG SINI BS
 
-
     return MaterialApp(
       home: Material(
         child: Scaffold(
-          appBar: AppbarProgress(),
+          // appBar: AppbarProgress(),
+          appBar: AppBar(
+              backgroundColor: Colors.white,
+              //automaticallyImplyLeading: true
+              elevation: 0.0, // for elevation
+              titleSpacing: 0.0,
+              // if you want remove title spacing with back button
+              title: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('${_valueTotal.round()}% terisi\n',
+                        // Text('$_value terisi, total = $_valueTotal\n',
+                        // '$$progress terisi $_progres\n',
+                        // '$_progres terisi\n',
+                        style: TextStyle(fontSize: 12, color: Colors.grey)),
+                    LinearProgressIndicator(
+                      backgroundColor: Colors.cyanAccent,
+                      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                      value: _valueTotal * .1,
+                      // value: _value * .1,
+                      // value: progress,
+                      // value: _progres,
+                    ),
+                  ]),
+              // title: new SfulLinearprogressindicator(),
+              // title: new ProgressIndicator1(),
+              // title: Text('Custom Appbar'),
+              // title:  UtilCommonWidget.addTextMedium('About US', Colors.white, 20.0, 1),
+              actions: <Widget>[
+                new Container(
+                    padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
+                    child: Image(
+                        image: AssetImage('lib/assets/chat_bubble_cyan.png'))
+                  // child: Icon(Icons.message)
+                ),
+                // addAppBarActionWidgetProfile(icon, 30.0, 30.0, 15.0) // add your custom action widget
+              ],
+              //Action icon search as search icon, notification icon
+              leading: new Material(
+                /// BACK NAVIGATION ICON
+                /// Custom leading icon, such as back navigation icon or other
+                /// warna kotaknya navigation icon
+                color: Colors.white,
+                child: new InkWell(
+                  onTap: () {
+                    Navigator.of(context).pop();
+
+                    // Navigator.pop(context);// 2020
+                  },
+                  splashColor: Colors.red,
+                  // splashColor: UniQueryColors.colorGradientEnd.withOpacity(.5),
+                  child: new Container(/// kotaknya navigation icon
+                    // color: Colors.red,
+                      padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
+                      child: Image(
+                          image: AssetImage('lib/assets/grey_arrow_white.png'))
+                    // child: Icon(Icons.arrow_back_rounded)
+                    // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
+                  ),
+                ),
+              )
+          ),
           body: SingleChildScrollView(/// SOLUSI UNTUK SUPAYA BISA MUAT BERAPA PUN WIDGET
             // padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
             child: Container(

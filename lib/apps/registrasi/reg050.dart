@@ -148,7 +148,8 @@ class _Reg050State extends State<Reg050> {
             title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('$_value terisi, total = $_valueTotal\n',
+                  Text('${_valueTotal.round()}% terisi\n',
+                  // Text('$_value terisi, total = $_valueTotal\n',
                     // '$$progress terisi $_progres\n',
                     // '$_progres terisi\n',
                     style: TextStyle(fontSize: 12, color: Colors.grey)),
@@ -197,7 +198,8 @@ class _Reg050State extends State<Reg050> {
                     // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
                 ),
               ),
-            )),
+            )
+        ),
         // appBar: AppbarProgress(
         //   namaLengkap: _textControllerNama.text,
         // ),
@@ -253,8 +255,8 @@ class _Reg050State extends State<Reg050> {
                   isNamaCorrect = false;
                 }
 
-              /// GET FOCUS THEN SET _progres
-              // if (fokus = true) {
+                /// GET FOCUS THEN SET _progres
+                // if (fokus = true) {
               //   print('fokus di nama = $fokus');
               //   if (isNamaCorrect == true) {
               //     _progres = _progres + 1;
@@ -264,158 +266,160 @@ class _Reg050State extends State<Reg050> {
               // } else {
               //   print('fokus di nama = $fokus');
               // }
-              },
-              child: Container(
-                margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                decoration: isOnTappedNama ?
-                (isNamaFokus ? boxDecorationFocus :
-                (isNamaCorrect ? boxDecorationBenar : boxDecorationSalah)) :
-                boxDecorationDefault,
 
-                // isOnTappedNama ? boxDecorationJustOnFocus : boxDecorationDefault,/// WITHOUT CORRECT OR NOT
-                // isOnTappedNama ?
-                // (isNamaCorrect ? boxDecorationBenar : boxDecorationSalah) :
-                // boxDecorationDefault,
+                },
 
-                /// PREVIOUS CONDITIONS
-                // isNamaFokus ?
-                // boxDecorationJustOnFocus : //null,
-                // (isNamaCorrect ? boxDecorationBenar : boxDecorationSalah),
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                  padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                  decoration: isOnTappedNama ?
+                  (isNamaFokus ? boxDecorationFocus :
+                  (isNamaCorrect ? boxDecorationBenar : boxDecorationSalah)) :
+                  boxDecorationDefault,
 
-                /// PREVIOUS CONDITIONS
-                // isNamaEmpty
-                // ?
-                // boxDecorationNamaBenar
-                // :
-                // boxDecorationNamaSalah,
+                  // isOnTappedNama ? boxDecorationJustOnFocus : boxDecorationDefault,/// WITHOUT CORRECT OR NOT
+                  // isOnTappedNama ?
+                  // (isNamaCorrect ? boxDecorationBenar : boxDecorationSalah) :
+                  // boxDecorationDefault,
 
-                // (
-                //     // (
-                //         _textControllerNama.text.isNotEmpty
-                //         // && _textControllerNama.text == 'a'
-                //     // )
-                //         ?
-                //     BoxDecoration(
-                //         borderRadius: BorderRadius.circular(10),
-                //         color: Colors.grey[200],
-                //         shape: BoxShape.rectangle) :
-                //         (){ print('False'); }
-                // ),
+                  /// PREVIOUS CONDITIONS
+                  // isNamaFokus ?
+                  // boxDecorationJustOnFocus : //null,
+                  // (isNamaCorrect ? boxDecorationBenar : boxDecorationSalah),
 
-                // (
-                //     Regex1.checkAlphabet(_textControllerNama.text) ?
-                // BoxDecoration(
-                //     borderRadius: BorderRadius.circular(10),
-                //     color: Colors.grey[200],
-                //     shape: BoxShape.rectangle)
-                //     :
-                //   BoxDecoration(
-                //       borderRadius: BorderRadius.circular(10),
-                //       color: Colors.red[200],
-                //       shape: BoxShape.rectangle)
-                // ),
+                  /// PREVIOUS CONDITIONS
+                  // isNamaEmpty
+                  // ?
+                  // boxDecorationNamaBenar
+                  // :
+                  // boxDecorationNamaSalah,
 
-                child: TextFormField(
-                  onChanged: (String value) {
+                  // (
+                  //     // (
+                  //         _textControllerNama.text.isNotEmpty
+                  //         // && _textControllerNama.text == 'a'
+                  //     // )
+                  //         ?
+                  //     BoxDecoration(
+                  //         borderRadius: BorderRadius.circular(10),
+                  //         color: Colors.grey[200],
+                  //         shape: BoxShape.rectangle) :
+                  //         (){ print('False'); }
+                  // ),
+
+                  // (
+                  //     Regex1.checkAlphabet(_textControllerNama.text) ?
+                  // BoxDecoration(
+                  //     borderRadius: BorderRadius.circular(10),
+                  //     color: Colors.grey[200],
+                  //     shape: BoxShape.rectangle)
+                  //     :
+                  //   BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(10),
+                  //       color: Colors.red[200],
+                  //       shape: BoxShape.rectangle)
+                  // ),
+
+                  child: TextFormField(
+                    onChanged: (String value) {
 
 
-                    /// _progres BUKAN DI ONCHANGE
-                    // if (_textControllerNama.text.isNotEmpty) {
-                    //   _progres = _progres + 1;
-                    //   print('text name is not empty, progres = '+_progres.toString());
-                    // } else {
-                    //   isNamaEmpty = true;
-                    //   _progres = _progres - 1;
-                    //   print('text name is empty, progres = '+_progres.toString());
-                    // }
+                      /// _progres BUKAN DI ONCHANGE
+                      // if (_textControllerNama.text.isNotEmpty) {
+                      //   _progres = _progres + 1;
+                      //   print('text name is not empty, progres = '+_progres.toString());
+                      // } else {
+                      //   isNamaEmpty = true;
+                      //   _progres = _progres - 1;
+                      //   print('text name is empty, progres = '+_progres.toString());
+                      // }
 
-                    // _textControllerNama.text.isEmpty ?
-                    //     isNamaEmpty : !isNamaEmpty;
+                      // _textControllerNama.text.isEmpty ?
+                      //     isNamaEmpty : !isNamaEmpty;
 
-                    /// NG V
-                    // _textControllerNama.text.isEmpty ?
-                    //     print('nama is empty') :
-                    // print('nama is correct');
+                      /// NG V
+                      // _textControllerNama.text.isEmpty ?
+                      //     print('nama is empty') :
+                      // print('nama is correct');
 
-                    setState(() {});
-                    print('onChange isNamaCorrect = $isNamaCorrect');
-                  },
-                  ///GET FOCUS BY ONTAP
-                  onTap: (){
-                    isOnTappedNama = true;
-                    print('onTap NAMA LENGKAP');
+                      setState(() {});
+                      print('onChange isNamaCorrect = $isNamaCorrect');
+                    },
+                    ///GET FOCUS BY ONTAP
+                    onTap: (){
+                      isOnTappedNama = true;
+                      print('onTap NAMA LENGKAP');
 
-                    Fluttertoast.showToast(
-                        msg: 'onTap NAMA LENGKAP',
-                        toastLength: Toast.LENGTH_LONG,
-                        gravity: ToastGravity.TOP,
-                        backgroundColor: Colors.red,
-                        textColor: Colors.white,
-                        fontSize: 16.0);
+                      Fluttertoast.showToast(
+                          msg: 'onTap NAMA LENGKAP',
+                          toastLength: Toast.LENGTH_LONG,
+                          gravity: ToastGravity.TOP,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
 
-                    // isNamaFokus = true;
-                    // isTempatFokus = false;
-                  },
-                  controller: _textControllerNama,
-                  cursorColor: Colors.black,
-                  // keyboardType: inputType,
-                  decoration: InputDecoration(
-                    hintText: 'Dian Permata Fransiska',
-                    hintStyle: TextStyle(color: Colors.grey[400]),
+                      // isNamaFokus = true;
+                      // isTempatFokus = false;
+                    },
+                    controller: _textControllerNama,
+                    cursorColor: Colors.black,
+                    // keyboardType: inputType,
+                    decoration: InputDecoration(
+                      hintText: 'Dian Permata Fransiska',
+                      hintStyle: TextStyle(color: Colors.grey[400]),
 
-                    /// NG
-                    /// x MUNCUL HANYA JIKA
-                    /// NOT EMPTY DAN LOST FOCUS
-                    suffixIcon: _textControllerNama.text.isNotEmpty ?
-                    IconButton(
-                      onPressed: () {
-                        _textControllerNama.clear();
-                        isNamaEmpty = true;
-                        isNamaCorrect = false;
-                        },
-                      icon: Icon(Icons.clear)) :
-                    null,
+                      /// NG
+                      /// x MUNCUL HANYA JIKA
+                      /// NOT EMPTY DAN LOST FOCUS
+                      suffixIcon: _textControllerNama.text.isNotEmpty ?
+                      IconButton(
+                        onPressed: () {
+                          _textControllerNama.clear();
+                          isNamaEmpty = true;
+                          isNamaCorrect = false;
+                          },
+                        icon: Icon(Icons.clear)) :
+                      null,
 
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    errorBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none,
+                    ),
                   ),
-                ),
 
-                      /// TEXTFIELD NAMA LENGKAP
-                      // child: TextField(
-                      //   controller: _textControllerNama,
-                      //   onChanged: (String value) {
-                      //     if (_textControllerNama.text.isNotEmpty) {
-                      //       print('text name is not empty');
-                      //     } else {
-                      //       isNamaEmpty = true;
-                      //       print('text name is empty');
-                      //     }
-                      //
-                      //     // _textControllerNama.text.isEmpty ?
-                      //     //     isNamaEmpty : !isNamaEmpty;
-                      //
-                      //     /// ngbs
-                      //     // _textControllerNama.text.isEmpty ?
-                      //     //     print('nama is empty') :
-                      //     // print('nama is correct');
-                      //   },
-                      //   decoration: InputDecoration(
-                      //     hintText: 'Dian Permata Fransiska',
-                      //     hintStyle: TextStyle(color: Colors.grey),
-                      //     suffixIcon: _textControllerNama.text.isNotEmpty
-                      //         ? IconButton(
-                      //       onPressed: () => _textControllerNama.clear(),
-                      //       icon: Icon(Icons.clear),
-                      //     )
-                      //         : null,
-                      //   ),
-                      // ),
-                  ),
+                        /// TEXTFIELD NAMA LENGKAP
+                        // child: TextField(
+                        //   controller: _textControllerNama,
+                        //   onChanged: (String value) {
+                        //     if (_textControllerNama.text.isNotEmpty) {
+                        //       print('text name is not empty');
+                        //     } else {
+                        //       isNamaEmpty = true;
+                        //       print('text name is empty');
+                        //     }
+                        //
+                        //     // _textControllerNama.text.isEmpty ?
+                        //     //     isNamaEmpty : !isNamaEmpty;
+                        //
+                        //     /// ngbs
+                        //     // _textControllerNama.text.isEmpty ?
+                        //     //     print('nama is empty') :
+                        //     // print('nama is correct');
+                        //   },
+                        //   decoration: InputDecoration(
+                        //     hintText: 'Dian Permata Fransiska',
+                        //     hintStyle: TextStyle(color: Colors.grey),
+                        //     suffixIcon: _textControllerNama.text.isNotEmpty
+                        //         ? IconButton(
+                        //       onPressed: () => _textControllerNama.clear(),
+                        //       icon: Icon(Icons.clear),
+                        //     )
+                        //         : null,
+                        //   ),
+                        // ),
+                    ),
                 )),
               ]),
 
@@ -602,49 +606,49 @@ class _Reg050State extends State<Reg050> {
                     isTempatCorrect = false;
                   }
                 },
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                        padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                        decoration: isOnTappedTempat ?
-                        (isTempatFokus ? boxDecorationFocus :
-                        (isTempatCorrect ? boxDecorationBenar : boxDecorationSalah)) :
-                        boxDecorationDefault,
+                child: Container(
+                  margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                  padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                  decoration: isOnTappedTempat ?
+                  (isTempatFokus ? boxDecorationFocus :
+                  (isTempatCorrect ? boxDecorationBenar : boxDecorationSalah)) :
+                  boxDecorationDefault,
 
-                        // decoration: isTempatFokus ?
-                        // boxDecorationJustOnFocus :
-                        // (isTempatCorrect ? boxDecorationBenar : boxDecorationSalah),
+                  // decoration: isTempatFokus ?
+                  // boxDecorationJustOnFocus :
+                  // (isTempatCorrect ? boxDecorationBenar : boxDecorationSalah),
 
-                        child: TextFormField(
-                          onChanged: (String value) {
+                  child: TextFormField(
+                    onChanged: (String value) {
 
+                    },
+                    onTap: (){
+                      isOnTappedTempat = true;
+                      print('onTap TEMPAT LAHIR');
+                    },
+                    controller: _textControllerTempat,
+                    cursorColor: Colors.black,
+                    decoration: new InputDecoration(
+                      hintText: 'Masukkan tempat lahir',
+                      hintStyle: TextStyle(color: Colors.grey[400]),
+                      suffixIcon: _textControllerTempat.text.isNotEmpty ?
+                      IconButton(
+                          onPressed: () {
+                            _textControllerTempat.clear();
+                            isTempatEmpty = true;
+                            isTempatCorrect = false;
                           },
-                          onTap: (){
-                            isOnTappedTempat = true;
-                            print('onTap TEMPAT LAHIR');
-                          },
-                          controller: _textControllerTempat,
-                          cursorColor: Colors.black,
-                          decoration: new InputDecoration(
-                            hintText: 'Masukkan tempat lahir',
-                            hintStyle: TextStyle(color: Colors.grey[400]),
-                            suffixIcon: _textControllerTempat.text.isNotEmpty ?
-                            IconButton(
-                                onPressed: () {
-                                  _textControllerTempat.clear();
-                                  isTempatEmpty = true;
-                                  isTempatCorrect = false;
-                                },
-                                icon: Icon(Icons.clear)) :
-                            null,
+                          icon: Icon(Icons.clear)) :
+                      null,
 
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none)
-                        )),
-                    )
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      disabledBorder: InputBorder.none)
+                  )
                 ),
+              )),
               ]),
 
 
@@ -725,42 +729,31 @@ class _Reg050State extends State<Reg050> {
                   margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
                   padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
                   alignment: Alignment.topLeft,
-                  child: Text(
-                    'Jenis kelamin',
-                    style: TextStyle(
-                        color: Colors.grey, fontSize: 15, fontFamily: 'Sans'),
-                  ),
+                  child: Text('Jenis kelamin',
+                    style: TextStyle(color: Colors.grey, fontSize: 15, fontFamily: 'Sans'),),
                 ),
               ]),
-
 
               /// RADIOS
               Container(
                 margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: Row(
-                  children: <Widget>[
-                    Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 40, 0),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Radio(
-                              value: gender.l,
-                              groupValue: _gender,
-                              onChanged: (gender value) {
-                                setState(() {
-                                  _gender = value;
-                                });
-                                print('Laki-laki');
+                child: Row(children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 40, 0),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Radio(
+                            value: gender.l,
+                            groupValue: _gender,
+                            onChanged: (gender value) {
+                              setState(() {
+                                _gender = value;
+                              });
+                              print('Laki-laki');
                               },
-                            ),
-                            Text(
-                              'Laki-laki',
-                              style: TextStyle(
-                                  color: Colors.grey[400],
-                                  fontSize: 15,
-                                  fontFamily: 'Sans'),
-                            ),
+                          ),
+                            Text('Laki-laki',
+                              style: TextStyle(color: Colors.grey[400], fontSize: 15, fontFamily: 'Sans'),),
                           ]),
                     ),
                     Row(
@@ -862,11 +855,12 @@ class _Reg050State extends State<Reg050> {
                     child: Container(
                       margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
                       padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                      decoration: isNamaIbuCorrect
-                          ? (_textControllerNamaIbu.text.isEmpty
-                              ? boxDecorationFocus
-                              : boxDecorationBenar)
-                          : boxDecorationSalah,
+                      decoration: boxDecorationDefault,
+                      // decoration: isNamaIbuCorrect
+                      //     ? (_textControllerNamaIbu.text.isEmpty
+                      //         ? boxDecorationFocus
+                      //         : boxDecorationBenar)
+                      //     : boxDecorationSalah,
                       // decoration: BoxDecoration(
                       //     borderRadius: BorderRadius.circular(10),
                       //     color: Colors.grey[200],
@@ -946,8 +940,8 @@ class _Reg050State extends State<Reg050> {
               Row(children: <Widget>[
                 Expanded(
                   child: Container(
-                    decoration: boxDecorationBenar,
-                    // emailFocusNode.hasFocus ?
+                    decoration: boxDecorationDefault,
+                    // emailFocusNode.hasFocus ?ma
                     // boxDecorationJustOnFocus : (isEmailCorrect ? boxDecorationBenar : boxDecorationSalah),
                     child: TextField(
                       onTap: (){

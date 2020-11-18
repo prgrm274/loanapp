@@ -36,7 +36,7 @@ dependencies:
   flutter_mobx: 1.1.0+2
   gradient_text: ^1.0.2
   autocomplete_textfield: ^1.7.3
-  #  camera: ^0.5.8+11
+  camera: ^0.5.8+11
   path_provider:
   path:
   video_player: ^1.0.0
@@ -51,6 +51,7 @@ dependencies:
   permission_handler: ^5.0.1+1
   provider: ^4.3.2+2
   fluttertoast: ^7.1.1
+  flutter_grid_button:
 
 dev_dependencies:
   flutter_test:
