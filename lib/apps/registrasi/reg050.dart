@@ -497,6 +497,7 @@ class _Reg050State extends State<Reg050> {
 
                       // child: DateInputTextField(),
                       child: TextFormField(
+                        /// THE INPUT FORMAT FOR THE KEYBOARD
                         keyboardType: TextInputType.number,
                         inputFormatters: [DateTextFormatter()],
                         // focusNode: FocusNode(///NG
@@ -558,7 +559,7 @@ class _Reg050State extends State<Reg050> {
                                 _textControllerTanggal.clear();
                                 isTanggalEmpty = true;
                                 isTanggalCorrect = false;
-                                },
+                              },
                               icon: Icon(Icons.clear)) :
                               null,
                           // suffixIcon: isTanggalCorrect ?
@@ -632,14 +633,12 @@ class _Reg050State extends State<Reg050> {
                       hintText: 'Masukkan tempat lahir',
                       hintStyle: TextStyle(color: Colors.grey[400]),
                       suffixIcon: _textControllerTempat.text.isNotEmpty ?
-                      IconButton(
-                          onPressed: () {
-                            _textControllerTempat.clear();
-                            isTempatEmpty = true;
-                            isTempatCorrect = false;
-                          },
-                          icon: Icon(Icons.clear)) :
-                      null,
+                      IconButton(onPressed: () {
+                        _textControllerTempat.clear();
+                        isTempatEmpty = true;
+                        isTempatCorrect = false;
+                        },
+                          icon: Icon(Icons.clear)) : null,
 
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
