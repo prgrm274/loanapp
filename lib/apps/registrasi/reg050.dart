@@ -95,7 +95,8 @@ class _Reg050State extends State<Reg050> {
   final boxDecorationSalah = BoxDecoration(borderRadius: BorderRadius.circular(10),
       color: Colors.red[200], shape: BoxShape.rectangle);
   final boxDecorationFocus = BoxDecoration(
-      boxShadow: [BoxShadow(color: Colors.grey[800].withOpacity(0.5), spreadRadius: 0.2,
+      boxShadow: [
+        BoxShadow(color: Colors.grey[800].withOpacity(0.5), spreadRadius: 0.2,
         /// SEBERAPA JAUH PENDARAN SHADOW
         // spreadRadius: 5,
         blurRadius: 7,
@@ -463,9 +464,12 @@ class _Reg050State extends State<Reg050> {
 
               /// LABEL TANGGAL EDIT
               isOnTappedTanggal ?
-              (isTanggalFokus ? TextTglLahir() :
-              (isTanggalCorrect ? TextTglLahir() : FalseTextMasukkanDataDgnBnr()
-              )
+              (
+                  isTanggalFokus ? TextTglLahir() :
+                  (
+                      isTanggalCorrect ? TextTglLahir() :
+                      FalseTextMasukkanDataDgnBnr()
+                  )
               ) : TextTglLahir(),
               ///// Container() HNY UTK NMPILIN SPACE KOSONG
 
@@ -497,12 +501,43 @@ class _Reg050State extends State<Reg050> {
 
                       // child: DateInputTextField(),
                       child: TextFormField(
-                        /// THE INPUT FORMAT FOR THE KEYBOARD
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [DateTextFormatter()],
-                        // focusNode: FocusNode(///NG
-                        //   canRequestFocus: true
-                        // ),
+                        controller: _textControllerTanggal,
+                        decoration: InputDecoration(
+                          /// NG V JIKA PERLU ERROR TEXT
+                          // errorText: DateHelper.isValidDateBirth(
+                          //     _textController.text.toString(), 'dd/MM/yyyy') ?
+                          //     // (){_changed(true, "tag");}///ng
+                          //     null
+                          //     :  'Masukkan data dengan benar',
+                          errorStyle: TextStyle(
+                              color: Colors.redAccent,
+                              backgroundColor: Colors.redAccent),
+                          hintText: '01.01.1970',
+                          hintStyle: TextStyle(color: Colors.grey[400]),
+                          suffixIcon: _textControllerTanggal.text.isNotEmpty ?
+                          IconButton(
+                              onPressed: () {
+                                _textControllerTanggal.clear();
+                                isTanggalEmpty = true;
+                                isTanggalCorrect = false;
+                              },
+                              icon: Icon(Icons.clear)) :
+                          null,
+                          // suffixIcon: isTanggalCorrect ?
+                          // null :
+                          // IconButton(/// NG V
+                          //     onPressed: () {
+                          //       _textControllerTanggal.clear();
+                          //       // _progres = _progres - 1;
+                          //       },
+                          //     /// NG V
+                          //     icon: Icon(Icons.clear)),
+
+                          border: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          focusedBorder: InputBorder.none),
                         onChanged: (String value) {
                           if (DateHelper.isValidDateBirth(value, 'dd/MM/yyyy')) {
                             isTanggalCorrect = true;
@@ -538,46 +573,13 @@ class _Reg050State extends State<Reg050> {
                         onTap: (){
                           isOnTappedTanggal = true;
                         },
-                        controller: _textControllerTanggal,
+                        /// THE INPUT FORMAT FOR THE KEYBOARD
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [DateTextFormatter()],
+                        // focusNode: FocusNode(///NG
+                        //   canRequestFocus: true
+                        // ),
                         cursorColor: Colors.black,
-                        decoration: InputDecoration(
-                          /// NG V JIKA PERLU ERROR TEXT
-                          // errorText: DateHelper.isValidDateBirth(
-                          //     _textController.text.toString(), 'dd/MM/yyyy') ?
-                          //     // (){_changed(true, "tag");}///ng
-                          //     null
-                          //     :  'Masukkan data dengan benar',
-                          errorStyle: TextStyle(
-                              color: Colors.redAccent,
-                              backgroundColor: Colors.redAccent),
-                          hintText: '01.01.1970',
-                          hintStyle: TextStyle(color: Colors.grey[400]),
-
-                          suffixIcon: _textControllerTanggal.text.isNotEmpty ?
-                          IconButton(
-                              onPressed: () {
-                                _textControllerTanggal.clear();
-                                isTanggalEmpty = true;
-                                isTanggalCorrect = false;
-                              },
-                              icon: Icon(Icons.clear)) :
-                              null,
-                          // suffixIcon: isTanggalCorrect ?
-                          // null :
-                          // IconButton(/// NG V
-                          //     onPressed: () {
-                          //       _textControllerTanggal.clear();
-                          //       // _progres = _progres - 1;
-                          //       },
-                          //     /// NG V
-                          //     icon: Icon(Icons.clear)),
-
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
-                        ),
                         // maxLength: 10,/// MAXLENGTH MENAMPILKAN 10/10
                       ),
                     ),

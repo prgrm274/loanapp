@@ -65,11 +65,14 @@ class _RegUnderAppbarState extends State<RegUnderAppbar> {
                               style: TextStyle(
                                   color: Colors.grey[400],
                                   fontSize: 12,
-                                  fontFamily: 'Sans'),
+                                  fontFamily: 'Sans')
                             ),
-                          ])
-                    ]),
-              )),
+                          ]
+                      )
+                    ]
+                ),
+              )
+          ),
           Flexible(
             flex: 1,
             child: Text(

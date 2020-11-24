@@ -189,10 +189,8 @@ class _Login040State extends State<Login040> {
                     text: 'Saya tidak tahu password saya',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 15,
-                        decoration: TextDecoration.underline
-                    ),
-                  ),
+                        fontSize: 14,
+                        decoration: TextDecoration.underline)),
                 ),
 
                 /// before
@@ -208,6 +206,7 @@ class _Login040State extends State<Login040> {
                     child: Align(
                       alignment: FractionalOffset.centerRight,
                       child: RaisedButton(
+                          elevation: 0,
                           padding: EdgeInsets.fromLTRB(25, 15, 25, 15),
                           onPressed: () {
                             Navigator.push(
@@ -220,8 +219,8 @@ class _Login040State extends State<Login040> {
                           child: Text('MASUK'),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(5.0),
-                              side: BorderSide(color: Colors.cyan))),
-                    )),
+                              side: BorderSide(color: Colors.cyan))))
+                ),
 
                 /// GRID BUTTONS
                 Expanded(child: Container(
@@ -237,10 +236,10 @@ class _Login040State extends State<Login040> {
                         //         duration: Duration(milliseconds: 400)));
 
 
-
                         /// SET TO TEXT FIELD
                         /// NG V
                         tecHape.text = tecHape.text + val.toString();
+
 
                         /// THEN PUT CURSOR TO END AFTER EACH PRESSING BUTTON V
                         String s = tecHape.text;

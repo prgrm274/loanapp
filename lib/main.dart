@@ -39,6 +39,7 @@ import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
 import 'package:voidrealm/sliders/jslider_widget.dart';
 import 'package:voidrealm/sliders/slider6.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
+import 'package:voidrealm/textediting/j_040b_otp.dart';
 import 'package:voidrealm/visibilities/coba_visibility.dart';
 
 import 'dropdownbuttons/j_dropdown1.dart';
@@ -65,8 +66,11 @@ class _Statenya extends State<MyApp> {
       /// WELCOME & PERMISSION REQUEST
       // home: PermissionRequest(),
 
-      /// 040 BODY
-      home: Login040Body(),
+      /// 040 LOGIN HP
+      // home: Login040Body(),
+
+      // / 040 B OTP
+      home: Reg040BOTP(),
 
       /// 050
       // home: Reg050(),
