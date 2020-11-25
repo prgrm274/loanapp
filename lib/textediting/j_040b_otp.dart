@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_grid_button/flutter_grid_button.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -40,7 +41,7 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
     print("First text field: ${tecSeluler.text}");
   }
 
-  _listenerTecOTP() {
+  _listenerTecOTP() {/// VALUE DAN TEXT HASILNYA SAMA
     print("Second text field: ${tecOTP.value}");
   }
 
@@ -52,6 +53,9 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
       borderRadius: BorderRadius.circular(10),
       color: Colors.cyan[600],
       shape: BoxShape.rectangle);
+
+  static String emptyForOTP = '';
+  int maxLength = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +122,9 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                                     icon: Icon(Icons.clear, color: Colors.white60)
                                 )
                             ),
-                            onChanged: (String s) {},
+                            onChanged: (String s){
+                              print('$s is printed');
+                            },
                             readOnly: true,
                             showCursor: true,
                             style: isFokusSel ? TextStyle(color: Colors.white) :
@@ -152,7 +158,7 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                 /// jarak antara no telp sel dan otp
                 Column(children: <Widget>[Container(width: 25)]),
 
-                /// LABEL PASSWORD
+                /// LABEL OTP
                 Column(children: <Widget>[
                   Container(height: 2),
 
@@ -161,7 +167,7 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                       style: TextStyle(color: Colors.white, fontSize: 11)
                   ),
 
-                  /// TEXTFIELD PASSWORD
+                  /// TEXTFIELD OTP
                   Container(
                       child: GestureDetector(
                         child: Focus(
@@ -169,6 +175,8 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                             controller: tecOTP,
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.fromLTRB(22, 15, 0, 0),
+                              /// REMOVE LABEL OF MAXLENGTH TF (4/4)
+                              counterText: '',
                               border: InputBorder.none,
                               disabledBorder: InputBorder.none,
                               enabledBorder: InputBorder.none,
@@ -176,10 +184,53 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                               focusedBorder: InputBorder.none,
                               hintText: '0000',
                               hintStyle: TextStyle(color: Colors.white70),
-                              isDense: true,
+                              isDense: true
                             ),
+
+                            keyboardType: TextInputType.number,
+
+                            /// OPTS OF LIMITING TF LENGTH
+                            /// OPT 1
+                            // buildCounter: (BuildContext context, {
+                            //   int currentLength,
+                            //   int maxLength,
+                            //   bool isFocused
+                            // }) => null,
                             // maxLength: 4,
-                            onChanged: (String s) {},
+                            /// REPLACEMENT FOR MAXLENGTH AND ENFORCE TP GA BISA
+                            /// tutorial: used with TextFormField
+                            // inputFormatters: [
+                            //   new LengthLimitingTextInputFormatter(4),
+                            // ],
+                            /// IT'S A BUG THAT MAXLENGTH AND ENFORCE DOESN'T WORK
+                            /// tutorial: used with TextField
+                            maxLength: 4,
+                            maxLengthEnforced: true,
+                            /// REPLACEMENT FOR LENGTHLIMITING YG GA BISA JUGA
+                            // onChanged: (String s) {
+                            //   if (s.length <= maxLength) {
+                            //     emptyForOTP = s;
+                            //   } else {
+                            //     // tecOTP.text = emptyForOTP;
+                            //
+                            //     tecOTP.value = new TextEditingValue(
+                            //         text: emptyForOTP,
+                            //         selection: new TextSelection(
+                            //             baseOffset: maxLength,
+                            //             extentOffset: maxLength,
+                            //             affinity: TextAffinity.downstream,
+                            //             isDirectional: false
+                            //         ),
+                            //         composing: new TextRange(start: 0, end: maxLength)
+                            //     );
+                            //     tecOTP.text = emptyForOTP;
+                            //   }
+                            // },
+
+                            onChanged: (String s){
+                              print('$s is printed');
+                            },
+
                             readOnly: true,
                             showCursor: true,
                             style: isFokusOtp ? TextStyle(color: Colors.white) :
@@ -316,6 +367,14 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                           tecOTP.selection = seleksi;
 
                           print(tecOTP.text);
+
+                          if (tecOTP.text.length > 4) {
+                            tecOTP.text = val;
+                          }
+
+                          // if (tecOTP.text.length > 4) {
+                          //   tecOTP.clear();/// NG V KEREN
+                          // }
                         }
                       },
                       items: [
@@ -582,9 +641,7 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                                         }
                                       },
                                       child: Icon(
-                                          Icons.backspace,
-                                          color: Colors.white,
-                                          size: 28)
+                                          Icons.backspace, color: Colors.white, size: 28)
                                   )
                               )
                           ),

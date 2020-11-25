@@ -88,7 +88,6 @@ class _Reg050State extends State<Reg050> {
   /// IS onTap CUKUP DIGUNAKAN 1X
   bool isOnTappedNama = false, isOnTappedTanggal = false, isOnTappedTempat = false;
 
-
   /// VARIABEL UNTUK KONDISI TEXT FIELD
   final boxDecorationBenar = BoxDecoration(borderRadius: BorderRadius.circular(10),
       color: Colors.blue[200], shape: BoxShape.rectangle);
@@ -141,65 +140,71 @@ class _Reg050State extends State<Reg050> {
       home: Scaffold(
         /// SEMENTARA APPBAR JADI SATU (NGGA IMPORT) UNTUK NGETES VALUE TERISI LANGSUNG DISINI
         appBar: AppBar(
-            backgroundColor: Colors.white,
-            //automaticallyImplyLeading: true
-            elevation: 0.0, // for elevation
-            titleSpacing: 0.0,
-            // if you want remove title spacing with back button
-            title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('${_valueTotal.round()}% terisi\n',
-                  // Text('$_value terisi, total = $_valueTotal\n',
-                    // '$$progress terisi $_progres\n',
-                    // '$_progres terisi\n',
-                    style: TextStyle(fontSize: 12, color: Colors.grey)),
-                  LinearProgressIndicator(
-                    backgroundColor: Colors.cyanAccent,
-                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                    value: _valueTotal * .1,
-                    // value: _value * .1,
-                    // value: progress,
-                    // value: _progres,
-                  ),
-                ]),
-            // title: new SfulLinearprogressindicator(),
-            // title: new ProgressIndicator1(),
-            // title: Text('Custom Appbar'),
-            // title:  UtilCommonWidget.addTextMedium('About US', Colors.white, 20.0, 1),
-            actions: <Widget>[
-              new Container(
+          actions: <Widget>[
+            new Container(
+                padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
+                child: Image(
+                    image: AssetImage('lib/assets/chat_bubble_cyan.png')
+                )
+              // child: Icon(Icons.message)
+            ),
+            // addAppBarActionWidgetProfile(icon, 30.0, 30.0, 15.0) // add your custom action widget
+          ],
+          backgroundColor: Colors.white,
+          //automaticallyImplyLeading: true
+          elevation: 0.0, // for elevation
+          //Action icon search as search icon, notification icon
+          leading: new Material(
+            /// BACK NAVIGATION ICON
+            /// Custom leading icon, such as back navigation icon or other
+            /// warna kotaknya navigation icon
+            color: Colors.white,
+            child: new InkWell(
+              onTap: () {
+                Navigator.of(context).pop();
+
+                // Navigator.pop(context);// 2020
+              },
+              splashColor: Colors.red,
+              // splashColor: UniQueryColors.colorGradientEnd.withOpacity(.5),
+              child: new Container(/// kotaknya navigation icon
+                // color: Colors.red,
                   padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
                   child: Image(
-                    image: AssetImage('lib/assets/chat_bubble_cyan.png'))
-                  // child: Icon(Icons.message)
-                  ),
-              // addAppBarActionWidgetProfile(icon, 30.0, 30.0, 15.0) // add your custom action widget
-            ],
-            //Action icon search as search icon, notification icon
-            leading: new Material(
-              /// BACK NAVIGATION ICON
-              /// Custom leading icon, such as back navigation icon or other
-              /// warna kotaknya navigation icon
-              color: Colors.white,
-              child: new InkWell(
-                onTap: () {
-                  Navigator.of(context).pop();
-
-                  // Navigator.pop(context);// 2020
-                },
-                splashColor: Colors.red,
-                // splashColor: UniQueryColors.colorGradientEnd.withOpacity(.5),
-                child: new Container(/// kotaknya navigation icon
-                  // color: Colors.red,
-                  padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-                    child: Image(
-                      image: AssetImage('lib/assets/grey_arrow_white.png'))
-                    // child: Icon(Icons.arrow_back_rounded)
-                    // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
-                ),
+                      image: AssetImage('lib/assets/grey_arrow_white.png')
+                  )
+                // child: Icon(Icons.arrow_back_rounded)
+                // child: UtilCommonWidget.addImage(Constant.iconBack, 19.0, 10.0))
               ),
-            )
+            ),
+          ),
+          titleSpacing: 0.0,
+          // if you want remove title spacing with back button
+          title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                    '${_valueTotal.round()}% terisi\n',
+                    // Text('$_value terisi, total = $_valueTotal\n',
+                    // '$$progress terisi $_progres\n',
+                    // '$_progres terisi\n',
+                    style: TextStyle(fontSize: 12, color: Colors.grey)
+                ),
+                LinearProgressIndicator(
+                  backgroundColor: Colors.cyanAccent,
+                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                  value: _valueTotal * .1,
+                  // value: _value * .1,
+                  // value: progress,
+                  // value: _progres,
+                ),
+              ]
+          ),
+
+          // title: new SfulLinearprogressindicator(),
+          // title: new ProgressIndicator1(),
+          // title: Text('Custom Appbar'),
+          // title:  UtilCommonWidget.addTextMedium('About US', Colors.white, 20.0, 1),
         ),
         // appBar: AppbarProgress(
         //   namaLengkap: _textControllerNama.text,
@@ -477,8 +482,7 @@ class _Reg050State extends State<Reg050> {
               Row(children: <Widget>[
                 Expanded(
                   child: Focus(
-                    onFocusChange: (punyaFokus)
-                    {
+                    onFocusChange: (punyaFokus) {
                       setState(() {
                         isTanggalFokus = punyaFokus;
                         // print('onFocusChange setState TANGGAL = $isTanggalFokus');
@@ -596,59 +600,61 @@ class _Reg050State extends State<Reg050> {
               ) : TextTempatLahir(),
 
               /// TEXTFIELD TEMPAT LAHIR
-              Row(children: <Widget>[Expanded(child: Focus(
-                onFocusChange: (punyaFokus) {
-                  setState(() {
-                    isTempatFokus = punyaFokus;
-                  });
+              Row(children: <Widget>[
+                Expanded(
+                    child: Focus(
+                      onFocusChange: (punyaFokus) {
+                        setState(() {
+                          isTempatFokus = punyaFokus;
+                        });
 
-                  if (_textControllerTempat.text.length > 0) {
-                    isTempatCorrect = true;
-                    _dTempatLahir = 1;
-                  } else {
-                    isTempatCorrect = false;
-                  }
-                },
-                child: Container(
-                  margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                  padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                  decoration: isOnTappedTempat ?
-                  (isTempatFokus ? boxDecorationFocus :
-                  (isTempatCorrect ? boxDecorationBenar : boxDecorationSalah)) :
-                  boxDecorationDefault,
+                        if (_textControllerTempat.text.length > 0) {
+                          isTempatCorrect = true;
+                          _dTempatLahir = 1;
+                        } else {
+                          isTempatCorrect = false;
+                        }
+                      },
+                      child: Container(
+                        margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                        decoration: isOnTappedTempat ?
+                        (isTempatFokus ? boxDecorationFocus :
+                        (isTempatCorrect ? boxDecorationBenar : boxDecorationSalah)) :
+                        boxDecorationDefault,
 
-                  // decoration: isTempatFokus ?
-                  // boxDecorationJustOnFocus :
-                  // (isTempatCorrect ? boxDecorationBenar : boxDecorationSalah),
+                        // decoration: isTempatFokus ?
+                        // boxDecorationJustOnFocus :
+                        // (isTempatCorrect ? boxDecorationBenar : boxDecorationSalah),
 
-                  child: TextFormField(
-                    onChanged: (String value) {
+                        child: TextFormField(
+                          onChanged: (String value) {
 
-                    },
-                    onTap: (){
-                      isOnTappedTempat = true;
-                      print('onTap TEMPAT LAHIR');
-                    },
-                    controller: _textControllerTempat,
-                    cursorColor: Colors.black,
-                    decoration: new InputDecoration(
-                      hintText: 'Masukkan tempat lahir',
-                      hintStyle: TextStyle(color: Colors.grey[400]),
-                      suffixIcon: _textControllerTempat.text.isNotEmpty ?
-                      IconButton(onPressed: () {
-                        _textControllerTempat.clear();
-                        isTempatEmpty = true;
-                        isTempatCorrect = false;
-                        },
-                          icon: Icon(Icons.clear)) : null,
+                          },
+                          onTap: (){
+                            isOnTappedTempat = true;
+                            print('onTap TEMPAT LAHIR');
+                          },
+                          controller: _textControllerTempat,
+                          cursorColor: Colors.black,
+                          decoration: new InputDecoration(
+                            hintText: 'Masukkan tempat lahir',
+                            hintStyle: TextStyle(color: Colors.grey[400]),
+                            suffixIcon: _textControllerTempat.text.isNotEmpty ?
+                            IconButton(onPressed: () {
+                              _textControllerTempat.clear();
+                              isTempatEmpty = true;
+                              isTempatCorrect = false;
+                              },
+                                icon: Icon(Icons.clear)) : null,
 
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none,
-                      enabledBorder: InputBorder.none,
-                      errorBorder: InputBorder.none,
-                      disabledBorder: InputBorder.none)
-                  )
-                ),
+                            border: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none)
+                        )
+                      ),
               )),
               ]),
 
