@@ -86,13 +86,16 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                 child: Text(
                     'SMS akan terkirim ke hp Anda dalam 30 detik',
                     style: TextStyle(
-                        fontSize: 12, color: Colors.white)),
+                        fontSize: 12, color: Colors.white)
+                ),
                 margin: EdgeInsets.fromLTRB(20, 0, 40, 20),
                 alignment: Alignment.topLeft
             ),
 
             /// ROW LABEL DAN TF NO TEL SELULER, OTP
             Container(
+              alignment: Alignment.center,
+              margin: EdgeInsets.fromLTRB(20, 0, 0, 20),
               child: Row(children: <Widget>[
                 /// LABEL NOMOR
                 Column(children: <Widget>[
@@ -204,8 +207,8 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                             // ],
                             /// IT'S A BUG THAT MAXLENGTH AND ENFORCE DOESN'T WORK
                             /// tutorial: used with TextField
-                            maxLength: 4,
-                            maxLengthEnforced: true,
+                            // maxLength: 4,
+                            // maxLengthEnforced: true,
                             /// REPLACEMENT FOR LENGTHLIMITING YG GA BISA JUGA
                             // onChanged: (String s) {
                             //   if (s.length <= maxLength) {
@@ -261,8 +264,6 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start
               ),
-              margin: EdgeInsets.fromLTRB(20, 0, 0, 20),
-              alignment: Alignment.center,
             ),
 
             /// LABEL LUPA PASSWORD
@@ -369,7 +370,7 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                           print(tecOTP.text);
 
                           if (tecOTP.text.length > 4) {
-                            tecOTP.text = val;
+                            tecOTP.text = tecOTP.text.substring(0, tecOTP.text.length - 1);
                           }
 
                           // if (tecOTP.text.length > 4) {
@@ -640,8 +641,7 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                                           tecOTP.text = tecOTP.text.toString().substring(0, tecOTP.text.length - 1);
                                         }
                                       },
-                                      child: Icon(
-                                          Icons.backspace, color: Colors.white, size: 28)
+                                      child: Icon(Icons.backspace, color: Colors.white, size: 28)
                                   )
                               )
                           ),
