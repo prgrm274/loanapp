@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TextTglLahir extends StatefulWidget {
+class Reg050TextTglLahir extends StatefulWidget {
 
-  TextTglLahir({Key key}) : super(key: key);
+  Reg050TextTglLahir({Key key}) : super(key: key);
 
   @override
-  _TextTglLahirState createState() => _TextTglLahirState();
+  _Reg050TextTglLahirState createState() => _Reg050TextTglLahirState();
 }
 
-class _TextTglLahirState extends State<TextTglLahir> {
+class _Reg050TextTglLahirState extends State<Reg050TextTglLahir> {
   @override
   Widget build(BuildContext context) {
     return new Row(children: <Widget>[

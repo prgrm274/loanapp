@@ -70,10 +70,10 @@ class _Statenya extends State<MyApp> {
       // home: Login040Body(),
 
       // / 040 B OTP
-      home: Reg040BOTP(),
+      // home: Reg040BOTP(),
 
       /// 050
-      // home: Reg050(),
+      home: Reg050(),
       /// 060
       // home: Reg060(),
       /// 070
