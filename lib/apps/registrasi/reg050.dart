@@ -95,7 +95,7 @@ class _Reg050State extends State<Reg050> {
 
   @override
   Widget build(BuildContext context) {
-    _valueTotal = _value + _dNamalengkap + 0;
+    _valueTotal = _value + _dNamalengkap + _dTempatLahir + 0;
 
     return MaterialApp(
       // home: Material(
@@ -206,13 +206,26 @@ class _Reg050State extends State<Reg050> {
                                     setState(() {
                                       isFokusNama = hasFokus;
 
-                                      if (!isFokusNama) {
-                                        if (_tecNama.text.isEmpty) {
-                                          isNamaCorrect = false;
-                                        } else {
-                                          isNamaCorrect = true;
-                                        }
+                                      if (_tecNama.text.indexOf(' ') >= 1 &&
+                                          _tecNama.text.isNotEmpty) {
+                                        isNamaCorrect = true;
+                                        _dNamalengkap = 1;
+
+                                        print(_tecNama.text);
+                                      } else {
+                                        isNamaCorrect = false;
+                                        _dNamalengkap = 0;
                                       }
+
+                                      // if (!isFokusNama) {
+                                      // if (_tecNama.text.isEmpty) {
+                                      //   isNamaCorrect = false;
+                                      //   _dNamalengkap = 0;
+                                      // } else {
+                                      //   isNamaCorrect = true;
+                                      //   _dNamalengkap = 1;
+                                      // }
+                                      // }
                                     });
                                   },
                                   child: TextField(
@@ -237,15 +250,18 @@ class _Reg050State extends State<Reg050> {
                                     ),
                                     onChanged: (String value) {
                                       setState(() {
-                                        if (value.indexOf(' ') >= 1 ||
-                                            value.isNotEmpty) {
-                                          isNamaCorrect = true;
-                                          _dNamalengkap = _dNamalengkap + 1;
-                                        } else {
-                                          isNamaCorrect = false;
-                                          /// LATER: if _dNamaLengkap != 0
-                                          _dNamalengkap = _dNamalengkap - 1;
-                                        }});
+                                        // if (value.indexOf(' ') >= 1 &&
+                                        //     value.isNotEmpty) {
+                                        //   isNamaCorrect = true;
+                                        //   /// KALAU SET LINEAR VALUE DISINI TIAP
+                                        //   /// HURUF DIITUNG
+                                        //
+                                        //   /// ONLY PRINT WHEN THERE'S SPACE
+                                        //   print(value);
+                                        // } else {
+                                        //   isNamaCorrect = false;
+                                        // }
+                                      });
                                     },
                                     ///GET IS TAPPED FIRST BY ONTAP
                                     onTap: (){
@@ -423,8 +439,10 @@ class _Reg050State extends State<Reg050> {
                                       if (!isFokusTempat) {
                                         if (_tecTempat.text.isEmpty) {
                                           isTempatCorrect = false;
+                                          _dTempatLahir = 0;
                                         } else {
                                           isTempatCorrect = true;
+                                          _dTempatLahir = 1;
                                         }
                                       }
                                     });
@@ -450,13 +468,11 @@ class _Reg050State extends State<Reg050> {
                                     ),
                                     onChanged: (String value) {
                                       setState(() {
-                                        if (value.length > 0 ||
+                                        if (value.length > 2 &&
                                             value.isNotEmpty) {
                                           isTempatCorrect = true;
-                                          _dTempatLahir = _dTempatLahir + 1;
                                         } else {
                                           isTempatCorrect = false;
-                                          _dTempatLahir = _dTempatLahir - 1;
                                         }
                                       });
                                     },
