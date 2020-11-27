@@ -569,90 +569,81 @@ class _Reg050State extends State<Reg050> {
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            decoration:
-                            isOnTappedNamaIbu ?
-                            (
-                                isFokusNamaIbu ?
-                                boxDecorationFocus :
-                                (
-                                    isNamaIbuCorrect ?
-                                    boxDecorationBenar :
-                                    boxDecorationSalah
-                                )
-                            ) :
-                            boxDecorationDefault,
-                            margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                            padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                            child: GestureDetector(
-                              onTap: (){
-                                FocusScopeNode currentFocus = FocusScope.of(context);
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
-                                }
+                              decoration:
+                              isOnTappedNamaIbu ?
+                              (
+                                  isFokusNamaIbu ?
+                                  boxDecorationFocus :
+                                  (
+                                      isNamaIbuCorrect ?
+                                      boxDecorationBenar :
+                                      boxDecorationSalah
+                                  )
+                              ) :
+                              boxDecorationDefault,
+                              margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                              padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                              child: GestureDetector(
+                                onTap: (){
+                                  FocusScopeNode currentFocus = FocusScope.of(context);
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
 
-                                Fluttertoast.showToast(
-                                    msg: 'GestureDetector onTap NAMA IBU',
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.TOP,
-                                    backgroundColor: Colors.red,
-                                    textColor: Colors.white,
-                                    fontSize: 12.0
-                                );
-                              },
-                              child: Focus(
-                                onFocusChange: (hasFokus) {
-                                  setState(() {
-                                    isFokusNamaIbu = hasFokus;
-                                  });
+                                  Fluttertoast.showToast(
+                                      msg: 'GestureDetector onTap NAMA IBU',
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.TOP,
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white,
+                                      fontSize: 12.0
+                                  );
                                 },
-                                child: TextField(
-                                  controller: _tecNamaIbu,
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    disabledBorder: InputBorder.none,
-                                    enabledBorder: InputBorder.none,
-                                    errorBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    hintText: 'Nama ibu kandung',
-                                    hintStyle: TextStyle(color: Colors.grey[400]),
-                                    suffixIcon:
-                                    _tecNamaIbu.text.isNotEmpty ?
-                                    IconButton(
-                                        onPressed: () {
-                                          _tecNamaIbu.clear();
-                                          isNamaIbuCorrect = false;
-                                        },
-                                        icon: Icon(Icons.clear)
-                                    ) :
-                                    null,
-                                  ),
-                                  onChanged: (String value) {
+                                child: Focus(
+                                  onFocusChange: (hasFokus) {
                                     setState(() {
-
+                                      isFokusNamaIbu = hasFokus;
                                     });
                                   },
-                                  onTap: (){
-                                    if (isOnTappedNamaIbu) {
-                                      return null;
+                                  child: TextField(
+                                    controller: _tecNamaIbu,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      hintText: 'Nama ibu kandung',
+                                      hintStyle: TextStyle(color: Colors.grey[400]),
+                                      suffixIcon:
+                                      _tecNamaIbu.text.isNotEmpty ?
+                                      IconButton(
+                                          onPressed: () {
+                                            _tecNamaIbu.clear();
+                                            isNamaIbuCorrect = false;
+                                          },
+                                          icon: Icon(Icons.clear)
+                                      ) :
+                                      null,
+                                    ),
+                                    onChanged: (String value) {
+                                      setState(() {
 
-                                    } else {
-                                      isOnTappedNamaIbu = true;
-                                      isFokusNamaIbu = false;
-                                      isNamaIbuCorrect = false;
+                                      });
+                                    },
+                                    onTap: (){
+                                      if (isOnTappedNamaIbu) {
+                                        return null;
 
-                                      Fluttertoast.showToast(
-                                          msg: 'TEXTFIELD NAMA IBU',
-                                          toastLength: Toast.LENGTH_SHORT,
-                                          gravity: ToastGravity.TOP,
-                                          backgroundColor: Colors.red,
-                                          textColor: Colors.white,
-                                          fontSize: 12.0
-                                      );
-                                    }
-                                  },
+                                      } else {
+                                        isOnTappedNamaIbu = true;
+                                        isFokusNamaIbu = false;
+                                        isNamaIbuCorrect = false;
+                                      }
+                                    },
+                                  ),
                                 ),
-                              ),
-                            )
+                              )
                           ),
                         ),
                       ]
@@ -786,14 +777,15 @@ class _Reg050State extends State<Reg050> {
                                         isFokusEmail = false;
                                         isEmailCorrect = false;
 
-                                        Fluttertoast.showToast(
-                                            msg: 'TEXTFIELD EMAIL',
-                                            toastLength: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.TOP,
-                                            backgroundColor: Colors.red,
-                                            textColor: Colors.white,
-                                            fontSize: 12.0
-                                        );
+                                        /// V ONLY ONCE
+                                        // Fluttertoast.showToast(
+                                        //     msg: 'TEXTFIELD EMAIL',
+                                        //     toastLength: Toast.LENGTH_SHORT,
+                                        //     gravity: ToastGravity.TOP,
+                                        //     backgroundColor: Colors.red,
+                                        //     textColor: Colors.white,
+                                        //     fontSize: 12.0
+                                        // );
                                       }
                                     },
                                   ),
