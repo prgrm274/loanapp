@@ -131,17 +131,23 @@ class _Reg050State extends State<Reg050> {
             ),
           ),
           title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,/// PERSEN TERISI DI START
               children: <Widget>[
-                Text(
-                    '${_valueTotal.round()}% terisi\n',
-                    style: TextStyle(fontSize: 12, color: Colors.grey)
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  child: Text(
+                      '${_valueTotal.round()}% terisi\n',
+                      style: TextStyle(fontSize: 12, color: Colors.grey)
+                  ),
                 ),
-                LinearProgressIndicator(
-                  backgroundColor: Colors.cyanAccent,
-                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                  value: _valueTotal * .1,
-                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  child: LinearProgressIndicator(
+                    backgroundColor: Colors.cyanAccent,
+                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                    value: _valueTotal * .1,
+                  ),
+                )
               ]
           ),
           titleSpacing: 0.0,
