@@ -554,10 +554,10 @@ class _Reg050State extends State<Reg050> {
 
                   /// LABEL TEMPAT LAHIR
                   isOnTappedTempat ?
-                  (isFokusTempat ? TextTempatLahir() :
-                  (isTempatCorrect ? TextTempatLahir() : ErrorTextMasukkanDataDgnBnr()
+                  (isFokusTempat ? Reg050TextTempatLahir() :
+                  (isTempatCorrect ? Reg050TextTempatLahir() : ErrorTextMasukkanDataDgnBnr()
                   )
-                  ) : TextTempatLahir(),
+                  ) : Reg050TextTempatLahir(),
 
                   /// TEXTFIELD TEMPAT LAHIR
                   Row(

@@ -12,6 +12,8 @@ import 'package:voidrealm/errors/t_masukkan_data_dgn_bnr.dart';
 import 'package:voidrealm/errors/t_tgl_lahir.dart';
 import 'package:voidrealm/radios/j_radio_custom.dart';
 import 'package:voidrealm/regexes/alphanumeric.dart';
+import 'package:voidrealm/texts/t_email.dart';
+import 'package:voidrealm/texts/t_namaibu.dart';
 import 'package:voidrealm/validations/date_input_text_field.dart';
 import 'package:voidrealm/validations/date_validator.dart';
 
@@ -152,54 +154,62 @@ class _Reg050State extends State<Reg050> {
             child: Column(
                 children: <Widget>[
                   /// LABEL NAMA
-                  isOnTappedNama ?
-                  (
-                      isFokusNama ?
-                      Reg050TextNamaLengkap() :
-                      (
-                          isNamaCorrect ?
-                          Reg050TextNamaLengkap() :
-                          ErrorTextMasukkanDataDgnBnr()
-                      )
-                  ) : Reg050TextNamaLengkap(),
-
+                  Row(
+                      children: <Widget>[
+                        isOnTappedNama ?
+                        (
+                            isFokusNama ?
+                            Reg050TextNamaLengkap() :
+                            (
+                                isNamaCorrect ?
+                                Reg050TextNamaLengkap() :
+                                ErrorTextMasukkanDataDgnBnr()
+                            )
+                        ) :
+                        Reg050TextNamaLengkap(),
+                      ]
+                  ),
                   /// TF NAMA
                   Row(
                       children: <Widget>[
                         Expanded(
                             child: Container(
-                                decoration:
-                                isOnTappedNama ?
-                                (
-                                    isFokusNama ?
-                                    boxDecorationFocus :
-                                    (
-                                        isNamaCorrect ?
-                                        boxDecorationBenar :
-                                        boxDecorationSalah
-                                    )
-                                ) :
-                                boxDecorationDefault,
-
-                                /// SALAH
-                                // isFokusNama ?
-                                // boxDecorationFocus :
-                                // (
-                                //     isNamaCorrect ?
-                                //     boxDecorationBenar :
-                                //     boxDecorationSalah
-                                // ),
-
-                                margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                                padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                              decoration:
+                              isOnTappedNama ?
+                              (
+                                  isFokusNama ?
+                                  boxDecorationFocus :
+                                  (
+                                      isNamaCorrect ?
+                                      boxDecorationBenar :
+                                      boxDecorationSalah
+                                  )
+                              ) :
+                              boxDecorationDefault,
+                              margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                              padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                              child: GestureDetector(
+                                onTap: (){
+                                  FocusScopeNode currentFocus = FocusScope.of(context);
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                },
                                 child: Focus(
                                   onFocusChange: (hasFokus) {
                                     setState(() {
                                       isFokusNama = hasFokus;
-                                      print('onFocusChange setState NAMA = $isFokusNama');
+
+                                      if (!isFokusNama) {
+                                        if (_tecNama.text.isEmpty) {
+                                          isNamaCorrect = false;
+                                        } else {
+                                          isNamaCorrect = true;
+                                        }
+                                      }
                                     });
                                   },
-                                  child: TextFormField(
+                                  child: TextField(
                                     controller: _tecNama,
                                     decoration: InputDecoration(
                                       border: InputBorder.none,
@@ -214,7 +224,6 @@ class _Reg050State extends State<Reg050> {
                                       IconButton(
                                           onPressed: () {
                                             _tecNama.clear();
-                                            isNamaCorrect = false;
                                           },
                                           icon: Icon(Icons.clear)
                                       ) :
@@ -222,7 +231,8 @@ class _Reg050State extends State<Reg050> {
                                     ),
                                     onChanged: (String value) {
                                       setState(() {
-                                        if (_tecNama.text.indexOf(' ') >= 1) {
+                                        if (value.indexOf(' ') >= 1 ||
+                                            value.isNotEmpty) {
                                           isNamaCorrect = true;
                                           _dNamalengkap = _dNamalengkap + 1;
                                         } else {
@@ -230,7 +240,6 @@ class _Reg050State extends State<Reg050> {
                                           /// LATER: if _dNamaLengkap != 0
                                           _dNamalengkap = _dNamalengkap - 1;
                                         }});
-                                      print('onChange isNamaCorrect = $isNamaCorrect');
                                     },
                                     ///GET IS TAPPED FIRST BY ONTAP
                                     onTap: (){
@@ -242,35 +251,32 @@ class _Reg050State extends State<Reg050> {
                                         /// MAKA BARU INISIALISASI VALUE ISFOKUS DISINI
                                         isFokusNama = false;
                                         isNamaCorrect = false;
-
-                                        Fluttertoast.showToast(
-                                            msg: 'TEXTFIELD NAMA TAPPED ALREADY',
-                                            toastLength: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.TOP,
-                                            backgroundColor: Colors.red,
-                                            textColor: Colors.white,
-                                            fontSize: 12.0
-                                        );
                                       }
                                     },
                                   ),
-                                )
+                                ),
+                              ),
                             )
                         ),
                       ]
                   ),
 
                   /// LABEL TANGGAL
-                  isOnTappedTanggal ?
-                  (
-                      isFokusTanggal ?
-                      Reg050TextTglLahir() :
-                      (
-                          isTanggalCorrect ?
-                          Reg050TextTglLahir() :
-                          ErrorTextMasukkanDataDgnBnr()
-                      )
-                  ) : Reg050TextTglLahir(),
+                  Row(
+                      children: <Widget>[
+                        isOnTappedTanggal ?
+                        (
+                            isFokusTanggal ?
+                            Reg050TextTglLahir() :
+                            (
+                                isTanggalCorrect ?
+                                Reg050TextTglLahir() :
+                                ErrorTextMasukkanDataDgnBnr()
+                            )
+                        ) :
+                        Reg050TextTglLahir()
+                      ]
+                  ),
 
                   ///// Container() HNY UTK NMPILIN SPACE KOSONG
 
@@ -279,82 +285,86 @@ class _Reg050State extends State<Reg050> {
                       children: <Widget>[
                         Expanded(
                             child: Container(
-                              decoration:
-                              isOnTappedTanggal ?
-                              (
-                                  isFokusTanggal ?
-                                  boxDecorationFocus :
-                                  (
-                                      isTanggalCorrect ?
-                                      boxDecorationBenar :
-                                      boxDecorationSalah
-                                  )
-                              ) :
-                              boxDecorationDefault,
-                              margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                              padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                              child: Focus(
-                                  onFocusChange: (hasFocus) {
-                                    setState(() {
-                                      isFokusTanggal = hasFocus;
-                                    });
+                                decoration:
+                                isOnTappedTanggal ?
+                                (
+                                    isFokusTanggal ?
+                                    boxDecorationFocus :
+                                    (
+                                        isTanggalCorrect ?
+                                        boxDecorationBenar :
+                                        boxDecorationSalah
+                                    )
+                                ) :
+                                boxDecorationDefault,
+                                margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                                padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                                child: GestureDetector(
+                                  onTap: (){
+                                    FocusScopeNode currentFocus = FocusScope.of(context);
+                                    if (!currentFocus.hasPrimaryFocus) {
+                                      currentFocus.unfocus();
+                                    }
                                   },
-                                  child: TextFormField(
-                                    controller: _tecTanggal,
-                                    decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      disabledBorder: InputBorder.none,
-                                      enabledBorder: InputBorder.none,
-                                      errorBorder: InputBorder.none,
-                                      focusedBorder: InputBorder.none,
-                                      errorStyle: TextStyle(
-                                          color: Colors.purple,
-                                          backgroundColor: Colors.purple),
-                                      hintText: '01.01.1970',
-                                      hintStyle: TextStyle(color: Colors.grey[400]),
-                                      suffixIcon:
-                                      _tecTanggal.text.isNotEmpty ?
-                                      IconButton(
-                                          onPressed: () {
-                                            _tecTanggal.clear();
+                                  child: Focus(
+                                      onFocusChange: (hasFocus) {
+                                        setState(() {
+                                          isFokusTanggal = hasFocus;
+
+                                          if (!isFokusTanggal) {
+                                            if (_tecTanggal.text.isEmpty) {
+                                              isTanggalCorrect = false;
+                                            } else {
+                                              isTanggalCorrect = true;
+                                            }
+                                          }
+                                        });
+                                      },
+                                      child: TextField(
+                                        controller: _tecTanggal,
+                                        decoration: InputDecoration(
+                                          border: InputBorder.none,
+                                          disabledBorder: InputBorder.none,
+                                          enabledBorder: InputBorder.none,
+                                          errorBorder: InputBorder.none,
+                                          focusedBorder: InputBorder.none,
+                                          hintText: '01.01.1970',
+                                          hintStyle: TextStyle(color: Colors.grey[400]),
+                                          suffixIcon:
+                                          _tecTanggal.text.isNotEmpty ?
+                                          IconButton(
+                                              onPressed: () {
+                                                _tecTanggal.clear();
+                                              },
+                                              icon: Icon(Icons.clear)
+                                          ) :
+                                          null,
+                                        ),
+                                        inputFormatters: [DateTextFormatter()],
+                                        keyboardType: TextInputType.number,
+                                        onChanged: (String value) {
+                                          setState(() {
+                                            if (DateHelper.isValidDateBirth(value, 'dd/MM/yyyy')
+                                                || value.isNotEmpty) {
+                                              isTanggalCorrect = true;
+                                            } else {
+                                              isTanggalCorrect = false;
+                                            }
+                                          });
+                                        },
+                                        onTap: (){
+                                          if (isOnTappedTanggal) {
+                                            return null;
+
+                                          } else {
+                                            isOnTappedTanggal = true;
+                                            isFokusTanggal = false;
                                             isTanggalCorrect = false;
-                                          },
-                                          icon: Icon(Icons.clear)
-                                      ) :
-                                      null,
-                                    ),
-                                    inputFormatters: [DateTextFormatter()],
-                                    keyboardType: TextInputType.number,
-                                    onChanged: (String value) {
-                                      setState(() {
-                                        if (DateHelper.isValidDateBirth(value, 'dd/MM/yyyy')) {
-                                          isTanggalCorrect = true;
-                                        } else {
-                                          isTanggalCorrect = false;
-                                        }
-                                      });
-                                    },
-                                    onTap: (){
-                                      if (isOnTappedTanggal) {
-                                        return null;
-
-                                      } else {
-                                        isOnTappedTanggal = true;
-                                        isFokusTanggal = false;
-                                        isTanggalCorrect = false;
-
-                                        Fluttertoast.showToast(
-                                            msg: 'TEXTFIELD TANGGAL TAPPED ALREADY',
-                                            toastLength: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.TOP,
-                                            backgroundColor: Colors.red,
-                                            textColor: Colors.white,
-                                            fontSize: 12.0
-                                        );
-                                      }
-                                    },
-                                  )
-                              ),
+                                          }
+                                        },
+                                      )
+                                  ),
+                                )
                             )
                         ),
                       ]
@@ -364,88 +374,99 @@ class _Reg050State extends State<Reg050> {
                   isOnTappedTempat ?
                   (
                       isFokusTempat ?
-                      TextTempatLahir() :
+                      Reg050TextTempatLahir() :
                       (
                           isTempatCorrect ?
-                          TextTempatLahir() :
+                          Reg050TextTempatLahir() :
                           ErrorTextMasukkanDataDgnBnr()
                       )
                   ) :
-                  TextTempatLahir(),
+                  Reg050TextTempatLahir(),
 
                   /// TF TEMPAT LAHIR
                   Row(
                       children: <Widget>[
                         Expanded(
                           child: Container(
-                            decoration:
-                            isOnTappedTempat ?
-                            (
-                                isFokusTempat ?
-                                boxDecorationFocus :
-                                (
-                                    isTempatCorrect ?
-                                    boxDecorationBenar :
-                                    boxDecorationSalah
-                                )
-                            ) :
-                            boxDecorationDefault,
-                            margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
-                            padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
-                            child: Focus(
-                              onFocusChange: (hasFocus) {
-                                setState(() {
-                                  isFokusTempat = hasFocus;
-                                });
-                              },
-                              child: TextFormField(
-                                controller: _tecTempat,
-                                decoration: new InputDecoration(
-                                  contentPadding: EdgeInsets.fromLTRB(20, 15, 0, 0),
-                                  border: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  enabledBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  disabledBorder: InputBorder.none,
-                                  hintText: 'Masukkan tempat lahir',
-                                  hintStyle: TextStyle(color: Colors.grey[400]),
-                                  suffixIcon: _tecTempat.text.isNotEmpty ?
-                                  IconButton(
-                                      onPressed: () {
-                                        _tecTempat.clear();
-                                        isTempatCorrect = false;
-                                      },
-                                      icon: Icon(Icons.clear)
-                                  ) : null,
-                                ),
-                                onChanged: (String s) {
-                                  setState(() {
-                                    if (_tecTempat.text.length > 0) {
-                                      isTempatCorrect = true;
-                                      _dTempatLahir = _dTempatLahir + 1;
-                                    } else {
-                                      isTempatCorrect = false;
-                                      _dTempatLahir = _dTempatLahir - 1;
-                                    }
-                                  });
-                                  print('$s is printed');
-                                },
+                              decoration:
+                              isOnTappedTempat ?
+                              (
+                                  isFokusTempat ?
+                                  boxDecorationFocus :
+                                  (
+                                      isTempatCorrect ?
+                                      boxDecorationBenar :
+                                      boxDecorationSalah
+                                  )
+                              ) :
+                              boxDecorationDefault,
+                              margin: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                              padding: EdgeInsets.fromLTRB(15, 5, 15, 2),
+                              child: GestureDetector(
                                 onTap: (){
-                                  isOnTappedTempat = true;
-                                  isFokusTempat = false;
-                                  isTempatCorrect = false;
-
-                                  Fluttertoast.showToast(
-                                      msg: 'TEXTFIELD TEMPAT TAPPED ALREADY',
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.TOP,
-                                      backgroundColor: Colors.red,
-                                      textColor: Colors.white,
-                                      fontSize: 12.0
-                                  );
+                                  FocusScopeNode currentFocus = FocusScope.of(context);
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
                                 },
-                              ),
-                            ),
+                                child: Focus(
+                                  onFocusChange: (hasFocus) {
+                                    setState(() {
+                                      isFokusTempat = hasFocus;
+
+                                      if (!isFokusTempat) {
+                                        if (_tecTempat.text.isEmpty) {
+                                          isTempatCorrect = false;
+                                        } else {
+                                          isTempatCorrect = true;
+                                        }
+                                      }
+                                    });
+                                  },
+                                  child: TextField(
+                                    controller: _tecTempat,
+                                    decoration: InputDecoration(
+                                      border: InputBorder.none,
+                                      focusedBorder: InputBorder.none,
+                                      enabledBorder: InputBorder.none,
+                                      errorBorder: InputBorder.none,
+                                      disabledBorder: InputBorder.none,
+                                      hintText: 'Masukkan tempat lahir',
+                                      hintStyle: TextStyle(color: Colors.grey[400]),
+                                      suffixIcon:
+                                      _tecTempat.text.isNotEmpty ?
+                                      IconButton(
+                                          onPressed: () {
+                                            _tecTempat.clear();
+                                          },
+                                          icon: Icon(Icons.clear)
+                                      ) : null,
+                                    ),
+                                    onChanged: (String value) {
+                                      setState(() {
+                                        if (value.length > 0 ||
+                                            value.isNotEmpty) {
+                                          isTempatCorrect = true;
+                                          _dTempatLahir = _dTempatLahir + 1;
+                                        } else {
+                                          isTempatCorrect = false;
+                                          _dTempatLahir = _dTempatLahir - 1;
+                                        }
+                                      });
+                                    },
+                                    onTap: (){
+                                      if (isOnTappedTempat) {
+                                        return null;
+
+                                      } else {
+                                        isOnTappedTempat = true;
+                                        isFokusTempat = false;
+                                        isTempatCorrect = false;
+                                      }
+                                    },
+                                  ),
+                                ),
+                              )
                           ),
                         ),
                       ]
@@ -549,19 +570,17 @@ class _Reg050State extends State<Reg050> {
                   /// LABEL NAMA IBU
                   Row(
                       children: <Widget>[
-                        Container(
-                          alignment: Alignment.topLeft,
-                          margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                          padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                          child: Text(
-                            'Nama ibu kandung',
-                            style: TextStyle(
-                                color: Colors.grey[400],
-                                fontSize: 12,
-                                fontFamily: 'Sans'
-                            ),
-                          ),
-                        ),
+                        isOnTappedNamaIbu ?
+                        (
+                            isFokusNamaIbu ?
+                            TNamaibu() :
+                            (
+                                isNamaIbuCorrect ?
+                                TNamaibu() :
+                                ErrorTextMasukkanDataDgnBnr()
+                            )
+                        ) :
+                        TNamaibu(),
                       ]
                   ),
                   /// TF NAMA IBU
@@ -589,20 +608,19 @@ class _Reg050State extends State<Reg050> {
                                   if (!currentFocus.hasPrimaryFocus) {
                                     currentFocus.unfocus();
                                   }
-
-                                  Fluttertoast.showToast(
-                                      msg: 'GestureDetector onTap NAMA IBU',
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.TOP,
-                                      backgroundColor: Colors.red,
-                                      textColor: Colors.white,
-                                      fontSize: 12.0
-                                  );
                                 },
                                 child: Focus(
                                   onFocusChange: (hasFokus) {
                                     setState(() {
                                       isFokusNamaIbu = hasFokus;
+
+                                      if (!isFokusNamaIbu) {
+                                        if (_tecNamaIbu.text.isEmpty) {
+                                          isNamaIbuCorrect = false;
+                                        } else {
+                                          isNamaIbuCorrect = true;
+                                        }
+                                      }
                                     });
                                   },
                                   child: TextField(
@@ -628,7 +646,11 @@ class _Reg050State extends State<Reg050> {
                                     ),
                                     onChanged: (String value) {
                                       setState(() {
-
+                                        if (value.isNotEmpty) {
+                                          isNamaIbuCorrect = true;
+                                        } else {
+                                          isNamaIbuCorrect = false;
+                                        }
                                       });
                                     },
                                     onTap: (){
@@ -667,13 +689,7 @@ class _Reg050State extends State<Reg050> {
                   Row(
                       children: <Widget>[
                         Expanded(
-                            child: Row(
-                                children: <Widget>[
-                                  Expanded(
-                                    child: DropdownPendidikanTerakhir050()
-                                  )
-                                ]
-                            )
+                            child: DropdownPendidikanTerakhir050()
                         )
                       ]
                   ),
@@ -681,19 +697,17 @@ class _Reg050State extends State<Reg050> {
                   /// LABEL EMAIL
                   Row(
                       children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.fromLTRB(10, 5, 10, 0),
-                          padding: EdgeInsets.fromLTRB(15, 5, 15, 5),
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            'E-mail',
-                            style: TextStyle(
-                                color: Colors.grey[400],
-                                fontSize: 12,
-                                fontFamily: 'Sans'
-                            ),
-                          ),
-                        ),
+                        isOnTappedEmail ?
+                        (
+                            isFokusEmail ?
+                            Reg050TextEmail() :
+                            (
+                                isEmailCorrect ?
+                                Reg050TextEmail() :
+                                ErrorTextMasukkanDataDgnBnr()
+                            )
+                        ) :
+                        Reg050TextEmail(),
                       ]
                   ),
                   /// TF EMAIL
@@ -735,6 +749,14 @@ class _Reg050State extends State<Reg050> {
                                   onFocusChange: (hasFokus) {
                                     setState(() {
                                       isFokusEmail = hasFokus;
+
+                                      if (!isFokusEmail) {
+                                        if (_tecEmail.text.isEmpty) {
+                                          isEmailCorrect = false;
+                                        } else {
+                                          isEmailCorrect = true;
+                                        }
+                                      }
                                     });
                                   },
                                   child: TextField(
@@ -748,11 +770,10 @@ class _Reg050State extends State<Reg050> {
                                       hintText: 'Masukkan email aktif Anda dengan benar',
                                       hintStyle: TextStyle(color: Colors.grey[400]),
                                       suffixIcon:
-                                      _tecNamaIbu.text.isNotEmpty ?
+                                      _tecEmail.text.isNotEmpty ?
                                       IconButton(
                                           onPressed: () {
                                             _tecEmail.clear();
-                                            isEmailCorrect = false;
                                           },
                                           icon: Icon(Icons.clear)
                                       ) :
@@ -760,11 +781,11 @@ class _Reg050State extends State<Reg050> {
                                     ),
                                     onChanged: (String value){
                                       setState(() {
-                                        // if (value.isNotEmpty) {
-                                        //   isEmailCorrect = true;
-                                        // } else {
-                                        //   isEmailCorrect = false;
-                                        // }
+                                        if (value.isNotEmpty) {
+                                          isEmailCorrect = true;
+                                        } else {
+                                          isEmailCorrect = false;
+                                        }
                                       });
                                     },
                                     onTap: (){

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TextTempatLahir extends StatefulWidget {
+class Reg050TextTempatLahir extends StatefulWidget {
 
-  TextTempatLahir({Key key}) : super(key: key);
+  Reg050TextTempatLahir({Key key}) : super(key: key);
 
   @override
-  _TextTempatLahirState createState() => _TextTempatLahirState();
+  _Reg050TextTempatLahirState createState() => _Reg050TextTempatLahirState();
 }
 
-class _TextTempatLahirState extends State<TextTempatLahir> {
+class _Reg050TextTempatLahirState extends State<Reg050TextTempatLahir> {
   @override
   Widget build(BuildContext context) {
     return new Row(
