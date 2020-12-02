@@ -92,8 +92,8 @@ class _SliderWidget2State extends State<SliderWidget2> {
                     inactiveTickMarkColor: Colors.red.withOpacity(.7),
                   ),*/
                   data: SliderThemeData(
-                      thumbColor: Colors.red,
-                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 20),
+                    thumbColor: Colors.red,
+                    thumbShape: RoundSliderThumbShape(enabledThumbRadius: 20),
                   ),
                   child: Material(
                     child: Slider(

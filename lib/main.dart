@@ -57,10 +57,8 @@ class _Statenya extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      // home: Splash(),
-
-      /// PROGRESS INDICATOR
-      // home: LpiVr(),///bs
+      ///
+      home: Home(),///bs
       // home: LPI(),
       // home: ProgressIndicator1(),
 
@@ -92,11 +90,11 @@ class _Statenya extends State<MyApp> {
       // home: JCustomNumpad(),
 
       /// SLIDERS
+      // home: SliderCreatingCustomThumb(),
       // home: Slider6(),/// emoji
       // home: Slider7(),/// CUSTOM SLIDER
       // home: SliderWidget(),
       // home: SliderWidget2(),
-      home: SliderCreatingCustomThumb(),
 
       /// IMAGE CONTAINER
       // body: Image1(),
@@ -121,9 +119,6 @@ class _Statenya extends State<MyApp> {
 
       /// SQFLITE
       // body: new Sqflite1(),
-
-      /// SPLASH
-      // body: Splash(),
 
       /// PERMISSION REQUEST
       // body: PermissionRequest(),

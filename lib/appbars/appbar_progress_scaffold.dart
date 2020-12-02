@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/appbars/progress/sles_progress_indicator1.dart';
+// import 'package:voidrealm/appbars/progress/sles_progress_indicator1.dart';
 
 class Appbar050 extends StatefulWidget implements PreferredSizeWidget {
 
@@ -37,7 +37,7 @@ class _Appbar050State extends State<Appbar050> {
         // for elevation
         titleSpacing: 0.0,
         // if you want remove title spacing with back button
-        title: new ProgressIndicator1(),
+        // title: new ProgressIndicator1(),
         // title: Text('Custom Appbar'),
         // title:  UtilCommonWidget.addTextMedium('About US', Colors.white, 20.0, 1),
         actions: <Widget>[
