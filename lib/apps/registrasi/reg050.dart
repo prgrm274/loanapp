@@ -112,10 +112,10 @@ class _Reg050State extends State<Reg050> {
           ],
           backgroundColor: Colors.white,
           elevation: 0.0,
+          /// BACK NAVIGATION ICON
+          /// Custom leading icon, such as back navigation icon or other
+          /// warna kotaknya navigation icon
           leading: new Material(
-            /// BACK NAVIGATION ICON
-            /// Custom leading icon, such as back navigation icon or other
-            /// warna kotaknya navigation icon
             color: Colors.white,
             child: new InkWell(
               onTap: () {

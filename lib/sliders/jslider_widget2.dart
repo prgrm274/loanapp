@@ -95,13 +95,15 @@ class _SliderWidget2State extends State<SliderWidget2> {
                       thumbColor: Colors.red,
                       thumbShape: RoundSliderThumbShape(enabledThumbRadius: 20),
                   ),
-                  child: Slider(
-                      value: _value,
-                      onChanged: (value) {
-                        setState(() {
-                          _value = value;
-                        });
-                      }),
+                  child: Material(
+                    child: Slider(
+                        value: _value,
+                        onChanged: (value) {
+                          setState(() {
+                            _value = value;
+                          });
+                        }),
+                  ),
                 ),
               ),
             ),

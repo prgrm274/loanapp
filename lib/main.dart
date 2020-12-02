@@ -39,7 +39,7 @@ import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
 import 'package:voidrealm/sliders/jslider_widget.dart';
 import 'package:voidrealm/sliders/slider6.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
-import 'package:voidrealm/textediting/j_040b_otp.dart';
+import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/apps/registrasi/reg_040b_otp.dart';
 import 'package:voidrealm/visibilities/coba_visibility.dart';
 
 import 'dropdownbuttons/j_dropdown1.dart';
@@ -73,7 +73,7 @@ class _Statenya extends State<MyApp> {
       // home: Reg040BOTP(),
 
       /// 050
-      home: Reg050(),
+      // home: Reg050(),
       /// 060
       // home: Reg060(),
       /// 070
@@ -82,10 +82,7 @@ class _Statenya extends State<MyApp> {
       // home: Reg080(),
 
       /// VISIBILITY
-      // body: ControlleApp(),
-
-      /// GRADIENTS
-      // body: Gradient2(),
+      // home: ControlleApp(),
 
       // home: GridButton1(),/// BS
       // home: Numpad1(),
@@ -94,10 +91,10 @@ class _Statenya extends State<MyApp> {
       // home: JCustomNumpad(),
 
       /// SLIDERS
-      // body: Slider6(),/// emoji
-      // body: Slider7(),/// CUSTOM SLIDER
-      // body: SliderWidget(),
-      // body: SliderWidget2(),
+      // home: Slider6(),/// emoji
+      // home: Slider7(),/// CUSTOM SLIDER
+      // home: SliderWidget(),
+      home: SliderWidget2(),
 
       /// IMAGE CONTAINER
       // body: Image1(),

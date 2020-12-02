@@ -196,7 +196,9 @@ class _Reg070State extends State<Reg070> {
                           style: TextStyle(
                               color: Colors.grey[400],
                               fontSize: 12,
-                              fontFamily: 'Sans'))),
+                              fontFamily: 'Sans')
+                        )
+                      ),
                       Flexible(
                           flex: 1,
                           child: Container(
