@@ -23,12 +23,12 @@ import 'package:voidrealm/numpads/custom_numpad2.dart';
 import 'package:voidrealm/numpads/custom_numpad3.dart';
 import 'package:voidrealm/settings.dart';
 import 'package:voidrealm/numpads/numpad1.dart';
-import 'package:voidrealm/sliders/dfix/jslider7.dart';
+import 'package:voidrealm/sliders/dfix/slider7.dart';
 import 'package:voidrealm/sliders/jslider_widget2.dart';
 import 'package:voidrealm/sliders/slider1.dart';
 import 'package:voidrealm/sliders/slider2roundthumb.dart';
 import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
-import 'package:voidrealm/sliders/jslider_widget.dart';
+import 'package:voidrealm/sliders/slider_widget.dart';
 import 'package:voidrealm/sliders/slider6.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
 

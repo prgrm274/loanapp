@@ -20,7 +20,7 @@ import 'package:voidrealm/sliders/jslider_widget2.dart';
 import 'package:voidrealm/sliders/slider1.dart';
 import 'package:voidrealm/sliders/slider2roundthumb.dart';
 import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
-import 'package:voidrealm/sliders/jslider_widget.dart';
+import 'package:voidrealm/sliders/slider_widget.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
 
 import 'dropdownbuttons/j_dropdown1.dart';

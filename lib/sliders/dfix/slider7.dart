@@ -107,51 +107,53 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: _innerWidth == null
-          ? Container()
-          : Container(
-        padding: EdgeInsets.symmetric(horizontal: paddingSize),
-        height: 200,
-        child: Stack(children: <Widget>[
-          Container(/// NG ADD
-            margin: EdgeInsets.fromLTRB(10, 50, 0, 0),
-            child: Text(
-              ((){
-                for (int i=0; i<pinjaman.length; i++){
-                  return pinjaman[i];
-                };;;;;;
-              }()),
-              // pinjaman[2],// set to 1.5M
+    return Material(/// kalo ga dikasih Material jadi hitam
+      child: Center(
+        child: _innerWidth == null
+            ? Container()
+            : Container(
+          padding: EdgeInsets.symmetric(horizontal: paddingSize),
+          height: 200,
+          child: Stack(children: <Widget>[
+            Container(/// NG ADD
+              margin: EdgeInsets.fromLTRB(10, 50, 0, 0),
+              child: Text(
+                ((){
+                  for (int i=0; i<pinjaman.length; i++){
+                    return pinjaman[i];
+                  };;;;;;
+                }()),
+                // pinjaman[2],// set to 1.5M
+
+                key: ((){
+                  print('key');
+                }()),
+
+                style: TextStyle(
+                    color: Colors.deepPurple,
+                    fontSize: 18
+                ),
+              ),
 
               key: ((){
-                print('key');
-              }()),
-
-              style: TextStyle(
-                color: Colors.deepPurple,
-                fontSize: 18
-              ),
+              }()),// NG NULIS GINI, GA ERROR
             ),
 
-            key: ((){
-            }()),// NG NULIS GINI, GA ERROR
-          ),
-
-          SliderGaris(
-            statesnya: pinjaman,
-            handleTapnya: handleTap,
-            nilaiAnimasi: _animationValue,
-            lebar: _innerWidth,
-          ),
-          MyIndicator(
-            animationValue: _animationValue,
-            width: _innerWidth,
-            onDrag: _onDrag,
-            onDragEnd: _onDragEnd,
-          ),
-          Text(_animationValue.round().toString()),
-        ]),
+            SliderGaris(
+              statesnya: pinjaman,
+              handleTapnya: handleTap,
+              nilaiAnimasi: _animationValue,
+              lebar: _innerWidth,
+            ),
+            MyIndicator(
+              animationValue: _animationValue,
+              width: _innerWidth,
+              onDrag: _onDrag,
+              onDragEnd: _onDragEnd,
+            ),
+            Text(_animationValue.round().toString()),
+          ]),
+        ),
       ),
     );
   }

@@ -31,12 +31,12 @@ import 'package:voidrealm/numpads/custom_numpad3.dart';
 import 'package:voidrealm/numpads/gridbuttons/grid_button1.dart';
 import 'package:voidrealm/settings.dart';
 import 'package:voidrealm/numpads/numpad1.dart';
-import 'package:voidrealm/sliders/dfix/jslider7.dart';
+import 'package:voidrealm/sliders/dfix/slider7.dart';
 import 'package:voidrealm/sliders/jslider_widget2.dart';
 import 'package:voidrealm/sliders/slider1.dart';
 import 'package:voidrealm/sliders/slider2roundthumb.dart';
 import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
-import 'package:voidrealm/sliders/jslider_widget.dart';
+import 'package:voidrealm/sliders/slider_widget.dart';
 import 'package:voidrealm/sliders/slider6.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
 import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/apps/registrasi/reg_040b_otp.dart';
@@ -92,9 +92,9 @@ class _Statenya extends State<MyApp> {
 
       /// SLIDERS
       // home: Slider6(),/// emoji
-      // home: Slider7(),/// CUSTOM SLIDER
+      home: Slider7(),/// CUSTOM SLIDER
       // home: SliderWidget(),
-      home: SliderWidget2(),
+      // home: SliderWidget2(),
 
       /// IMAGE CONTAINER
       // body: Image1(),
