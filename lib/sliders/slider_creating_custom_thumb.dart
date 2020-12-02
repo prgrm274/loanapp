@@ -14,7 +14,7 @@ class SliderCreatingCustomThumb extends StatefulWidget {
 
 class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
   dartUI.Image customImage;
-  double sliderValue = 0.0;
+  double sliderValue = 0.0;/// INITIAL VALUE
 
   Future<dartUI.Image> loadImage(String pathOfAsset) async {
     ByteData data = await rootBundle.load(pathOfAsset);
@@ -63,20 +63,27 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
                           });
                         },
                         onChangeStart: (value) {
-                          if (value == 6.0) {
-                            loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
-                              customImage = image;
-                            });
-                          } else {
-                            loadImage('lib/assets/info_48.png').then((image) {
-                              customImage = image;
-                            });
-                          }
+                          // if (value > 4.0) {
+                          //   loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                          //     customImage = image;
+                          //   });
+                          // } else {
+                          //   loadImage('lib/assets/info_48.png').then((image) {
+                          //     customImage = image;
+                          //   });
+                          // }
                         },
                         onChangeEnd: (value) {
                           setState(() {
-                            if (value == 6.0) {
+                            if (value > 4.0) {
+                              loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                customImage = image;
+                              });
                               start();
+                            } else {
+                              loadImage('lib/assets/info_48.png').then((image) {
+                                customImage = image;
+                              });
                             }
                           });
                         },
@@ -99,13 +106,14 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
   ///
   /// TIMER
   Timer _timer;
-  int _start = 2;
+  int _start = 1;
   // int _start = 2;
 
   void start(){
-    const oneSec = const Duration(seconds: 4);
+    const second = const Duration(seconds: 4);
+    // const oneSec = const Duration(seconds: 1);
     _timer = new Timer.periodic(
-        oneSec,
+        second,
             (Timer timer) {
           setState(() {
             if (_start < 1) {
@@ -113,6 +121,10 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
 
               /// SET THUMB VALUE TO FOR EXAMPLE 1.0
               sliderValue = 1.0;
+              /// THEN ALSO SET IMAGE BACK TO NOT BONUS ONE
+              loadImage('lib/assets/info_48.png').then((image) {
+                customImage = image;
+              });
 
             } else {
               _start = _start - 1;
