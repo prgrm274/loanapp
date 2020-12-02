@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart' as cd;
 import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart';
 import 'package:voidrealm/sliders/dfix/jface.dart';
-import 'package:voidrealm/sliders/dfix/jhead.dart';
+import 'package:voidrealm/sliders/dfix/slider7_head.dart';
 
 class MyIndicator extends StatelessWidget {
   MyIndicator({
@@ -15,12 +15,8 @@ class MyIndicator extends StatelessWidget {
         position = animationValue == 0 ? 0 : animationValue / 4;
 
   /// POSITION IS COORDINATE OF WHEN YOU MOVE THE SLIDER THUMB
-  final double position;
-  final Function onDrag;
-  final Function onDragStart;
-  final Function onDragEnd;
-  final double width;
-  final double animationValue;
+  final double animationValue, position, width;
+  final Function onDrag, onDragStart, onDragEnd;
 
   @override
   Widget build(BuildContext context) {

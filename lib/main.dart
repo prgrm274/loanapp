@@ -36,6 +36,7 @@ import 'package:voidrealm/sliders/jslider_widget2.dart';
 import 'package:voidrealm/sliders/slider1.dart';
 import 'package:voidrealm/sliders/slider2roundthumb.dart';
 import 'package:voidrealm/sliders/slider3customthumbcircle.dart';
+import 'package:voidrealm/sliders/slider_creating_custom_thumb.dart';
 import 'package:voidrealm/sliders/slider_widget.dart';
 import 'package:voidrealm/sliders/slider6.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
@@ -92,9 +93,10 @@ class _Statenya extends State<MyApp> {
 
       /// SLIDERS
       // home: Slider6(),/// emoji
-      home: Slider7(),/// CUSTOM SLIDER
+      // home: Slider7(),/// CUSTOM SLIDER
       // home: SliderWidget(),
       // home: SliderWidget2(),
+      home: SliderCreatingCustomThumb(),
 
       /// IMAGE CONTAINER
       // body: Image1(),

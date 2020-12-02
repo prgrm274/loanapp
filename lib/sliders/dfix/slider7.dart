@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart';
 import 'package:voidrealm/sliders/dfix/jface.dart';
-import 'package:voidrealm/sliders/dfix/jhead.dart';
-import 'package:voidrealm/sliders/dfix/jindicator.dart';
-import 'package:voidrealm/sliders/dfix/jmeasure_line.dart';
+import 'package:voidrealm/sliders/dfix/slider7_head.dart';
+import 'package:voidrealm/sliders/dfix/slider7_indicator.dart';
+import 'package:voidrealm/sliders/dfix/slider7_measure_line.dart';
 import 'package:voidrealm/sliders/dfix/jpainter.dart';
 import 'package:voidrealm/sliders/dfix/jconst_padding.dart';
 
@@ -32,8 +32,53 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
   Animation<double> _animation;
   AnimationController _controller;
   Tween<double> _tween;
-  double _innerWidth;
-  double _animationValue;
+  double _innerWidth, _animationValue;
+
+  _afterLayout(_) {
+    setState(() {
+      _innerWidth = MediaQuery.of(context).size.width - 2 * paddingSize;
+    });
+  }
+
+  _calcAnimatedValueFormDragX(x) {
+    return (x - circleDiameter / 2 - paddingSize * 2) /
+        _innerWidth * pinjaman.length;
+  }
+
+  _onDrag(details) {
+    var newAnimatedValue = _calcAnimatedValueFormDragX(
+      details.globalPosition.dx,
+    );
+    if (newAnimatedValue > 0 && newAnimatedValue < pinjaman.length - 1) {
+      setState(() {
+        _animationValue = newAnimatedValue;
+      },
+      );
+    }
+  }
+
+  _onDragEnd(_) {
+    _controller.duration = Duration(milliseconds: 100);
+    _tween.begin = _animationValue;
+    _tween.end = _animationValue.round().toDouble();
+    _controller.reset();
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
+  void handleTap(int state) {
+    _controller.duration = Duration(milliseconds: 400);
+
+    _tween.begin = _tween.end;
+    _tween.end = state.toDouble();
+    _controller.reset();
+    _controller.forward();
+  }
 
   @override
   void initState() {
@@ -59,52 +104,6 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
     WidgetsBinding.instance.addPostFrameCallback(_afterLayout);
   }
 
-  _afterLayout(_) {
-    setState(() {
-      _innerWidth = MediaQuery.of(context).size.width - 2 * paddingSize;
-    });
-  }
-
-  void handleTap(int state) {
-    _controller.duration = Duration(milliseconds: 400);
-
-    _tween.begin = _tween.end;
-    _tween.end = state.toDouble();
-    _controller.reset();
-    _controller.forward();
-  }
-
-  _onDrag(details) {
-    var newAnimatedValue = _calcAnimatedValueFormDragX(
-      details.globalPosition.dx,
-    );
-    if (newAnimatedValue > 0 && newAnimatedValue < pinjaman.length - 1) {
-      setState(() {
-        _animationValue = newAnimatedValue;
-        },
-      );
-    }
-  }
-
-  _calcAnimatedValueFormDragX(x) {
-    return (x - circleDiameter / 2 - paddingSize * 2) /
-        _innerWidth * pinjaman.length;
-  }
-
-  _onDragEnd(_) {
-    _controller.duration = Duration(milliseconds: 100);
-    _tween.begin = _animationValue;
-    _tween.end = _animationValue.round().toDouble();
-    _controller.reset();
-    _controller.forward();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(/// kalo ga dikasih Material jadi hitam
@@ -121,7 +120,7 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
                 ((){
                   for (int i=0; i<pinjaman.length; i++){
                     return pinjaman[i];
-                  };;;;;;
+                  };
                 }()),
                 // pinjaman[2],// set to 1.5M
 
