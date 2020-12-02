@@ -63,23 +63,27 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
                           });
                         },
                         onChangeStart: (value) {
-                          // if (value > 4.0) {
-                          //   loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
-                          //     customImage = image;
-                          //   });
-                          // } else {
-                          //   loadImage('lib/assets/info_48.png').then((image) {
-                          //     customImage = image;
-                          //   });
-                          // }
-                        },
-                        onChangeEnd: (value) {
                           setState(() {
-                            if (value > 4.0) {
+                            if (value >= 4.0) {
                               loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
                                 customImage = image;
                               });
-                              start();
+                            } else {
+                              loadImage('lib/assets/info_48.png').then((image) {
+                                customImage = image;
+                              });
+                            }
+                          });
+                        },
+                        onChangeEnd: (value) {
+                          setState(() {
+                            if (value >= 4.0) {
+                              loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                customImage = image;
+                              });
+                              startWithNullCheck();
+
+                              // start();
                             } else {
                               loadImage('lib/assets/info_48.png').then((image) {
                                 customImage = image;
@@ -106,17 +110,41 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
   ///
   /// TIMER
   Timer _timer;
-  int _start = 1;
+  int _start = 3;
   // int _start = 2;
 
-  void start(){
-    const second = const Duration(seconds: 4);
+  void startWithNullCheck(){
+    if (_timer != null) {
+      _timer.cancel();
+      _timer = null;
+    } else {
+      _timer = new Timer.periodic(const Duration(seconds: 1),
+              (Timer timer) {/// berapapun start, tetap pake 1
+            setState(() {
+              if (_start < 1) {/// tetap pake 1
+                _timer.cancel();
+
+                /// SET THUMB VALUE TO FOR EXAMPLE 1.0
+                sliderValue = 1.0;
+                /// THEN ALSO SET IMAGE BACK TO NOT BONUS ONE
+                loadImage('lib/assets/info_48.png').then((image) {
+                  customImage = image;
+                });
+              } else {
+                _start = _start - 1;/// tetap pake 1
+              }
+            });
+          });
+    }
+  }
+
+  void start(){/// v
     // const oneSec = const Duration(seconds: 1);
     _timer = new Timer.periodic(
-        second,
+        const Duration(seconds: 1),/// berapapun start, tetap pake 1
             (Timer timer) {
           setState(() {
-            if (_start < 1) {
+            if (_start < 1) {/// tetap pake 1
               _timer.cancel();
 
               /// SET THUMB VALUE TO FOR EXAMPLE 1.0
@@ -125,9 +153,8 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
               loadImage('lib/assets/info_48.png').then((image) {
                 customImage = image;
               });
-
             } else {
-              _start = _start - 1;
+              _start = _start - 1;/// tetap pake 1
             }
           });
         });
