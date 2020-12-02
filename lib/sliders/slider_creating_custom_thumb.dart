@@ -18,63 +18,80 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
 
   Future<dartUI.Image> loadImage(String pathOfAsset) async {
     ByteData data = await rootBundle.load(pathOfAsset);
-    dartUI.Codec codec = await dartUI.instantiateImageCodec(data.buffer.asUint8List());
+    dartUI.Codec codec = await dartUI.instantiateImageCodec(
+        data.buffer.asUint8List()
+    );
     dartUI.FrameInfo fi = await codec.getNextFrame();
     return fi.image;
   }
 
   @override
   void initState() {
-    loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+    // v
+    loadImage('lib/assets/info_48.png').then((image) {
       customImage = image;
     });
 
     super.initState();
   }
 
+  /// FOR THUMB IMAGE CHANGE
+  // bool atFour;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              Container(
-                width: MediaQuery.of(context).size.width * 1,
-                child: SliderTheme(
-                  data: SliderThemeData(
-                    trackHeight: 10,
-                    thumbShape: SliderThumbImage(customImage),
-                  ),
-                  child: Slider(
-                    divisions: 5,
-                    label: sliderValue.toString(),
-                    max: 10.0,
-                    min: 0.0,
-                    onChanged: (value) {
-                      setState(() {/// ng
-                        sliderValue = value;
-                      });
-                    },
-                    onChangeEnd: (value) {
-                      setState(() {
-                        if (value == 4.0) {
-                          start();
-                        }
-                      });
-                    },
-                    value: sliderValue,
-                  ),
-                ),
-              )
-            ]
-          ),
-          Row(
-            children: <Widget>[
-              Text(sliderValue.toString()),
-            ]
-          )
-        ]
+          children: <Widget>[
+            Row(
+                children: <Widget>[
+                  Container(
+                    width: MediaQuery.of(context).size.width * 1,
+                    child: SliderTheme(
+                      data: SliderThemeData(
+                        trackHeight: 10,
+                        thumbShape: SliderThumbImage(customImage),
+                      ),
+                      child: Slider(
+                        divisions: 5,
+                        label: sliderValue.toString(),
+                        max: 10.0,
+                        min: 0.0,
+                        onChanged: (value) {
+                          setState(() {/// ng
+                            sliderValue = value;
+                          });
+                        },
+                        onChangeStart: (value) {
+                          if (value == 6.0) {
+                            loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                              customImage = image;
+                            });
+                          } else {
+                            loadImage('lib/assets/info_48.png').then((image) {
+                              customImage = image;
+                            });
+                          }
+                        },
+                        onChangeEnd: (value) {
+                          setState(() {
+                            if (value == 6.0) {
+                              start();
+                            }
+                          });
+                        },
+                        value: sliderValue,
+                      ),
+                    ),
+                  )
+                ]
+            ),
+            Row(
+                children: <Widget>[
+                  Text(sliderValue.toString()),
+                ]
+            )
+          ]
       ),
     );
   }

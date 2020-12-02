@@ -61,32 +61,31 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0.0,
-          titleSpacing: 10.0,
-          backgroundColor: Colors.cyan,
-          title: Text('1 dari 7'),
-          leading: InkWell(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            splashColor: Colors.red,
-            child: new Container(
-                /// kotaknya navigation icon
-              /// 
-                padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
-                child: Icon(
+      appBar: AppBar(
+        elevation: 0.0,
+        titleSpacing: 10.0,
+        backgroundColor: Colors.cyan,
+        title: Text('1 dari 7'),
+        leading: InkWell(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          splashColor: Colors.red,
+          child: new Container(
+            /// kotaknya navigation icon
+            ///
+              padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
+              child: Icon(
                   Icons.arrow_back_rounded,
                   color: Colors.white)
-            ),
           ),
         ),
-        body: Container(
-
-          padding: const EdgeInsets.all(5.0),
-          color: Colors.cyan,
-          child: Column(
-              children: <Widget>[
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(5.0),
+        color: Colors.cyan,
+        child: Column(
+            children: <Widget>[
               /// LABEL SMS akan terkirim
               Container(
                   child: Text(
