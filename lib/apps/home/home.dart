@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:voidrealm/apps/home/text_anda_terima_product_calc.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -9,6 +10,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  TextAndaTerimaProductCalc text12 = new TextAndaTerimaProductCalc();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -53,9 +56,6 @@ class _HomeState extends State<Home> {
                 TableRow(
                     children: [
                       Container(
-                        /// MARGIN: BATAS ATAS LOGO, BATAS BAWAH LOGO
-                          margin: EdgeInsets.fromLTRB(10, 40, 10, 0),
-                          width: MediaQuery.of(context).size.width * 1,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             /// MISAL JIKA HANYA INGIN BARIS ATAS (DAN BAWAH)
@@ -65,23 +65,36 @@ class _HomeState extends State<Home> {
                                 topRight: Radius.circular(10)
                             ),
                           ),
+                          height: 48,
+                          /// MARGIN: BATAS ATAS LOGO, BATAS BAWAH LOGO
+                          margin: EdgeInsets.fromLTRB(10, 40, 10, 0),
                           padding: EdgeInsets.all(10),
+                          width: MediaQuery.of(context).size.width * 1,
                           // color: Colors.blue,
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Align(
-                                  alignment: Alignment.topLeft,
+                                  alignment: Alignment.center,
                                   child: Text(
-                                    'Anda terima ',
-                                    style: TextStyle(color: Colors.blue[900], fontSize: 12),
+                                    'Anda terima  ',
+                                    style: TextStyle(
+                                        color: Colors.blue[900],
+                                        fontSize: 12,
+                                        fontFamily: 'Sans'
+                                    ),
                                   ),
                                 ),
-                                Image(
-                                  height: 12,
-                                  width: 12,
-                                  image: AssetImage('lib/assets/info_48.png'),
+                                Icon(
+                                  Icons.calendar_today_outlined,
+                                  color: Colors.blueAccent,
+                                  size: 20,
                                 ),
+                                // Image(
+                                //   height: 18,
+                                //   width: 18,
+                                //   image: AssetImage('lib/assets/info_48.png'),
+                                // ),
                                 Align(
                                   /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
                                   alignment: Alignment.topCenter,
@@ -93,7 +106,11 @@ class _HomeState extends State<Home> {
                                   alignment: Alignment.topRight,
                                   child: Text(
                                     'Rp 1.500.000',
-                                    style: TextStyle(color: Colors.blue[900], fontSize: 12),
+                                    style: TextStyle(
+                                        color: Colors.blue[900],
+                                        fontSize: 12,
+                                        fontFamily: 'Sans'
+                                    ),
                                   ),
                                 ),
                               ]
@@ -104,32 +121,67 @@ class _HomeState extends State<Home> {
                 TableRow(
                     children: [
                       Container(
-                          margin: EdgeInsets.fromLTRB(10, 0.2, 10, 0),
-                          width: MediaQuery.of(context).size.width * 1,
-                          decoration: BoxDecoration(color: Colors.white,),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border(
+                                top: BorderSide(
+                                    color: Colors.black,
+                                    width: 0.3
+                                )
+                            ),
+                          ),
+                          height: 48,
+                          margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
                           padding: EdgeInsets.all(10),
+                          width: MediaQuery.of(context).size.width * 1,
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
                                 Align(
-                                  alignment: Alignment.topLeft,
+                                  alignment: Alignment.centerLeft,
                                   child: Text(
                                     'Anda mengembalikan',
-                                    style: TextStyle(color: Colors.blue[900], fontSize: 12),
+                                    style: TextStyle(
+                                        color: Colors.blue[900],
+                                        fontSize: 12,
+                                        fontFamily: 'Sans'
+                                    ),
                                   ),
                                 ),
-                                Align(
-                                  alignment: Alignment.topCenter,
-                                  child: Container(
-                                    width: MediaQuery.of(context).size.width * 0.355,
-                                  ),
+                                // Image(
+                                //   height: 18,
+                                //   width: 18,
+                                //   image: AssetImage('lib/assets/blank_white_icon.png'),
+                                // ),
+                                // Align(
+                                //   alignment: Alignment.topCenter,
+                                //   child: Container(
+                                //     width: MediaQuery.of(context).size.width * 0.38,
+                                //   ),
+                                // ),
+                                Expanded(
+                                    flex: 1,
+                                    child: Column(
+                                        children: <Widget>[
+                                          // Container(),
+                                          Spacer()
+                                        ]
+                                    )
                                 ),
-                                Align(
-                                  alignment: Alignment.topRight,
-                                  child: Text(
-                                    'Rp 2.625.000',
-                                    style: TextStyle(color: Colors.blue[900], fontSize: 12),
-                                  ),
+                                Expanded(
+                                    flex: 1,
+                                    child: Column(
+                                        children: <Widget>[
+                                          Text(
+                                            'Rp 2.625.000',
+                                            style: TextStyle(
+                                                color: Colors.blue[900],
+                                                fontSize: 12,
+                                                fontFamily: 'Sans'
+                                            ),
+                                          ),
+                                        ]
+                                    )
                                 ),
                               ]
                           )
@@ -137,91 +189,144 @@ class _HomeState extends State<Home> {
                     ]
                 ),
                 TableRow(
-                  children: [
-                    Container(
+                    children: [
+                      Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border(
+                                top: BorderSide(
+                                    color: Colors.black,
+                                    width: 0.3
+                                )
+                            ),
+                          ),
+                          height: 48,
+                          margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                          padding: EdgeInsets.all(10),
+                          width: MediaQuery.of(context).size.width * 1,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    'Bayar hingga',
+                                    style: TextStyle(
+                                        color: Colors.blue[900],
+                                        fontSize: 12,
+                                        fontFamily: 'Sans'
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
+                                  alignment: Alignment.topCenter,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width * 0.48,
+                                  ),
+                                ),
+                                Align(
+                                    alignment: Alignment.topRight,
+                                    child: Row(
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.calendar_today_outlined,
+                                            color: Colors.blueAccent,
+                                            size: 20,
+                                          ),
+                                          Text(
+                                            '  28.10.2020',
+                                            style: TextStyle(
+                                                color: Colors.blue[900],
+                                                fontSize: 12,
+                                                fontFamily: 'Sans'
+                                            ),
+                                          ),
+                                        ]
+                                    )
+                                ),
+                              ]
+                          )
+                      ),
+                    ]
+                ),
+                TableRow(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border(
+                              top: BorderSide(
+                                  color: Colors.black,
+                                  width: 0.3
+                              )
+                          ),
+                        ),
+                        height: 48,
+                        margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
                         padding: EdgeInsets.all(10),
-                        // color: Colors.blue,
+                        width: MediaQuery.of(context).size.width * 1,
                         child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Align(
-                                alignment: Alignment.topLeft,
+                                alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Bayar hingga',
-                                  style: TextStyle(color: Colors.blue[900], fontSize: 12),
+                                  'Cicilan per bulan    ',
+                                  style: TextStyle(
+                                      color: Colors.blue[900],
+                                      fontSize: 12,
+                                      fontFamily: 'Sans'
+                                  ),
                                 ),
                               ),
                               Align(
                                 /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
-                                alignment: Alignment.topCenter,
+                                alignment: Alignment.bottomCenter,
                                 child: Container(
-                                  width: MediaQuery.of(context).size.width * 0.48,
+                                  width: MediaQuery.of(context).size.width * 0.41,
                                 ),
                               ),
                               Align(
-                                  alignment: Alignment.topRight,
-                                  child: Row(children: <Widget>[
-                                    Image(
-                                      height: 12,
-                                      width: 12,
-                                      image: AssetImage('lib/assets/info_48.png'),
-                                    ),
-                                    Text(
-                                      '\t28.10.2020',
-                                      style: TextStyle(color: Colors.blue[900], fontSize: 12),
-                                    ),
-                                  ])),
+                                  alignment: Alignment.bottomRight,
+                                  child: Row(
+                                      children: <Widget>[
+                                        Text(
+                                          'Rp 525.000  ',
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontSize: 12,
+                                              fontFamily: 'Sans'
+                                          ),
+                                        ),
+                                        Icon(
+                                          Icons.calendar_today_outlined,
+                                          color: Colors.blueAccent,
+                                          size: 20,
+                                        ),
+                                        // IconButton(
+                                        //   icon: Image(
+                                        //     height: 12,
+                                        //     width: 12,
+                                        //     image: AssetImage('lib/assets/info_48.png'),
+                                        //   ),
+                                        //   onPressed: () {
+                                        //     print('Cicilan');
+                                        //   },
+                                        //   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                        // ),
+                                      ]
+                                  )
+                              ),
                             ]
-                        )
-                    ),
-                  ]
-                ),
-                TableRow(
-                  children: [
-                    Row(children: <Widget>[
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Text(
-                          'Cicilan per bulan',
-                          style: TextStyle(color: Colors.blue[900], fontSize: 12),
                         ),
                       ),
-                      Align(
-                        /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.41,
-                        ),
-                      ),
-                      Align(
-                          alignment: Alignment.bottomRight,
-                          child: Row(children: <Widget>[
-                            Text(
-                              'Rp 525.000  ',
-                              style: TextStyle(color: Colors.blue[900], fontSize: 12),
-                            ),
-                            Image(
-                              height: 12,
-                              width: 12,
-                              image: AssetImage('lib/assets/info_48.png'),
-                            ),
-                            // IconButton(
-                            //   icon: Image(
-                            //     height: 12,
-                            //     width: 12,
-                            //     image: AssetImage('lib/assets/info_48.png'),
-                            //   ),
-                            //   onPressed: () {
-                            //     print('Cicilan');
-                            //   },
-                            //   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                            // ),
-                          ])),
-                    ]),
-                  ]
+                    ]
                 )
               ],
             ),
-          ]),
+          ]
+      ),
     );
   }
 }
