@@ -22,52 +22,42 @@ class _HomeState extends State<Home> {
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
+              /// OJK DAN DANAFIX
+              Positioned(
+                left: 0,
+                top: 20,
+                child: GestureDetector(
+                  onTap: (){
+                    Toast.show("onTap gesture detector\nojk_transparent", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                  },
+                  child: Image(
+                    height: 50,
+                    width: 125,
+                    image: AssetImage('lib/assets/ojk_transparent.png'),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 10,
+                right: 0,
+                child: GestureDetector(
+                  onTap: () {
+                    Toast.show("onTap gesture detector\ndfix_transparent", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                  },
+                  child: Image(
+                    height: 50,
+                    width: 125,
+                    image: AssetImage('lib/assets/dfix_transparent.png'),
+                  ),
+                ),
+              ),
               Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   /// NG
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    /// OJK DAN DANAFIX
-                    Row(
-                        children: <Widget>[
-                          /// ALIGN NG
-                          GestureDetector(
-                            onTap: (){
-                              Toast.show("onTap gesture detector\nojk_transparent", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
-                            },
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Image(
-                                height: 50,
-                                width: 125,
-                                image: AssetImage('lib/assets/ojk_transparent.png'),
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Toast.show("onTap gesture detector\ncontainer between both icon", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
-                            },
-                            child: Align(
-                              alignment: Alignment.topCenter,
-                              child: Container(
-                                width: 150,
-                                height: 100,
-                              ),
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.topRight,
-                            child: Image(
-                              height: 50,
-                              width: 125,
-                              image: AssetImage('lib/assets/dfix_transparent.png'),
-                            ),
-                          ),
-                        ]
-                    ),
                     Container(
-                      height: 50,
+                      height: 150,
                     ),
                     /// LIST OF TEXT
                     Table(

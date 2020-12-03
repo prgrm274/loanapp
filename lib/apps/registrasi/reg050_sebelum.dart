@@ -316,14 +316,15 @@ class _Reg050State extends State<Reg050> {
                                     isOnTappedNama = true;
                                     print('onTap NAMA LENGKAP');
 
-                                    Fluttertoast.showToast(
-                                        msg: 'onTap NAMA LENGKAP',
-                                        toastLength: Toast.LENGTH_LONG,
-                                        gravity: ToastGravity.TOP,
-                                        backgroundColor: Colors.red,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0
-                                    );
+                                    // Fluttertoast.showToast(
+                                    //     msg: 'onTap NAMA LENGKAP',
+                                    //     toastLength: Toast.LENGTH_LONG,
+                                    //     gravity: ToastGravity.TOP,
+                                    //     backgroundColor: Colors.red,
+                                    //     textColor: Colors.white,
+                                    //     fontSize: 16.0
+                                    // );
+
                                     // isNamaFokus = true;
                                     // isTempatFokus = false;
                                   },
