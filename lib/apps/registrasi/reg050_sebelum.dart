@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:voidrealm/appbars/appbar_progress.dart';
 import 'package:voidrealm/apps/registrasi/reg060.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';

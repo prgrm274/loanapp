@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_grid_button/flutter_grid_button.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:voidrealm/apps/registrasi/reg050.dart';
 import 'package:voidrealm/numpads/flutter_numpad_widget_example.dart';
 import 'package:voidrealm/numpads/custom_numpad2.dart';

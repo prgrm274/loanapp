@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
+import 'package:toast/toast.dart';
 import 'package:voidrealm/appbars/appbar_progress.dart';
 import 'package:voidrealm/apps/registrasi/reg060.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
@@ -758,14 +759,17 @@ class _Reg050State extends State<Reg050> {
                                     currentFocus.unfocus();
                                   }
 
-                                  Fluttertoast.showToast(
-                                      msg: 'GestureDetector onTap EMAIL DONE',
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.TOP,
-                                      backgroundColor: Colors.red,
-                                      textColor: Colors.white,
-                                      fontSize: 12.0
-                                  );
+                                  /// FLUTTERTOAST
+                                  // Fluttertoast.showToast(
+                                  //     msg: 'GestureDetector onTap EMAIL DONE',
+                                  //     toastLength: Toast.LENGTH_SHORT,
+                                  //     gravity: ToastGravity.TOP,
+                                  //     backgroundColor: Colors.red,
+                                  //     textColor: Colors.white,
+                                  //     fontSize: 12.0
+                                  // );
+                                  /// TOAST
+                                  Toast.show("onTap gesture detector", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
                                 },
                                 child: Focus(
                                   onFocusChange: (hasFokus) {

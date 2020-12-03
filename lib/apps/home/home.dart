@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:toast/toast.dart';
 import 'package:voidrealm/apps/home/text_anda_terima_product_calc.dart';
 
 class Home extends StatefulWidget {
@@ -18,7 +19,6 @@ class _HomeState extends State<Home> {
       color: Colors.cyan,
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-
           /// NG
           // mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
@@ -26,19 +26,29 @@ class _HomeState extends State<Home> {
             Row(
                 children: <Widget>[
                   /// ALIGN NG
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Image(
-                      height: 50,
-                      width: 125,
-                      image: AssetImage('lib/assets/ojk_transparent.png'),
+                  GestureDetector(
+                    onTap: (){
+                      Toast.show("onTap gesture detector\nojk_transparent", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                    },
+                    child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Image(
+                        height: 50,
+                        width: 125,
+                        image: AssetImage('lib/assets/ojk_transparent.png'),
+                      ),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      width: 150,
-                      height: 100,
+                  GestureDetector(
+                    onTap: () {
+                      Toast.show("onTap gesture detector\ncontainer between both icon", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
+                    },
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: Container(
+                        width: 150,
+                        height: 100,
+                      ),
                     ),
                   ),
                   Align(
@@ -50,6 +60,23 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ]
+            ),
+            /// LOGO KARUNG UANG
+            Container(
+              color: Colors.yellowAccent,
+              height: 50,
+              width: 50,
+              child: Stack(
+                  children: [
+                    Positioned(
+                        bottom: 20,
+                        left: 20,
+                        child: Image(
+                            image: AssetImage('lib/assets/karung_uang.png')
+                        )
+                    ),
+                  ]
+              ),
             ),
             Table(
               children: [
@@ -80,7 +107,7 @@ class _HomeState extends State<Home> {
                                     'Anda terima  ',
                                     style: TextStyle(
                                         color: Colors.blue[900],
-                                        fontSize: 12,
+                                        fontSize: 13,
                                         fontFamily: 'Sans'
                                     ),
                                   ),
@@ -97,18 +124,18 @@ class _HomeState extends State<Home> {
                                 // ),
                                 Align(
                                   /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
-                                  alignment: Alignment.topCenter,
+                                  alignment: Alignment.center,
                                   child: Container(
                                     width: MediaQuery.of(context).size.width * 0.46,
                                   ),
                                 ),
                                 Align(
-                                  alignment: Alignment.topRight,
+                                  alignment: Alignment.centerRight,
                                   child: Text(
                                     'Rp 1.500.000',
                                     style: TextStyle(
                                         color: Colors.blue[900],
-                                        fontSize: 12,
+                                        fontSize: 13,
                                         fontFamily: 'Sans'
                                     ),
                                   ),
@@ -143,7 +170,7 @@ class _HomeState extends State<Home> {
                                     'Anda mengembalikan',
                                     style: TextStyle(
                                         color: Colors.blue[900],
-                                        fontSize: 12,
+                                        fontSize: 13,
                                         fontFamily: 'Sans'
                                     ),
                                   ),
@@ -159,29 +186,22 @@ class _HomeState extends State<Home> {
                                 //     width: MediaQuery.of(context).size.width * 0.38,
                                 //   ),
                                 // ),
-                                Expanded(
-                                    flex: 1,
-                                    child: Column(
-                                        children: <Widget>[
-                                          // Container(),
-                                          Spacer()
-                                        ]
-                                    )
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width * 0.40,
+                                  ),
                                 ),
-                                Expanded(
-                                    flex: 1,
-                                    child: Column(
-                                        children: <Widget>[
-                                          Text(
-                                            'Rp 2.625.000',
-                                            style: TextStyle(
-                                                color: Colors.blue[900],
-                                                fontSize: 12,
-                                                fontFamily: 'Sans'
-                                            ),
-                                          ),
-                                        ]
-                                    )
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Rp 2.625.000',
+                                    style: TextStyle(
+                                        color: Colors.blue[900],
+                                        fontSize: 13,
+                                        fontFamily: 'Sans'
+                                    ),
+                                  ),
                                 ),
                               ]
                           )
@@ -213,20 +233,20 @@ class _HomeState extends State<Home> {
                                     'Bayar hingga',
                                     style: TextStyle(
                                         color: Colors.blue[900],
-                                        fontSize: 12,
+                                        fontSize: 13,
                                         fontFamily: 'Sans'
                                     ),
                                   ),
                                 ),
                                 Align(
                                   /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
-                                  alignment: Alignment.topCenter,
+                                  alignment: Alignment.center,
                                   child: Container(
                                     width: MediaQuery.of(context).size.width * 0.48,
                                   ),
                                 ),
                                 Align(
-                                    alignment: Alignment.topRight,
+                                    alignment: Alignment.centerRight,
                                     child: Row(
                                         children: <Widget>[
                                           Icon(
@@ -238,7 +258,7 @@ class _HomeState extends State<Home> {
                                             '  28.10.2020',
                                             style: TextStyle(
                                                 color: Colors.blue[900],
-                                                fontSize: 12,
+                                                fontSize: 13,
                                                 fontFamily: 'Sans'
                                             ),
                                           ),
@@ -275,27 +295,27 @@ class _HomeState extends State<Home> {
                                   'Cicilan per bulan    ',
                                   style: TextStyle(
                                       color: Colors.blue[900],
-                                      fontSize: 12,
+                                      fontSize: 13,
                                       fontFamily: 'Sans'
                                   ),
                                 ),
                               ),
                               Align(
                                 /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
-                                alignment: Alignment.bottomCenter,
+                                alignment: Alignment.center,
                                 child: Container(
                                   width: MediaQuery.of(context).size.width * 0.41,
                                 ),
                               ),
                               Align(
-                                  alignment: Alignment.bottomRight,
+                                  alignment: Alignment.centerRight,
                                   child: Row(
                                       children: <Widget>[
                                         Text(
                                           'Rp 525.000  ',
                                           style: TextStyle(
                                               color: Colors.blue[900],
-                                              fontSize: 12,
+                                              fontSize: 13,
                                               fontFamily: 'Sans'
                                           ),
                                         ),
