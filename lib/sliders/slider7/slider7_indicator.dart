@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart' as cd;
-import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart';
-import 'package:voidrealm/sliders/dfix/jface.dart';
-import 'package:voidrealm/sliders/dfix/slider7_head.dart';
+// import 'jconst_circle_diameter.dart' as cd;
+import 'jconst_circle_diameter.dart';
+import 'jface.dart';
+import 'slider7_head.dart';
 
 class MyIndicator extends StatelessWidget {
   MyIndicator({

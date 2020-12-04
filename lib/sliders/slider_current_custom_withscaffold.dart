@@ -81,6 +81,7 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
                         label: sliderValue.toString(),
                         max: 10.0,
                         min: 0.0,
+                        value: sliderValue,
                         onChanged: (value) {/// REQUIRED
                           setState(() {/// ng
                             sliderValue = value;
@@ -137,7 +138,6 @@ class _SliderCreatingCustomThumbState extends State<SliderCreatingCustomThumb> {
                             }
                           });
                         },
-                        value: sliderValue,
                       ),
                     ),
                   )

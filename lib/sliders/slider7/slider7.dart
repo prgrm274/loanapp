@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart';
-import 'package:voidrealm/sliders/dfix/jface.dart';
-import 'package:voidrealm/sliders/dfix/slider7_head.dart';
-import 'package:voidrealm/sliders/dfix/slider7_indicator.dart';
-import 'package:voidrealm/sliders/dfix/slider7_measure_line.dart';
-import 'package:voidrealm/sliders/dfix/jpainter.dart';
-import 'package:voidrealm/sliders/dfix/jconst_padding.dart';
+import 'jconst_circle_diameter.dart';
+import 'jface.dart';
+import 'slider7_head.dart';
+import 'slider7_indicator.dart';
+import 'slider7_measure_line.dart';
+import 'jpainter.dart';
+import 'jconst_padding.dart';
 
 class Slider7 extends StatefulWidget {
   Slider7({Key key}) : super(key: key);

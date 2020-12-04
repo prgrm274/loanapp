@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/sliders/slider2roundthumb.dart';
-import 'slider3customthumbcircle.dart';
+import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
+import '../slider_current_custom_thumb_circle.dart';
 
 class SliderWidget2 extends StatefulWidget {
   final double sliderHeight;
@@ -47,8 +47,11 @@ class _SliderWidget2State extends State<SliderWidget2> {
             tileMode: TileMode.clamp),
       ),
       child: Padding(
-        padding: EdgeInsets.fromLTRB(this.widget.sliderHeight * paddingFactor,
-            2, this.widget.sliderHeight * paddingFactor, 2),
+        padding: EdgeInsets.fromLTRB(
+            this.widget.sliderHeight * paddingFactor,
+            2,
+            this.widget.sliderHeight * paddingFactor, 2
+        ),
         child: Row(
           children: <Widget>[
             Text(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart';
+import 'jconst_circle_diameter.dart';
 
 /// ICON ATAU SHAPE YANG POSISINYA DI TITIK-TITIK SLIDER
 class Head extends StatelessWidget {

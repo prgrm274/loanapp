@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/sliders/slider2roundthumb.dart';
-import 'slider3customthumbcircle.dart';
+import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
+import 'slider_current_custom_thumb_circle.dart';
 
 class SliderWidget extends StatefulWidget {
   final double sliderHeight;
@@ -34,7 +34,7 @@ class _SliderWidgetState extends State<SliderWidget> {
       height: (this.widget.sliderHeight),
       decoration: new BoxDecoration(
         borderRadius: new BorderRadius.all(
-          Radius.circular((this.widget.sliderHeight * .3)),
+          Radius.circular(this.widget.sliderHeight * .3),
         ),
         gradient: new LinearGradient(
             colors: [
@@ -81,7 +81,7 @@ class _SliderWidgetState extends State<SliderWidget> {
                     ),*/
 
                     /// USE slider2
-                    thumbShape: JRoundSliderThumbShape(
+                    thumbShape: SliderWidgetRoundSliderThumbShape(
                       disabledThumbRadius: 4,
                       enabledThumbRadius: 20,
                     ),

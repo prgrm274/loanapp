@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/sliders/dfix/jconst_circle_diameter.dart';
-import 'package:voidrealm/sliders/dfix/jpainter.dart';
+import 'jconst_circle_diameter.dart';
+import 'jpainter.dart';
 
 class Face extends StatelessWidget {
   Face({
