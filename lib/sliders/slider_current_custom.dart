@@ -148,7 +148,7 @@ class _SliderCurrentState extends State<SliderCurrent> {
                               newValue = 2.0;
                             });
 
-                            ///
+                            /// COUNTDOWN TIMER
                             countDownTimer();
                           }
                           // else {

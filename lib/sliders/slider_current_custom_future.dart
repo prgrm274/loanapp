@@ -116,8 +116,6 @@ class _SliderCurrentFutureState extends State<SliderCurrentFuture> {
                       /// value (use onChanged for that), but rather to know
                       /// when the user has completed selecting a new value
                       /// by ending a drag or a click.
-                      ///
-                      /// JADI GA PAKE SETSTATE DISINI
                       onChangeEnd: (newValue) {
                         setState(() {
                           if (newValue >= 4.0) {
