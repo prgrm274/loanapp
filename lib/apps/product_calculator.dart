@@ -40,13 +40,33 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   TextAndaTerimaProductCalc text12 = new TextAndaTerimaProductCalc();
 
   List<Widget> _textUang = [
-    Text('text 0'),
+    Container(
+      alignment: Alignment.centerRight,
+      margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+      child: Text(
+        'Rp. 500.000',
+        style: TextStyle(
+            color: Colors.blue[900],
+            fontSize: 13,
+            fontFamily: 'Sans'
+        ),
+      ),
+    ),
+    Container(
+      alignment: Alignment.centerRight,
+      margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+      child: Text(
+        'Rp. 800.000',
+        style: TextStyle(
+            color: Colors.blue[900],
+            fontSize: 13,
+            fontFamily: 'Sans'
+        ),
+      ),
+    ),
     Text('text 2'),
     Text('text 4'),
-    Text('text 6'),
   ];
-
-  static bool _text0 = false, _text1 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +78,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
-              /// OJK DAN DANAFIX
+              /// OJK
               Positioned(
                 left: 0,
                 top: 20,
@@ -73,6 +93,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                   ),
                 ),
               ),
+              /// DANAFIX
               Positioned(
                 top: 10,
                 right: 0,
@@ -87,6 +108,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                   ),
                 ),
               ),
+              /// COLUMN UNTUK TEXT TABLE
               Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   /// NG
@@ -135,8 +157,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                             child: Row(
                                                 children: <Widget>[
                                                   Container(
+                                                    margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
                                                     child: Text(
-                                                      'Anda terima  ',
+                                                      'Anda terima',
                                                       style: TextStyle(
                                                           color: Colors.blue[900],
                                                           fontSize: 13,
@@ -166,7 +189,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                           // ),
                                           Expanded(
                                             flex: 1,
-                                            child: _text0 ?
+                                            child: sliderValue > 4.0 ?
                                             _textUang.elementAt(0)
                                             // new Text(
                                             //   'Rp 1',
@@ -177,8 +200,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                             //   ),
                                             // )
                                                 :
-                                            Align(
+                                            Container(
                                               alignment: Alignment.centerRight,
+                                              margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
                                               child: new Text(
                                                 'Rp 1.500.000',
                                                 style: TextStyle(
@@ -214,15 +238,22 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                     child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              'Anda mengembalikan',
-                                              style: TextStyle(
-                                                  color: Colors.blue[900],
-                                                  fontSize: 13,
-                                                  fontFamily: 'Sans'
-                                              ),
+                                          Expanded(
+                                            flex: 1,
+                                            child: Row(
+                                                children: <Widget>[
+                                                  Container(
+                                                    margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                                    child: Text(
+                                                      'Anda mengembalikan',
+                                                      style: TextStyle(
+                                                          color: Colors.blue[900],
+                                                          fontSize: 13,
+                                                          fontFamily: 'Sans'
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ]
                                             ),
                                           ),
                                           // Image(
@@ -241,14 +272,21 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                           //     width: MediaQuery.of(context).size.width * 0.40,
                                           //   ),
                                           // ),
-                                          Align(
-                                            alignment: Alignment.center,
-                                            child: Text(
-                                              'Rp 2.625.000',
-                                              style: TextStyle(
-                                                  color: Colors.blue[900],
-                                                  fontSize: 13,
-                                                  fontFamily: 'Sans'
+                                          Expanded(
+                                            flex: 1,
+                                            child: sliderValue > 4.0 ?
+                                            _textUang.elementAt(1)
+                                                :
+                                            Container(
+                                              alignment: Alignment.centerRight,
+                                              margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                              child: Text(
+                                                'Rp 2.625.000',
+                                                style: TextStyle(
+                                                    color: Colors.blue[900],
+                                                    fontSize: 13,
+                                                    fontFamily: 'Sans'
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -271,14 +309,17 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                     child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
-                                          Align(
-                                            alignment: Alignment.centerLeft,
-                                            child: Text(
-                                              'Bayar hingga',
-                                              style: TextStyle(
-                                                  color: Colors.blue[900],
-                                                  fontSize: 13,
-                                                  fontFamily: 'Sans'
+                                          Expanded(
+                                            flex: 1,
+                                            child: Container(
+                                              margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                              child: Text(
+                                                'Bayar hingga',
+                                                style: TextStyle(
+                                                    color: Colors.blue[900],
+                                                    fontSize: 13,
+                                                    fontFamily: 'Sans'
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -290,22 +331,28 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                           // ),
                                           Align(
                                               alignment: Alignment.centerRight,
-                                              child: Row(
-                                                  children: <Widget>[
-                                                    Icon(
-                                                      Icons.calendar_today_outlined,
-                                                      color: Colors.blueAccent,
-                                                      size: 20,
-                                                    ),
-                                                    Text(
-                                                      '  28.10.2020',
-                                                      style: TextStyle(
-                                                          color: Colors.blue[900],
-                                                          fontSize: 13,
-                                                          fontFamily: 'Sans'
+                                              child: Container(
+                                                margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                                child: Row(
+                                                    children: <Widget>[
+                                                      Icon(
+                                                        Icons.calendar_today_outlined,
+                                                        color: Colors.blueAccent,
+                                                        size: 20,
                                                       ),
-                                                    ),
-                                                  ]
+                                                      Container(
+                                                        margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                                        child: Text(
+                                                          '28.10.2020',
+                                                          style: TextStyle(
+                                                              color: Colors.blue[900],
+                                                              fontSize: 13,
+                                                              fontFamily: 'Sans'
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ]
+                                                ),
                                               )
                                           ),
                                         ]
@@ -314,6 +361,75 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               ]
                           ),
                           /// 4. CICILAN PER BULAN
+                          TableRow(
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(4),
+                                        bottomRight: Radius.circular(4)
+                                    ),
+                                  ),
+                                  height: 48,
+                                  child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Expanded(
+                                          flex: 1,
+                                          child: Container(
+                                            alignment: Alignment.centerLeft,
+                                            margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                            child: Text(
+                                              'Cicilan per bulan',
+                                              style: TextStyle(
+                                                  color: Colors.blue[900],
+                                                  fontSize: 13,
+                                                  fontFamily: 'Sans'
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+
+                                        Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Container(
+                                            margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                            child: Row(
+                                                children: <Widget>[
+                                                  Container(
+                                                    margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                                    child: Text(
+                                                      'Rp. 525.000',
+                                                      style: TextStyle(
+                                                          color: Colors.blue[900],
+                                                          fontSize: 13,
+                                                          fontFamily: 'Sans'
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Icon(
+                                                    Icons.calendar_today_outlined,
+                                                    color: Colors.blueAccent,
+                                                    size: 20,
+                                                  ),
+                                                  // IconButton(
+                                                  //   icon: Image(
+                                                  //     height: 12,
+                                                  //     width: 12,
+                                                  //     image: AssetImage('lib/assets/info_48.png'),
+                                                  //   ),
+                                                  //   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                                  // ),
+                                                ]
+                                            ),
+                                          ),
+                                        ),
+                                      ]
+                                  ),
+                                ),
+                              ]
+                          )
                         ],
                       ),
                     ),
@@ -463,7 +579,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   Text(
                                     sliderValue.toInt().toString(),
                                     style: TextStyle(
-                                        fontSize: 48
+                                        fontSize: 12
                                     ),
                                   ),
                                 ]
@@ -538,8 +654,6 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   /// TIMER
   Timer _timer;
   int _start = 3;
-
-
 }
 
 class SliderThumbImage extends SliderComponentShape {
