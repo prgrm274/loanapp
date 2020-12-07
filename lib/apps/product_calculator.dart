@@ -3,6 +3,14 @@ import 'dart:ui' as dartUI;
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_a_800rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt600rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt400rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_d_3jt200rb.dart';
+import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
+import 'package:voidrealm/apps/texts/t_andaterima_b_1jt.dart';
+import 'package:voidrealm/apps/texts/t_andaterima_c_1jt500rb.dart';
+import 'package:voidrealm/apps/texts/t_andaterima_d_2jt.dart';
 import 'text_anda_terima_product_calc.dart';
 import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_current_custom_future.dart';
@@ -40,33 +48,32 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   TextAndaTerimaProductCalc text12 = new TextAndaTerimaProductCalc();
 
   List<Widget> _textUang = [
-    Container(
-      alignment: Alignment.centerRight,
-      margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-      child: Text(
-        'Rp. 500.000',
-        style: TextStyle(
-            color: Colors.blue[900],
-            fontSize: 13,
-            fontFamily: 'Sans'
-        ),
-      ),
-    ),
-    Container(
-      alignment: Alignment.centerRight,
-      margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-      child: Text(
-        'Rp. 800.000',
-        style: TextStyle(
-            color: Colors.blue[900],
-            fontSize: 13,
-            fontFamily: 'Sans'
-        ),
-      ),
-    ),
-    Text('text 2'),
-    Text('text 4'),
+    TAndaTerimaA500rb(),
+    TAndaTerimaB1jt(),
+    TAndaTerimaC1jt500rb(),
+    TAndaTerimaD2jt(),
+
+    TAndaMengembalikanA800rb(),
+    TAndaMengembalikanB1jt600rb(),
+    TAndaMengembalikanC2jt400rb(),
+    TAndaMengembalikanD3jt200rb(),
   ];
+
+  /// BUAT METHOD DAN TARUH DI CHILD
+  /// JADI TIDAK PERLU IF ELSE DI CHILD:
+  Widget _setText() {
+    if (sliderValue == 0.0) {
+      return _textUang.elementAt(0);
+    } else if (sliderValue == 1.0) {
+      return _textUang.elementAt(1);
+    } else if (sliderValue == 2.0) {
+      return _textUang.elementAt(2);
+    } else if (sliderValue == 3.0) {
+      return _textUang.elementAt(3);
+    } else {
+      return _textUang.elementAt(0);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -188,30 +195,23 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                           //   ),
                                           // ),
                                           Expanded(
-                                            flex: 1,
-                                            child: sliderValue > 4.0 ?
-                                            _textUang.elementAt(0)
-                                            // new Text(
-                                            //   'Rp 1',
-                                            //   style: TextStyle(
-                                            //       color: Colors.blue[900],
-                                            //       fontSize: 13,
-                                            //       fontFamily: 'Sans'
+                                              flex: 1,
+                                              child: _setText()
+                                            /// v
+                                            // sliderValue > 4.0 ?
+                                            // _textUang.elementAt(0) :
+                                            // Container(
+                                            //   alignment: Alignment.centerRight,
+                                            //   margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                            //   child: new Text(
+                                            //     'Rp 1.500.000',
+                                            //     style: TextStyle(
+                                            //         color: Colors.blue[900],
+                                            //         fontSize: 13,
+                                            //         fontFamily: 'Sans'
+                                            //     ),
                                             //   ),
-                                            // )
-                                                :
-                                            Container(
-                                              alignment: Alignment.centerRight,
-                                              margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                              child: new Text(
-                                                'Rp 1.500.000',
-                                                style: TextStyle(
-                                                    color: Colors.blue[900],
-                                                    fontSize: 13,
-                                                    fontFamily: 'Sans'
-                                                ),
-                                              ),
-                                            ),
+                                            // ),
                                           ),
                                         ]
                                     )
@@ -497,9 +497,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         // valueIndicatorColor: Colors.red,
                                       ),
                                       child: Slider(
-                                        divisions: 5,
+                                        divisions: 6,
                                         label: sliderValue.toString(),
-                                        max: 10.0,
+                                        max: 7.0,
                                         min: 0.0,
                                         value: sliderValue,
                                         onChanged: (value) {/// REQUIRED
