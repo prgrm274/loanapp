@@ -6,15 +6,15 @@ import 'package:flutter/services.dart';
 import 'package:toast/toast.dart';
 import 'package:voidrealm/sliders/slider_current_custom_thumb_circle.dart';
 
-class SliderCurrent extends StatefulWidget {
-  SliderCurrent({Key key}) : super(key: key);
+class SliderCustom extends StatefulWidget {
+  SliderCustom({Key key}) : super(key: key);
 
   @override
-  _SliderCurrentState createState() =>
-      _SliderCurrentState();
+  _SliderCustomState createState() =>
+      _SliderCustomState();
 }
 
-class _SliderCurrentState extends State<SliderCurrent> {
+class _SliderCustomState extends State<SliderCustom> {
   dartUI.Image customImage;
   double sliderValue = 0.0;/// INITIAL VALUE
 
@@ -37,7 +37,6 @@ class _SliderCurrentState extends State<SliderCurrent> {
     loadImage('lib/assets/info_48.png').then((image) {
       customImage = image;
     });
-
 
     super.initState();
   }
@@ -169,76 +168,14 @@ class _SliderCurrentState extends State<SliderCurrent> {
     );
   }
 
-  ///
-  /// TIMER
-  Timer _timer;
-  int _start = 3;
-  // int _start = 2;
-
-  void startWithNullCheck(){
-    if (_timer != null) {
-      _timer.cancel();
-      _timer = null;
-
-      sliderValue = 2.0;
-      loadImage('lib/assets/info_48.png').then((image) {
-        customImage = image;
-      });
-    } else {
-      _timer = new Timer.periodic(const Duration(seconds: 1),
-              (Timer timer) {/// berapapun start, tetap pake 1
-            setState(() {
-              if (_start < 1) {/// tetap pake 1
-                _timer.cancel();
-
-                /// SET THUMB VALUE TO FOR EXAMPLE 1.0
-                sliderValue = 2.0;
-                /// THEN ALSO SET IMAGE BACK TO NOT BONUS ONE
-                loadImage('lib/assets/info_48.png').then((image) {
-                  customImage = image;
-                });
-              } else {
-                _start = _start - 1;/// tetap pake 1
-              }
-            });
-          });
-    }
-  }
-
-  void start(){/// v
-    // const oneSec = const Duration(seconds: 1);
-    _timer = new Timer.periodic(
-        const Duration(seconds: 1),/// berapapun start, tetap pake 1
-            (Timer timer) {
-          setState(() {
-            if (_start < 1) {/// tetap pake 1
-              _timer.cancel();
-
-              /// SET THUMB VALUE TO FOR EXAMPLE 1.0
-              sliderValue = 2.0;
-              /// THEN ALSO SET IMAGE BACK TO NOT BONUS ONE
-              loadImage('lib/assets/info_48.png').then((image) {
-                customImage = image;
-              });
-            } else {
-              _start = _start - 1;/// tetap pake 1
-            }
-          });
-        });
-  }
-
   @override
   void dispose() {
-    if (_timer != null) {
-      _timer.cancel();
-      _timer = null;/// NG
-    }
-    // _timer.cancel();
+
     super.dispose();
   }
 
   ///
-  /// USING COUNTDOWN TIMER
+  /// BY USING COUNTDOWN TIMER
   countDownTimer() async {
     int timerCount;
     for (int x = 5; x > 0; x--) {

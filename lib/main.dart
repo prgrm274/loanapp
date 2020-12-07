@@ -3,10 +3,10 @@ import 'package:voidrealm/appbars/j_login040_appbar.dart';
 import 'package:voidrealm/appbars/j_login040_body.dart';
 import 'package:voidrealm/appbars/appbar_progress.dart';
 import 'package:voidrealm/appbars/custombar.dart';
+import 'package:voidrealm/apps/product_calculator.dart';
 // import 'package:voidrealm/appbars/progress/lpi_vr.dart';
 // import 'package:voidrealm/appbars/progress/sles_progress_indicator1.dart';
 // import 'package:voidrealm/appbars/progress/sful_linearprogressindicator.dart';
-import 'package:voidrealm/apps/home/home.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
 import 'package:voidrealm/apps/registrasi/reg050.dart';
 import 'package:voidrealm/apps/registrasi/reg060.dart';
@@ -36,7 +36,7 @@ import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/sliders/not/js
 import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/sliders/not/slider1.dart';
 import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
 import 'package:voidrealm/sliders/slider_current_custom_thumb_circle.dart';
-import 'package:voidrealm/sliders/slider_current_custom.dart';
+import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_widget.dart';
 import 'package:voidrealm/sliders/slider6.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
@@ -58,7 +58,7 @@ class _Statenya extends State<MyApp> {
   Widget build(BuildContext context) {
     return new MaterialApp(
       ///
-      home: Home(),///bs
+      home: ProductCalculator(),///bs
       // home: LPI(),
       // home: ProgressIndicator1(),
 

@@ -5,15 +5,15 @@ import 'dart:ui' as dartUI;
 import 'package:flutter/services.dart';
 import 'package:toast/toast.dart';
 
-class SliderCurrentFuture extends StatefulWidget {
-  SliderCurrentFuture({Key key}) : super(key: key);
+class SliderCurrentCustomFuture extends StatefulWidget {
+  SliderCurrentCustomFuture({Key key}) : super(key: key);
 
   @override
-  _SliderCurrentFutureState createState() =>
-      _SliderCurrentFutureState();
+  _SliderCurrentCustomFutureState createState() =>
+      _SliderCurrentCustomFutureState();
 }
 
-class _SliderCurrentFutureState extends State<SliderCurrentFuture> {
+class _SliderCurrentCustomFutureState extends State<SliderCurrentCustomFuture> {
   dartUI.Image customImage;
   double sliderValue = 0.0;/// INITIAL VALUE
 
@@ -228,8 +228,31 @@ class _SliderCurrentFutureState extends State<SliderCurrentFuture> {
 
   @override
   void dispose() {
-    _timer.cancel();
+    if (_timer != null) {
+      _timer.cancel();
+      _timer = null;/// NG
+    }
+    // _timer.cancel();
     super.dispose();
+  }
+
+  ///
+  /// BY USING COUNTDOWN TIMER
+  countDownTimer() async {
+    int timerCount;
+    for (int x = 5; x > 0; x--) {
+      await Future.delayed(Duration(seconds: 1)).then((_) {
+        setState(() {
+          timerCount -= 1;
+          Toast.show(
+              "countDownTimer",
+              context,
+              duration: Toast.LENGTH_SHORT,
+              gravity:  Toast.BOTTOM
+          );
+        });
+      });
+    }
   }
 }
 
