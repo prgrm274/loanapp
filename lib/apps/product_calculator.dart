@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui' as dartUI;
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
@@ -343,11 +344,131 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       /// SLIDER
                       /// SliderCreatingCustomThumb PAKE COLUMN
                       /// DI SINI BERARTI COLUMN DALAM COLUMN BISA
-                      GestureDetector(
-                        onTap: (){
-                          _text0 = true;
-                        },
-                        child: SliderCurrentCustomFuture(),
+                      // SliderCurrentCustomFuture(),
+                      Column(
+                          children: <Widget>[
+                            Row(
+                                children: <Widget>[
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(0, 50, 0, 40),
+                                    width: MediaQuery.of(context).size.width * 1,
+                                    child: SliderTheme(
+                                      data: SliderThemeData(
+                                        /// WARNA AKTIF
+                                        // activeTrackColor: Colors.yellowAccent,
+                                        activeTrackColor: null,
+                                        // inactiveTrackColor: Colors.cyan[100],
+                                        inactiveTrackColor: null,
+                                        // activeTickMarkColor: sliderValue <= 4.0 ? Colors.amber : Colors.brown,
+                                        // inactiveTickMarkColor: Colors.brown,
+                                        /// GA PAKE OVERLAY
+                                        // overlayShape: RoundSliderOverlayShape(overlayRadius: 40.0),
+                                        // rangeThumbShape: RoundRangeSliderThumbShape(
+                                        //   elevation: 40,
+                                        //   disabledThumbRadius: 5,
+                                        //   enabledThumbRadius: 10,
+                                        //   pressedElevation: 10
+                                        // ),
+                                        thumbShape: sliderValue <= 4.0 ?
+                                        SliderThumbImage(customImage) :
+                                        RoundSliderThumbShape(enabledThumbRadius: 20),
+                                        trackHeight: 10,
+                                        trackShape: RoundedRectSliderTrackShape(),
+                                        tickMarkShape: RoundSliderTickMarkShape(
+                                            tickMarkRadius: 10
+                                        ),
+                                        /// WARNA LABEL (CALLOUT)
+                                        // valueIndicatorColor: Colors.red,
+                                      ),
+                                      child: Slider(
+                                        divisions: 5,
+                                        label: sliderValue.toString(),
+                                        max: 10.0,
+                                        min: 0.0,
+                                        value: sliderValue,
+                                        onChanged: (value) {/// REQUIRED
+                                          setState(() {/// ng
+                                            sliderValue = value;
+                                            if (value >= 4.0) {
+                                              loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                                customImage = image;
+                                              });
+                                            }
+
+                                            /// PERLUKAH SET IMAGE DI ONCHANGE?
+                                            /// KARENA ONCHANGED YAITU KONDISI SAAT DRAGGING
+                                          });
+                                        },
+
+                                        /// This callback also shouldn't be used to update the slider
+                                        /// value (use onChanged for that)
+                                        onChangeStart: (value) {
+                                          setState(() {
+                                            if (value >= 4.0) {
+                                              loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                                customImage = image;
+                                              });
+                                            } else {
+                                              loadImage('lib/assets/info_48.png').then((image) {
+                                                customImage = image;
+                                              });
+                                            }
+                                          });
+                                        },
+
+                                        /// This callback shouldn't be used to update the slider
+                                        /// value (use onChanged for that), but rather to know
+                                        /// when the user has completed selecting a new value
+                                        /// by ending a drag or a click.
+                                        onChangeEnd: (newValue) {
+                                          setState(() {
+                                            if (newValue >= 4.0) {
+                                              loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                                customImage = image;
+                                              });
+                                              Future.delayed(
+                                                  Duration(seconds: 4),
+                                                      (){
+                                                    Toast.show(
+                                                        '4 seconds, sliderValue > 4 => $sliderValue',
+                                                        context,
+                                                        duration: Toast.LENGTH_SHORT,
+                                                        gravity: Toast.BOTTOM
+                                                    );
+                                                    setState(() {
+                                                      sliderValue = 2.0;
+                                                    });
+                                                  });
+
+                                              // start();
+                                            } else {
+                                              if (_timer != null) {
+                                                _timer.cancel();
+                                                _timer = null;
+                                                loadImage('lib/assets/info_48.png').then((image) {
+                                                  customImage = image;
+                                                });
+                                              }
+                                            }
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  )
+                                ]
+                            ),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    sliderValue.toInt().toString(),
+                                    style: TextStyle(
+                                        fontSize: 48
+                                    ),
+                                  ),
+                                ]
+                            )
+                          ]
                       ),
                       // SliderCurrent(),
                       Container(
@@ -402,6 +523,23 @@ class _ProductCalculatorState extends State<ProductCalculator> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    if (_timer != null) {
+      _timer.cancel();
+      _timer = null;/// NG
+    }
+    // _timer.cancel();
+    super.dispose();
+  }
+
+  ///
+  /// TIMER
+  Timer _timer;
+  int _start = 3;
+
+
 }
 
 class SliderThumbImage extends SliderComponentShape {

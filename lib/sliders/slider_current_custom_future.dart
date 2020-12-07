@@ -5,6 +5,7 @@ import 'dart:ui' as dartUI;
 import 'package:flutter/services.dart';
 import 'package:toast/toast.dart';
 
+/// SKRG DITULIS LANGSUNG DI PRODUK KALKULATOR
 class SliderCurrentCustomFuture extends StatefulWidget {
   SliderCurrentCustomFuture({Key key}) : super(key: key);
 
@@ -14,9 +15,9 @@ class SliderCurrentCustomFuture extends StatefulWidget {
 }
 
 class _SliderCurrentCustomFutureState extends State<SliderCurrentCustomFuture> {
-  dartUI.Image customImage;
   double sliderValue = 0.0;/// INITIAL VALUE
 
+  dartUI.Image customImage;
   Future<dartUI.Image> loadImage(String pathOfAsset) async {
     ByteData data = await rootBundle.load(pathOfAsset);
     dartUI.Codec codec = await dartUI.instantiateImageCodec(
@@ -28,11 +29,9 @@ class _SliderCurrentCustomFutureState extends State<SliderCurrentCustomFuture> {
 
   @override
   void initState() {
-    // v
-    loadImage('lib/assets/info_48.png').then((image) {
+    loadImage('lib/assets/info_48.png').then((image) {// v
       customImage = image;
     });
-
     super.initState();
   }
 
@@ -168,6 +167,16 @@ class _SliderCurrentCustomFutureState extends State<SliderCurrentCustomFuture> {
     );
   }
 
+  @override
+  void dispose() {
+    if (_timer != null) {
+      _timer.cancel();
+      _timer = null;/// NG
+    }
+    // _timer.cancel();
+    super.dispose();
+  }
+
   ///
   /// TIMER
   Timer _timer;
@@ -224,16 +233,6 @@ class _SliderCurrentCustomFutureState extends State<SliderCurrentCustomFuture> {
             }
           });
         });
-  }
-
-  @override
-  void dispose() {
-    if (_timer != null) {
-      _timer.cancel();
-      _timer = null;/// NG
-    }
-    // _timer.cancel();
-    super.dispose();
   }
 
   ///
