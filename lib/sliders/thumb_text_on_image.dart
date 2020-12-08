@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// NOT USED
 class ThumbTextOnImage extends StatefulWidget {
   ThumbTextOnImage({Key key}) : super(key: key);
 

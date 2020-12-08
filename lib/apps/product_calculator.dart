@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import 'package:voidrealm/apps/logo_danafix.dart';
 import 'package:voidrealm/apps/logo_ojk.dart';
+import 'package:voidrealm/apps/text2625.dart';
+import 'package:voidrealm/apps/text_anda_mengembalikan.dart';
 import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
 import 'package:voidrealm/apps/text_durasi_pinjaman.dart';
 import 'package:voidrealm/apps/text_jumlah_pinjaman_rp.dart';
@@ -56,7 +58,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     super.initState();
   }
 
-  TextAndaTerimaProductCalc text12 = new TextAndaTerimaProductCalc();
+  TextAndaTerima text12 = new TextAndaTerima();
 
   List<Widget> _textUang = [
     TAndaTerimaA500rb(),
@@ -150,14 +152,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 children: <Widget>[
                                                   Container(
                                                     margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                    child: Text(
-                                                      'Anda terima',
-                                                      style: TextStyle(
-                                                          color: Colors.blue[900],
-                                                          fontSize: 13,
-                                                          fontFamily: 'Sans'
-                                                      ),
-                                                    ),
+                                                    child: TextAndaTerima(),
                                                   ),
                                                   Icon(
                                                     Icons.calendar_today_outlined,
@@ -208,13 +203,13 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               children: [
                                 Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
                                       border: Border(
                                           top: BorderSide(
                                               color: Colors.black,
-                                              width: 0.3
+                                              width: 0.2
                                           )
                                       ),
+                                      color: Colors.white,
                                     ),
                                     height: 48,
                                     // margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -229,14 +224,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 children: <Widget>[
                                                   Container(
                                                     margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                    child: Text(
-                                                      'Anda mengembalikan',
-                                                      style: TextStyle(
-                                                          color: Colors.blue[900],
-                                                          fontSize: 13,
-                                                          fontFamily: 'Sans'
-                                                      ),
-                                                    ),
+                                                    child: TextAndaMengembalikan(),
                                                   ),
                                                 ]
                                             ),
@@ -265,14 +253,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                             Container(
                                               alignment: Alignment.centerRight,
                                               margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                              child: Text(
-                                                'Rp 2.625.000',
-                                                style: TextStyle(
-                                                    color: Colors.blue[900],
-                                                    fontSize: 13,
-                                                    fontFamily: 'Sans'
-                                                ),
-                                              ),
+                                              child: Text2625(),
                                             ),
                                           ),
                                         ]
@@ -284,7 +265,15 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           TableRow(
                               children: [
                                 Container(
+                                  // / MENGGUNAKAN MARGIN (AGAR TAMPAK SEPERTI BORDER)
+                                  //   margin: EdgeInsets.fromLTRB(0, 0.8, 0, 0),
                                     decoration: BoxDecoration(
+                                      border: Border(
+                                          top: BorderSide(
+                                              color: Colors.black,
+                                              width: 0.2
+                                          )
+                                      ),
                                       color: Colors.white,
                                     ),
                                     height: 48,
@@ -349,6 +338,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           TableRow(
                               children: [
                                 Container(
+                                  /// MENGGUNAKAN MARGIN (AGAR TAMPAK SEPERTI BORDER)
+                                  margin: EdgeInsets.fromLTRB(0, 0.8, 0, 0),
                                   decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.only(
@@ -447,7 +438,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                             Row(
                                 children: <Widget>[
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(0, 50, 0, 40),
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                                    padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                                     width: MediaQuery.of(context).size.width * 1,
                                     child: SliderTheme(
                                       data: SliderThemeData(
@@ -473,27 +465,31 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                             enabledThumbRadius: 15,
                                             disabledThumbRadius: 4,
                                             valueTextSpan: TextSpan(
-                                              text: sliderValue.toString()
+                                                text: sliderValue.toInt().toString()+'M'
                                             )
                                         ),
-                                        trackHeight: 10,
+                                        trackHeight: 5,//10
                                         trackShape: RoundedRectSliderTrackShape(),
                                         tickMarkShape: RoundSliderTickMarkShape(
-                                            tickMarkRadius: 10
+                                          /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
+                                          /// 10 DISINI PERNAH KEBESAREN DAN GA TAMPIL
+                                          /// KAYAKNYA ADA HUBUNGANNYA DGN DIVISION DAN MAX
+                                            tickMarkRadius: 5//10
                                         ),
                                         /// WARNA LABEL (CALLOUT)
                                         // valueIndicatorColor: Colors.red,
                                       ),
                                       child: Slider(
-                                        divisions: 5,
-                                        label: sliderValue.toString(),
-                                        max: 10.0,
+                                        divisions: 6,//5,
+                                        /// CALLOUT DI ATAS THUMB
+                                        // label: sliderValue.toString(),
+                                        max: 12,//10.0,
                                         min: 0.0,
                                         value: sliderValue,
                                         onChanged: (value) {/// REQUIRED
                                           setState(() {/// ng
                                             sliderValue = value;
-                                            if (value >= 4.0) {
+                                            if (value > 4.0) {
                                               loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
                                                 customImage = image;
                                               });
@@ -508,7 +504,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         /// value (use onChanged for that)
                                         onChangeStart: (value) {
                                           setState(() {
-                                            if (value >= 4.0) {
+                                            if (value > 4.0) {
                                               loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
                                                 customImage = image;
                                               });
@@ -526,7 +522,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         /// by ending a drag or a click.
                                         onChangeEnd: (newValue) {
                                           setState(() {
-                                            if (newValue >= 4.0) {
+                                            if (newValue > 4.0) {
                                               loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
                                                 customImage = image;
                                               });
@@ -542,7 +538,12 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                     setState(() {
                                                       sliderValue = 2.0;
                                                     });
-                                                  });
+                                                  }).then((value) => {
+                                                    /// ng coba
+                                              // setState(() {
+                                              //   sliderValue = 2.0;
+                                              // })
+                                              });
 
                                               // start();
                                             } else {
@@ -561,17 +562,18 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   )
                                 ]
                             ),
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(
-                                    sliderValue.toInt().toString(),
-                                    style: TextStyle(
-                                        fontSize: 12
-                                    ),
-                                  ),
-                                ]
-                            )
+                            /// SEKEDAR LABEL VALUE SLIDER
+                            // Row(
+                            //     mainAxisAlignment: MainAxisAlignment.center,
+                            //     children: <Widget>[
+                            //       Text(
+                            //         sliderValue.toInt().toString(),
+                            //         style: TextStyle(
+                            //             fontSize: 12
+                            //         ),
+                            //       ),
+                            //     ]
+                            // )
                           ]
                       ),
                       // SliderCurrent(),
@@ -583,7 +585,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       // ThumbTextOnImage(),
 
                       // Slider7(),
-                      SliderWidgetB(),
+                      // SliderWidgetB(),/// v
                       // Slider6Emoji(),
 
                       /// TEXT SUDAH MENJADI PEMINJAM
