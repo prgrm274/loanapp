@@ -3,6 +3,12 @@ import 'dart:ui' as dartUI;
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
+import 'package:voidrealm/apps/logo_danafix.dart';
+import 'package:voidrealm/apps/logo_ojk.dart';
+import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
+import 'package:voidrealm/apps/text_durasi_pinjaman.dart';
+import 'package:voidrealm/apps/text_jumlah_pinjaman_rp.dart';
+import 'package:voidrealm/apps/text_sudah_peminjam.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_a_800rb.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt600rb.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt400rb.dart';
@@ -11,6 +17,10 @@ import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_b_1jt.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_c_1jt500rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_d_2jt.dart';
+import 'package:voidrealm/sliders/slider6_emoji.dart';
+import 'package:voidrealm/sliders/slider7/slider7.dart';
+import 'package:voidrealm/sliders/slider_widget_b.dart';
+import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
 import 'text_anda_terima_product_calc.dart';
 import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_current_custom_future.dart';
@@ -86,35 +96,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
             alignment: Alignment.topCenter,
             children: [
               /// OJK
-              Positioned(
-                left: 0,
-                top: 20,
-                child: GestureDetector(
-                  onTap: (){
-                    Toast.show("onTap gesture detector\nojk_transparent", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
-                  },
-                  child: Image(
-                    height: 50,
-                    width: 125,
-                    image: AssetImage('lib/assets/ojk_transparent.png'),
-                  ),
-                ),
-              ),
+              LogoOjk(),
               /// DANAFIX
-              Positioned(
-                top: 10,
-                right: 0,
-                child: GestureDetector(
-                  onTap: () {
-                    Toast.show("onTap gesture detector\ndfix_transparent", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);
-                  },
-                  child: Image(
-                    height: 50,
-                    width: 125,
-                    image: AssetImage('lib/assets/dfix_transparent.png'),
-                  ),
-                ),
-              ),
+              LogoDanafix(),
               /// COLUMN UNTUK TEXT TABLE
               Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -451,12 +435,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                 bottom: 10,
                 child: Column(
                     children: <Widget>[
-                      Text(
-                        'Jumlah pinjaman Rp',
-                        style: TextStyle(
-                            color: Colors.white70
-                        ),
-                      ),
+                      /// TEXT JUMLAH PINJAMAN
+                      TextJumlahPinjamanRp(),
                       /// SLIDER
                       /// SliderCreatingCustomThumb PAKE COLUMN
                       /// DI SINI BERARTI COLUMN DALAM COLUMN BISA
@@ -485,9 +465,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         //   enabledThumbRadius: 10,
                                         //   pressedElevation: 10
                                         // ),
-                                        thumbShape: sliderValue <= 4.0 ?
+                                        thumbShape: sliderValue < 6.0 ?
                                         SliderThumbImage(customImage) :
-                                        RoundSliderThumbShape(enabledThumbRadius: 20),
+                                        // RoundSliderThumbShape(enabledThumbRadius: 20),
+                                        SliderWidgetBThumbShape(enabledThumbRadius: 15, disabledThumbRadius: 4),
                                         trackHeight: 10,
                                         trackShape: RoundedRectSliderTrackShape(),
                                         tickMarkShape: RoundSliderTickMarkShape(
@@ -497,9 +478,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         // valueIndicatorColor: Colors.red,
                                       ),
                                       child: Slider(
-                                        divisions: 6,
+                                        divisions: 5,
                                         label: sliderValue.toString(),
-                                        max: 7.0,
+                                        max: 10.0,
                                         min: 0.0,
                                         value: sliderValue,
                                         onChanged: (value) {/// REQUIRED
@@ -587,27 +568,23 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           ]
                       ),
                       // SliderCurrent(),
+                      /// TEXT DURASI PINJAMAN
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                        child: Text(
-                          'Durasi pinjaman, dalam satuan bulan',
-                          style: TextStyle(
-                              color: Colors.white70
-                          ),
-                        ),
+                        child: TextDurasiPinjaman(),
                       ),
-                      // SliderWidget(),
-                      ThumbTextOnImage(),
+                      // ThumbTextOnImage(),
+
+                      // Slider7(),
+                      SliderWidgetB(),
+                      // Slider6Emoji(),
+
+                      /// TEXT SUDAH MENJADI PEMINJAM
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                        child: Text(
-                          'SUDAH MENJADI PEMINJAM',
-                          style: TextStyle(
-                              color: Colors.white,
-                              decoration: TextDecoration.underline
-                          ),
-                        ),
+                        child: TextSudahPeminjam(),
                       ),
+                      /// BUTTON DAPATKAN DANA SEKARANG
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(0))
@@ -621,13 +598,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           onPressed: (){
                             print('Button dapatkan dana sekarang');
                           },
-                          child: Text(
-                            'DAPATKAN DANA SEKARANG!',
-                            style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 16
-                            ),
-                          ),
+                          child: TextDapatkanSekarang(),
                         ),
                       )
                     ]

@@ -111,15 +111,16 @@ class _Slider7State extends State<Slider7> with SingleTickerProviderStateMixin{
         child: _innerWidth == null
             ? Container()
             : Container(
-          padding: EdgeInsets.symmetric(horizontal: paddingSize),
+          color: Colors.blue,
           height: 200,
+          padding: EdgeInsets.symmetric(horizontal: paddingSize),
           child: Stack(children: <Widget>[
             Container(/// NG ADD
               margin: EdgeInsets.fromLTRB(10, 50, 0, 0),
               child: Text(
                 ((){
                   for (int i=0; i<pinjaman.length; i++){
-                    return pinjaman[i];
+                    return pinjaman[i]+" pnjm";
                   };
                 }()),
                 // pinjaman[2],// set to 1.5M

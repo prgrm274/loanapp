@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SliderWidgetRoundSliderThumbShape extends SliderComponentShape {
-  const SliderWidgetRoundSliderThumbShape({
+class SliderWidgetBThumbShape extends SliderComponentShape {
+  const SliderWidgetBThumbShape({
     this.enabledThumbRadius = 10.0,
     this.disabledThumbRadius,
   });
@@ -58,6 +58,22 @@ class SliderWidgetRoundSliderThumbShape extends SliderComponentShape {
       radiusTween.evaluate(enableAnimation),
       Paint()..color = colorTween.evaluate(enableAnimation),
     );
+
+    /// TEXT PAINTER
+    /// 1 NG X
+    // labelPainter.text = 'sfdsafsafaf' as InlineSpan;
+    /// 2
+    TextSpan span = new TextSpan(style: new TextStyle(color: Colors.grey[600]), text: 'Yrfc');
+    // labelPainter.text = span;/// NG X
+    /// 3
+    // TextPainter tp = new TextPainter(text: span, textAlign: TextAlign.left, textDirection: TextDirection.ltr);
+    labelPainter = new TextPainter(
+        text: span,
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr
+    );
+    labelPainter.layout();
+    labelPainter.paint(canvas, new Offset(5.0, 5.0));
   }
 
 /*@override

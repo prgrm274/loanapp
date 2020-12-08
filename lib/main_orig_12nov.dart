@@ -33,7 +33,7 @@ import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/sliders/not/sl
 import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
 import 'package:voidrealm/sliders/slider_current_custom_thumb_circle.dart';
 import 'package:voidrealm/sliders/slider_widget.dart';
-import 'package:voidrealm/sliders/slider6.dart';
+import 'package:voidrealm/sliders/slider6_emoji.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
 import 'package:voidrealm/visibilities/coba_visibility.dart';
 

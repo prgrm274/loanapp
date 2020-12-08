@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
 import 'slider_current_custom_thumb_circle.dart';
 
-class SliderWidget extends StatefulWidget {
+class SliderWidgetB extends StatefulWidget {
   final double sliderHeight;
   final int min;
   final int max;
   final fullWidth;
 
-  SliderWidget(
+  SliderWidgetB(
       {this.sliderHeight = 48,
         this.max = 10,
         this.min = 0,
         this.fullWidth = false});
 
   @override
-  _SliderWidgetState createState() => _SliderWidgetState();
+  _SliderWidgetBState createState() => _SliderWidgetBState();
 }
 
-class _SliderWidgetState extends State<SliderWidget> {
+class _SliderWidgetBState extends State<SliderWidgetB> {
   double _value = 0;
 
   @override
@@ -83,7 +83,7 @@ class _SliderWidgetState extends State<SliderWidget> {
                     /// USE SliderWidgetRoundSliderThumbShape
                     thumbShape: SliderWidgetBThumbShape(
                       disabledThumbRadius: 4,
-                      enabledThumbRadius: 20,
+                      enabledThumbRadius: 15,
                     ),
 
                     overlayColor: Colors.white.withOpacity(.4),

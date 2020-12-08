@@ -38,7 +38,7 @@ import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
 import 'package:voidrealm/sliders/slider_current_custom_thumb_circle.dart';
 import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_widget.dart';
-import 'package:voidrealm/sliders/slider6.dart';
+import 'package:voidrealm/sliders/slider6_emoji.dart';
 import 'package:voidrealm/sqflites/homepage.dart';
 import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/apps/registrasi/reg_040b_otp.dart';
 import 'package:voidrealm/visibilities/coba_visibility.dart';

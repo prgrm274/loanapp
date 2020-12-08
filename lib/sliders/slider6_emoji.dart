@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math.dart' as v_math;
 
-class Slider6 extends StatefulWidget {
-  Slider6({Key key}) : super(key: key);
+class Slider6Emoji extends StatefulWidget {
+  Slider6Emoji({Key key}) : super(key: key);
 
   @override
-  _Slider6State createState() => _Slider6State();
+  _Slider6EmojiState createState() => _Slider6EmojiState();
 }
 
-class _Slider6State extends State<Slider6> with SingleTickerProviderStateMixin{
+class _Slider6EmojiState extends State<Slider6Emoji> with SingleTickerProviderStateMixin{
   double intitalReviewValue = 2;
   final List<String> reviews = ['Terrible', 'Bad', 'Okay', 'Good', 'Great'];
 
