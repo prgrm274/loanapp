@@ -653,7 +653,21 @@ class SliderThumbImage extends SliderComponentShape {
   }
 
   @override
-  void paint(PaintingContext context, Offset center, {Animation<double> activationAnimation, Animation<double> enableAnimation, bool isDiscrete, TextPainter labelPainter, RenderBox parentBox, SliderThemeData sliderTheme, TextDirection textDirection, double value, double textScaleFactor, Size sizeWithOverflow}) {
+  void paint(
+      PaintingContext context,
+      Offset center,
+      {
+        Animation<double> activationAnimation,
+        Animation<double> enableAnimation,
+        bool isDiscrete,
+        TextPainter labelPainter,
+        RenderBox parentBox,
+        SliderThemeData sliderTheme,
+        TextDirection textDirection,
+        double value,
+        double textScaleFactor,
+        Size sizeWithOverflow
+      }) {
     final canvas = context.canvas;
     final imageWidth = image?.width ?? 10;
     final imageHeight = image?.height ?? 10;
@@ -668,5 +682,23 @@ class SliderThumbImage extends SliderComponentShape {
     if (image != null) {
       canvas.drawImage(image, imageOffset, paint);
     }
+
+    /// ng TEXT DI TENGAH THUMB
+    TextSpan span = new TextSpan(
+        style: new TextStyle(
+            color: Colors.grey[600]),
+        text: '15M'
+    );
+    labelPainter = new TextPainter(
+        text: span,
+        // text: valueTextSpan,
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr
+    );
+    labelPainter.layout();
+    labelPainter.paint(
+        canvas,
+        center-(Offset(10, 10))
+    );
   }
 }
