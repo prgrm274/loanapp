@@ -30,7 +30,7 @@ import 'package:voidrealm/numpads/numpad1.dart';
 import 'sliders/slider7/slider7.dart';
 import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/sliders/not/jslider_widget2.dart';
 import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/sliders/not/slider1.dart';
-import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
+import 'package:voidrealm/sliders/slider_widget_b_thumb_shape.dart';
 import 'package:voidrealm/sliders/slider_current_custom_thumb_circle.dart';
 import 'package:voidrealm/sliders/slider_widget.dart';
 import 'package:voidrealm/sliders/slider6_emoji.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
+import 'package:voidrealm/sliders/slider_widget_b_thumb_shape.dart';
 import 'slider_current_custom_thumb_circle.dart';
 
 class SliderWidget extends StatefulWidget {

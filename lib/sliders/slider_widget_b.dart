@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
+import 'package:voidrealm/sliders/slider_widget_b_thumb_shape.dart';
+import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng.dart';
 import 'slider_current_custom_thumb_circle.dart';
 
 class SliderWidgetB extends StatefulWidget {
@@ -81,9 +82,12 @@ class _SliderWidgetBState extends State<SliderWidgetB> {
                     ),*/
 
                     /// USE SliderWidgetRoundSliderThumbShape
-                    thumbShape: SliderWidgetBThumbShape(
+                    thumbShape: SliderWidgetBThumbShapeNg(
                       disabledThumbRadius: 4,
                       enabledThumbRadius: 15,
+                      valueTextSpan: TextSpan(
+                        text: _value.toString()
+                      )
                     ),
 
                     overlayColor: Colors.white.withOpacity(.4),

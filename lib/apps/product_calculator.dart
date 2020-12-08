@@ -20,7 +20,8 @@ import 'package:voidrealm/apps/texts/t_andaterima_d_2jt.dart';
 import 'package:voidrealm/sliders/slider6_emoji.dart';
 import 'package:voidrealm/sliders/slider7/slider7.dart';
 import 'package:voidrealm/sliders/slider_widget_b.dart';
-import 'package:voidrealm/sliders/slider_widget_round_thumb.dart';
+import 'package:voidrealm/sliders/slider_widget_b_thumb_shape.dart';
+import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng.dart';
 import 'text_anda_terima_product_calc.dart';
 import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_current_custom_future.dart';
@@ -468,7 +469,13 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         thumbShape: sliderValue < 6.0 ?
                                         SliderThumbImage(customImage) :
                                         // RoundSliderThumbShape(enabledThumbRadius: 20),
-                                        SliderWidgetBThumbShape(enabledThumbRadius: 15, disabledThumbRadius: 4),
+                                        SliderWidgetBThumbShapeNg(
+                                            enabledThumbRadius: 15,
+                                            disabledThumbRadius: 4,
+                                            valueTextSpan: TextSpan(
+                                              text: sliderValue.toString()
+                                            )
+                                        ),
                                         trackHeight: 10,
                                         trackShape: RoundedRectSliderTrackShape(),
                                         tickMarkShape: RoundSliderTickMarkShape(

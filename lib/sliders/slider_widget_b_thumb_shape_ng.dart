@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
 
-class SliderWidgetBThumbShape extends SliderComponentShape {
-  const SliderWidgetBThumbShape({
+/// SliderWidgetBThumbShapeNg
+/// Ng = nambahin variabel text untuk valuenya slider nanti
+class SliderWidgetBThumbShapeNg extends SliderComponentShape {
+  const SliderWidgetBThumbShapeNg({
     this.enabledThumbRadius = 10.0,
     this.disabledThumbRadius,
+    this.valueTextSpan
   });
 
+  final TextSpan valueTextSpan;
   final double enabledThumbRadius;
-
   final double disabledThumbRadius;
 
-  double get _disabledThumbRadius =>
+  double get _disabledThumbRadiusPrivate =>
       disabledThumbRadius ?? enabledThumbRadius;
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
     return Size.fromRadius(
-        isEnabled == true ? enabledThumbRadius : _disabledThumbRadius
+        isEnabled == true ? enabledThumbRadius : _disabledThumbRadiusPrivate
     );
   }
 
@@ -45,7 +48,7 @@ class SliderWidgetBThumbShape extends SliderComponentShape {
     final Canvas canvas = context.canvas;
 
     final Tween<double> radiusTween = Tween<double>(
-      begin: _disabledThumbRadius,
+      begin: _disabledThumbRadiusPrivate,
       end: enabledThumbRadius,
     );
 
@@ -54,31 +57,40 @@ class SliderWidgetBThumbShape extends SliderComponentShape {
       end: sliderTheme.thumbColor,
     );
 
-    /// TEXT PAINTER
-    /// 1 NG X
-    // labelPainter.text = 'sfdsafsafaf' as InlineSpan;
-    /// 2
-    TextSpan span = new TextSpan(style: new TextStyle(color: Colors.grey[600]), text: 'Yrfc');
-    // labelPainter.text = span;/// NG X
-    /// 3
-    // TextPainter tp = new TextPainter(text: span, textAlign: TextAlign.left, textDirection: TextDirection.ltr);
-    labelPainter = new TextPainter(
-        text: span,
-        textAlign: TextAlign.center,
-        textDirection: TextDirection.ltr
-    );
-    labelPainter.layout();
-    /// NG NARUH center AS OFFSET
-    labelPainter.paint(canvas, center);
-    // labelPainter.paint(canvas, new Offset(50.0, 50.0));
-
-    /// FINALLY, CANVAS
+    /// TARUH OFFSET DI CANVAS
     /// V NARUH TEXT DI THUMB DAN NGIKUT THUMB SHAPE
     canvas.drawCircle(
       center,
       radiusTween.evaluate(enableAnimation),
       Paint()..color = colorTween.evaluate(enableAnimation),
     );
+
+    /// TEXT PAINTER
+    /// 1 NG X
+    // labelPainter.text = 'sfdsafsafaf' as InlineSpan;
+    /// 2 COBA TEXTSPAN ASAL
+    TextSpan span = new TextSpan(
+        style: new TextStyle(
+            color: Colors.grey[600]),
+        text: 'Coba textspan'
+    );
+    // labelPainter.text = span;/// NG X
+    /// 3
+    // TextPainter tp = new TextPainter(text: span, textAlign: TextAlign.left, textDirection: TextDirection.ltr);
+    labelPainter = new TextPainter(
+        text: valueTextSpan,/// v
+        // text: span,/// v
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr
+    );
+    labelPainter.layout();
+    /// TARUH TEXTPAINTER DI CANVAS
+    /// NG NARUH center AS OFFSET
+    /// NG TULIS SETELAH canvas.drawCircle JADI BIAR DIATAS CIRCLE TEXTNYA
+    // labelPainter.paint(canvas, center);/// v
+    // labelPainter.paint(canvas, new Offset(50.0, 50.0));
+    /// NG v SET NEW OFFSET
+    labelPainter.paint(canvas, center-(Offset(10, 10)));/// ng v center-(Offset(10, 10))
   }
 
 /*@override
