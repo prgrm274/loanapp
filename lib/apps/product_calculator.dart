@@ -538,11 +538,16 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                     setState(() {
                                                       sliderValue = 2.0;
                                                     });
-                                                  }).then((value) => {
-                                                    /// ng coba
-                                              // setState(() {
-                                              //   sliderValue = 2.0;
-                                              // })
+                                                  }).whenComplete(() => {
+                                              sliderValue = 2.0
+
+                                                /// NG v
+                                              // Toast.show(
+                                              //   'WHEN COMPLETE $newValue',
+                                              //   context,
+                                              //   duration: Toast.LENGTH_SHORT,
+                                              //   gravity: Toast.BOTTOM
+                                              // )
                                               });
 
                                               // start();
