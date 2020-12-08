@@ -521,7 +521,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         /// when the user has completed selecting a new value
                                         /// by ending a drag or a click.
                                         onChangeEnd: (newValue) {
-                                          setState(() {
+                                          // setState(() {
                                             if (newValue > 4.0) {
                                               loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
                                                 customImage = image;
@@ -539,28 +539,29 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                       sliderValue = 2.0;
                                                     });
                                                   }).whenComplete(() => {
-                                              sliderValue = 2.0
+                                                sliderValue = 2.0
 
                                                 /// NG v
-                                              // Toast.show(
-                                              //   'WHEN COMPLETE $newValue',
-                                              //   context,
-                                              //   duration: Toast.LENGTH_SHORT,
-                                              //   gravity: Toast.BOTTOM
-                                              // )
+                                                // Toast.show(
+                                                //   'WHEN COMPLETE $newValue',
+                                                //   context,
+                                                //   duration: Toast.LENGTH_SHORT,
+                                                //   gravity: Toast.BOTTOM
+                                                // )
                                               });
 
                                               // start();
-                                            } else {
-                                              if (_timer != null) {
-                                                _timer.cancel();
-                                                _timer = null;
-                                                loadImage('lib/assets/info_48.png').then((image) {
-                                                  customImage = image;
-                                                });
-                                              }
                                             }
-                                          });
+                                            // else {
+                                            //   if (_timer != null) {
+                                            //     _timer.cancel();
+                                            //     _timer = null;
+                                            //     loadImage('lib/assets/info_48.png').then((image) {
+                                            //       customImage = image;
+                                            //     });
+                                            //   }
+                                            // }
+                                          // });
                                         },
                                       ),
                                     ),
@@ -627,17 +628,17 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
   @override
   void dispose() {
-    if (_timer != null) {
-      _timer.cancel();
-      _timer = null;/// NG
-    }
+    // if (_timer != null) {
+    //   _timer.cancel();
+    //   _timer = null;/// NG
+    // }
     // _timer.cancel();
     super.dispose();
   }
 
   ///
   /// TIMER
-  Timer _timer;
+  // Timer _timer;
   int _start = 3;
 }
 
