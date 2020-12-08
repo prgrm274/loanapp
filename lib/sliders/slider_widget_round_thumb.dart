@@ -20,6 +20,7 @@ class SliderWidgetBThumbShape extends SliderComponentShape {
     );
   }
 
+  /// OFFSET = POSISI
   @override
   void paint(PaintingContext context, Offset center,
       {
@@ -53,12 +54,6 @@ class SliderWidgetBThumbShape extends SliderComponentShape {
       end: sliderTheme.thumbColor,
     );
 
-    canvas.drawCircle(
-      center,
-      radiusTween.evaluate(enableAnimation),
-      Paint()..color = colorTween.evaluate(enableAnimation),
-    );
-
     /// TEXT PAINTER
     /// 1 NG X
     // labelPainter.text = 'sfdsafsafaf' as InlineSpan;
@@ -73,7 +68,17 @@ class SliderWidgetBThumbShape extends SliderComponentShape {
         textDirection: TextDirection.ltr
     );
     labelPainter.layout();
-    labelPainter.paint(canvas, new Offset(5.0, 5.0));
+    /// NG NARUH center AS OFFSET
+    labelPainter.paint(canvas, center);
+    // labelPainter.paint(canvas, new Offset(50.0, 50.0));
+
+    /// FINALLY, CANVAS
+    /// V NARUH TEXT DI THUMB DAN NGIKUT THUMB SHAPE
+    canvas.drawCircle(
+      center,
+      radiusTween.evaluate(enableAnimation),
+      Paint()..color = colorTween.evaluate(enableAnimation),
+    );
   }
 
 /*@override
