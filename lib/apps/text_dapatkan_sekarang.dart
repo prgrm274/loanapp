@@ -13,8 +13,8 @@ class _TextDapatkanSekarangState extends State<TextDapatkanSekarang> {
     return Text(
         'DAPATKAN DANA SEKARANG!',
         style: TextStyle(
-            color: Colors.white70,
-            fontSize: 16
+            color: Colors.white,
+            fontSize: 13
         )
     );
   }

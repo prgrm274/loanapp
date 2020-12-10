@@ -13,7 +13,8 @@ class _TextJumlahPinjamanRpState extends State<TextJumlahPinjamanRp> {
     return Text(
       'Jumlah pinjaman Rp',
       style: TextStyle(
-          color: Colors.white70
+          color: Colors.white70,
+          fontSize: 12
       ),
     );
   }

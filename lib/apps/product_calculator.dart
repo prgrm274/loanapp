@@ -434,13 +434,15 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               child: SliderTheme(
                                 data: SliderThemeData(
                                   /// WARNA AKTIF
-                                  activeTrackColor: null,
+                                  activeTickMarkColor: Colors.white,
+                                  activeTrackColor: Colors.white,/// null WITHOUT TRACK
+                                  disabledActiveTickMarkColor: Colors.white,
+                                  disabledInactiveTickMarkColor: Colors.blue[900],
+                                  disabledThumbColor: Colors.lightGreenAccent,
                                   // activeTrackColor: Colors.yellowAccent,
                                   // activeTickMarkColor: sliderValue <= 4.0 ? Colors.amber : Colors.brown,
-
-                                  disabledThumbColor: Colors.red,
-
-                                  inactiveTrackColor: null,
+                                  inactiveTickMarkColor: Colors.blue[900],
+                                  inactiveTrackColor: Colors.white24,
                                   // inactiveTrackColor: Colors.cyan[100],
                                   // inactiveTickMarkColor: Colors.brown,
 
@@ -452,6 +454,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   //   enabledThumbRadius: 10,
                                   //   pressedElevation: 10
                                   // ),
+                                  thumbColor: Colors.red,/// GA NGARUH
                                   thumbShape: sliderPnjm < 6.0 ?
                                   SliderThumbImage(customImage) :
                                   // RoundSliderThumbShape(enabledThumbRadius: 20),
@@ -459,10 +462,11 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       enabledThumbRadius: 15,
                                       disabledThumbRadius: 4,
                                       valueTextSpan: TextSpan(
-                                          text: sliderPnjm.toInt().toString()+'M'
+                                          text: sliderPnjm.toInt().toString()+'M',
+                                          style: TextStyle(color: Colors.blue[900])
                                       )
                                   ),
-                                  trackHeight: 5,//10
+                                  trackHeight: 2,//10
                                   trackShape: RoundedRectSliderTrackShape(),
                                   tickMarkShape: RoundSliderTickMarkShape(
                                     /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
@@ -618,17 +622,21 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         width: MediaQuery.of(context).size.width * 1,
                         child: SliderTheme(
                           data: SliderThemeData(
+                            activeTickMarkColor: Colors.white,
                             activeTrackColor: Colors.white,
                             disabledThumbColor: Colors.red,
-                            inactiveTrackColor: Colors.white60,
+                            inactiveTickMarkColor: Colors.white,
+                            inactiveTrackColor: Colors.white24,
+                            thumbColor: Colors.white,
                             thumbShape: SliderWidgetBThumbShapeNgHari(
                                 enabledThumbRadius: 15,
                                 disabledThumbRadius: 4,
                                 valueTextSpan: TextSpan(
-                                    text: sliderHari.toString()
+                                    text: sliderHari.toString(),
+                                    style: TextStyle(color: Colors.blue[900])
                                 )
                             ),
-                            trackHeight: 3,//10
+                            trackHeight: 2,//10
                             trackShape: RoundedRectSliderTrackShape(),
                             tickMarkShape: RoundSliderTickMarkShape(
                                 tickMarkRadius: 6
