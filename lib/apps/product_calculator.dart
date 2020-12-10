@@ -472,7 +472,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   max: 12,//10.0,
                                   min: 0.0,
                                   value: sliderValue,
-                                  onChanged: (value) {/// REQUIRED
+                                  onChanged: sliderValue < 6 /// ng v CONDITIONAL
+                                      ?
+                                      (value) {/// REQUIRED
                                     setState(() {/// ng
                                       sliderValue = value;
                                       if (value > 4.0) {
@@ -484,7 +486,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       /// PERLUKAH SET IMAGE DI ONCHANGE?
                                       /// KARENA ONCHANGED YAITU KONDISI SAAT DRAGGING
                                     });
-                                  },
+                                  }
+                                      :
+                                  null,
 
                                   /// This callback also shouldn't be used to update the slider
                                   /// value (use onChanged for that)
