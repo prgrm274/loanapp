@@ -26,6 +26,7 @@ import 'package:voidrealm/sliders/slider7/slider7.dart';
 import 'package:voidrealm/sliders/slider_widget_b.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng.dart';
+import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng_hari.dart';
 import 'text_anda_terima_product_calc.dart';
 import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_current_custom_future.dart';
@@ -40,7 +41,10 @@ class ProductCalculator extends StatefulWidget {
 }
 
 class _ProductCalculatorState extends State<ProductCalculator> {
-  double sliderValue = 0.0;/// INITIAL VALUE
+  /// INITIAL VALUE OF SLIDERS
+  double sliderPnjm = 0.0;
+  // double sliderHari = 1;
+  double sliderHari = 4.5;
 
   dartUI.Image customImage;
   Future<dartUI.Image> loadImage(String pathOfAsset) async {
@@ -62,6 +66,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
   TextAndaTerima text12 = new TextAndaTerima();
 
+  /// BUAT METHOD _setText DAN TARUH DI CHILD
+  /// JADI TIDAK PERLU IF ELSE DI CHILD
   List<Widget> _textUang = [
     TAndaTerimaA500rb(),
     TAndaTerimaB1jt(),
@@ -74,16 +80,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     TAndaMengembalikanD3jt200rb(),
   ];
 
-  /// BUAT METHOD DAN TARUH DI CHILD
-  /// JADI TIDAK PERLU IF ELSE DI CHILD:
   Widget _setText() {
-    if (sliderValue == 0.0) {
+    if (sliderPnjm == 0.0) {
       return _textUang.elementAt(0);
-    } else if (sliderValue == 1.0) {
+    } else if (sliderPnjm == 1.0) {
       return _textUang.elementAt(1);
-    } else if (sliderValue == 2.0) {
+    } else if (sliderPnjm == 2.0) {
       return _textUang.elementAt(2);
-    } else if (sliderValue == 3.0) {
+    } else if (sliderPnjm == 3.0) {
       return _textUang.elementAt(3);
     } else {
       return _textUang.elementAt(0);
@@ -249,7 +253,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                           // ),
                                           Expanded(
                                             flex: 1,
-                                            child: sliderValue > 4.0 ?
+                                            child: sliderPnjm > 4.0 ?
                                             _textUang.elementAt(1)
                                                 :
                                             Container(
@@ -430,12 +434,16 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               child: SliderTheme(
                                 data: SliderThemeData(
                                   /// WARNA AKTIF
-                                  // activeTrackColor: Colors.yellowAccent,
                                   activeTrackColor: null,
-                                  // inactiveTrackColor: Colors.cyan[100],
-                                  inactiveTrackColor: null,
+                                  // activeTrackColor: Colors.yellowAccent,
                                   // activeTickMarkColor: sliderValue <= 4.0 ? Colors.amber : Colors.brown,
+
+                                  disabledThumbColor: Colors.red,
+
+                                  inactiveTrackColor: null,
+                                  // inactiveTrackColor: Colors.cyan[100],
                                   // inactiveTickMarkColor: Colors.brown,
+
                                   /// GA PAKE OVERLAY
                                   // overlayShape: RoundSliderOverlayShape(overlayRadius: 40.0),
                                   // rangeThumbShape: RoundRangeSliderThumbShape(
@@ -444,14 +452,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   //   enabledThumbRadius: 10,
                                   //   pressedElevation: 10
                                   // ),
-                                  thumbShape: sliderValue < 6.0 ?
+                                  thumbShape: sliderPnjm < 6.0 ?
                                   SliderThumbImage(customImage) :
                                   // RoundSliderThumbShape(enabledThumbRadius: 20),
                                   SliderWidgetBThumbShapeNg(
                                       enabledThumbRadius: 15,
                                       disabledThumbRadius: 4,
                                       valueTextSpan: TextSpan(
-                                          text: sliderValue.toInt().toString()+'M'
+                                          text: sliderPnjm.toInt().toString()+'M'
                                       )
                                   ),
                                   trackHeight: 5,//10
@@ -469,14 +477,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   divisions: 6,//5,
                                   /// CALLOUT DI ATAS THUMB
                                   // label: sliderValue.toString(),
-                                  max: 12,//10.0,
                                   min: 0.0,
-                                  value: sliderValue,
-                                  onChanged: sliderValue < 6 /// ng v CONDITIONAL
+                                  max: 12,//10.0,
+                                  value: sliderPnjm,
+                                  onChanged: sliderPnjm < 6 /// ng v CONDITIONAL
                                       ?
                                       (value) {/// REQUIRED
                                     setState(() {/// ng
-                                      sliderValue = value;
+                                      sliderPnjm = value;
                                       if (value > 4.0) {
                                         loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
                                           customImage = image;
@@ -511,10 +519,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   /// when the user has completed selecting a new value
                                   /// by ending a drag or a click.
                                   onChangeEnd: (newValue) {
-                                    sliderValue = newValue;
+                                    sliderPnjm = newValue;
 
                                     // setState(() {
-                                    if (sliderValue > 4.0) {
+                                    if (sliderPnjm > 4.0) {
                                       loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
                                         customImage = image;
                                       });
@@ -596,14 +604,59 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       //     ]
                       // ,
 
-                      // SliderCurrent(),
                       /// TEXT DURASI PINJAMAN
                       Container(
                         margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
                         child: TextDurasiPinjaman(),
                       ),
-                      // ThumbTextOnImage(),
 
+                      /// SLIDER HARI
+                      /// BUNGKUS DGN CONTAINER SUPAYA BISA DIATUR WIDTH NYA
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                        padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                        width: MediaQuery.of(context).size.width * 1,
+                        child: SliderTheme(
+                          data: SliderThemeData(
+                            activeTrackColor: Colors.white,
+                            disabledThumbColor: Colors.red,
+                            inactiveTrackColor: Colors.white60,
+                            thumbShape: SliderWidgetBThumbShapeNgHari(
+                                enabledThumbRadius: 15,
+                                disabledThumbRadius: 4,
+                                valueTextSpan: TextSpan(
+                                    text: sliderHari.toString()
+                                )
+                            ),
+                            trackHeight: 3,//10
+                            trackShape: RoundedRectSliderTrackShape(),
+                            tickMarkShape: RoundSliderTickMarkShape(
+                                tickMarkRadius: 6
+                            ),
+                          ),
+                          child: Slider(
+                            divisions: 2,
+                            min: 3.5,
+                            max: 5.5,
+                            value: sliderHari,
+                            onChanged: (value) {
+                              /// MISAL GA PAKE SETSTATE MAKA SLIDER GA AKAN MOVE
+                              setState(() {
+                                sliderHari = value;
+                              });
+                            },
+                            onChangeStart: (value) {
+
+                            },
+                            onChangeEnd: (value) {
+
+                            },
+                          ),
+                        ),
+                      ),
+
+                      // SliderCurrent(),
+                      // ThumbTextOnImage(),
                       // Slider7(),
                       // SliderWidgetB(),/// v
                       // Slider6Emoji(),
@@ -648,20 +701,20 @@ class _ProductCalculatorState extends State<ProductCalculator> {
         Duration(seconds: 4),
             (){
           Toast.show(
-              'DURATION 4s, sliderValue =  $sliderValue',
+              'DURATION 4s, sliderValue =  $sliderPnjm',
               context,
               duration: Toast.LENGTH_SHORT,
               gravity: Toast.BOTTOM
           );
           setState(() {
-            sliderValue = 2.0;
+            sliderPnjm = 2.0;
           });
         }).whenComplete(() => {
       // sliderValue = 2.0
 
       /// NG v
       Toast.show(
-          'WHEN COMPLETE sliderValue = $sliderValue',
+          'WHEN COMPLETE sliderValue = $sliderPnjm',
           context,
           duration: Toast.LENGTH_SHORT,
           gravity: Toast.BOTTOM
