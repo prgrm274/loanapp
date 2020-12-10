@@ -15,7 +15,7 @@ class _TextSudahPeminjamState extends State<TextSudahPeminjam> {
       style: TextStyle(
           color: Colors.white,
           decoration: TextDecoration.underline,
-          fontSize: 13
+          fontSize: 12
       ),
     );
   }

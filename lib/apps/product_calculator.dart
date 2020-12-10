@@ -428,7 +428,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       Row(
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
                               padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                               width: MediaQuery.of(context).size.width * 1,
                               child: SliderTheme(
@@ -556,7 +556,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       /// LABEL DI BAWAH SLIDER PINJAMAN
                       Container(
                         // padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        margin: EdgeInsets.fromLTRB(20, 0, 0, 20),
                         padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
                         width: MediaQuery.of(context).size.width * 1.000000,
                         child: Row(
@@ -655,14 +655,13 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
                       /// TEXT DURASI PINJAMAN
                       Container(
-                        margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         child: TextDurasiPinjaman(),
                       ),
 
                       /// SLIDER HARI
                       /// BUNGKUS DGN CONTAINER SUPAYA BISA DIATUR WIDTH NYA
                       Container(
-                        margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                         padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                         width: MediaQuery.of(context).size.width * 1,
                         child: SliderTheme(
