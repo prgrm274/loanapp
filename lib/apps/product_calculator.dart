@@ -507,8 +507,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   /// when the user has completed selecting a new value
                                   /// by ending a drag or a click.
                                   onChangeEnd: (newValue) {
+                                    sliderValue = newValue;
+
                                     // setState(() {
-                                    if (newValue > 4.0) {
+                                    if (sliderValue > 4.0) {
                                       loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
                                         customImage = image;
                                       });
@@ -642,7 +644,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
         Duration(seconds: 4),
             (){
           Toast.show(
-              '4s, sliderValue =  $sliderValue',
+              'DURATION 4s, sliderValue =  $sliderValue',
               context,
               duration: Toast.LENGTH_SHORT,
               gravity: Toast.BOTTOM
@@ -651,20 +653,27 @@ class _ProductCalculatorState extends State<ProductCalculator> {
             sliderValue = 2.0;
           });
         }).whenComplete(() => {
-      sliderValue = 2.0
+      // sliderValue = 2.0
 
       /// NG v
-      // Toast.show(
-      //   'WHEN COMPLETE $newValue',
-      //   context,
-      //   duration: Toast.LENGTH_SHORT,
-      //   gravity: Toast.BOTTOM
-      // )
+      Toast.show(
+          'WHEN COMPLETE sliderValue = $sliderValue',
+          context,
+          duration: Toast.LENGTH_SHORT,
+          gravity: Toast.BOTTOM
+      )
     });
   }
 
   @override
   void dispose() {
+    Toast.show(
+        'dispose()',
+        context,
+        duration: Toast.LENGTH_SHORT,
+        gravity: Toast.BOTTOM
+    );
+
     // if (_timer != null) {
     //   _timer.cancel();
     //   _timer = null;/// NG
