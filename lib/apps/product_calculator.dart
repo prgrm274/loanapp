@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import 'package:voidrealm/apps/logo_danafix.dart';
 import 'package:voidrealm/apps/logo_ojk.dart';
-import 'package:voidrealm/apps/text2625.dart';
+import 'package:voidrealm/apps/text_2625.dart';
+import 'package:voidrealm/apps/text_525.dart';
 import 'package:voidrealm/apps/text_anda_mengembalikan.dart';
+import 'package:voidrealm/apps/text_cicilan_per_bulan.dart';
 import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
 import 'package:voidrealm/apps/text_durasi_pinjaman.dart';
 import 'package:voidrealm/apps/text_jumlah_pinjaman_rp.dart';
@@ -356,14 +358,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                           child: Container(
                                             alignment: Alignment.centerLeft,
                                             margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                            child: Text(
-                                              'Cicilan per bulan',
-                                              style: TextStyle(
-                                                  color: Colors.blue[900],
-                                                  fontSize: 13,
-                                                  fontFamily: 'Sans'
-                                              ),
-                                            ),
+                                            child: TextCicilanPerBulan(),
                                           ),
                                         ),
 
@@ -375,14 +370,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 children: <Widget>[
                                                   Container(
                                                     margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                                    child: Text(
-                                                      'Rp. 525.000',
-                                                      style: TextStyle(
-                                                          color: Colors.blue[900],
-                                                          fontSize: 13,
-                                                          fontFamily: 'Sans'
-                                                      ),
-                                                    ),
+                                                    child: Text525(),
                                                   ),
                                                   Icon(
                                                     Icons.calendar_today_outlined,
@@ -433,155 +421,175 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       /// SliderCreatingCustomThumb PAKE COLUMN
                       /// DI SINI BERARTI COLUMN DALAM COLUMN BISA
                       // SliderCurrentCustomFuture(),
-                      Column(
+                      Row(
                           children: <Widget>[
-                            Row(
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                                    padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                                    width: MediaQuery.of(context).size.width * 1,
-                                    child: SliderTheme(
-                                      data: SliderThemeData(
-                                        /// WARNA AKTIF
-                                        // activeTrackColor: Colors.yellowAccent,
-                                        activeTrackColor: null,
-                                        // inactiveTrackColor: Colors.cyan[100],
-                                        inactiveTrackColor: null,
-                                        // activeTickMarkColor: sliderValue <= 4.0 ? Colors.amber : Colors.brown,
-                                        // inactiveTickMarkColor: Colors.brown,
-                                        /// GA PAKE OVERLAY
-                                        // overlayShape: RoundSliderOverlayShape(overlayRadius: 40.0),
-                                        // rangeThumbShape: RoundRangeSliderThumbShape(
-                                        //   elevation: 40,
-                                        //   disabledThumbRadius: 5,
-                                        //   enabledThumbRadius: 10,
-                                        //   pressedElevation: 10
-                                        // ),
-                                        thumbShape: sliderValue < 6.0 ?
-                                        SliderThumbImage(customImage) :
-                                        // RoundSliderThumbShape(enabledThumbRadius: 20),
-                                        SliderWidgetBThumbShapeNg(
-                                            enabledThumbRadius: 15,
-                                            disabledThumbRadius: 4,
-                                            valueTextSpan: TextSpan(
-                                                text: sliderValue.toInt().toString()+'M'
-                                            )
-                                        ),
-                                        trackHeight: 5,//10
-                                        trackShape: RoundedRectSliderTrackShape(),
-                                        tickMarkShape: RoundSliderTickMarkShape(
-                                          /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
-                                          /// 10 DISINI PERNAH KEBESAREN DAN GA TAMPIL
-                                          /// KAYAKNYA ADA HUBUNGANNYA DGN DIVISION DAN MAX
-                                            tickMarkRadius: 5//10
-                                        ),
-                                        /// WARNA LABEL (CALLOUT)
-                                        // valueIndicatorColor: Colors.red,
-                                      ),
-                                      child: Slider(
-                                        divisions: 6,//5,
-                                        /// CALLOUT DI ATAS THUMB
-                                        // label: sliderValue.toString(),
-                                        max: 12,//10.0,
-                                        min: 0.0,
-                                        value: sliderValue,
-                                        onChanged: (value) {/// REQUIRED
-                                          setState(() {/// ng
-                                            sliderValue = value;
-                                            if (value > 4.0) {
-                                              loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
-                                                customImage = image;
-                                              });
-                                            }
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                              padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                              width: MediaQuery.of(context).size.width * 1,
+                              child: SliderTheme(
+                                data: SliderThemeData(
+                                  /// WARNA AKTIF
+                                  // activeTrackColor: Colors.yellowAccent,
+                                  activeTrackColor: null,
+                                  // inactiveTrackColor: Colors.cyan[100],
+                                  inactiveTrackColor: null,
+                                  // activeTickMarkColor: sliderValue <= 4.0 ? Colors.amber : Colors.brown,
+                                  // inactiveTickMarkColor: Colors.brown,
+                                  /// GA PAKE OVERLAY
+                                  // overlayShape: RoundSliderOverlayShape(overlayRadius: 40.0),
+                                  // rangeThumbShape: RoundRangeSliderThumbShape(
+                                  //   elevation: 40,
+                                  //   disabledThumbRadius: 5,
+                                  //   enabledThumbRadius: 10,
+                                  //   pressedElevation: 10
+                                  // ),
+                                  thumbShape: sliderValue < 6.0 ?
+                                  SliderThumbImage(customImage) :
+                                  // RoundSliderThumbShape(enabledThumbRadius: 20),
+                                  SliderWidgetBThumbShapeNg(
+                                      enabledThumbRadius: 15,
+                                      disabledThumbRadius: 4,
+                                      valueTextSpan: TextSpan(
+                                          text: sliderValue.toInt().toString()+'M'
+                                      )
+                                  ),
+                                  trackHeight: 5,//10
+                                  trackShape: RoundedRectSliderTrackShape(),
+                                  tickMarkShape: RoundSliderTickMarkShape(
+                                    /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
+                                    /// 10 DISINI PERNAH KEBESAREN DAN GA TAMPIL
+                                    /// KAYAKNYA ADA HUBUNGANNYA DGN DIVISION DAN MAX
+                                      tickMarkRadius: 5//10
+                                  ),
+                                  /// WARNA LABEL (CALLOUT)
+                                  // valueIndicatorColor: Colors.red,
+                                ),
+                                child: Slider(
+                                  divisions: 6,//5,
+                                  /// CALLOUT DI ATAS THUMB
+                                  // label: sliderValue.toString(),
+                                  max: 12,//10.0,
+                                  min: 0.0,
+                                  value: sliderValue,
+                                  onChanged: (value) {/// REQUIRED
+                                    setState(() {/// ng
+                                      sliderValue = value;
+                                      if (value > 4.0) {
+                                        loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                          customImage = image;
+                                        });
+                                      }
 
-                                            /// PERLUKAH SET IMAGE DI ONCHANGE?
-                                            /// KARENA ONCHANGED YAITU KONDISI SAAT DRAGGING
-                                          });
-                                        },
+                                      /// PERLUKAH SET IMAGE DI ONCHANGE?
+                                      /// KARENA ONCHANGED YAITU KONDISI SAAT DRAGGING
+                                    });
+                                  },
 
-                                        /// This callback also shouldn't be used to update the slider
-                                        /// value (use onChanged for that)
-                                        onChangeStart: (value) {
-                                          setState(() {
-                                            if (value > 4.0) {
-                                              loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
-                                                customImage = image;
-                                              });
-                                            } else {
-                                              loadImage('lib/assets/info_48.png').then((image) {
-                                                customImage = image;
-                                              });
-                                            }
-                                          });
-                                        },
+                                  /// This callback also shouldn't be used to update the slider
+                                  /// value (use onChanged for that)
+                                  onChangeStart: (value) {
+                                    setState(() {
+                                      if (value > 4.0) {
+                                        loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                          customImage = image;
+                                        });
+                                      } else {
+                                        loadImage('lib/assets/info_48.png').then((image) {
+                                          customImage = image;
+                                        });
+                                      }
+                                    });
+                                  },
 
-                                        /// This callback shouldn't be used to update the slider
-                                        /// value (use onChanged for that), but rather to know
-                                        /// when the user has completed selecting a new value
-                                        /// by ending a drag or a click.
-                                        onChangeEnd: (newValue) {
-                                          // setState(() {
-                                            if (newValue > 4.0) {
-                                              loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
-                                                customImage = image;
-                                              });
-                                              Future.delayed(
-                                                  Duration(seconds: 4),
-                                                      (){
-                                                    Toast.show(
-                                                        '4 seconds, sliderValue > 4 => $sliderValue',
-                                                        context,
-                                                        duration: Toast.LENGTH_SHORT,
-                                                        gravity: Toast.BOTTOM
-                                                    );
-                                                    setState(() {
-                                                      sliderValue = 2.0;
-                                                    });
-                                                  }).whenComplete(() => {
-                                                sliderValue = 2.0
+                                  /// This callback shouldn't be used to update the slider
+                                  /// value (use onChanged for that), but rather to know
+                                  /// when the user has completed selecting a new value
+                                  /// by ending a drag or a click.
+                                  onChangeEnd: (newValue) {
+                                    // setState(() {
+                                    if (newValue > 4.0) {
+                                      loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                        customImage = image;
+                                      });
 
-                                                /// NG v
-                                                // Toast.show(
-                                                //   'WHEN COMPLETE $newValue',
-                                                //   context,
-                                                //   duration: Toast.LENGTH_SHORT,
-                                                //   gravity: Toast.BOTTOM
-                                                // )
-                                              });
+                                      /// SEBELUMNYA GA PAKE FUNGSI (LANGSUNG DI SINI)
+                                      _futureDelayedThumb();
 
-                                              // start();
-                                            }
-                                            // else {
-                                            //   if (_timer != null) {
-                                            //     _timer.cancel();
-                                            //     _timer = null;
-                                            //     loadImage('lib/assets/info_48.png').then((image) {
-                                            //       customImage = image;
-                                            //     });
-                                            //   }
-                                            // }
-                                          // });
-                                        },
-                                      ),
-                                    ),
-                                  )
-                                ]
+                                      // start();
+                                    }
+                                    // else {
+                                    //   if (_timer != null) {
+                                    //     _timer.cancel();
+                                    //     _timer = null;
+                                    //     loadImage('lib/assets/info_48.png').then((image) {
+                                    //       customImage = image;
+                                    //     });
+                                    //   }
+                                    // }
+                                    // });
+                                  },
+                                ),
+                              ),
                             ),
-                            /// SEKEDAR LABEL VALUE SLIDER
-                            // Row(
-                            //     mainAxisAlignment: MainAxisAlignment.center,
-                            //     children: <Widget>[
-                            //       Text(
-                            //         sliderValue.toInt().toString(),
-                            //         style: TextStyle(
-                            //             fontSize: 12
-                            //         ),
-                            //       ),
-                            //     ]
-                            // )
                           ]
                       ),
+
+                      Container(
+                        // padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: MediaQuery.of(context).size.width / 7,
+                              child: Text('500K'),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 7,
+                              child: Text('1M'),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 7,
+                              child: Text('1.5M'),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 7,
+                              child: Text('2M'),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 7,
+                              child: Text('3M'),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 7,
+                              child: Text('6M'),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width / 7,
+                              child: Text('10M'),
+                            ),
+                          ],
+                          // children: List.generate(
+                          //     7, (index) {
+                          //   return Text("$index");
+                          // }),
+                        ),
+                      ),
+
+                      /// SEKEDAR LABEL VALUE SLIDER
+                      // Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: <Widget>[
+                      //       Text(
+                      //         sliderValue.toInt().toString(),
+                      //         style: TextStyle(
+                      //             fontSize: 12
+                      //         ),
+                      //       ),
+                      //     ]
+                      // ,
+
                       // SliderCurrent(),
                       /// TEXT DURASI PINJAMAN
                       Container(
@@ -599,16 +607,17 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
                         child: TextSudahPeminjam(),
                       ),
+
                       /// BUTTON DAPATKAN DANA SEKARANG
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(0))
                         ),
-                        margin: EdgeInsets.fromLTRB(0, 21, 0, 10),
+                        margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
                         width: MediaQuery.of(context).size.width * 1,
                         child: RaisedButton(
-                          padding: EdgeInsets.fromLTRB(0, 15, 0, 15),
+                          padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
                           color: Colors.blue[900],
                           onPressed: (){
                             print('Button dapatkan dana sekarang');
@@ -624,6 +633,34 @@ class _ProductCalculatorState extends State<ProductCalculator> {
         ),
       ),
     );
+  }
+
+  /// SEBELUMNYA GA PAKE FUNGSI (LANGSUNG DI WIDGET SLIDER)
+  /// ng
+  void _futureDelayedThumb() {
+    Future.delayed(
+        Duration(seconds: 4),
+            (){
+          Toast.show(
+              '4 seconds, sliderValue > 4 => $sliderValue',
+              context,
+              duration: Toast.LENGTH_SHORT,
+              gravity: Toast.BOTTOM
+          );
+          setState(() {
+            sliderValue = 2.0;
+          });
+        }).whenComplete(() => {
+      sliderValue = 2.0
+
+      /// NG v
+      // Toast.show(
+      //   'WHEN COMPLETE $newValue',
+      //   context,
+      //   duration: Toast.LENGTH_SHORT,
+      //   gravity: Toast.BOTTOM
+      // )
+    });
   }
 
   @override
