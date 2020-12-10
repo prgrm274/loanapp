@@ -553,40 +553,85 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           ]
                       ),
 
+                      /// LABEL DI BAWAH SLIDER PINJAMAN
                       Container(
-                        // padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                        margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        // padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
+                        width: MediaQuery.of(context).size.width * 1.000000,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: MediaQuery.of(context).size.width / 7,
-                              child: Text('500K'),
+                            Expanded(
+                              child: Text(
+                                  '500K',
+                                  style: TextStyle(color: Colors.white, fontSize: 10)
+                              ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 7,
-                              child: Text('1M'),
+                            Expanded(
+                              child: Text(
+                                  '1M',
+                                  style: TextStyle(color: Colors.white, fontSize: 10)
+                              ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 7,
-                              child: Text('1.5M'),
+                            Expanded(
+                              child: Text(
+                                  '1.5M',
+                                  style: TextStyle(color: Colors.white, fontSize: 10)
+                              ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 7,
-                              child: Text('2M'),
+                            Expanded(
+                              child: Text(
+                                  '2M',
+                                  style: TextStyle(color: Colors.white, fontSize: 10)
+                              ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 7,
-                              child: Text('3M'),
+                            Expanded(
+                              child: Text(
+                                  '3M',
+                                  style: TextStyle(color: Colors.white, fontSize: 10)
+                              ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 7,
-                              child: Text('6M'),
+                            Expanded(
+                              child: Text(
+                                  '6M',
+                                  style: TextStyle(color: Colors.white, fontSize: 10)
+                              ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width / 7,
-                              child: Text('10M'),
+                            Expanded(
+                              child: Text(
+                                  '10M',
+                                  style: TextStyle(color: Colors.white, fontSize: 10)
+                              ),
                             ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width / 7.5,
+                            //   child: Text('500K'),
+                            // ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width / 7.5,
+                            //   child: Text('1M'),
+                            // ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width / 9,
+                            //   child: Text('1.5M'),
+                            // ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width / 7.5,
+                            //   child: Text('2M'),
+                            // ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width / 7.5,
+                            //   child: Text('3M'),
+                            // ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width / 7.5,
+                            //   child: Text('6M'),
+                            // ),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width / 7.5,
+                            //   child: Text('10M'),
+                            // ),
                           ],
                           // children: List.generate(
                           //     7, (index) {
