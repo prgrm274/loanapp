@@ -642,7 +642,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
         Duration(seconds: 4),
             (){
           Toast.show(
-              '4 seconds, sliderValue > 4 => $sliderValue',
+              '4s, sliderValue =  $sliderValue',
               context,
               duration: Toast.LENGTH_SHORT,
               gravity: Toast.BOTTOM
