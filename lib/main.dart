@@ -64,8 +64,8 @@ class _Statenya extends State<MyApp> {
           /// USER PAGE
           home: UserPage(),
 
-          ///
-          // home: ProductCalculator(),///bs
+          /// PRODUCT CALCULATOR
+          // home: ProductCalculator(),/// v
           // home: LPI(),
           // home: ProgressIndicator1(),
 
