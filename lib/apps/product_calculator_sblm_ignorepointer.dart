@@ -74,10 +74,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     TAndaTerimaC1jt500rb(),
     TAndaTerimaD2jt(),
 
-    TAndaMengembalikanA800rb(),
-    TAndaMengembalikanB1jt600rb(),
-    TAndaMengembalikanC2jt400rb(),
-    TAndaMengembalikanD3jt200rb(),
+    TAndaMengembalikanA875rb(),
+    TAndaMengembalikanB1jt750rb(),
+    TAndaMengembalikanC2jt625rb(),
+    TAndaMengembalikanD3jt500rb(),
   ];
 
   Widget _setText() {

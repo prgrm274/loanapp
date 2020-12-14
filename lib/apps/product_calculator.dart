@@ -21,6 +21,10 @@ import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_b_1jt.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_c_1jt500rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_d_2jt.dart';
+import 'package:voidrealm/apps/texts/t_cicilan_a_175rb.dart';
+import 'package:voidrealm/apps/texts/t_cicilan_b_350rb.dart';
+import 'package:voidrealm/apps/texts/t_cicilan_b_525rb.dart';
+import 'package:voidrealm/apps/texts/t_cicilan_b_700rb.dart';
 import 'package:voidrealm/sliders/slider6_emoji.dart';
 import 'package:voidrealm/sliders/slider7/slider7.dart';
 import 'package:voidrealm/sliders/slider_widget_b.dart';
@@ -56,45 +60,112 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     return fi.image;
   }
   String imgPathCalcThumbBonus = 'lib/assets/calculator_thumb_bonus.png';
-  String imgPathOther = 'lib/assets/info_48.png';
   String imgPathKarung = 'lib/assets/karung_uang.png';
+  String imgPathInfo = 'lib/assets/info_48.png';
 
   @override
   void initState() {
-    loadImage('lib/assets/info_48.png').then((image) {/// v
+    loadImage(imgPathCalcThumbBonus).then((image) {/// v
       customImage = image;
     });
     super.initState();
   }
 
-  TextAndaTerima text12 = new TextAndaTerima();
-
   /// BUAT METHOD _setText DAN TARUH DI CHILD
   /// JADI TIDAK PERLU IF ELSE DI CHILD
   List<Widget> _textUang = [
+    /// UANG TERIMA
     TAndaTerimaA500rb(),
     TAndaTerimaB1jt(),
     TAndaTerimaC1jt500rb(),
     TAndaTerimaD2jt(),
 
-    TAndaMengembalikanA800rb(),
-    TAndaMengembalikanB1jt600rb(),
-    TAndaMengembalikanC2jt400rb(),
-    TAndaMengembalikanD3jt200rb(),
+    /// UANG KEMBALI
+    TAndaMengembalikanA875rb(),
+    TAndaMengembalikanB1jt750rb(),
+    TAndaMengembalikanC2jt625rb(),
+    TAndaMengembalikanD3jt500rb(),
+
+    /// CICILAN PER BULAN
+    TCicilanA175rb(),
+    TCicilanB350rb(),
+    TCicilanC525rb(),
+    TCicilanD700rb(),
   ];
 
-  Widget _setText() {
+  Widget _setTextUangTerima() {
     if (sliderPnjm == 0.0) {
       return _textUang.elementAt(0);
-    } else if (sliderPnjm == 1.0) {
-      return _textUang.elementAt(1);
     } else if (sliderPnjm == 2.0) {
+      return _textUang.elementAt(1);
+    } else if (sliderPnjm == 4.0) {
       return _textUang.elementAt(2);
-    } else if (sliderPnjm == 3.0) {
+    } else if (sliderPnjm == 6.0) {
       return _textUang.elementAt(3);
-    } else {
-      return _textUang.elementAt(0);
     }
+    return _textUang.elementAt(0);
+  }
+
+  Widget _setTextUangKembali() {
+    if (sliderPnjm == 0.0) {
+      return _textUang.elementAt(4);
+    } else if (sliderPnjm == 2.0) {
+      return _textUang.elementAt(5);
+    } else if (sliderPnjm == 4.0) {
+      return _textUang.elementAt(6);
+    } else if (sliderPnjm == 6.0) {
+      return _textUang.elementAt(7);
+    }
+
+    return _textUang.elementAt(0);
+  }
+
+  Widget _setTextCicilan() {
+    if (sliderPnjm == 0.0) {
+      return _textUang.elementAt(8);
+    } else if (sliderPnjm == 2.0) {
+      return _textUang.elementAt(9);
+    } else if (sliderPnjm == 4.0) {
+      return _textUang.elementAt(10);
+    } else if (sliderPnjm == 6.0) {
+      return _textUang.elementAt(11);
+    }
+    return _textUang.elementAt(0);
+  }
+
+  String _thumbValue;
+  TextSpan _setThumbValue() {
+    if (sliderPnjm == 0.0) {
+      return TextSpan(
+          text: '500K',
+          style: TextStyle(color: Colors.blue[900], fontSize: 12, fontWeight: FontWeight.bold)
+      );
+    } else if (sliderPnjm == 2.0) {
+      return TextSpan(
+          text: '1M',
+          style: TextStyle(color: Colors.blue[900], fontSize: 12, fontWeight: FontWeight.bold)
+      );
+    } else if (sliderPnjm == 4.0) {
+      return TextSpan(
+          text: '1.5M',
+          style: TextStyle(color: Colors.blue[900], fontSize: 12, fontWeight: FontWeight.bold)
+      );
+    } else if (sliderPnjm == 6.0) {
+      return TextSpan(
+          text: '2M',
+          style: TextStyle(color: Colors.blue[900], fontSize: 12, fontWeight: FontWeight.bold)
+      );
+    }
+  }
+
+  String _setThumbBonusValue() {
+    if (sliderPnjm == 8.0) {
+      return '3M';
+    } else if (sliderPnjm == 10.0) {
+      return '6M';
+    } else if (sliderPnjm == 12.0) {
+      return '10M';
+    } return 'no';
   }
 
   bool _hasToIgnore = false;
@@ -122,7 +193,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                     margin: EdgeInsets.fromLTRB(0, 130, 0, 0),
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        /// NG
+                        /// ng
                         // mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
@@ -190,7 +261,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 // ),
                                                 Expanded(
                                                     flex: 1,
-                                                    child: _setText()
+                                                    child: _setTextUangTerima()
                                                   /// v
                                                   // sliderValue > 4.0 ?
                                                   // _textUang.elementAt(0) :
@@ -261,14 +332,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 // ),
                                                 Expanded(
                                                   flex: 1,
-                                                  child: sliderPnjm > 4.0 ?
-                                                  _textUang.elementAt(1)
-                                                      :
-                                                  Container(
-                                                    alignment: Alignment.centerRight,
-                                                    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                                    child: Text2625(),
-                                                  ),
+                                                  child: _setTextUangKembali(),
                                                 ),
                                               ]
                                           )
@@ -382,7 +446,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                       children: <Widget>[
                                                         Container(
                                                           margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                                                          child: Text525(),
+                                                          child: _setTextCicilan(),
                                                         ),
                                                         Icon(
                                                           Icons.calendar_today_outlined,
@@ -448,7 +512,11 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 activeTickMarkColor: Colors.white,
                                 activeTrackColor: Colors.white,/// null WITHOUT TRACK
                                 disabledActiveTickMarkColor: Colors.white,
-                                disabledActiveTrackColor: Colors.green,
+                                disabledActiveTrackColor: sliderPnjm > 6
+                                    ?
+                                Colors.white24
+                                    :
+                                Colors.white,
                                 disabledInactiveTrackColor: Colors.white24,
                                 disabledInactiveTickMarkColor: Colors.blue[900],
                                 disabledThumbColor: Colors.lightGreenAccent,
@@ -468,24 +536,25 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 //   pressedElevation: 10
                                 // ),
                                 thumbColor: Colors.white,
-                                thumbShape: sliderPnjm < 6.0
+                                thumbShape: sliderPnjm > 6
                                     ?
-                                SliderWidgetBThumbShapeNg(
-                                    enabledThumbRadius: 20,//15,
-                                    disabledThumbRadius: 4,
-                                    valueTextSpan: TextSpan(
-                                        text: sliderPnjm.toInt().toString()+'M',
-                                        style: TextStyle(color: Colors.blue[900])
+                                SliderThumbImage(
+                                    customImage,
+                                    TextSpan(
+                                        text: _setThumbBonusValue(),
+                                        style: TextStyle(
+                                            color: Colors.blue[900],
+                                            fontSize: 12,
+                                            fontWeight: FontWeight.bold
+                                        )
                                     )
                                 )
                                     :
                                 // RoundSliderThumbShape(enabledThumbRadius: 20),
-                                SliderThumbImage(
-                                    customImage,
-                                    TextSpan(
-                                        text: sliderPnjm.toInt().toString()+'M',
-                                        style: TextStyle(color: Colors.blue[900])
-                                    )
+                                SliderWidgetBThumbShapeNg(
+                                    enabledThumbRadius: 20,//15,
+                                    disabledThumbRadius: 4,
+                                    valueTextSpan: _setThumbValue()
                                 ),
                                 // SliderThumbImage(customImage),
                                 trackHeight: 2,//10
@@ -502,7 +571,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               child: Slider(
                                 divisions: 6,//5,
                                 /// CALLOUT DI ATAS THUMB
-                                // label: sliderValue.toString(),
+                                label: sliderPnjm.toString(),
                                 min: 0.0,
                                 max: 12,//10.0,
                                 value: sliderPnjm,
@@ -516,7 +585,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   setState(() {/// ng
                                     sliderPnjm = value;
 
-                                    if (sliderPnjm > 4.0) {
+                                    if (sliderPnjm > 6.0) {
                                       loadImage(imgPathCalcThumbBonus)
                                           .then((image) {
                                         customImage = image;
@@ -532,7 +601,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 /// value (use onChanged for that)
                                 onChangeStart: (value) {
                                   setState(() {
-                                    if (value > 4.0) {
+                                    if (value > 6.0) {
                                       loadImage(imgPathCalcThumbBonus).then((image) {
                                         customImage = image;
                                       });
@@ -553,7 +622,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   sliderPnjm = newValue;
 
                                   // setState(() {
-                                  if (sliderPnjm > 4.0) {
+                                  if (sliderPnjm > 6.0) {
 
                                     setState(() {
                                       _hasToIgnore = true;/// ng
@@ -737,26 +806,6 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           // Container(
                           //   width: MediaQuery.of(context).size.width / 7.5,
                           //   child: Text('1M'),
-                          // ),
-                          // Container(
-                          //   width: MediaQuery.of(context).size.width / 9,
-                          //   child: Text('1.5M'),
-                          // ),
-                          // Container(
-                          //   width: MediaQuery.of(context).size.width / 7.5,
-                          //   child: Text('2M'),
-                          // ),
-                          // Container(
-                          //   width: MediaQuery.of(context).size.width / 7.5,
-                          //   child: Text('3M'),
-                          // ),
-                          // Container(
-                          //   width: MediaQuery.of(context).size.width / 7.5,
-                          //   child: Text('6M'),
-                          // ),
-                          // Container(
-                          //   width: MediaQuery.of(context).size.width / 7.5,
-                          //   child: Text('10M'),
                           // ),
                         ],
                         // children: List.generate(
