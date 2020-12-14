@@ -435,141 +435,137 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           ),
 
                           /// SLIDER PINJAMAN
-                          Row(
-                              children: <Widget>[
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                                  width: MediaQuery.of(context).size.width * 1,
-                                  child: SliderTheme(
-                                    data: SliderThemeData(
-                                      /// WARNA AKTIF
-                                      activeTickMarkColor: Colors.white,
-                                      activeTrackColor: Colors.white,/// null WITHOUT TRACK
-                                      disabledActiveTickMarkColor: Colors.white,
-                                      disabledInactiveTickMarkColor: Colors.blue[900],
-                                      disabledThumbColor: Colors.lightGreenAccent,
-                                      // activeTrackColor: Colors.yellowAccent,
-                                      // activeTickMarkColor: sliderValue <= 4.0 ? Colors.amber : Colors.brown,
-                                      inactiveTickMarkColor: Colors.blue[900],
-                                      inactiveTrackColor: Colors.white24,
-                                      // inactiveTrackColor: Colors.cyan[100],
-                                      // inactiveTickMarkColor: Colors.brown,
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 0, 0, 15),
+                            padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                            width: MediaQuery.of(context).size.width * 1,
+                            child: SliderTheme(
+                              data: SliderThemeData(
+                                /// WARNA AKTIF
+                                activeTickMarkColor: Colors.white,
+                                activeTrackColor: Colors.white,/// null WITHOUT TRACK
+                                disabledActiveTickMarkColor: Colors.white,
+                                disabledInactiveTickMarkColor: Colors.blue[900],
+                                disabledThumbColor: Colors.lightGreenAccent,
+                                // activeTrackColor: Colors.yellowAccent,
+                                // activeTickMarkColor: sliderValue <= 4.0 ? Colors.amber : Colors.brown,
+                                inactiveTickMarkColor: Colors.blue[900],
+                                inactiveTrackColor: Colors.white24,
+                                // inactiveTrackColor: Colors.cyan[100],
+                                // inactiveTickMarkColor: Colors.brown,
 
-                                      /// GA PAKE OVERLAY
-                                      // overlayShape: RoundSliderOverlayShape(overlayRadius: 40.0),
-                                      // rangeThumbShape: RoundRangeSliderThumbShape(
-                                      //   elevation: 40,
-                                      //   disabledThumbRadius: 5,
-                                      //   enabledThumbRadius: 10,
-                                      //   pressedElevation: 10
-                                      // ),
-                                      thumbColor: Colors.red,/// GA NGARUH
-                                      thumbShape: sliderPnjm < 6.0 ?
-                                      SliderThumbImage(customImage) :
-                                      // RoundSliderThumbShape(enabledThumbRadius: 20),
-                                      SliderWidgetBThumbShapeNg(
-                                          enabledThumbRadius: 15,
-                                          disabledThumbRadius: 4,
-                                          valueTextSpan: TextSpan(
-                                              text: sliderPnjm.toInt().toString()+'M',
-                                              style: TextStyle(color: Colors.blue[900])
-                                          )
-                                      ),
-                                      trackHeight: 2,//10
-                                      trackShape: RoundedRectSliderTrackShape(),
-                                      tickMarkShape: RoundSliderTickMarkShape(
-                                        /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
-                                        /// 10 DISINI PERNAH KEBESAREN DAN GA TAMPIL
-                                        /// KAYAKNYA ADA HUBUNGANNYA DGN DIVISION DAN MAX
-                                          tickMarkRadius: 5//10
-                                      ),
-                                      /// WARNA LABEL (CALLOUT)
-                                      // valueIndicatorColor: Colors.red,
-                                    ),
-                                    child: Slider(
-                                      divisions: 6,//5,
-                                      /// CALLOUT DI ATAS THUMB
-                                      // label: sliderValue.toString(),
-                                      min: 0.0,
-                                      max: 12,//10.0,
-                                      value: sliderPnjm,
-                                      onChanged: /// ng GA PAKE CONDITIONAL SOALNYA PAKE IgnorePointer
-                                      _hasToIgnore ? null :
-                                          (value) {/// REQUIRED
-                                        setState(() {/// ng
-                                          sliderPnjm = value;
-                                          if (sliderPnjm > 4.0) {
-                                            loadImage('lib/assets/calculator_thumb_bonus.png')
-                                                .then((image) {
-                                              customImage = image;
-                                            });
-                                          }
-
-                                          /// PERLUKAH SET IMAGE DI ONCHANGE?
-                                          /// KARENA ONCHANGED YAITU KONDISI SAAT DRAGGING
-                                        });
-                                      },
-
-                                      /// This callback also shouldn't be used to update the slider
-                                      /// value (use onChanged for that)
-                                      onChangeStart: (value) {
-                                        setState(() {
-                                          if (value > 4.0) {
-                                            loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
-                                              customImage = image;
-                                            });
-                                          } else {
-                                            loadImage('lib/assets/info_48.png').then((image) {
-                                              customImage = image;
-                                            });
-                                          }
-                                        });
-                                      },
-
-                                      /// This callback shouldn't be used to update the slider
-                                      /// value (use onChanged for that), but rather to know
-                                      /// when the user has completed selecting a new value
-                                      /// by ending a drag or a click.
-                                      onChangeEnd: (newValue) {
-                                        sliderPnjm = newValue;
-
-                                        // setState(() {
-                                        if (sliderPnjm > 4.0) {
-
-                                          setState(() {
-                                            _hasToIgnore = true;/// ng
-                                          });
-
-                                          loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
-                                            customImage = image;
-                                          });
-
-                                          /// SEBELUMNYA GA PAKE FUNGSI (LANGSUNG DI SINI)
-                                          _futureDelayedThumb();
-
-                                          // start();
-                                        }
-                                        // else {
-                                        //   if (_timer != null) {
-                                        //     _timer.cancel();
-                                        //     _timer = null;
-                                        //     loadImage('lib/assets/info_48.png').then((image) {
-                                        //       customImage = image;
-                                        //     });
-                                        //   }
-                                        // }
-                                        // });
-                                      },
-                                    ),
-                                  ),
+                                /// GA PAKE OVERLAY
+                                // overlayShape: RoundSliderOverlayShape(overlayRadius: 40.0),
+                                // rangeThumbShape: RoundRangeSliderThumbShape(
+                                //   elevation: 40,
+                                //   disabledThumbRadius: 5,
+                                //   enabledThumbRadius: 10,
+                                //   pressedElevation: 10
+                                // ),
+                                thumbColor: Colors.red,/// GA NGARUH
+                                thumbShape: sliderPnjm < 6.0 ?
+                                SliderThumbImage(customImage) :
+                                // RoundSliderThumbShape(enabledThumbRadius: 20),
+                                SliderWidgetBThumbShapeNg(
+                                    enabledThumbRadius: 15,
+                                    disabledThumbRadius: 4,
+                                    valueTextSpan: TextSpan(
+                                        text: sliderPnjm.toInt().toString()+'M',
+                                        style: TextStyle(color: Colors.blue[900])
+                                    )
                                 ),
-                              ]
+                                trackHeight: 2,//10
+                                trackShape: RoundedRectSliderTrackShape(),
+                                tickMarkShape: RoundSliderTickMarkShape(
+                                  /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
+                                  /// 10 DISINI PERNAH KEBESAREN DAN GA TAMPIL
+                                  /// KAYAKNYA ADA HUBUNGANNYA DGN DIVISION DAN MAX
+                                    tickMarkRadius: 5//10
+                                ),
+                                /// WARNA LABEL (CALLOUT)
+                                // valueIndicatorColor: Colors.red,
+                              ),
+                              child: Slider(
+                                divisions: 6,//5,
+                                /// CALLOUT DI ATAS THUMB
+                                // label: sliderValue.toString(),
+                                min: 0.0,
+                                max: 12,//10.0,
+                                value: sliderPnjm,
+                                onChanged: /// ng GA PAKE CONDITIONAL SOALNYA PAKE IgnorePointer
+                                _hasToIgnore ? null :
+                                    (value) {/// REQUIRED
+                                  setState(() {/// ng
+                                    sliderPnjm = value;
+                                    if (sliderPnjm > 4.0) {
+                                      loadImage('lib/assets/calculator_thumb_bonus.png')
+                                          .then((image) {
+                                        customImage = image;
+                                      });
+                                    }
+
+                                    /// PERLUKAH SET IMAGE DI ONCHANGE?
+                                    /// KARENA ONCHANGED YAITU KONDISI SAAT DRAGGING
+                                  });
+                                },
+
+                                /// This callback also shouldn't be used to update the slider
+                                /// value (use onChanged for that)
+                                onChangeStart: (value) {
+                                  setState(() {
+                                    if (value > 4.0) {
+                                      loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                        customImage = image;
+                                      });
+                                    } else {
+                                      loadImage('lib/assets/info_48.png').then((image) {
+                                        customImage = image;
+                                      });
+                                    }
+                                  });
+                                },
+
+                                /// This callback shouldn't be used to update the slider
+                                /// value (use onChanged for that), but rather to know
+                                /// when the user has completed selecting a new value
+                                /// by ending a drag or a click.
+                                onChangeEnd: (newValue) {
+                                  sliderPnjm = newValue;
+
+                                  // setState(() {
+                                  if (sliderPnjm > 4.0) {
+
+                                    setState(() {
+                                      _hasToIgnore = true;/// ng
+                                    });
+
+                                    loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                      customImage = image;
+                                    });
+
+                                    /// SEBELUMNYA GA PAKE FUNGSI (LANGSUNG DI SINI)
+                                    _futureDelayedThumb();
+
+                                    // start();
+                                  }
+                                  // else {
+                                  //   if (_timer != null) {
+                                  //     _timer.cancel();
+                                  //     _timer = null;
+                                  //     loadImage('lib/assets/info_48.png').then((image) {
+                                  //       customImage = image;
+                                  //     });
+                                  //   }
+                                  // }
+                                  // });
+                                },
+                              ),
+                            ),
                           ),
 
                           /// TEXT DURASI PINJAMAN
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
+                            margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
                             child: TextDurasiPinjaman(),
                           ),
 
@@ -667,7 +663,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                     child: Container(
                       // padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       margin: EdgeInsets.fromLTRB(20, 0, 0, 40),
-                      padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
+                      padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
                       width: MediaQuery.of(context).size.width * 1.000000,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
