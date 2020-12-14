@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
+import 'package:voidrealm/apps/registrasi/reg050.dart';
 
 class LogoOjk extends StatefulWidget {
   LogoOjk({Key key}) : super(key: key);

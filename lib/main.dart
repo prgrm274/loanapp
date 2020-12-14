@@ -3,6 +3,7 @@ import 'package:voidrealm/appbars/j_login040_appbar.dart';
 import 'package:voidrealm/appbars/j_login040_body.dart';
 import 'package:voidrealm/appbars/appbar_progress.dart';
 import 'package:voidrealm/appbars/custombar.dart';
+import 'package:voidrealm/apps/j150_tanya_jawab.dart';
 import 'package:voidrealm/apps/product_calculator.dart';
 // import 'package:voidrealm/appbars/progress/lpi_vr.dart';
 // import 'package:voidrealm/appbars/progress/sles_progress_indicator1.dart';
@@ -62,10 +63,13 @@ class _Statenya extends State<MyApp> {
       home: Scaffold(
         body: new MaterialApp(
           /// USER PAGE
-          home: UserPage(),
+          // home: UserPage(),
+
+          /// TANYA JAWAB
+          // home: J150TanyaJawab(),
 
           /// PRODUCT CALCULATOR
-          // home: ProductCalculator(),/// v
+          home: ProductCalculator(),/// v
           // home: LPI(),
           // home: ProgressIndicator1(),
 

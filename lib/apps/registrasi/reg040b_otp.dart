@@ -77,7 +77,8 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
               padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
               child: Icon(
                   Icons.arrow_back_rounded,
-                  color: Colors.white)
+                  color: Colors.white
+              )
           ),
         ),
       ),
