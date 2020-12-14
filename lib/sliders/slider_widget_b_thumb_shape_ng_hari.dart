@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 /// SliderWidgetBThumbShapeNg
 /// ng = nambahin variabel valueTextSpan untuk valuenya slider nanti
 class SliderWidgetBThumbShapeNgHari extends SliderComponentShape {
+  final TextSpan valueTextSpan;
+  final double enabledThumbRadius;
+  final double disabledThumbRadius;
+
   const SliderWidgetBThumbShapeNgHari({
     this.enabledThumbRadius = 10.0,
     this.disabledThumbRadius,
     this.valueTextSpan
   });
-
-  final TextSpan valueTextSpan;
-  final double enabledThumbRadius;
-  final double disabledThumbRadius;
 
   double get _disabledThumbRadiusPrivate =>
       disabledThumbRadius ?? enabledThumbRadius;

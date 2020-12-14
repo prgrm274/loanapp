@@ -71,7 +71,8 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
     /// 2 COBA TEXTSPAN ASAL
     TextSpan span = new TextSpan(
         style: new TextStyle(
-            color: Colors.grey[600]),
+            color: Colors.grey[600]
+        ),
         text: 'Coba textspan'
     );
     // labelPainter.text = span;/// NG X
@@ -81,7 +82,7 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
         text: valueTextSpan,/// v
         // text: span,/// v
         textAlign: TextAlign.center,
-        textDirection: TextDirection.ltr
+        textDirection: TextDirection.ltr,
     );
     labelPainter.layout();
     /// TARUH TEXTPAINTER DI CANVAS
@@ -93,7 +94,7 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
     labelPainter.paint(
         canvas,
         center-(Offset(10, 10))
-    );/// ng v center-(Offset(10, 10))
+    );/// ng v center-(Offset(10, 10)) if font size is 14 (default fontSize)
   }
 
 /*@override

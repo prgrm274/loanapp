@@ -57,6 +57,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   }
   String imgPathCalcThumbBonus = 'lib/assets/calculator_thumb_bonus.png';
   String imgPathOther = 'lib/assets/info_48.png';
+  String imgPathKarung = 'lib/assets/karung_uang.png';
 
   @override
   void initState() {
@@ -419,7 +420,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                     child: Image(
                         height: 100,
                         width: 100,
-                        image: AssetImage('lib/assets/karung_uang.png')
+                        image: AssetImage(imgPathKarung)
                     ),
                   ),
 
@@ -470,7 +471,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 thumbShape: sliderPnjm < 6.0
                                     ?
                                 SliderWidgetBThumbShapeNg(
-                                    enabledThumbRadius: 15,
+                                    enabledThumbRadius: 20,//15,
                                     disabledThumbRadius: 4,
                                     valueTextSpan: TextSpan(
                                         text: sliderPnjm.toInt().toString()+'M',
@@ -479,7 +480,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 )
                                     :
                                 // RoundSliderThumbShape(enabledThumbRadius: 20),
-                                SliderThumbImage(customImage),
+                                SliderThumbImage(
+                                    customImage,
+                                    TextSpan(
+                                        text: sliderPnjm.toInt().toString()+'M',
+                                        style: TextStyle(color: Colors.blue[900])
+                                    )
+                                ),
+                                // SliderThumbImage(customImage),
                                 trackHeight: 2,//10
                                 trackShape: RoundedRectSliderTrackShape(),
                                 tickMarkShape: RoundSliderTickMarkShape(
@@ -601,7 +609,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 inactiveTrackColor: Colors.white24,
                                 thumbColor: Colors.white,
                                 thumbShape: SliderWidgetBThumbShapeNgHari(
-                                    enabledThumbRadius: 15,
+                                    enabledThumbRadius: 20,//15,
                                     disabledThumbRadius: 4,
                                     valueTextSpan: TextSpan(
                                         text: sliderHari.toString(),
@@ -904,8 +912,11 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
 class SliderThumbImage extends SliderComponentShape {
   final dartUI.Image image;
+  final TextSpan valueTextSpan;
 
-  SliderThumbImage(this.image);
+  SliderThumbImage(
+      this.image,
+      this.valueTextSpan);
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
@@ -943,15 +954,15 @@ class SliderThumbImage extends SliderComponentShape {
       canvas.drawImage(image, imageOffset, paint);
     }
 
-    /// ng TEXT DI TENGAH THUMB
-    TextSpan span = new TextSpan(
-        style: new TextStyle(
-            color: Colors.grey[600]),
-        text: '15M'
-    );
+    /// ng v TEXT DI TENGAH THUMB
+    // TextSpan span = new TextSpan(
+    //     style: new TextStyle(
+    //         color: Colors.grey[600]),
+    //     text: '15M'
+    // );
     labelPainter = new TextPainter(
-        text: span,
-        // text: valueTextSpan,
+        text: valueTextSpan,
+        // text: span,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr
     );
