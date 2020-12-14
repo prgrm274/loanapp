@@ -55,6 +55,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     dartUI.FrameInfo fi = await codec.getNextFrame();
     return fi.image;
   }
+  String imgPathCalcThumbBonus = 'lib/assets/calculator_thumb_bonus.png';
+  String imgPathOther = 'lib/assets/info_48.png';
 
   @override
   void initState() {
@@ -430,7 +432,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         children: <Widget>[
                           /// TEXT JUMLAH PINJAMAN
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                            margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                             child: TextJumlahPinjamanRp(),
                           ),
 
@@ -445,6 +447,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 activeTickMarkColor: Colors.white,
                                 activeTrackColor: Colors.white,/// null WITHOUT TRACK
                                 disabledActiveTickMarkColor: Colors.white,
+                                disabledActiveTrackColor: Colors.green,
+                                disabledInactiveTrackColor: Colors.white24,
                                 disabledInactiveTickMarkColor: Colors.blue[900],
                                 disabledThumbColor: Colors.lightGreenAccent,
                                 // activeTrackColor: Colors.yellowAccent,
@@ -462,10 +466,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 //   enabledThumbRadius: 10,
                                 //   pressedElevation: 10
                                 // ),
-                                thumbColor: Colors.red,/// GA NGARUH
-                                thumbShape: sliderPnjm < 6.0 ?
-                                SliderThumbImage(customImage) :
-                                // RoundSliderThumbShape(enabledThumbRadius: 20),
+                                thumbColor: Colors.white,
+                                thumbShape: sliderPnjm < 6.0
+                                    ?
                                 SliderWidgetBThumbShapeNg(
                                     enabledThumbRadius: 15,
                                     disabledThumbRadius: 4,
@@ -473,7 +476,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         text: sliderPnjm.toInt().toString()+'M',
                                         style: TextStyle(color: Colors.blue[900])
                                     )
-                                ),
+                                )
+                                    :
+                                // RoundSliderThumbShape(enabledThumbRadius: 20),
+                                SliderThumbImage(customImage),
                                 trackHeight: 2,//10
                                 trackShape: RoundedRectSliderTrackShape(),
                                 tickMarkShape: RoundSliderTickMarkShape(
@@ -492,13 +498,18 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 min: 0.0,
                                 max: 12,//10.0,
                                 value: sliderPnjm,
-                                onChanged: /// ng GA PAKE CONDITIONAL SOALNYA PAKE IgnorePointer
-                                _hasToIgnore ? null :
+                                onChanged: /// ng CONDITIONAL PAKE IgnorePointer
+                                _hasToIgnore
+                                    ?
+                                null
+                                    :
                                     (value) {/// REQUIRED
+
                                   setState(() {/// ng
                                     sliderPnjm = value;
+
                                     if (sliderPnjm > 4.0) {
-                                      loadImage('lib/assets/calculator_thumb_bonus.png')
+                                      loadImage(imgPathCalcThumbBonus)
                                           .then((image) {
                                         customImage = image;
                                       });
@@ -514,14 +525,15 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 onChangeStart: (value) {
                                   setState(() {
                                     if (value > 4.0) {
-                                      loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
-                                        customImage = image;
-                                      });
-                                    } else {
-                                      loadImage('lib/assets/info_48.png').then((image) {
+                                      loadImage(imgPathCalcThumbBonus).then((image) {
                                         customImage = image;
                                       });
                                     }
+                                    // else {
+                                    //   loadImage(imgPathOther).then((image) {
+                                    //     customImage = image;
+                                    //   });
+                                    // }
                                   });
                                 },
 
@@ -539,7 +551,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       _hasToIgnore = true;/// ng
                                     });
 
-                                    loadImage('lib/assets/calculator_thumb_bonus.png').then((image) {
+                                    loadImage(imgPathCalcThumbBonus).then((image) {
                                       customImage = image;
                                     });
 
@@ -565,7 +577,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
                           /// TEXT DURASI PINJAMAN
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            margin: EdgeInsets.fromLTRB(0, 5, 0, 10),
                             child: TextDurasiPinjaman(),
                           ),
 
