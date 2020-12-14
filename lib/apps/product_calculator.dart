@@ -563,7 +563,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
                                   /// 10 DISINI PERNAH KEBESAREN DAN GA TAMPIL
                                   /// KAYAKNYA ADA HUBUNGANNYA DGN DIVISION DAN MAX
-                                    tickMarkRadius: 5//10
+                                    tickMarkRadius: 8//10
                                 ),
                                 /// WARNA LABEL (CALLOUT)
                                 // valueIndicatorColor: Colors.red,
@@ -688,7 +688,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 trackHeight: 2,//10
                                 trackShape: RoundedRectSliderTrackShape(),
                                 tickMarkShape: RoundSliderTickMarkShape(
-                                    tickMarkRadius: 6
+                                    tickMarkRadius: 8
                                 ),
                               ),
                               child: Slider(
@@ -758,10 +758,11 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                            child: Text(
-                                '500K',
-                                style: TextStyle(color: Colors.white, fontSize: 10)
-                            ),
+                              child: sliderPnjm == 0.0 ? Text('') :
+                              Text(
+                                  '500K',
+                                  style: TextStyle(color: Colors.white, fontSize: 10)
+                              )
                           ),
                           Expanded(
                             child: Text(

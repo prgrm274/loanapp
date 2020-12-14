@@ -13,9 +13,9 @@ class _TextSudahPeminjamState extends State<TextSudahPeminjam> {
     return Text(
       'SUDAH MENJADI PEMINJAM',
       style: TextStyle(
-          color: Colors.white,
-          decoration: TextDecoration.underline,
-          fontSize: 12
+        color: Colors.white,
+        decoration: TextDecoration.underline,
+        // fontSize: 12
       ),
     );
   }

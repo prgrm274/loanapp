@@ -14,7 +14,7 @@ class _TextDurasiPinjamanState extends State<TextDurasiPinjaman> {
       'Durasi pinjaman, dalam satuan bulan',
       style: TextStyle(
           color: Colors.white70,
-          fontSize: 12
+          // fontSize: 12
       ),
     );
   }

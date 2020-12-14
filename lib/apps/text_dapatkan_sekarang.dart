@@ -12,10 +12,7 @@ class _TextDapatkanSekarangState extends State<TextDapatkanSekarang> {
   Widget build(BuildContext context) {
     return Text(
         'DAPATKAN DANA SEKARANG!',
-        style: TextStyle(
-            color: Colors.white,
-            fontSize: 13
-        )
+        style: TextStyle(color: Colors.white)
     );
   }
 }
