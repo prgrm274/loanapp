@@ -123,9 +123,6 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         // mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Container(
-                            // height: 129.8,
-                          ),
-                          Container(
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
@@ -432,7 +429,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                     child: Column(
                         children: <Widget>[
                           /// TEXT JUMLAH PINJAMAN
-                          TextJumlahPinjamanRp(),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                            child: TextJumlahPinjamanRp(),
+                          ),
 
                           /// SLIDER PINJAMAN
                           Row(
@@ -569,7 +569,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
                           /// TEXT DURASI PINJAMAN
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                            margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                             child: TextDurasiPinjaman(),
                           ),
 
@@ -663,10 +663,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                   /// LABEL NOMINAL PINJAMAN DI BAWAH SLIDER
                   /// POSITIONED ITU POSISI ABSOLUT, SEAKAN MELAYANG
                   Positioned(
-                    bottom: 155,
+                    bottom: 170,
                     child: Container(
                       // padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      margin: EdgeInsets.fromLTRB(20, 0, 0, 20),
+                      margin: EdgeInsets.fromLTRB(20, 0, 0, 40),
                       padding: EdgeInsets.fromLTRB(20, 0, 10, 0),
                       width: MediaQuery.of(context).size.width * 1.000000,
                       child: Row(
