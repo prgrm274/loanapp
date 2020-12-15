@@ -30,7 +30,8 @@ class _Reg080ButtonState extends State<Reg080Button> {
           child: Text('Berikutnya'),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(45.0),
-              side: BorderSide(color: Colors.cyan)),
+              side: BorderSide(color: Colors.cyan)
+          ),
         ),
       ),
     );

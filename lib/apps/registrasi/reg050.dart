@@ -43,17 +43,8 @@ class _Reg050State extends State<Reg050> {
       isOnTappedEmail = false;
 
   /// DIINISIALISASI SETELAH ISONTAPPED TRUE NG
-  static bool isFokusNama;
-  static bool isFokusTanggal;
-  static bool isFokusTempat;
-  static bool isFokusNamaIbu;
-  static bool isFokusEmail;
-
-  static bool isNamaCorrect;
-  static bool isTanggalCorrect;
-  static bool isTempatCorrect;
-  static bool isNamaIbuCorrect;
-  static bool isEmailCorrect;
+  static bool isFokusNama, isFokusTanggal, isFokusTempat, isFokusNamaIbu, isFokusEmail;
+  static bool isNamaCorrect, isTanggalCorrect, isTempatCorrect, isNamaIbuCorrect, isEmailCorrect;
 
   /// VARIABEL UNTUK KONDISI TEXT FIELD
   final boxDecorationDefault = BoxDecoration(
@@ -93,6 +84,9 @@ class _Reg050State extends State<Reg050> {
   double _dNamalengkap = 0, _tanggalLahir = 0, _dTempatLahir = 0,
       _jenisKelamin = 0, _jumlahAnak = 0, _namaIbu = 0,
       _pendidikanTerakhir = 0, _email = 0;
+  
+  String imgAssetBack = 'lib/assets/grey_arrow_white.png';
+  String imgAssetChat = 'lib/assets/chat_bubble_cyan.png';
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +101,7 @@ class _Reg050State extends State<Reg050> {
             new Container(
                 padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
                 child: Image(
-                    image: AssetImage('lib/assets/chat_bubble_cyan.png')
+                    image: AssetImage(imgAssetChat)
                 )
             ),
           ],
@@ -126,31 +120,45 @@ class _Reg050State extends State<Reg050> {
               child: new Container(/// kotaknya navigation icon
                   padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
                   child: Image(
-                      image: AssetImage('lib/assets/grey_arrow_white.png')
+                      image: AssetImage(imgAssetBack)
                   )
               ),
             ),
           ),
-          title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,/// PERSEN TERISI DI START
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  child: Text(
-                      '${_valueTotal.round()}% terisi\n',
-                      style: TextStyle(fontSize: 12, color: Colors.grey)
+          title: Container(
+            margin: EdgeInsets.only(top: 20, bottom: 20),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,/// PERSEN TERISI DI START
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                    child: Text(
+                        '${_valueTotal.round()}% terisi\n',
+                        // Text('$_value terisi, total = $_valueTotal\n',
+                        // '$$progress terisi $_progres\n',
+                        // '$_progres terisi\n',
+                        style: TextStyle(fontSize: 12, color: Colors.grey)
+                    ),
                   ),
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  child: LinearProgressIndicator(
-                    backgroundColor: Colors.cyanAccent,
-                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
-                    value: _valueTotal * .1,
-                  ),
-                )
-              ]
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+                    child: LinearProgressIndicator(
+                      backgroundColor: Colors.cyanAccent,
+                      valueColor: new AlwaysStoppedAnimation<Color>(Colors.red),
+                      value: _valueTotal * .1,
+                      // value: _value * .1,
+                      // value: progress,
+                      // value: _progres,
+                    ),
+                  )
+                ]
+            ),
           ),
+          // title: new SfulLinearprogressindicator(),
+          // title: new ProgressIndicator1(),
+          // title: Text('Custom Appbar'),
+          // title:  UtilCommonWidget.addTextMedium('About US', Colors.white, 20.0, 1),
+
           titleSpacing: 0.0,
         ),
 
@@ -160,6 +168,95 @@ class _Reg050State extends State<Reg050> {
             color: Colors.white,
             child: Column(
                 children: <Widget>[
+
+                  /// BAWAH APPBAR
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                    color: Colors.grey[100],
+                    child: Row(
+                      children: <Widget>[
+                        Flexible(
+                          flex: 1,
+                          child: Text(
+                            'Saya terima\nRp 1.500.000',
+                            style: TextStyle(
+                                color: Colors.grey[400],
+                                fontSize: 12,
+                                fontFamily: 'Sans'
+                            ),
+                          ),
+                        ),
+                        Flexible(
+                            flex: 1,
+                            child: Container(
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      child: Image(
+                                        image: AssetImage(
+                                          'lib/assets/info_48.png',
+                                        ),
+                                        width: 12,
+                                        height: 12,
+                                      ),
+                                      onTap: () {
+                                        print('onTap info nilai angsuran');
+                                      },
+                                    ),
+
+                                    /// SPASI ANTARA LOGO INFO DAN NILAI ANGSURAN
+                                    Container(
+                                      width: 10,
+                                    ),
+                                    Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          GestureDetector(
+                                            child: Text(
+                                              'Nilai angsuran',
+                                              style: TextStyle(
+                                                  decoration: TextDecoration.underline,
+                                                  color: Colors.cyan,
+                                                  fontSize: 12,
+                                                  fontFamily: 'Sans'),
+                                            ),
+                                            onTap: () {
+                                              print('onTap nilai angsuran');
+                                            },
+                                          ),
+                                          Text(
+                                            'Rp 525.000',
+                                            style: TextStyle(
+                                                color: Colors.grey[400],
+                                                fontSize: 12,
+                                                fontFamily: 'Sans'),
+                                          ),
+                                        ]
+                                    )
+                                  ]
+                              ),
+                            )
+                        ),
+                        Flexible(
+                          flex: 1,
+                          child: Text(
+                            'Bayar pertama\n27.10.2020',
+                            style: TextStyle(
+                                color: Colors.grey[400],
+                                fontSize: 12,
+                                fontFamily: 'Sans'),
+                          ),
+                        ),
+                      ],
+                      mainAxisSize: MainAxisSize.max,
+
+                      /// MEMBAGI RUANG UNTUK KONTEN CHILD SESUAI JUMLAH CHILD DARI ROW
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    ),
+                  ),
+
                   /// LABEL NAMA
                   Row(
                       children: <Widget>[

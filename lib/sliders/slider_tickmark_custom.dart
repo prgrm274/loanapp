@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 /// CUSTOM TICK MARK
 /// TITIK-TITIK PUTIH DAN BIRU PADA SLIDER RANGE
+///
+/// MGKN BISA KUSTOM LGSG DISINI UTK LABEL DI BAWAH TICK
 class SliderTickmarkCustom extends SliderTickMarkShape {
   @override
   Size getPreferredSize({SliderThemeData sliderTheme, bool isEnabled}) {
@@ -21,7 +23,7 @@ class SliderTickmarkCustom extends SliderTickMarkShape {
         bool isEnabled,
         TextDirection textDirection
       }) {
-    // TODO: implement paint
+
   }
 
 }
