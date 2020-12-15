@@ -66,8 +66,11 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
     );
 
     /// TEXT PAINTER
+    ///
+
     /// 1 NG X
     // labelPainter.text = 'sfdsafsafaf' as InlineSpan;
+
     /// 2 COBA TEXTSPAN ASAL
     TextSpan span = new TextSpan(
         style: new TextStyle(
@@ -76,16 +79,19 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
         text: 'Coba textspan'
     );
     // labelPainter.text = span;/// NG X
+
     /// 3
     // TextPainter tp = new TextPainter(text: span, textAlign: TextAlign.left, textDirection: TextDirection.ltr);
     labelPainter = new TextPainter(
-        text: valueTextSpan,/// v
-        // text: span,/// v
-        textAlign: TextAlign.center,
+      text: valueTextSpan,/// v
+      // text: span,/// v
+      textAlign: TextAlign.center,
         textDirection: TextDirection.ltr,
     );
     labelPainter.layout();
+
     /// TARUH TEXTPAINTER DI CANVAS
+
     /// NG NARUH center AS OFFSET
     /// NG TULIS SETELAH canvas.drawCircle JADI BIAR DIATAS CIRCLE TEXTNYA
     // labelPainter.paint(canvas, center);/// v

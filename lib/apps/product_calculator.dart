@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:toast/toast.dart';
 import 'package:voidrealm/apps/logo_danafix.dart';
 import 'package:voidrealm/apps/logo_ojk.dart';
+import 'package:voidrealm/apps/t_10m_akan_anda_terima.dart';
+import 'package:voidrealm/apps/t_3m_akan_anda_terima.dart';
+import 'package:voidrealm/apps/t_6m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/text_2625.dart';
 import 'package:voidrealm/apps/text_525.dart';
 import 'package:voidrealm/apps/text_anda_mengembalikan.dart';
@@ -158,6 +161,16 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     }
   }
 
+  Widget _setTableLebihDari2M() {
+    if (sliderPnjm == 8) {
+      return T3MAkanAndaTerima();
+    } else if (sliderPnjm == 10) {
+      return T6MAkanAndaTerima();
+    } else if (sliderPnjm == 12) {
+      return T10MAkanAndaTerima();
+    }
+  }
+
   String _setThumbBonusValue() {
     if (sliderPnjm == 8.0) {
       return '3M';
@@ -186,9 +199,11 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                 children: [
                   /// OJK
                   LogoOjk(),
+
                   /// DANAFIX
                   LogoDanafix(),
-                  /// COLUMN UNTUK TEXT TABLE
+
+                  /// TEXT TABLE
                   Container(
                     margin: EdgeInsets.fromLTRB(0, 130, 0, 0),
                     child: Column(
@@ -207,8 +222,12 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 )
                               ],
                             ),
-                            /// TEXT TABLE
-                            child: Table(
+                            /// TEXT TABLE IS LEBIH DARI 2M (3M)
+                            child: sliderPnjm > 6.0
+                                ?
+                            _setTableLebihDari2M()
+                                :
+                            Table(
                               children: [
                                 /// 1. ANDA TERIMA
                                 TableRow(
@@ -571,7 +590,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               child: Slider(
                                 divisions: 6,//5,
                                 /// CALLOUT DI ATAS THUMB
-                                label: sliderPnjm.toString(),
+                                // label: sliderPnjm.toString(),
                                 min: 0.0,
                                 max: 12,//10.0,
                                 value: sliderPnjm,
@@ -602,7 +621,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 onChangeStart: (value) {
                                   setState(() {
                                     if (value > 6.0) {
-                                      loadImage(imgPathCalcThumbBonus).then((image) {
+                                      loadImage(imgPathCalcThumbBonus)
+                                          .then((image) {
                                         customImage = image;
                                       });
                                     }
@@ -628,7 +648,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       _hasToIgnore = true;/// ng
                                     });
 
-                                    loadImage(imgPathCalcThumbBonus).then((image) {
+                                    loadImage(imgPathCalcThumbBonus)
+                                        .then((image) {
                                       customImage = image;
                                     });
 
@@ -637,6 +658,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
                                     // start();
                                   }
+
                                   // else {
                                   //   if (_timer != null) {
                                   //     _timer.cancel();
@@ -765,37 +787,43 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               )
                           ),
                           Expanded(
-                            child: Text(
+                            child: sliderPnjm == 2.0 ? Text('') :
+                            Text(
                                 '1M',
                                 style: TextStyle(color: Colors.white, fontSize: 10)
                             ),
                           ),
                           Expanded(
-                            child: Text(
+                            child: sliderPnjm == 4.0 ? Text('') :
+                            Text(
                                 '1.5M',
                                 style: TextStyle(color: Colors.white, fontSize: 10)
                             ),
                           ),
                           Expanded(
-                            child: Text(
+                            child: sliderPnjm == 6.0 ? Text('') :
+                            Text(
                                 '2M',
                                 style: TextStyle(color: Colors.white, fontSize: 10)
                             ),
                           ),
                           Expanded(
-                            child: Text(
+                            child: sliderPnjm == 8.0 ? Text('') :
+                            Text(
                                 '3M',
                                 style: TextStyle(color: Colors.white, fontSize: 10)
                             ),
                           ),
                           Expanded(
-                            child: Text(
+                            child: sliderPnjm == 10.0 ? Text('') :
+                            Text(
                                 '6M',
                                 style: TextStyle(color: Colors.white, fontSize: 10)
                             ),
                           ),
                           Expanded(
-                            child: Text(
+                            child: sliderPnjm == 12.0 ? Text('') :
+                            Text(
                                 '10M',
                                 style: TextStyle(color: Colors.white, fontSize: 10)
                             ),
@@ -833,6 +861,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               child: Column(
                                   children: <Widget>[
                                     Text(
+                                        sliderHari == 3.5 ? '' :
                                         '3.5',
                                         style: TextStyle(
                                             color: Colors.white,
@@ -854,6 +883,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               child: Column(
                                   children: <Widget>[
                                     Text(
+                                        sliderHari == 4.5 ? '' :
                                         '4.5',
                                         style: TextStyle(
                                             color: Colors.white,
@@ -875,6 +905,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               child: Column(
                                   children: <Widget>[
                                     Text(
+                                      sliderHari == 5.5 ? '' :
                                       '5.5',
                                       style: TextStyle(
                                           color: Colors.white,
