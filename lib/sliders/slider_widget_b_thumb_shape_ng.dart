@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// SliderWidgetBThumbShapeNg
-/// ng = nambahin variabel valueTextSpan untuk valuenya slider nanti
+/// ng = NAMBAHIN VARIABEL valueTextSpan UNTUK VALUENYA SLIDER NANTI
 class SliderWidgetBThumbShapeNg extends SliderComponentShape {
   const SliderWidgetBThumbShapeNg({
     this.enabledThumbRadius = 10.0,
@@ -10,8 +10,7 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
   });
 
   final TextSpan valueTextSpan;
-  final double enabledThumbRadius;
-  final double disabledThumbRadius;
+  final double enabledThumbRadius, disabledThumbRadius/*disabledThumbRadius is final */;
 
   double get _disabledThumbRadiusPrivate =>
       disabledThumbRadius ?? enabledThumbRadius;
@@ -19,7 +18,9 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
     return Size.fromRadius(
-        isEnabled == true ? enabledThumbRadius : _disabledThumbRadiusPrivate
+        isEnabled == true ?
+        enabledThumbRadius :
+        _disabledThumbRadiusPrivate
     );
   }
 
@@ -69,7 +70,7 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
     ///
 
     /// 1 NG X
-    // labelPainter.text = 'sfdsafsafaf' as InlineSpan;
+    // labelPainter.text = 'contoh teks' as InlineSpan;
 
     /// 2 COBA TEXTSPAN ASAL
     TextSpan span = new TextSpan(
@@ -86,17 +87,17 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
       text: valueTextSpan,/// v
       // text: span,/// v
       textAlign: TextAlign.center,
-        textDirection: TextDirection.ltr,
+      textDirection: TextDirection.ltr,
     );
     labelPainter.layout();
 
     /// TARUH TEXTPAINTER DI CANVAS
 
-    /// NG NARUH center AS OFFSET
-    /// NG TULIS SETELAH canvas.drawCircle JADI BIAR DIATAS CIRCLE TEXTNYA
+    /// ng NARUH center AS OFFSET
+    /// ng TULIS SETELAH canvas.drawCircle JADI BIAR DIATAS CIRCLE TEXTNYA
     // labelPainter.paint(canvas, center);/// v
     // labelPainter.paint(canvas, new Offset(50.0, 50.0));
-    /// NG v SET NEW OFFSET
+    /// ng v SET NEW OFFSET
     // center = new Offset(0, 0);
     labelPainter.paint(
         canvas,

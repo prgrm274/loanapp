@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class T10MAkanAndaTerima extends StatefulWidget {
-  T10MAkanAndaTerima({Key key}) : super(key: key);
+class Table10MAkanAndaTerima extends StatefulWidget {
+  Table10MAkanAndaTerima({Key key}) : super(key: key);
 
   @override
-  _T10MAkanAndaTerimaState createState() =>
-      _T10MAkanAndaTerimaState();
+  _Table10MAkanAndaTerimaState createState() =>
+      _Table10MAkanAndaTerimaState();
 }
 
-class _T10MAkanAndaTerimaState extends State<T10MAkanAndaTerima> {
+class _Table10MAkanAndaTerimaState extends State<Table10MAkanAndaTerima> {
 
   @override
   Widget build(BuildContext context) {

@@ -15,18 +15,6 @@ import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
 import 'package:voidrealm/apps/text_durasi_pinjaman.dart';
 import 'package:voidrealm/apps/text_jumlah_pinjaman.dart';
 import 'package:voidrealm/apps/text_sudah_peminjam.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_a_800rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_a_875rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_a_954rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt600rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt902rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt750rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt400rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt625rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt850rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_d_3jt200rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_d_3jt500rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_d_3jt804rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_b_1jt.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_c_1jt500rb.dart';
@@ -81,32 +69,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   /// JADI TIDAK PERLU IF ELSE DI CHILD
   List<Widget> _listUangWidget = [
     /// UANG TERIMA
-    /// INDEKS 0
     TAndaTerimaA500rb(),
     TAndaTerimaB1jt(),
     TAndaTerimaC1jt500rb(),
     TAndaTerimaD2jt(),
-
-    /// UANG KEMBALI
-    /// INDEKS 4
-    TAndaMengembalikanA800rb(),///3.5
-    TAndaMengembalikanA875rb(),///4.5
-    TAndaMengembalikanA954rb(),///5.5
-
-    /// INDEKS 7
-    TAndaMengembalikanB1jt600rb(),
-    TAndaMengembalikanB1jt750rb(),
-    TAndaMengembalikanB1jt902rb(),
-
-    /// INDEKS 10
-    TAndaMengembalikanC2jt400rb(),
-    TAndaMengembalikanC2jt625rb(),
-    TAndaMengembalikanC2jt850rb(),
-
-    /// INDEKS 13
-    TAndaMengembalikanD3jt200rb(),
-    TAndaMengembalikanD3jt500rb(),
-    TAndaMengembalikanD3jt804rb()
   ];
 
   Widget setUang(String nominal) {
@@ -215,33 +181,33 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     if (sliderPnjm == 0.0) {
       return TextSpan(
           text: '500K',
-          style: TextStyle(color: Colors.blue[900], fontSize: 12, fontWeight: FontWeight.bold)
+          style: TextStyle(color: Colors.blue[900], fontSize: 12/*, fontWeight: FontWeight.bold*/)
       );
     } else if (sliderPnjm == 2.0) {
       return TextSpan(
           text: '1M',
-          style: TextStyle(color: Colors.blue[900], fontSize: 12, fontWeight: FontWeight.bold)
+          style: TextStyle(color: Colors.blue[900], fontSize: 12/*, fontWeight: FontWeight.bold*/)
       );
     } else if (sliderPnjm == 4.0) {
       return TextSpan(
           text: '1.5M',
-          style: TextStyle(color: Colors.blue[900], fontSize: 12, fontWeight: FontWeight.bold)
+          style: TextStyle(color: Colors.blue[900], fontSize: 12/*, fontWeight: FontWeight.bold*/)
       );
     } else if (sliderPnjm == 6.0) {
       return TextSpan(
           text: '2M',
-          style: TextStyle(color: Colors.blue[900], fontSize: 12, fontWeight: FontWeight.bold)
+          style: TextStyle(color: Colors.blue[900], fontSize: 12/*, fontWeight: FontWeight.bold*/)
       );
     }
   }
 
-  Widget _setTableLebihDari2M() {
+  Widget _setTable2MLebih() {
     if (sliderPnjm == 8) {
-      return T3MAkanAndaTerima();
+      return Table3MAkanAndaTerima();
     } else if (sliderPnjm == 10) {
-      return T6MAkanAndaTerima();
+      return Table6MAkanAndaTerima();
     } else if (sliderPnjm == 12) {
-      return T10MAkanAndaTerima();
+      return Table10MAkanAndaTerima();
     }
   }
 
@@ -297,7 +263,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           /// TEXT TABLE IS LEBIH DARI 2M (3M)
                           child: sliderPnjm > 6.0
                               ?
-                          _setTableLebihDari2M()
+                          _setTable2MLebih()
                               :
                           Table(
                             children: [
@@ -438,10 +404,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       //   margin: EdgeInsets.fromLTRB(0, 0.8, 0, 0),
                                         decoration: BoxDecoration(
                                           border: Border(
-                                              top: BorderSide(
-                                                  color: Colors.black,
-                                                  width: 0.2
-                                              )
+                                            bottom: BorderSide(
+                                                color: Colors.black,
+                                                width: 0.2
+                                            ),
+                                            top: BorderSide(
+                                                color: Colors.black,
+                                                width: 0.2
+                                            ),
                                           ),
                                           color: Colors.white,
                                         ),
@@ -508,7 +478,6 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   children: [
                                     Container(
                                       /// MENGGUNAKAN MARGIN (AGAR TAMPAK SEPERTI BORDER)
-                                      margin: EdgeInsets.fromLTRB(0, 0.8, 0, 0),
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.only(
@@ -634,9 +603,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   TextSpan(
                                       text: _setThumbBonusValue(),
                                       style: TextStyle(
-                                          color: Colors.blue[900],
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.bold
+                                        color: Colors.white,
+                                        fontSize: 12,
                                       )
                                   )
                               )
@@ -862,81 +830,69 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       children: [
                         Container(
                             alignment: Alignment.center,
-                            color: Colors.blue,
+                            // color: Colors.blue,
                             width: MediaQuery.of(context).size.width/9,
                             child: sliderPnjm == 0.0 ? Text('') :
                             Text(
                                 '500K',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 10
-                                )
+                                style: TextStyle(color: Colors.white, fontSize: 10)
                             )
                         ),
                         Container(
-                          alignment: Alignment.center,
-                          color: Colors.red,
-                          width: MediaQuery.of(context).size.width/9,
-                          child: sliderPnjm == 2.0 ? Text('') :
-                          Text(
-                              '1M',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 10
-                              )
-                          ),
+                            alignment: Alignment.center,
+                            // color: Colors.red,
+                            width: MediaQuery.of(context).size.width/9,
+                            child: sliderPnjm == 2.0 ? Text('') :
+                            Text(
+                                '1M',
+                                style: TextStyle(color: Colors.white, fontSize: 10)
+                            )
                         ),
                         Container(
-                          alignment: Alignment.center,
-                          color: Colors.blue,
-                          padding: EdgeInsets.only(left: 0, right: 0),
-                          width: MediaQuery.of(context).size.width/9,
-                          child: sliderPnjm == 4.0 ? Text('') :
-                          Text(
-                              '1.5M',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.white, fontSize: 10)
-                          ),
+                            alignment: Alignment.center,
+                            padding: EdgeInsets.only(left: 0, right: 0),
+                            width: MediaQuery.of(context).size.width/9,
+                            child: sliderPnjm == 4.0 ? Text('') :
+                            Text(
+                                '1.5M',
+                                style: TextStyle(color: Colors.white, fontSize: 10)
+                            )
                         ),
                         Container(
-                          alignment: Alignment.center,
-                          color: Colors.red,
-                          width: MediaQuery.of(context).size.width/9,
-                          child: sliderPnjm == 6.0 ? Text('') :
-                          Text(
-                              '2M',
-                              style: TextStyle(color: Colors.white, fontSize: 10)
-                          ),
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width/9,
+                            child: sliderPnjm == 6.0 ? Text('') :
+                            Text(
+                                '2M',
+                                style: TextStyle(color: Colors.white, fontSize: 10)
+                            )
                         ),
                         Container(
-                          alignment: Alignment.center,
-                          color: Colors.blue,
-                          width: MediaQuery.of(context).size.width/9,
-                          child: sliderPnjm == 8.0 ? Text('') :
-                          Text(
-                              '3M',
-                              style: TextStyle(color: Colors.white, fontSize: 10)
-                          ),
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width/9,
+                            child: sliderPnjm == 8.0 ? Text('') :
+                            Text(
+                                '3M',
+                                style: TextStyle(color: Colors.white, fontSize: 10)
+                            )
                         ),
                         Container(
-                          alignment: Alignment.center,
-                          color: Colors.red,
-                          width: MediaQuery.of(context).size.width/9,
-                          child: sliderPnjm == 10.0 ? Text('') :
-                          Text(
-                              '6M',
-                              style: TextStyle(color: Colors.white, fontSize: 10)
-                          ),
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width/9,
+                            child: sliderPnjm == 10.0 ? Text('') :
+                            Text(
+                                '6M',
+                                style: TextStyle(color: Colors.white, fontSize: 10)
+                            )
                         ),
                         Container(
-                          alignment: Alignment.center,
-                          color: Colors.blue,
-                          width: MediaQuery.of(context).size.width/9,
-                          child: sliderPnjm == 12.0 ? Text('') :
-                          Text(
-                              '10M',
-                              style: TextStyle(color: Colors.white, fontSize: 10)
-                          ),
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width/9,
+                            child: sliderPnjm == 12.0 ? Text('') :
+                            Text(
+                                '10M',
+                                style: TextStyle(color: Colors.white, fontSize: 10)
+                            )
                         ),
                         // Container(
                         //   width: MediaQuery.of(context).size.width / 7.5,
