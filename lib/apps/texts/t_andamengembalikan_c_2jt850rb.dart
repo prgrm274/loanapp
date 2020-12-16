@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-class TCicilanB350rb extends StatefulWidget {
-  TCicilanB350rb({Key key}) : super(key: key);
+class TAndaMengembalikanC2jt850rb extends StatefulWidget {
+  TAndaMengembalikanC2jt850rb({Key key}) : super(key: key);
 
   @override
-  _TCicilanB350rbState createState() =>
-      _TCicilanB350rbState();
+  _TAndaMengembalikanC2jt850rbState createState() =>
+      _TAndaMengembalikanC2jt850rbState();
 }
 
-class _TCicilanB350rbState extends State<TCicilanB350rb> {
+class _TAndaMengembalikanC2jt850rbState extends State<TAndaMengembalikanC2jt850rb> {
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerRight,
       margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
       child: Text(
-        'Rp. 350.000',
+        'Rp. 2.850.000',
         style: TextStyle(
             color: Colors.blue[900],
             fontSize: 13,

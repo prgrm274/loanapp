@@ -1,22 +1,21 @@
 import 'package:flutter/material.dart';
 
-class TAndaMengembalikanB1jt600rb extends StatefulWidget {
-  TAndaMengembalikanB1jt600rb({Key key}) : super(key: key);
+class TAndaMengembalikanD3jt804rb extends StatefulWidget {
+  TAndaMengembalikanD3jt804rb({Key key}) : super(key: key);
 
   @override
-  _TAndaMengembalikanB1jt600rbState createState() =>
-      _TAndaMengembalikanB1jt600rbState();
+  _TAndaMengembalikanD3jt804rbState createState() =>
+      _TAndaMengembalikanD3jt804rbState();
 }
 
-class _TAndaMengembalikanB1jt600rbState extends State<TAndaMengembalikanB1jt600rb> {
+class _TAndaMengembalikanD3jt804rbState extends State<TAndaMengembalikanD3jt804rb> {
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerRight,
-      
       margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
       child: Text(
-        'Rp. 1.600.000',
+        'Rp. 3.804.000',
         style: TextStyle(
             color: Colors.blue[900],
             fontSize: 13,

@@ -11,10 +11,10 @@ import 'package:voidrealm/apps/text_anda_mengembalikan.dart';
 import 'package:voidrealm/apps/text_cicilan_per_bulan.dart';
 import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
 import 'package:voidrealm/apps/text_durasi_pinjaman.dart';
-import 'package:voidrealm/apps/text_jumlah_pinjaman_rp.dart';
+import 'package:voidrealm/apps/text_jumlah_pinjaman.dart';
 import 'package:voidrealm/apps/text_sudah_peminjam.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_a_800rb.dart';
-import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt600rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt902rb.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt400rb.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_d_3jt200rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
@@ -74,10 +74,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     TAndaTerimaC1jt500rb(),
     TAndaTerimaD2jt(),
 
-    TAndaMengembalikanA875rb(),
-    TAndaMengembalikanB1jt750rb(),
-    TAndaMengembalikanC2jt625rb(),
-    TAndaMengembalikanD3jt500rb(),
+    TAndaMengembalikanA800rb(),
+    TAndaMengembalikanB1jt902rb(),
+    TAndaMengembalikanC2jt400rb(),
+    TAndaMengembalikanD3jt200rb(),
   ];
 
   Widget _setText() {
@@ -420,7 +420,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                 child: Column(
                     children: <Widget>[
                       /// TEXT JUMLAH PINJAMAN
-                      TextJumlahPinjamanRp(),
+                      TextJumlahPinjaman(),
                       /// SLIDER
                       /// SliderCreatingCustomThumb PAKE COLUMN
                       /// DI SINI BERARTI COLUMN DALAM COLUMN BISA

@@ -101,7 +101,10 @@ class SliderWidgetBThumbShapeNg extends SliderComponentShape {
     labelPainter.paint(
         canvas,
         // center
-        center - (Offset(12, 10))
+        // center - (Offset(12, 8))
+        valueTextSpan.text.length > 2 ?
+        center - (Offset(12, 8)) :
+        center - (Offset(10, 8))
     );/// ng v center-(Offset(10, 10)) if font size is 14 (default fontSize)
   }
 

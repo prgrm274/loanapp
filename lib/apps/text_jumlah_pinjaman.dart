@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TextJumlahPinjamanRp extends StatefulWidget {
-  TextJumlahPinjamanRp({Key key}) : super(key: key);
+class TextJumlahPinjaman extends StatefulWidget {
+  TextJumlahPinjaman({Key key}) : super(key: key);
 
   @override
-  _TextJumlahPinjamanRpState createState() => _TextJumlahPinjamanRpState();
+  _TextJumlahPinjamanState createState() => _TextJumlahPinjamanState();
 }
 
-class _TextJumlahPinjamanRpState extends State<TextJumlahPinjamanRp> {
+class _TextJumlahPinjamanState extends State<TextJumlahPinjaman> {
   @override
   Widget build(BuildContext context) {
     return Text(

@@ -9,26 +9,28 @@ import 'package:voidrealm/apps/registrasi/reg040b_otp.dart';
 import 'package:voidrealm/apps/t_10m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/t_3m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/t_6m_akan_anda_terima.dart';
-import 'package:voidrealm/apps/text_2625.dart';
-import 'package:voidrealm/apps/text_525.dart';
 import 'package:voidrealm/apps/text_anda_mengembalikan.dart';
 import 'package:voidrealm/apps/text_cicilan_per_bulan.dart';
 import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
 import 'package:voidrealm/apps/text_durasi_pinjaman.dart';
-import 'package:voidrealm/apps/text_jumlah_pinjaman_rp.dart';
+import 'package:voidrealm/apps/text_jumlah_pinjaman.dart';
 import 'package:voidrealm/apps/text_sudah_peminjam.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_a_800rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_a_875rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_a_954rb.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt600rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt902rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_b_1jt750rb.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt400rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt625rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_c_2jt850rb.dart';
 import 'package:voidrealm/apps/texts/t_andamengembalikan_d_3jt200rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_d_3jt500rb.dart';
+import 'package:voidrealm/apps/texts/t_andamengembalikan_d_3jt804rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_b_1jt.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_c_1jt500rb.dart';
 import 'package:voidrealm/apps/texts/t_andaterima_d_2jt.dart';
-import 'package:voidrealm/apps/texts/t_cicilan_a_175rb.dart';
-import 'package:voidrealm/apps/texts/t_cicilan_b_350rb.dart';
-import 'package:voidrealm/apps/texts/t_cicilan_b_525rb.dart';
-import 'package:voidrealm/apps/texts/t_cicilan_b_700rb.dart';
 import 'package:voidrealm/sliders/slider6_emoji.dart';
 import 'package:voidrealm/sliders/slider7/slider7.dart';
 import 'package:voidrealm/sliders/slider_widget_b.dart';
@@ -77,67 +79,138 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
   /// BUAT METHOD _setText DAN TARUH DI CHILD
   /// JADI TIDAK PERLU IF ELSE DI CHILD
-  List<Widget> _textUang = [
+  List<Widget> _listUangWidget = [
     /// UANG TERIMA
+    /// INDEKS 0
     TAndaTerimaA500rb(),
     TAndaTerimaB1jt(),
     TAndaTerimaC1jt500rb(),
     TAndaTerimaD2jt(),
 
     /// UANG KEMBALI
-    TAndaMengembalikanA875rb(),
-    TAndaMengembalikanB1jt750rb(),
-    TAndaMengembalikanC2jt625rb(),
-    TAndaMengembalikanD3jt500rb(),
+    /// INDEKS 4
+    TAndaMengembalikanA800rb(),///3.5
+    TAndaMengembalikanA875rb(),///4.5
+    TAndaMengembalikanA954rb(),///5.5
 
-    /// CICILAN PER BULAN
-    TCicilanA175rb(),
-    TCicilanB350rb(),
-    TCicilanC525rb(),
-    TCicilanD700rb(),
+    /// INDEKS 7
+    TAndaMengembalikanB1jt600rb(),
+    TAndaMengembalikanB1jt750rb(),
+    TAndaMengembalikanB1jt902rb(),
+
+    /// INDEKS 10
+    TAndaMengembalikanC2jt400rb(),
+    TAndaMengembalikanC2jt625rb(),
+    TAndaMengembalikanC2jt850rb(),
+
+    /// INDEKS 13
+    TAndaMengembalikanD3jt200rb(),
+    TAndaMengembalikanD3jt500rb(),
+    TAndaMengembalikanD3jt804rb()
   ];
+
+  Widget setUang(String nominal) {
+    return Container(
+      alignment: Alignment.centerRight,
+      margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+      child: Text(
+        nominal,
+        style: TextStyle(
+            color: Colors.blue[900],
+            fontSize: 13,
+            fontFamily: 'Sans'
+        ),
+      ),
+    );
+  }
 
   Widget _setTextUangTerima() {
     if (sliderPnjm == 0.0) {
-      return _textUang.elementAt(0);
+      return _listUangWidget.elementAt(0);
     } else if (sliderPnjm == 2.0) {
-      return _textUang.elementAt(1);
+      return _listUangWidget.elementAt(1);
     } else if (sliderPnjm == 4.0) {
-      return _textUang.elementAt(2);
+      return _listUangWidget.elementAt(2);
     } else if (sliderPnjm == 6.0) {
-      return _textUang.elementAt(3);
+      return _listUangWidget.elementAt(3);
     }
-    return _textUang.elementAt(0);
+    return _listUangWidget.elementAt(0);
   }
 
   Widget _setTextUangKembali() {
     if (sliderPnjm == 0.0) {
-      return _textUang.elementAt(4);
+      if (sliderHari == 3.5) {
+        return setUang('Rp 800.000');
+      } else if (sliderHari == 4.5) {
+        return setUang('Rp 875.000');
+      } else if (sliderHari == 5.5) {
+        return setUang('Rp 954.000');
+      }
     } else if (sliderPnjm == 2.0) {
-      return _textUang.elementAt(5);
+      if (sliderHari == 3.5) {
+        return setUang('Rp 1.600.000');
+      } else if (sliderHari == 4.5) {
+        return setUang('Rp 1.750.000');
+      } else if (sliderHari == 5.5) {
+        return setUang('Rp 1.902.000');
+      }
     } else if (sliderPnjm == 4.0) {
-      return _textUang.elementAt(6);
+      if (sliderHari == 3.5) {
+        return setUang('Rp 2.400.000');
+      } else if (sliderHari == 4.5) {
+        return setUang('Rp 2.625.000');
+      } else if (sliderHari == 5.5) {
+        return setUang('Rp 2.850.000');
+      }
     } else if (sliderPnjm == 6.0) {
-      return _textUang.elementAt(7);
+      if (sliderHari == 3.5) {
+        return setUang('Rp 3.200.000');
+      } else if (sliderHari == 4.5) {
+        return setUang('Rp 3.500.000');
+      } else if (sliderHari == 5.5) {
+        return setUang('Rp 3.804.000');
+      }
     }
-
-    return _textUang.elementAt(0);
+    return setUang('');
   }
 
   Widget _setTextCicilan() {
     if (sliderPnjm == 0.0) {
-      return _textUang.elementAt(8);
+      if (sliderHari == 3.5) {
+        return setUang('Rp 200.000');
+      } else if (sliderHari == 4.5) {
+        return setUang('Rp 175.000');
+      } else if (sliderHari == 5.5) {
+        return setUang('Rp 159.000');
+      }
     } else if (sliderPnjm == 2.0) {
-      return _textUang.elementAt(9);
+      if (sliderHari == 3.5) {
+        return setUang('Rp 400.000');
+      } else if (sliderHari == 4.5) {
+        return setUang('Rp 350.000');
+      } else if (sliderHari == 5.5) {
+        return setUang('Rp 317.000');
+      }
     } else if (sliderPnjm == 4.0) {
-      return _textUang.elementAt(10);
+      if (sliderHari == 3.5) {
+        return setUang('Rp 600.000');
+      } else if (sliderHari == 4.5) {
+        return setUang('Rp 525.000');
+      } else if (sliderHari == 5.5) {
+        return setUang('Rp 475.000');
+      }
     } else if (sliderPnjm == 6.0) {
-      return _textUang.elementAt(11);
+      if (sliderHari == 3.5) {
+        return setUang('Rp 800.000');
+      } else if (sliderHari == 4.5) {
+        return setUang('Rp 700.000');
+      } else if (sliderHari == 5.5) {
+        return setUang('Rp 634.000');
+      }
     }
-    return _textUang.elementAt(0);
+    return setUang('');
   }
 
-  String _thumbValue;
   TextSpan _setThumbValue() {
     if (sliderPnjm == 0.0) {
       return TextSpan(
@@ -463,12 +536,11 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 child: Row(
                                                     children: <Widget>[
                                                       Container(
-                                                        margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
                                                         child: _setTextCicilan(),
                                                       ),
                                                       Icon(
                                                         Icons.calendar_today_outlined,
-                                                        color: Colors.blueAccent,
+                                                        color: Colors.red,
                                                         size: 20,
                                                       ),
                                                       // IconButton(
@@ -494,6 +566,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       ]
                   ),
                 ),
+
                 /// KARUNG UANG
                 Container(
                   alignment: Alignment.topCenter,
@@ -516,7 +589,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         /// TEXT JUMLAH PINJAMAN
                         Container(
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
-                          child: TextJumlahPinjamanRp(),
+                          child: TextJumlahPinjaman(),
                         ),
 
                         /// SLIDER PINJAMAN
@@ -730,10 +803,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 });
                               },
                               onChangeStart: (value) {
-
                               },
                               onChangeEnd: (value) {
-
                               },
                             ),
                           ),
@@ -1090,7 +1161,10 @@ class SliderThumbImage extends SliderComponentShape {
     labelPainter.layout();
     labelPainter.paint(
         canvas,
-        center-(Offset(10, 10))
+        valueTextSpan.text.length > 2 ?
+        center - (Offset(12, 8)) :
+        center - (Offset(8, 8))
+      // center-(Offset(10, 10))
     );
   }
 }
@@ -1120,17 +1194,15 @@ class CustomTickMark extends RoundSliderTickMarkShape {
   @override
   Size getPreferredSize(
       {@required SliderThemeData sliderTheme, bool isEnabled = false}) {
-
   }
 
   @override
   void paint(PaintingContext context, Offset center,
       {@required RenderBox parentBox,
-      @required SliderThemeData sliderTheme,
-      @required Animation<double> enableAnimation,
-      @required TextDirection textDirection,
-      @required Offset thumbCenter,
-      bool isEnabled = false}) {
-//
+        @required SliderThemeData sliderTheme,
+        @required Animation<double> enableAnimation,
+        @required TextDirection textDirection,
+        @required Offset thumbCenter,
+        bool isEnabled = false}) {
   }
 }
