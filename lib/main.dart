@@ -3,7 +3,10 @@ import 'package:voidrealm/appbars/j_login040_appbar.dart';
 import 'package:voidrealm/appbars/j_login040_body.dart';
 import 'package:voidrealm/appbars/appbar_progress.dart';
 import 'package:voidrealm/appbars/custombar.dart';
+import 'package:voidrealm/apps/arrow.dart';
+import 'package:voidrealm/apps/custom_triangle.dart';
 import 'package:voidrealm/apps/j150_tanya_jawab.dart';
+import 'package:voidrealm/apps/j_custom_triangle.dart';
 import 'package:voidrealm/apps/product_calculator.dart';
 // import 'package:voidrealm/appbars/progress/lpi_vr.dart';
 // import 'package:voidrealm/appbars/progress/sles_progress_indicator1.dart';
@@ -72,6 +75,9 @@ class _Statenya extends State<MyApp> {
           home: ProductCalculator(),/// v
           // home: LPI(),
           // home: ProgressIndicator1(),
+
+          /// CALLOUT ICON ANDA TERIMA
+          // home: JCustomTriangle(),
 
           /// WELCOME & PERMISSION REQUEST
           // home: PermissionRequest(),

@@ -270,73 +270,78 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               /// 1. ANDA TERIMA
                               TableRow(
                                   children: [
-                                    Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          /// MISAL JIKA HANYA INGIN BARIS ATAS (DAN BAWAH)
-                                          /// DIKASIH LENGKUNG CURVED EDGE
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(4),
-                                              topRight: Radius.circular(4)
+                                    Focus(
+                                      onFocusChange: (hasFokus) {
+                                        print('dsgsdgdsgdsgdsg');
+                                      },
+                                      child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            /// MISAL JIKA HANYA INGIN BARIS ATAS (DAN BAWAH)
+                                            /// DIKASIH LENGKUNG CURVED EDGE
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(4),
+                                                topRight: Radius.circular(4)
+                                            ),
                                           ),
-                                        ),
-                                        height: 48,
-                                        /// MARGIN: BATAS ATAS LOGO, BATAS BAWAH LOGO
-                                        // margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                        // padding: EdgeInsets.all(10),
-                                        // width: MediaQuery.of(context).size.width * 1,
-                                        child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Expanded(
-                                                flex: 1,
-                                                child: Row(
-                                                    children: <Widget>[
-                                                      Container(
-                                                        margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                        child: TextAndaTerima(),
-                                                      ),
-                                                      Icon(
-                                                        Icons.calendar_today_outlined,
-                                                        color: Colors.blueAccent,
-                                                        size: 20,
-                                                      ),
-                                                    ]
-                                                ),
-                                              ),
-                                              // Image(
-                                              //   height: 18,
-                                              //   width: 18,
-                                              //   image: AssetImage('lib/assets/info_48.png'),
-                                              // ),
-                                              // Align(
-                                              //   /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
-                                              //   alignment: Alignment.center,
-                                              //   child: Container(
-                                              //     width: MediaQuery.of(context).size.width * 0.46,
-                                              //   ),
-                                              // ),
-                                              Expanded(
+                                          height: 48,
+                                          /// MARGIN: BATAS ATAS LOGO, BATAS BAWAH LOGO
+                                          // margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                          // padding: EdgeInsets.all(10),
+                                          // width: MediaQuery.of(context).size.width * 1,
+                                          child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Expanded(
                                                   flex: 1,
-                                                  child: _setTextUangTerima()
-                                                /// v
-                                                // sliderValue > 4.0 ?
-                                                // _textUang.elementAt(0) :
-                                                // Container(
-                                                //   alignment: Alignment.centerRight,
-                                                //   margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                                //   child: new Text(
-                                                //     'Rp 1.500.000',
-                                                //     style: TextStyle(
-                                                //         color: Colors.blue[900],
-                                                //         fontSize: 13,
-                                                //         fontFamily: 'Sans'
-                                                //     ),
+                                                  child: Row(
+                                                      children: <Widget>[
+                                                        Container(
+                                                          margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                                          child: TextAndaTerima(),
+                                                        ),
+                                                        Icon(
+                                                          Icons.calendar_today_outlined,
+                                                          color: Colors.blueAccent,
+                                                          size: 20,
+                                                        ),
+                                                      ]
+                                                  ),
+                                                ),
+                                                // Image(
+                                                //   height: 18,
+                                                //   width: 18,
+                                                //   image: AssetImage('lib/assets/info_48.png'),
+                                                // ),
+                                                // Align(
+                                                //   /// BERI JARAK ANTARA anda terima DAN rp 1,5jt
+                                                //   alignment: Alignment.center,
+                                                //   child: Container(
+                                                //     width: MediaQuery.of(context).size.width * 0.46,
                                                 //   ),
                                                 // ),
-                                              ),
-                                            ]
-                                        )
+                                                Expanded(
+                                                    flex: 1,
+                                                    child: _setTextUangTerima()
+                                                  /// v
+                                                  // sliderValue > 4.0 ?
+                                                  // _textUang.elementAt(0) :
+                                                  // Container(
+                                                  //   alignment: Alignment.centerRight,
+                                                  //   margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                                  //   child: new Text(
+                                                  //     'Rp 1.500.000',
+                                                  //     style: TextStyle(
+                                                  //         color: Colors.blue[900],
+                                                  //         fontSize: 13,
+                                                  //         fontFamily: 'Sans'
+                                                  //     ),
+                                                  //   ),
+                                                  // ),
+                                                ),
+                                              ]
+                                          )
+                                      ),
                                     ),
                                   ]
                               ),
@@ -570,7 +575,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                             data: SliderThemeData(
                               /// WARNA AKTIF
                               activeTickMarkColor: Colors.white,
-                              activeTrackColor: Colors.white,/// null WITHOUT TRACK
+                              activeTrackColor: Colors.white,/// null = WITHOUT TRACK
                               disabledActiveTickMarkColor: Colors.white,
                               disabledActiveTrackColor: sliderPnjm > 6
                                   ?
@@ -603,8 +608,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   TextSpan(
                                       text: _setThumbBonusValue(),
                                       style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
+                                          color: Colors.white,
+                                          fontSize: 12
                                       )
                                   )
                               )
@@ -791,6 +796,24 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         ),
 
                         /// BUTTON DAPATKAN DANA SEKARANG
+                        sliderPnjm > 6 ?
+                        Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.all(Radius.circular(0))
+                          ),
+                          margin: EdgeInsets.fromLTRB(0, 10, 0, 5),
+                          padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          width: MediaQuery.of(context).size.width * 1,
+                          child: RaisedButton(
+                            padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
+                            color: Colors.cyan[300],
+                            onPressed: () {},
+                            child: Text(
+                                'DAPATKAN DANA SEKARANG!',
+                                style: TextStyle(color: Colors.white30)
+                            ),
+                          ),
+                        ) :
                         Container(
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.all(Radius.circular(0))
@@ -1004,31 +1027,33 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   /// ng
   void _futureDelayedThumb() {
     Future.delayed(
-        Duration(seconds: 4),
+        Duration(seconds: 2),
             (){
-          Toast.show(
-              '4s already, sliderValue =  $sliderPnjm',
-              context,
-              duration: Toast.LENGTH_SHORT,
-              gravity: Toast.BOTTOM
-          );
+          /// v
+          // Toast.show(
+          //     '4s already, sliderValue =  $sliderPnjm',
+          //     context,
+          //     duration: Toast.LENGTH_SHORT,
+          //     gravity: Toast.BOTTOM
+          // );
           setState(() {
-            sliderPnjm = 2.0;
+            sliderPnjm = 6.0;
           });
         }).whenComplete(() => {
       // sliderValue = 2.0
 
-      /// NG v
+      /// ng v
       /// MUNCUL PAS THUMB MENUJU KE SLIDER VALUE 1M
       ((){
         _hasToIgnore = false;
 
-        Toast.show(
-            'WHEN COMPLETE sliderValue = $sliderPnjm ',
-            context,
-            duration: Toast.LENGTH_SHORT,
-            gravity: Toast.BOTTOM
-        );
+        /// v
+        // Toast.show(
+        //     'WHEN COMPLETE sliderValue = $sliderPnjm ',
+        //     context,
+        //     duration: Toast.LENGTH_SHORT,
+        //     gravity: Toast.BOTTOM
+        // );
       }())
     });
   }
