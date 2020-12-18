@@ -10,7 +10,6 @@ import 'package:voidrealm/numpads/custom_numpad2.dart';
 import 'package:voidrealm/numpads/pinpad/numpad.dart';
 import 'package:voidrealm/numpads/pinpad/numpad_controller.dart';
 
-
 class Reg040BOTP extends StatefulWidget {
   Reg040BOTP({Key key}) : super(key: key);
 

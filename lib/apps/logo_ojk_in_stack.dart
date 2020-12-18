@@ -12,8 +12,9 @@ class LogoOjk extends StatefulWidget {
 class _LogoOjkState extends State<LogoOjk> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(left: 0, top: 10),
+    return Positioned(
+      left: 0,
+      top: 10,
       child: GestureDetector(
         onTap: (){
           Toast.show("onTap gesture detector\nojk_transparent", context, duration: Toast.LENGTH_SHORT, gravity:  Toast.BOTTOM);

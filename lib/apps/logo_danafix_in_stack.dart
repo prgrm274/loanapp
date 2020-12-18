@@ -12,8 +12,9 @@ class LogoDanafix extends StatefulWidget {
 class _LogoDanafixState extends State<LogoDanafix> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 0, top: 10),
+    return Positioned(
+      top: 10,
+      right: 0,
       child: GestureDetector(
         onTap: () {
           Navigator.push(

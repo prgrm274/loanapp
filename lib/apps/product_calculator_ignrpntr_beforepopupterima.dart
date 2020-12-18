@@ -353,6 +353,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       color: Colors.white,
                                     ),
                                     height: 48,
+                                    // margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                    // padding: EdgeInsets.all(10),
+                                    // width: MediaQuery.of(context).size.width * 1,
                                     child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -367,6 +370,22 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 ]
                                             ),
                                           ),
+                                          // Image(
+                                          //   height: 18,
+                                          //   width: 18,
+                                          //   image: AssetImage('lib/assets/blank_white_icon.png'),
+                                          // ),
+                                          // Align(
+                                          //   alignment: Alignment.topCenter,
+                                          //   child: Container(
+                                          //     width: MediaQuery.of(context).size.width * 0.38,
+                                          //   ),
+                                          // ),
+                                          // Expanded(
+                                          //   child: Container(
+                                          //     width: MediaQuery.of(context).size.width * 0.40,
+                                          //   ),
+                                          // ),
                                           Expanded(
                                             flex: 1,
                                             child: _setTextUangKembali(),
@@ -396,6 +415,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       color: Colors.white,
                                     ),
                                     height: 48,
+                                    // margin: EdgeInsets.fromLTRB(10, 0.8, 10, 0),
+                                    // padding: EdgeInsets.all(10),
+                                    // width: MediaQuery.of(context).size.width * 1,
                                     child: Row(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -413,6 +435,12 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                               ),
                                             ),
                                           ),
+                                          // Align(
+                                          //   alignment: Alignment.center,
+                                          //   child: Container(
+                                          //     width: MediaQuery.of(context).size.width * 0.48,
+                                          //   ),
+                                          // ),
                                           Align(
                                               alignment: Alignment.centerRight,
                                               child: Container(
@@ -483,6 +511,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                     color: Colors.red,
                                                     size: 20,
                                                   ),
+                                                  // IconButton(
+                                                  //   icon: Image(
+                                                  //     height: 12,
+                                                  //     width: 12,
+                                                  //     image: AssetImage('lib/assets/info_48.png'),
+                                                  //   ),
+                                                  //   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                                  // ),
                                                 ]
                                             ),
                                           ),
@@ -542,10 +578,24 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               Colors.white24
                                   :
                               Colors.white,
-                              disabledInactiveTickMarkColor: Colors.blue[900],
                               disabledInactiveTrackColor: Colors.white24,
+                              disabledInactiveTickMarkColor: Colors.blue[900],
+                              disabledThumbColor: Colors.lightGreenAccent,
+                              // activeTrackColor: Colors.yellowAccent,
+                              // activeTickMarkColor: sliderValue <= 4.0 ? Colors.amber : Colors.brown,
                               inactiveTickMarkColor: Colors.blue[900],
                               inactiveTrackColor: Colors.white24,
+                              // inactiveTrackColor: Colors.cyan[100],
+                              // inactiveTickMarkColor: Colors.brown,
+
+                              /// GA PAKE OVERLAY
+                              // overlayShape: RoundSliderOverlayShape(overlayRadius: 40.0),
+                              // rangeThumbShape: RoundRangeSliderThumbShape(
+                              //   elevation: 40,
+                              //   disabledThumbRadius: 5,
+                              //   enabledThumbRadius: 10,
+                              //   pressedElevation: 10
+                              // ),
                               thumbColor: Colors.white,
                               thumbShape: sliderPnjm > 6
                                   ?
@@ -568,11 +618,23 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                               trackHeight: 2,//10
                               trackShape: RoundedRectSliderTrackShape(),
                               tickMarkShape: RoundSliderTickMarkShape(
-                                  tickMarkRadius: 5
+                                /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
+                                /// 10 DISINI PERNAH KEBESAREN DAN GA TAMPIL
+                                /// KAYAKNYA ADA HUBUNGANNYA DGN DIVISION DAN MAX
+                                  tickMarkRadius: 5 /// PIXEL 4
+                                //   tickMarkRadius: 8//10 /// PIXEL 3A XL
+
+                                /// DI EMULATOR PIXEL 4 TICKSHAPE 8/10 NORMAL
+                                /// KOK DI EMULATOR PIXEL 3A XL KOK TICKSHAPE GA KLIATAN
+                                /// RADIUS 5 BARU KLIATAN
                               ),
+                              /// WARNA LABEL (CALLOUT)
+                              // valueIndicatorColor: Colors.red,
                             ),
                             child: Slider(
                               divisions: 6,//5,
+                              /// CALLOUT DI ATAS THUMB
+                              // label: sliderPnjm.toString(),
                               min: 0.0,
                               max: 12,//10.0,
                               value: sliderPnjm,
@@ -592,9 +654,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       customImage = image;
                                     });
                                   }
+
+                                  /// PERLUKAH SET IMAGE DI ONCHANGE?
+                                  /// KARENA ONCHANGED YAITU KONDISI SAAT DRAGGING
                                 });
                               },
 
+                              /// This callback also shouldn't be used to update the slider
+                              /// value (use onChanged for that)
                               onChangeStart: (value) {
                                 setState(() {
                                   if (value > 6.0) {
@@ -606,9 +673,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 });
                               },
 
+                              /// This callback shouldn't be used to update the slider
+                              /// value (use onChanged for that), but rather to know
+                              /// when the user has completed selecting a new value
+                              /// by ending a drag or a click.
                               onChangeEnd: (newValue) {
                                 sliderPnjm = newValue;
 
+                                // setState(() {
                                 if (sliderPnjm > 6.0) {
 
                                   setState(() {
@@ -620,6 +692,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                     customImage = image;
                                   });
 
+                                  /// SEBELUMNYA GA PAKE FUNGSI (LANGSUNG DI SINI)
                                   _futureDelayedThumb();
                                 }
                               },
@@ -631,8 +704,6 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                   ),
                 ),
 
-                /// SLIDER INI FIT DI DUA HAPE BERBEDA
-                /// JADIKAN PATOKAN
                 Flexible(
                   child: Stack(
                     children: [
@@ -643,6 +714,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         width: MediaQuery.of(context).size.width,
                         child: Container(
                           margin: EdgeInsets.fromLTRB(20, 0, 20, 40),
+                          // padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
