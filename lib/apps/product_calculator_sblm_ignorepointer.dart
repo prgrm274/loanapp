@@ -513,7 +513,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                 Container(
                   // alignment: Alignment.topCenter,
                   color: Colors.transparent,
-                  margin: EdgeInsets.fromLTRB(0, 65, 0, 0),
+                  margin: EdgeInsets.fromLTRB(0, 55, 0, 0),
                   child: Image(
                       height: 100,
                       width: 100,
@@ -597,7 +597,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       /// TICKMARKRADIUS MENENTUKAN TAMPIL NGGANYA TICKMARK
                                       /// 10 DISINI PERNAH KEBESAREN DAN GA TAMPIL
                                       /// KAYAKNYA ADA HUBUNGANNYA DGN DIVISION DAN MAX
-                                        tickMarkRadius: 8//5//10
+                                      /// 5 PAS UTK BOTH EMULATOR, KECIL PIXEL 4 BESAR DIKIT DI PIXEL 3
+                                        tickMarkRadius: 5//10
                                     ),
                                     /// WARNA LABEL (CALLOUT)
                                     // valueIndicatorColor: Colors.red,
