@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui' as dartUI;
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:show_more_text_popup/show_more_text_popup.dart';
 import 'package:super_tooltip/super_tooltip.dart';
 // import 'package:popup_menu/popup_menu.dart';
 import 'package:toast/toast.dart';
@@ -329,6 +330,24 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     );
   }
 
+  /// SHOWMORETEXTPOPUP
+  GlobalKey key = new GlobalKey();
+  void showMoreText(String text) {
+    ShowMoreTextPopup popup = ShowMoreTextPopup(
+        context,
+        text: text,
+        textStyle: TextStyle(color: Colors.black),
+        height: 200,
+        width: 100,
+        backgroundColor: Color(0xFF16CCCC),
+        padding: EdgeInsets.all(4.0),
+        borderRadius: BorderRadius.circular(10.0)
+    );
+
+    /// show the popup for specific widget
+    popup.show(widgetKey: key);
+  }
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -388,10 +407,15 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       ),
                                       height: 48,
                                       child: GestureDetector(
-                                        onTap: onTap,/// v BISA DI SELURUH AREA ROW
+                                        // onTap: onTap,/// v BISA DI SELURUH AREA ROW
                                         // onTap: showSuperTooltip,/// v
+                                        onTap: () {
+                                          showMoreText('showmoretextpopup');
+                                          // showMoreText(widget.text);
+                                        },
                                         child: Container(
                                           color: Colors.green,
+                                          key: key,
                                           child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: <Widget>[

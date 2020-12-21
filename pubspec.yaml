@@ -66,6 +66,8 @@ dependencies:
   super_tooltip: 0.9.6
   # SHOWMORETEXTPOPUP
   show_more_text_popup:
+  speech_bubble: ^0.0.7
+#  speech_bubble: ^0.0.5
 
 dev_dependencies:
   flutter_test:
