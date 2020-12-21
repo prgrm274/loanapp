@@ -64,6 +64,8 @@ dependencies:
   simple_tooltip: 0.1.16
   # SUPER TOOLTIP
   super_tooltip: 0.9.6
+  # SHOWMORETEXTPOPUP
+  show_more_text_popup:
 
 dev_dependencies:
   flutter_test:

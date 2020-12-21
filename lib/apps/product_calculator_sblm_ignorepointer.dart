@@ -273,20 +273,21 @@ class _ProductCalculatorState extends State<ProductCalculator> {
       // right: 25,
       top: 20,
       content: Align(
-        alignment: Alignment.center,
-        child: Container(
-          height: 100,
-          width: 100,
-          child: Text(
-            'Besar pinjaman yang disetujui bisa sedikit berbeda '
-                'setelah skor pembayaran Anda dicek',
-            softWrap: true,
-            style: TextStyle(
-                color: Colors.blue,
-                fontSize: 12
+          alignment: Alignment.center,
+          child: Container(
+            color: Colors.yellow[100],
+            height: 100,
+            width: 100,
+            child: Text(
+              'Besar pinjaman yang disetujui bisa sedikit berbeda '
+                  'setelah skor pembayaran Anda dicek',
+              softWrap: true,
+              style: TextStyle(
+                  color: Colors.blue,
+                  fontSize: 12
+              ),
             ),
           ),
-        ),
       )
       // content: new Material(
       //     child: Padding(
@@ -300,7 +301,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
       // ),
     );
 
-    superTooltip.backgroundColor.red;
+    // superTooltip.backgroundColor.red;
     superTooltip.show(context);
   }
 
@@ -387,7 +388,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       ),
                                       height: 48,
                                       child: GestureDetector(
-                                        onTap: onTap,
+                                        onTap: onTap,/// v BISA DI SELURUH AREA ROW
                                         // onTap: showSuperTooltip,/// v
                                         child: Container(
                                           color: Colors.green,
