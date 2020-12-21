@@ -109,7 +109,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                           color: Colors.grey[300],
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: GestureDetector(
                           onTap: () {
                             final dynamic tooltip = _toolTip1.currentState;
@@ -136,16 +136,12 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child:
-                        WillPopScope(
+                        padding: EdgeInsets.all(10),
+                        child: WillPopScope(
                           onWillPop: _willPopCallback,
                           child: GestureDetector(
-                            onTap: onTap,
-                            child: Text(
-                                'PERNYATAAN PENYANGKALAN (DISCLAIMER)',
-                                style: TextStyle(color: Colors.grey[400])
-                            ),
+                            onTap: onTap,/// v
+                            child: Text('PERNYATAAN PENYANGKALAN (DISCLAIMER)'),
                           ),
                         ),
                         // GestureDetector(
@@ -183,7 +179,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                           color: Colors.grey[300],
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text(''),
                       ),
                       Container(
@@ -195,7 +191,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Apa produk DanaFix?'),
                       ),
                       Container(
@@ -208,7 +204,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                           color: Colors.grey[300],
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text(
                             'Mengenai pinjaman',
                             style: TextStyle(color: Colors.grey[400])
@@ -223,7 +219,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Siapa yang dapat menggunakan layanan pinjaman DanaFix?'),
                       ),
                       Container(
@@ -235,7 +231,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Dokumen apa saja yang perlu disiapkan?'),
                       ),
                       Container(
@@ -247,7 +243,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Bagaimana mengetahui jika saya telah menerima pencairan tersebut?'),
                       ),
                       Container(
@@ -259,7 +255,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Di kota mana layanan pinjaman DanaFix bisa dilakukan?'),
                       ),
                       Container(
@@ -271,7 +267,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Apa yang harus saya lakukan jika belum menerima SMS konfirmasi dari DanaFix?'),
                       ),
                       Container(
@@ -284,7 +280,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                           color: Colors.grey[300],
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text(
                           'Mengenai menerima uang',
                           style: TextStyle(color: Colors.grey[400]),
@@ -299,7 +295,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Kapan saya menerima pinjaman tersebut?'),
                       ),
                       Container(
@@ -311,7 +307,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Dimana saya dapat menerima pencairan?'),
                       ),
                       Container(
@@ -324,7 +320,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                           color: Colors.grey[300],
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text(
                           'Mengenai pembayaran pinjaman',
                           style: TextStyle(color: Colors.grey[400]),
@@ -339,7 +335,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Kapan saya harus melakukan pembayaran pinjaman?'),
                       ),
                       Container(
@@ -351,7 +347,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Bagaimana melakukan pembayaran pinjaman?'),
                       ),
                       Container(
@@ -363,7 +359,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Apakah mungkin melakukan pelunasan lebih awal?'),
                       ),
                       Container(
@@ -375,7 +371,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Apakah mungkin melakukan pembayaran pinjaman yang telah melewati jatuh tempo dikontrak pinjaman?'),
                       ),
                       Container(
@@ -387,7 +383,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               )
                           ),
                         ),
-                        padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
+                        padding: EdgeInsets.all(10),
                         child: Text('Saya telah melakukan pembayaran pinjaman namun perusahaan tidak menerimanya. Apa yang harus saya lakukan?'),
                       ),
                     ],
