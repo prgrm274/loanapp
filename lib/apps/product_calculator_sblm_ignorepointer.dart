@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:ui' as dartUI;
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:popup_menu/popup_menu.dart';
 import 'package:toast/toast.dart';
 // import 'package:voidrealm/apps/logo_danafix.dart';
 import 'package:voidrealm/apps/logo_danafix_in_stack.dart';
@@ -248,9 +249,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                     /// ng
                     // mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Container(
-                        height: 110,
-                      ),
+                      Container(height: 110),
                       Container(
                         decoration: BoxDecoration(
                           boxShadow: [
@@ -274,7 +273,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      print('dsgsdgdsgdsgdsg');
+
+                                      print('tablerow anda terima');
                                     },
                                     child: Container(
                                         decoration: BoxDecoration(
