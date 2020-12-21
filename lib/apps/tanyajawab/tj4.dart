@@ -12,11 +12,11 @@ class _TanyaJawab5State extends State<TanyaJawab5> {
   Widget build(BuildContext context) {
     return Container(
       child: Text(
-        'Dokumen apa saja yang perlu disiapkan?'
-            '- Anda hanya siapkan:'
-            '- nomor KTP,'
-            '- kontak saudara tidak serumah,'
-            '- Kontak kantor tempat Anda bekerja'
+          'Dokumen apa saja yang perlu disiapkan?'
+          '- Anda hanya siapkan:'
+          '- nomor KTP,'
+          '- kontak saudara tidak serumah,'
+          '- Kontak kantor tempat Anda bekerja'
       ),
     );
   }

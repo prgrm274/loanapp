@@ -227,20 +227,20 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   bool _hasToIgnore = false;
 
   /// SUPER TOOLTIP
-  SuperTooltip tooltip;
+  SuperTooltip superTooltip;
   Future<bool> _willPopCallback() async {
     // If the tooltip is open we don't pop the page on a backbutton press
     // but close the ToolTip
-    if (tooltip.isOpen) {
-      tooltip.close();
+    if (superTooltip.isOpen) {
+      superTooltip.close();
       return false;
     }
     return true;
   }
 
   void onTap() {
-    if (tooltip != null && tooltip.isOpen) {
-      tooltip.close();
+    if (superTooltip != null && superTooltip.isOpen) {
+      superTooltip.close();
       return;
     }
 
@@ -251,31 +251,82 @@ class _ProductCalculatorState extends State<ProductCalculator> {
         .localToGlobal(renderBox.size.center(Offset.zero), ancestor: overlay);
 
     // We create the tooltip on the first use
-    tooltip = SuperTooltip(
-      popupDirection: TooltipDirection.left,
-      arrowTipDistance: 15.0,
-      arrowBaseWidth: 40.0,
-      arrowLength: 20.0,
-      borderColor: Colors.green,
-      borderWidth: 5.0,
-      // snapsFarAwayVertically: true,
-      showCloseButton: ShowCloseButton.none,
+    superTooltip = SuperTooltip(
+      arrowBaseWidth: 10.0,
+      arrowLength: 10.0,
+      arrowTipDistance: 1.0,///5
       hasShadow: true,
-      touchThrougArea: new Rect.fromLTWH(targetGlobalCenter.dx - 100,
-          targetGlobalCenter.dy - 100, 200.0, 160.0),
+      maxHeight: 150,
+      // borderColor: Colors.green,
+      // borderWidth: 1.0,
+      // snapsFarAwayVertically: true,
+      // showCloseButton: ShowCloseButton.none,
+      // touchThrougArea: new Rect.fromLTWH(
+      //     targetGlobalCenter.dx - 100,
+      //     targetGlobalCenter.dy - 100,
+      //     200.0,
+      //     160.0
+      // ),
+      popupDirection: TooltipDirection.right,
       touchThroughAreaShape: ClipAreaShape.rectangle,
-      content: new Material(
-          child: Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: Text(
-              "Besar pinjaman yang disetujui bisa sedikit berbeda setelah skor"
-                  "pembayaran Anda dicek",
-              softWrap: true,
+      // bottom: 100,
+      left: 20,
+      // right: 25,
+      top: 20,
+      content: Align(
+        alignment: Alignment.center,
+        child: Container(
+          height: 100,
+          width: 100,
+          child: Text(
+            'Besar pinjaman yang disetujui bisa sedikit berbeda '
+                'setelah skor pembayaran Anda dicek',
+            softWrap: true,
+            style: TextStyle(
+                color: Colors.blue,
+                fontSize: 12
             ),
-          )),
+          ),
+        ),
+      )
+      // content: new Material(
+      //     child: Padding(
+      //       padding: const EdgeInsets.only(top: 20.0),
+      //       child: Text(
+      //         'Besar pinjaman yang disetujui bisa sedikit berbeda setelah '
+      //             'skor pembayaran Anda dicek',
+      //         softWrap: true,
+      //       ),
+      //     )
+      // ),
     );
 
-    tooltip.show(context);
+    superTooltip.backgroundColor.red;
+    superTooltip.show(context);
+  }
+
+  Widget showSuperTooltip() {
+    return new WillPopScope(
+      onWillPop: _willPopCallback,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Stack(
+          children: [
+            Positioned(
+              left: 20,
+              top: 100,
+              child: Container(
+                height: 20,
+                width: 50,
+                color: Colors.red,
+                // child: Text('text 1'),
+              ),
+            ),
+            Container()
+          ],
+        ),
+      ),
+    );
   }
 
   @override
@@ -320,50 +371,55 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         _setTable2MLebih()
                             :
                         Table(
+                          /// EVERY TableRow IN A TABLE MUST HAVE THE SAME
+                          /// NUMBER OF CHILDREN, SO THAT EVERY CELL IS FILLED.
+                          /// OTHERWISE THE TABLE WILL CONTAIN HOLES
                           children: [
                             /// 1. ANDA TERIMA
                             TableRow(
                                 children: [
-                                  GestureDetector(
-                                    onTap: () {
-
-                                      print('tablerow anda terima');
-                                    },
-                                    child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(4),
-                                              topRight: Radius.circular(4)
+                                  Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(4),
+                                            topRight: Radius.circular(4)
+                                        ),
+                                      ),
+                                      height: 48,
+                                      child: GestureDetector(
+                                        onTap: onTap,
+                                        // onTap: showSuperTooltip,/// v
+                                        child: Container(
+                                          color: Colors.green,
+                                          child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                // showSuperTooltip(),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Row(
+                                                      children: <Widget>[
+                                                        Container(
+                                                          margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                                          child: TextAndaTerima(),
+                                                        ),
+                                                        Icon(
+                                                          Icons.calendar_today_outlined,
+                                                          color: Colors.blueAccent,
+                                                          size: 20,
+                                                        ),
+                                                      ]
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                    flex: 1,
+                                                    child: _setTextUangTerima()
+                                                ),
+                                              ]
                                           ),
                                         ),
-                                        height: 48,
-                                        child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Expanded(
-                                                flex: 1,
-                                                child: Row(
-                                                    children: <Widget>[
-                                                      Container(
-                                                        margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                        child: TextAndaTerima(),
-                                                      ),
-                                                      Icon(
-                                                        Icons.calendar_today_outlined,
-                                                        color: Colors.blueAccent,
-                                                        size: 20,
-                                                      ),
-                                                    ]
-                                                ),
-                                              ),
-                                              Expanded(
-                                                  flex: 1,
-                                                  child: _setTextUangTerima()
-                                              ),
-                                            ]
-                                        )
-                                    ),
+                                      )
                                   ),
                                 ]
                             ),
