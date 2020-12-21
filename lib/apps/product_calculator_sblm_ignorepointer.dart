@@ -244,11 +244,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
       return;
     }
 
-    var renderBox = context.findRenderObject() as RenderBox;
-    final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
-
-    var targetGlobalCenter = renderBox
-        .localToGlobal(renderBox.size.center(Offset.zero), ancestor: overlay);
+    // var renderBox = context.findRenderObject() as RenderBox;
+    // final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+    // var targetGlobalCenter = renderBox
+    //     .localToGlobal(renderBox.size.center(Offset.zero), ancestor: overlay);
 
     // We create the tooltip on the first use
     superTooltip = SuperTooltip(
