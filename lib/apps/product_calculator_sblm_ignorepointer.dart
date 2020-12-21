@@ -2,7 +2,8 @@ import 'dart:async';
 import 'dart:ui' as dartUI;
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
-import 'package:popup_menu/popup_menu.dart';
+import 'package:super_tooltip/super_tooltip.dart';
+// import 'package:popup_menu/popup_menu.dart';
 import 'package:toast/toast.dart';
 // import 'package:voidrealm/apps/logo_danafix.dart';
 import 'package:voidrealm/apps/logo_danafix_in_stack.dart';
@@ -225,6 +226,58 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
   bool _hasToIgnore = false;
 
+  /// SUPER TOOLTIP
+  SuperTooltip tooltip;
+  Future<bool> _willPopCallback() async {
+    // If the tooltip is open we don't pop the page on a backbutton press
+    // but close the ToolTip
+    if (tooltip.isOpen) {
+      tooltip.close();
+      return false;
+    }
+    return true;
+  }
+
+  void onTap() {
+    if (tooltip != null && tooltip.isOpen) {
+      tooltip.close();
+      return;
+    }
+
+    var renderBox = context.findRenderObject() as RenderBox;
+    final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+
+    var targetGlobalCenter = renderBox
+        .localToGlobal(renderBox.size.center(Offset.zero), ancestor: overlay);
+
+    // We create the tooltip on the first use
+    tooltip = SuperTooltip(
+      popupDirection: TooltipDirection.left,
+      arrowTipDistance: 15.0,
+      arrowBaseWidth: 40.0,
+      arrowLength: 20.0,
+      borderColor: Colors.green,
+      borderWidth: 5.0,
+      // snapsFarAwayVertically: true,
+      showCloseButton: ShowCloseButton.none,
+      hasShadow: true,
+      touchThrougArea: new Rect.fromLTWH(targetGlobalCenter.dx - 100,
+          targetGlobalCenter.dy - 100, 200.0, 160.0),
+      touchThroughAreaShape: ClipAreaShape.rectangle,
+      content: new Material(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Text(
+              "Besar pinjaman yang disetujui bisa sedikit berbeda setelah skor"
+                  "pembayaran Anda dicek",
+              softWrap: true,
+            ),
+          )),
+    );
+
+    tooltip.show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -311,6 +364,52 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                             ]
                                         )
                                     ),
+                                  ),
+                                ]
+                            ),
+                            /// 1. ANDA TERIMA 2
+                            TableRow(
+                                children: [
+                                  Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(4),
+                                            topRight: Radius.circular(4)
+                                        ),
+                                      ),
+                                      height: 48,
+                                      child: WillPopScope(
+                                        onWillPop: _willPopCallback,
+                                        child: GestureDetector(
+                                          onTap: onTap,
+                                          child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Row(
+                                                      children: <Widget>[
+                                                        Container(
+                                                          margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                                          child: TextAndaTerima(),
+                                                        ),
+                                                        Icon(
+                                                          Icons.calendar_today_outlined,
+                                                          color: Colors.blueAccent,
+                                                          size: 20,
+                                                        ),
+                                                      ]
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                    flex: 1,
+                                                    child: _setTextUangTerima()
+                                                ),
+                                              ]
+                                          ),
+                                        ),
+                                      )
                                   ),
                                 ]
                             ),
