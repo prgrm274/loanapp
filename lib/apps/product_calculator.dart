@@ -220,6 +220,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
   bool _hasToIgnore = false;
 
+  GlobalKey _toolTipAndaTerima = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -298,47 +300,51 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           /// 1. ANDA TERIMA
                           TableRow(
                               children: [
-                                GestureDetector(
-                                  onTap: () {
-                                    PopupMenu.context = context;
-
-                                    print('tablerow anda terima');
-                                  },
-                                  child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(4),
-                                            topRight: Radius.circular(4)
+                                Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(4),
+                                          topRight: Radius.circular(4)
+                                      ),
+                                    ),
+                                    height: 48,
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        final dynamic tooltip = _toolTipAndaTerima.currentState;
+                                        tooltip.ensureTooltipVisible();
+                                        print('tablerow anda terima');
+                                      },
+                                      child: Tooltip(
+                                        key: _toolTipAndaTerima,
+                                        message: 'Tooltip',
+                                        child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Expanded(
+                                                flex: 1,
+                                                child: Row(
+                                                    children: <Widget>[
+                                                      Container(
+                                                        margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                                        child: TextAndaTerima(),
+                                                      ),
+                                                      Icon(
+                                                        Icons.calendar_today_outlined,
+                                                        color: Colors.blueAccent,
+                                                        size: 20,
+                                                      ),
+                                                    ]
+                                                ),
+                                              ),
+                                              Expanded(
+                                                  flex: 1,
+                                                  child: _setTextUangTerima()
+                                              ),
+                                            ]
                                         ),
                                       ),
-                                      height: 48,
-                                      child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Expanded(
-                                              flex: 1,
-                                              child: Row(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                      child: TextAndaTerima(),
-                                                    ),
-                                                    Icon(
-                                                      Icons.calendar_today_outlined,
-                                                      color: Colors.blueAccent,
-                                                      size: 20,
-                                                    ),
-                                                  ]
-                                              ),
-                                            ),
-                                            Expanded(
-                                                flex: 1,
-                                                child: _setTextUangTerima()
-                                            ),
-                                          ]
-                                      )
-                                  ),
+                                    )
                                 ),
                               ]
                           ),

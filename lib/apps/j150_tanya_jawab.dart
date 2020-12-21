@@ -8,6 +8,9 @@ class J150TanyaJawab extends StatefulWidget {
 }
 
 class _J150TanyaJawabState extends State<J150TanyaJawab> {
+
+  GlobalKey _toolTipAndaTerima = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -51,9 +54,21 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           color: Colors.grey[300],
                         ),
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Text(
-                            'PERNYATAAN PENYANGKALAN (DISCLAIMER)',
-                            style: TextStyle(color: Colors.grey[400])
+                        child: GestureDetector(
+                          onTap: () {
+                            final dynamic tooltip = _toolTipAndaTerima.currentState;
+                            tooltip.ensureTooltipVisible();
+                            print('2');
+                          },
+                          child: Tooltip(
+                              key: _toolTipAndaTerima,
+                              message: 'tooltip',
+                              verticalOffset: 5,
+                              child: Text(
+                                  'PERNYATAAN PENYANGKALAN (DISCLAIMER)',
+                                  style: TextStyle(color: Colors.grey[400])
+                              )
+                          ),
                         ),
                       ),
                       Container(
@@ -66,7 +81,14 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                        child: Text('PERNYATAAN PENYANGKALAN (DISCLAIMER)'),
+                        child: GestureDetector(
+                            onTap: () {
+                              return Tooltip(
+                                message: 'tooltip',
+                                verticalOffset: 5,
+                              );
+                            },
+                            child: Text('PERNYATAAN PENYANGKALAN (DISCLAIMER)')),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,

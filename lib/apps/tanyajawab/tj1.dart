@@ -10,6 +10,10 @@ class TanyaJawab2 extends StatefulWidget {
 class _TanyaJawab2State extends State<TanyaJawab2> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Text(
+          ''
+      ),
+    );
   }
 }
