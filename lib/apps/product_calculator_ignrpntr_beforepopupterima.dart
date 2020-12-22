@@ -10,22 +10,22 @@ import 'package:voidrealm/apps/registrasi/reg040b_otp.dart';
 import 'package:voidrealm/apps/t_10m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/t_3m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/t_6m_akan_anda_terima.dart';
-import 'package:voidrealm/apps/text_anda_mengembalikan.dart';
+import 'package:voidrealm/apps/text_tablerow.dart';
 import 'package:voidrealm/apps/text_cicilan_per_bulan.dart';
 import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
 import 'package:voidrealm/apps/text_durasi_pinjaman.dart';
 import 'package:voidrealm/apps/text_sudah_peminjam.dart';
-import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
-import 'package:voidrealm/apps/texts/t_andaterima_b_1jt.dart';
-import 'package:voidrealm/apps/texts/t_andaterima_c_1jt500rb.dart';
-import 'package:voidrealm/apps/texts/t_andaterima_d_2jt.dart';
+// import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
+// import 'package:voidrealm/apps/texts/t_andaterima_b_1jt.dart';
+// import 'package:voidrealm/apps/texts/t_andaterima_c_1jt500rb.dart';
+// import 'package:voidrealm/apps/texts/t_andaterima_d_2jt.dart';
 import 'package:voidrealm/sliders/slider6_emoji.dart';
 import 'package:voidrealm/sliders/slider7/slider7.dart';
 import 'package:voidrealm/sliders/slider_widget_b.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng_hari.dart';
-import 'text_anda_terima_product_calc.dart';
+// import 'text_anda_terima_product_calc.dart';
 import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_current_custom_future.dart';
 import 'package:voidrealm/sliders/thumb_text_on_image.dart';
@@ -65,10 +65,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   }
 
   List<Widget> _listUangWidget = [
-    TAndaTerimaA500rb(),
-    TAndaTerimaB1jt(),
-    TAndaTerimaC1jt500rb(),
-    TAndaTerimaD2jt(),
+    // TAndaTerimaA500rb(),
+    // TAndaTerimaB1jt(),
+    // TAndaTerimaC1jt500rb(),
+    // TAndaTerimaD2jt(),
   ];
 
   Widget setUang(String nominal) {
@@ -319,7 +319,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                   children: <Widget>[
                                                     Container(
                                                       margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                      child: TextAndaTerima(),
+                                                      // child: TextAndaTerima(),
                                                     ),
                                                     Icon(
                                                       Icons.calendar_today_outlined,
@@ -365,7 +365,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 children: <Widget>[
                                                   Container(
                                                     margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                    child: TextAndaMengembalikan(),
+                                                    child: TextTableRow(),
                                                   ),
                                                 ]
                                             ),

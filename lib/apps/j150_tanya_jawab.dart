@@ -2,6 +2,19 @@ import 'package:flutter/material.dart';
 // import 'package:simple_tooltip/simple_tooltip.dart';
 import 'package:super_tooltip/super_tooltip.dart';
 import 'package:voidrealm/apps/tanyajawab/tj1.dart';
+import 'package:voidrealm/apps/tanyajawab/tj10.dart';
+import 'package:voidrealm/apps/tanyajawab/tj11.dart';
+import 'package:voidrealm/apps/tanyajawab/tj12.dart';
+import 'package:voidrealm/apps/tanyajawab/tj13.dart';
+import 'package:voidrealm/apps/tanyajawab/tj14.dart';
+import 'package:voidrealm/apps/tanyajawab/tj2.dart';
+import 'package:voidrealm/apps/tanyajawab/tj3.dart';
+import 'package:voidrealm/apps/tanyajawab/tj4.dart';
+import 'package:voidrealm/apps/tanyajawab/tj5.dart';
+import 'package:voidrealm/apps/tanyajawab/tj6.dart';
+import 'package:voidrealm/apps/tanyajawab/tj7.dart';
+import 'package:voidrealm/apps/tanyajawab/tj8.dart';
+import 'package:voidrealm/apps/tanyajawab/tj9.dart';
 
 class J150TanyaJawab extends StatefulWidget {
   J150TanyaJawab({Key key}) : super(key: key);
@@ -150,7 +163,15 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                               );
                             },
                             // onTap: onTap,/// v
-                            child: Text('PERNYATAAN PENYANGKALAN (DISCLAIMER)'),
+                            child: Row(
+                                children: <Widget>[
+                                  /// ROW EXPANDED AGAR BISA KLIK SELURUH BARIS
+                                  /// BUKAN HANYA TEKS SAJA
+                                  Expanded(
+                                    child: Text('PERNYATAAN PENYANGKALAN (DISCLAIMER)'),
+                                  )
+                                ]
+                            ),
                           ),
                         ),
                         // GestureDetector(
@@ -201,7 +222,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Apa produk DanaFix?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab2()
+                                )
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text('Apa produk DanaFix?'),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -220,16 +257,32 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         ),
                       ),
                       Container(
-                        alignment: Alignment.centerLeft,
-                        decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                          alignment: Alignment.centerLeft,
+                          decoration: BoxDecoration(
+                            border: Border(
+                                bottom: BorderSide(
+                                    width: 1, color: Colors.grey[400]
+                                )
+                            ),
                           ),
-                        ),
-                        padding: EdgeInsets.all(10),
-                        child: Text('Siapa yang dapat menggunakan layanan pinjaman DanaFix?'),
+                          padding: EdgeInsets.all(10),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TanyaJawab3()
+                                  )
+                              );
+                            },
+                            child: Row(
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Text('Siapa yang dapat menggunakan layanan pinjaman DanaFix?'),
+                                  )
+                                ]
+                            ),
+                          )
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -241,7 +294,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Dokumen apa saja yang perlu disiapkan?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab4()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Dokumen apa saja yang perlu disiapkan?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -253,7 +322,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Bagaimana mengetahui jika saya telah menerima pencairan tersebut?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab5()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Bagaimana mengetahui jika saya telah menerima pencairan tersebut?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -265,7 +350,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Di kota mana layanan pinjaman DanaFix bisa dilakukan?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab6()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Di kota mana layanan pinjaman DanaFix bisa dilakukan?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -277,7 +378,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Apa yang harus saya lakukan jika belum menerima SMS konfirmasi dari DanaFix?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab7()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Apa yang harus saya lakukan jika belum menerima SMS konfirmasi dari DanaFix?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -305,7 +422,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Kapan saya menerima pinjaman tersebut?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab8()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Kapan saya menerima pinjaman tersebut?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -317,7 +450,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Dimana saya dapat menerima pencairan?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab9()
+                                )
+                            );
+                          },
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Text('Dimana saya dapat menerima pencairan?'),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -345,7 +494,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Kapan saya harus melakukan pembayaran pinjaman?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab10()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Kapan saya harus melakukan pembayaran pinjaman?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -357,7 +522,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Bagaimana melakukan pembayaran pinjaman?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab11()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Bagaimana melakukan pembayaran pinjaman?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -369,7 +550,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Apakah mungkin melakukan pelunasan lebih awal?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab12()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Apakah mungkin melakukan pelunasan lebih awal?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -381,7 +578,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Apakah mungkin melakukan pembayaran pinjaman yang telah melewati jatuh tempo dikontrak pinjaman?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab13()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Apakah mungkin melakukan pembayaran pinjaman yang telah melewati jatuh tempo dikontrak pinjaman?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -393,7 +606,23 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           ),
                         ),
                         padding: EdgeInsets.all(10),
-                        child: Text('Saya telah melakukan pembayaran pinjaman namun perusahaan tidak menerimanya. Apa yang harus saya lakukan?'),
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => TanyaJawab14()
+                                )
+                            );
+                          },
+                          child: Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Text('Saya telah melakukan pembayaran pinjaman namun perusahaan tidak menerimanya. Apa yang harus saya lakukan?'),
+                                )
+                              ]
+                          ),
+                        ),
                       ),
                     ],
                   );

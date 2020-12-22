@@ -16,15 +16,11 @@ import 'package:voidrealm/apps/t_3m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/t_6m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/text_2625.dart';
 import 'package:voidrealm/apps/text_525.dart';
-import 'package:voidrealm/apps/text_anda_mengembalikan.dart';
+import 'package:voidrealm/apps/text_tablerow.dart';
 import 'package:voidrealm/apps/text_cicilan_per_bulan.dart';
 import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
 import 'package:voidrealm/apps/text_durasi_pinjaman.dart';
 import 'package:voidrealm/apps/text_sudah_peminjam.dart';
-import 'package:voidrealm/apps/texts/t_andaterima_a_500rb.dart';
-import 'package:voidrealm/apps/texts/t_andaterima_b_1jt.dart';
-import 'package:voidrealm/apps/texts/t_andaterima_c_1jt500rb.dart';
-import 'package:voidrealm/apps/texts/t_andaterima_d_2jt.dart';
 import 'package:voidrealm/sliders/slider6_emoji.dart';
 import 'package:voidrealm/sliders/slider7/slider7.dart';
 import 'package:voidrealm/sliders/slider_widget_b.dart';
@@ -32,7 +28,6 @@ import 'package:voidrealm/sliders/slider_widget_b_thumb_shape.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng_hari.dart';
 import 'package:voidrealm/validations/date_input_text_field_orig.dart';
-import 'text_anda_terima_product_calc.dart';
 import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_current_custom_future.dart';
 import 'package:voidrealm/sliders/thumb_text_on_image.dart';
@@ -77,10 +72,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   /// BUAT METHOD _setText DAN TARUH DI CHILD
   /// JADI TIDAK PERLU IF ELSE DI CHILD
   List<Widget> _listUangWidget = [
-    TAndaTerimaA500rb(),
-    TAndaTerimaB1jt(),
-    TAndaTerimaC1jt500rb(),
-    TAndaTerimaD2jt()
+    TextTableRow(teks: 'Rp. 500.000'),/// TextTableRow v
+    TextTableRow(teks: 'Rp. 1.000.000'),
+    TextTableRow(teks: 'Rp. 1.500.000'),
+    TextTableRow(teks: 'Rp. 2.000.000')
   ];
 
   Widget setUang(String nominal) {
@@ -100,12 +95,16 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
   Widget _setTextUangTerima() {
     if (sliderPnjm == 0.0) {
-      return _listUangWidget.elementAt(0);
-    } else if (sliderPnjm == 1.0) {
-      return _listUangWidget.elementAt(1);
+      return setUang('Rp. 500.000');
+      return _listUangWidget.elementAt(0);/// v
     } else if (sliderPnjm == 2.0) {
+      return setUang('Rp. 1.000.000');
+      return _listUangWidget.elementAt(1);
+    } else if (sliderPnjm == 4.0) {
+      return setUang('Rp. 1.500.000');
       return _listUangWidget.elementAt(2);
-    } else if (sliderPnjm == 3.0) {
+    } else if (sliderPnjm == 6.0) {
+      return setUang('Rp. 2.000.000');
       return _listUangWidget.elementAt(3);
     } else {
       return _listUangWidget.elementAt(0);
@@ -413,7 +412,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
             ),
           ),
           actions: <Widget>[
-            /// TIDAK PAKE BUTTON
+            /// TIDAK PAKE BUTTON DIALOG
             // TextButton(/// v
             //   child: Text('Approve'),
             //   onPressed: () {
@@ -426,7 +425,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     );
   }
 
-  String _tglBayar, _jumlahBayar = 'wefewgwev';
+  String _tglBayar;
 
   String setTglBayar() {
     var now = new DateTime.now();
@@ -522,7 +521,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                       children: <Widget>[
                                                         Container(
                                                           margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                          child: TextAndaTerima(),
+                                                          child: TextTableRow(
+                                                            teks: 'Anda terima',
+                                                          ),
                                                         ),
                                                         Icon(
                                                           Icons.calendar_today_outlined,
@@ -560,57 +561,48 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       // margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
                                       // padding: EdgeInsets.all(10),
                                       // width: MediaQuery.of(context).size.width * 1,
-                                      child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Expanded(
-                                              flex: 1,
-                                              child: Row(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                      child: GestureDetector(
-                                                        onTap: () {
-                                                          setState(() {
-                                                            if (_isTapped) {
-                                                              _isTapped = false;
-                                                            } else {
-                                                              _isTapped = true;
-                                                            }
-                                                          });
-                                                          showMoreText('anda mengembalikan');
-                                                        },
-                                                        child: TextAndaMengembalikan(key: key),
-                                                      ),
-                                                    ),
-                                                  ]
-                                              ),
-                                            ),
-                                            // Image(
-                                            //   height: 18,
-                                            //   width: 18,
-                                            //   image: AssetImage('lib/assets/blank_white_icon.png'),
-                                            // ),
-                                            // Align(
-                                            //   alignment: Alignment.topCenter,
-                                            //   child: Container(
-                                            //     width: MediaQuery.of(context).size.width * 0.38,
-                                            //   ),
-                                            // ),
-                                            // Expanded(
-                                            //   child: Container(
-                                            //     width: MediaQuery.of(context).size.width * 0.40,
-                                            //   ),
-                                            // ),
-                                            Expanded(
-                                              flex: 1,
-                                              // child: SpeechBubble(
-                                              //   nipLocation: NipLocation.LEFT,
-                                              //   child: _setTextUangKembali(),
-                                              // ),
-                                              child: _setTextUangKembali(),
-                                            ),
-                                          ]
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          _showMyDialog();
+                                        },
+                                        child: Container(
+                                          child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Container(
+                                                    margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                                    child: TextTableRow(teks: 'Anda mengembalikan'),
+                                                  ),
+                                                ),
+                                                // Image(
+                                                //   height: 18,
+                                                //   width: 18,
+                                                //   image: AssetImage('lib/assets/blank_white_icon.png'),
+                                                // ),
+                                                // Align(
+                                                //   alignment: Alignment.topCenter,
+                                                //   child: Container(
+                                                //     width: MediaQuery.of(context).size.width * 0.38,
+                                                //   ),
+                                                // ),
+                                                // Expanded(
+                                                //   child: Container(
+                                                //     width: MediaQuery.of(context).size.width * 0.40,
+                                                //   ),
+                                                // ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  // child: SpeechBubble(
+                                                  //   nipLocation: NipLocation.LEFT,
+                                                  //   child: _setTextUangKembali(),
+                                                  // ),
+                                                  child: _setTextUangKembali(),
+                                                ),
+                                              ]
+                                          ),
+                                        ),
                                       )
                                   ),
                                 ]
@@ -639,56 +631,56 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                       // margin: EdgeInsets.fromLTRB(10, 0.8, 10, 0),
                                       // padding: EdgeInsets.all(10),
                                       // width: MediaQuery.of(context).size.width * 1,
-                                      child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Expanded(
-                                              flex: 1,
-                                              child: Container(
-                                                margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                child: Text(
-                                                  'Bayar hingga',
-                                                  style: TextStyle(
-                                                      color: Colors.blue[900],
-                                                      fontSize: 13,
-                                                      fontFamily: 'Sans'
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          _showMyDialog();
+                                        },
+                                        child: Container(
+                                          child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Container(
+                                                    margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
+                                                    child: TextTableRow(teks: 'Bayar hingga',),
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            // Align(
-                                            //   alignment: Alignment.center,
-                                            //   child: Container(
-                                            //     width: MediaQuery.of(context).size.width * 0.48,
-                                            //   ),
-                                            // ),
-                                            Align(
-                                                alignment: Alignment.centerRight,
-                                                child: Container(
-                                                  margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                                  child: Row(
-                                                      children: <Widget>[
-                                                        Icon(
-                                                          Icons.calendar_today_outlined,
-                                                          color: Colors.blueAccent,
-                                                          size: 20,
-                                                        ),
-                                                        Container(
-                                                          margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                                                          child: Text(
-                                                            '28.10.2020',
-                                                            style: TextStyle(
-                                                                color: Colors.blue[900],
-                                                                fontSize: 13,
-                                                                fontFamily: 'Sans'
+                                                // Align(
+                                                //   alignment: Alignment.center,
+                                                //   child: Container(
+                                                //     width: MediaQuery.of(context).size.width * 0.48,
+                                                //   ),
+                                                // ),
+                                                Align(
+                                                    alignment: Alignment.centerRight,
+                                                    child: Container(
+                                                      margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                                      child: Row(
+                                                          children: <Widget>[
+                                                            Icon(
+                                                              Icons.calendar_today_outlined,
+                                                              color: Colors.blueAccent,
+                                                              size: 20,
                                                             ),
-                                                          ),
-                                                        ),
-                                                      ]
-                                                  ),
-                                                )
-                                            ),
-                                          ]
+                                                            Container(
+                                                              margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                                              child: Text(
+                                                                '28.10.2020',
+                                                                style: TextStyle(
+                                                                    color: Colors.blue[900],
+                                                                    fontSize: 13,
+                                                                    fontFamily: 'Sans'
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ]
+                                                      ),
+                                                    )
+                                                ),
+                                              ]
+                                          ),
+                                        ),
                                       )
                                   ),
                                 ]
