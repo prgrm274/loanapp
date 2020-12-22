@@ -546,7 +546,12 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                   children: <Widget>[
                                                     Container(
                                                       margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                      child: TextAndaMengembalikan(),
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          showMoreText('anda mengembalikan');
+                                                        },
+                                                        child: TextAndaMengembalikan(key: key),
+                                                      ),
                                                     ),
                                                   ]
                                               ),
