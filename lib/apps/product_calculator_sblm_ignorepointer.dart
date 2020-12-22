@@ -31,11 +31,14 @@ import 'package:voidrealm/sliders/slider_widget_b.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng.dart';
 import 'package:voidrealm/sliders/slider_widget_b_thumb_shape_ng_hari.dart';
+import 'package:voidrealm/validations/date_input_text_field_orig.dart';
 import 'text_anda_terima_product_calc.dart';
 import 'package:voidrealm/sliders/slider_custom.dart';
 import 'package:voidrealm/sliders/slider_current_custom_future.dart';
 import 'package:voidrealm/sliders/thumb_text_on_image.dart';
 import 'package:voidrealm/sliders/slider_widget.dart';
+import 'package:intl/intl.dart';  //for date format
+import 'package:intl/date_symbol_data_local.dart';  //for date locale
 
 class ProductCalculator extends StatefulWidget {
   ProductCalculator({Key key}) : super(key: key);
@@ -46,6 +49,7 @@ class ProductCalculator extends StatefulWidget {
 
 class _ProductCalculatorState extends State<ProductCalculator> {
   /// INITIAL VALUE OF SLIDERS
+  /// KELIPATAN 0 2 4 6 8 10 12
   double sliderPnjm = 0.0;
   // double sliderHari = 1;
   double sliderHari = 4.5;
@@ -377,6 +381,60 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   /// PAKE LOGIC KAYAK ERROR TEXT MASUKKAN DATA DGN BENAR
   bool _isTapped = false;
 
+  /// DIALOG
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      /// KALO DIKOMEN BISA DISMISS DIMANAPUN
+      // barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Jadwal Pembayaran'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text(setTglBayar()),
+                Text(
+                    ((){
+                      if (sliderPnjm == 0) {
+                        return 'Rp 175.000';
+                      } else if (sliderPnjm == 2) {
+                        return 'Rp 350.000';
+                      } else if (sliderPnjm == 4) {
+                        return 'Rp 525.000';
+                      } else if (sliderPnjm == 6) {
+                        return 'Rp 700.000';
+                      } else {
+                        return '';
+                      }
+                    }())
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Approve'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  String _tglBayar, _jumlahBayar = 'wefewgwev';
+
+  String setTglBayar() {
+    var now = new DateTime.now();
+    var formatter = new DateFormat('dd.MM.yyyy');
+    String formatted = formatter.format(now);
+    _tglBayar = formatted;
+    return _tglBayar;
+  }
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -555,6 +613,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   ),
                                 ]
                             ),
+
                             /// 3. BAYAR HINGGA
                             TableRow(
                                 children: [
@@ -632,59 +691,69 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   ),
                                 ]
                             ),
+
                             /// 4. CICILAN PER BULAN
                             TableRow(
                                 children: [
                                   Container(
                                     /// MENGGUNAKAN MARGIN (AGAR TAMPAK SEPERTI BORDER)
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(4),
-                                          bottomRight: Radius.circular(4)
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(4),
+                                            bottomRight: Radius.circular(4)
+                                        ),
                                       ),
-                                    ),
-                                    height: 48,
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Expanded(
-                                            flex: 1,
-                                            child: Container(
-                                              alignment: Alignment.centerLeft,
-                                              margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                              child: TextCicilanPerBulan(),
-                                            ),
-                                          ),
+                                      height: 48,
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          _showMyDialog();
+                                          /// JIKA PAKE PACKAGE intl
+                                          // print(new DateFormat.yMMMd().format(new DateTime.now()));
+                                        },
+                                        child: Container(
+                                          child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Container(
+                                                    alignment: Alignment.centerLeft,
+                                                    margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                                    child: TextCicilanPerBulan(),
+                                                  ),
+                                                ),
 
-                                          Align(
-                                            alignment: Alignment.centerRight,
-                                            child: Container(
-                                              margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                                              child: Row(
-                                                  children: <Widget>[
-                                                    Container(
-                                                      child: _setTextCicilan(),
+                                                Align(
+                                                  alignment: Alignment.centerRight,
+                                                  child: Container(
+                                                    margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                                                    child: Row(
+                                                        children: <Widget>[
+                                                          Container(
+                                                            child: _setTextCicilan(),
+                                                          ),
+                                                          Icon(
+                                                            Icons.calendar_today_outlined,
+                                                            color: Colors.red,
+                                                            size: 20,
+                                                          ),
+                                                          // IconButton(
+                                                          //   icon: Image(
+                                                          //     height: 12,
+                                                          //     width: 12,
+                                                          //     image: AssetImage('lib/assets/info_48.png'),
+                                                          //   ),
+                                                          //   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                                                          // ),
+                                                        ]
                                                     ),
-                                                    Icon(
-                                                      Icons.calendar_today_outlined,
-                                                      color: Colors.red,
-                                                      size: 20,
-                                                    ),
-                                                    // IconButton(
-                                                    //   icon: Image(
-                                                    //     height: 12,
-                                                    //     width: 12,
-                                                    //     image: AssetImage('lib/assets/info_48.png'),
-                                                    //   ),
-                                                    //   padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                                                    // ),
-                                                  ]
-                                              ),
-                                            ),
+                                                  ),
+                                                ),
+                                              ]
                                           ),
-                                        ]
-                                    ),
+                                        ),
+                                      )
                                   ),
                                 ]
                             )
@@ -693,23 +762,6 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       ),
                     ]
                 ),
-
-                _isTapped ?
-                Positioned(
-                  left: MediaQuery.of(context).size.width / 2 - 50,
-                  top: MediaQuery.of(context).size.height / 4.5,
-                  child: SpeechBubble(
-                    color: Colors.grey[100],
-                    nipLocation: NipLocation.LEFT,
-                    child: Text(
-                      'speech bubble',
-                      style: TextStyle(
-                        fontSize: 10
-                      ),
-                    ),
-                  ),
-                ) :
-                Container(),
 
                 /// KARUNG UANG
                 Container(
@@ -1166,7 +1218,31 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                         )
                       ]
                   ),
-                )
+                ),
+
+                /// TOOLTIP ANDA TERIMA
+                /// PAKE onTap BISA TAPI MGKN LEBIH HANDAL PAKE Focus
+                _isTapped ?
+                Positioned(
+                  left: MediaQuery.of(context).size.width / 2 - 50,
+                  top: MediaQuery.of(context).size.height / 6.5,
+                  child: SpeechBubble(
+                    color: Colors.grey[100],
+                    nipHeight: 8,
+                    nipLocation: NipLocation.LEFT,
+                    width: 100,
+                    child: Text(
+                      'Besar pinjaman yang disetujui bisa sedikit berbeda setelah '
+                          'skor pembayaran Anda dicek',
+                      softWrap: true,
+                      style: TextStyle(
+                        fontSize: 10,
+                      ),
+                      // textAlign: TextAlign.justify,
+                    ),
+                  ),
+                ) :
+                Container(),
               ],
             ),
           ),
@@ -1257,7 +1333,8 @@ class SliderThumbImage extends SliderComponentShape {
         TextPainter labelPainter,
         RenderBox parentBox,
         SliderThemeData sliderTheme,
-        TextDirection textDirection,
+        dartUI.TextDirection textDirection,
+        // TextDirection textDirection,/// JIKA PAKE PACKAGE intl
         double value,
         double textScaleFactor,
         Size sizeWithOverflow
@@ -1287,7 +1364,8 @@ class SliderThumbImage extends SliderComponentShape {
         text: valueTextSpan,
         // text: span,
         textAlign: TextAlign.center,
-        textDirection: TextDirection.ltr
+        textDirection: dartUI.TextDirection.ltr
+        // textDirection: TextDirection.ltr
     );
     labelPainter.layout();
     labelPainter.paint(
@@ -1332,7 +1410,8 @@ class CustomTickMark extends RoundSliderTickMarkShape {
       {@required RenderBox parentBox,
         @required SliderThemeData sliderTheme,
         @required Animation<double> enableAnimation,
-        @required TextDirection textDirection,
+        @required dartUI.TextDirection textDirection,
+        // @required TextDirection textDirection,
         @required Offset thumbCenter,
         bool isEnabled = false}) {
   }
