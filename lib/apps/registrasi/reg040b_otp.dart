@@ -91,8 +91,7 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
                 Container(
                     child: Text(
                         'SMS akan terkirim ke hp Anda dalam 30 detik',
-                        style: TextStyle(
-                            fontSize: 12, color: Colors.white)
+                        style: TextStyle(fontSize: 12, color: Colors.white)
                     ),
                     margin: EdgeInsets.fromLTRB(20, 0, 40, 20),
                     alignment: Alignment.topLeft

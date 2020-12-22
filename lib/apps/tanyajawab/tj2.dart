@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TanyaJawab3 extends StatefulWidget {
-  TanyaJawab3({Key key}) : super(key: key);
+class TanyaJawab2 extends StatefulWidget {
+  TanyaJawab2({Key key}) : super(key: key);
 
   @override
-  _TanyaJawab3State createState() =>
-      _TanyaJawab3State();
+  _TanyaJawab2State createState() =>
+      _TanyaJawab2State();
 }
 
-class _TanyaJawab3State extends State<TanyaJawab3> {
+class _TanyaJawab2State extends State<TanyaJawab2> {
   @override
   Widget build(BuildContext context) {
     return Container(

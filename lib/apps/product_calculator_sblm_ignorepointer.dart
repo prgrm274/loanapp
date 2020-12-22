@@ -419,7 +419,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           /// NUMBER OF CHILDREN, SO THAT EVERY CELL IS FILLED.
                           /// OTHERWISE THE TABLE WILL CONTAIN HOLES
                           children: [
-                            /// 1. ANDA TERIMA
+                            /// 1. ANDA TERIMA 1
                             TableRow(
                                 children: [
                                   Container(
@@ -569,11 +569,11 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                             // ),
                                             Expanded(
                                               flex: 1,
-                                              child: SpeechBubble(
-                                                nipLocation: NipLocation.LEFT,
-                                                child: _setTextUangKembali(),
-                                              ),
-                                              // child: _setTextUangKembali(),
+                                              // child: SpeechBubble(
+                                              //   nipLocation: NipLocation.LEFT,
+                                              //   child: _setTextUangKembali(),
+                                              // ),
+                                              child: _setTextUangKembali(),
                                             ),
                                           ]
                                       )

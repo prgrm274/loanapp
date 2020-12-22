@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:simple_tooltip/simple_tooltip.dart';
 import 'package:super_tooltip/super_tooltip.dart';
+import 'package:voidrealm/apps/tanyajawab/tj1.dart';
 
 class J150TanyaJawab extends StatefulWidget {
   J150TanyaJawab({Key key}) : super(key: key);
@@ -140,7 +141,15 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         child: WillPopScope(
                           onWillPop: _willPopCallback,
                           child: GestureDetector(
-                            onTap: onTap,/// v
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => TanyaJawab1()
+                                  )
+                              );
+                            },
+                            // onTap: onTap,/// v
                             child: Text('PERNYATAAN PENYANGKALAN (DISCLAIMER)'),
                           ),
                         ),
