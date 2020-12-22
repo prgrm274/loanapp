@@ -423,7 +423,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                           /// NUMBER OF CHILDREN, SO THAT EVERY CELL IS FILLED.
                           /// OTHERWISE THE TABLE WILL CONTAIN HOLES
                           children: [
-                            /// 1. ANDA TERIMA 1
+                            /// 1. ANDA TERIMA
                             TableRow(
                                 children: [
                                   Container(
@@ -439,64 +439,23 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                         // onTap: onTap,/// v BISA DI SELURUH AREA ROW
                                         // onTap: showSuperTooltip,/// v
                                         onTap: () {
-                                          showMoreTextPlusBubble('showmoretextpopup');
-                                          // showMoreText('showmoretextpopup');
+                                          setState(() {
+                                            if (_isTapped) {
+                                              _isTapped = false;
+                                            } else {
+                                              _isTapped = true;
+                                            }
+                                          });
+                                          // showMoreText('showmoretextpopup');///v
                                           // showMoreText(widget.text);
                                         },
                                         child: Container(
-                                          color: Colors.green,
                                           key: key2,
                                           // key: key,
                                           child: Row(
                                               mainAxisAlignment: MainAxisAlignment.center,
                                               children: <Widget>[
                                                 // showSuperTooltip(),
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Row(
-                                                      children: <Widget>[
-                                                        Container(
-                                                          margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
-                                                          child: TextAndaTerima(),
-                                                        ),
-                                                        Icon(
-                                                          Icons.calendar_today_outlined,
-                                                          color: Colors.blueAccent,
-                                                          size: 20,
-                                                        ),
-                                                      ]
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                    flex: 1,
-                                                    child: _setTextUangTerima()
-                                                ),
-                                              ]
-                                          ),
-                                        ),
-                                      )
-                                  ),
-                                ]
-                            ),
-                            /// 1. ANDA TERIMA 2
-                            TableRow(
-                                children: [
-                                  Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(4),
-                                            topRight: Radius.circular(4)
-                                        ),
-                                      ),
-                                      height: 48,
-                                      child: WillPopScope(
-                                        onWillPop: _willPopCallback,
-                                        child: GestureDetector(
-                                          onTap: onTap,
-                                          child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              children: <Widget>[
                                                 Expanded(
                                                   flex: 1,
                                                   child: Row(
@@ -738,17 +697,21 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                 _isTapped ?
                 Positioned(
                   left: MediaQuery.of(context).size.width / 2 - 50,
-                  top: 20,
+                  top: MediaQuery.of(context).size.height / 4.5,
                   child: SpeechBubble(
                     color: Colors.grey[100],
                     nipLocation: NipLocation.LEFT,
-                    child: Text('speech bubble'),
+                    child: Text(
+                      'speech bubble',
+                      style: TextStyle(
+                        fontSize: 10
+                      ),
+                    ),
                   ),
                 ) :
                 Container(),
 
                 /// KARUNG UANG
-                _isTapped ?
                 Container(
                   // alignment: Alignment.topCenter,
                   color: Colors.transparent,
@@ -758,8 +721,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       width: 100,
                       image: AssetImage(imgPathKarung)
                   ),
-                ) :
-                Container(),
+                ),
 
                 /// TEXT, SLIDER, BUTTON
                 Positioned(
