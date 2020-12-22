@@ -373,6 +373,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     popup.show(widgetKey: key2);
   }
 
+  /// COBA MANUAL SHOW TOOLTIP
+  /// PAKE LOGIC KAYAK ERROR TEXT MASUKKAN DATA DGN BENAR
+  bool _isTapped = false;
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -548,6 +552,13 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                       margin: EdgeInsets.fromLTRB(10, 0, 5, 0),
                                                       child: GestureDetector(
                                                         onTap: () {
+                                                          setState(() {
+                                                            if (_isTapped) {
+                                                              _isTapped = false;
+                                                            } else {
+                                                              _isTapped = true;
+                                                            }
+                                                          });
                                                           showMoreText('anda mengembalikan');
                                                         },
                                                         child: TextAndaMengembalikan(key: key),
@@ -725,6 +736,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                 ),
 
                 /// KARUNG UANG
+                _isTapped ?
                 Container(
                   // alignment: Alignment.topCenter,
                   color: Colors.transparent,
@@ -734,7 +746,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       width: 100,
                       image: AssetImage(imgPathKarung)
                   ),
-                ),
+                ) :
+                Container(),
+
                 /// TEXT, SLIDER, BUTTON
                 Positioned(
                   bottom: 5,
