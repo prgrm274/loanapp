@@ -735,6 +735,18 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                     ]
                 ),
 
+                _isTapped ?
+                Positioned(
+                  left: MediaQuery.of(context).size.width / 2 - 50,
+                  top: 20,
+                  child: SpeechBubble(
+                    color: Colors.grey[100],
+                    nipLocation: NipLocation.LEFT,
+                    child: Text('speech bubble'),
+                  ),
+                ) :
+                Container(),
+
                 /// KARUNG UANG
                 _isTapped ?
                 Container(
