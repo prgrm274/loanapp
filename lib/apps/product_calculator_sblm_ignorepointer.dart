@@ -393,17 +393,17 @@ class _ProductCalculatorState extends State<ProductCalculator> {
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text(setTglBayar()),
                 Text(
                     ((){
                       if (sliderPnjm == 0) {
-                        return 'Rp 175.000';
+                        /// '$setTglBayar() ' x
+                        return setTglBayar()+' - Rp 175.000';
                       } else if (sliderPnjm == 2) {
-                        return 'Rp 350.000';
+                        return setTglBayar()+' - Rp 350.000';
                       } else if (sliderPnjm == 4) {
-                        return 'Rp 525.000';
+                        return setTglBayar()+' - Rp 525.000';
                       } else if (sliderPnjm == 6) {
-                        return 'Rp 700.000';
+                        return setTglBayar()+' - Rp 700.000';
                       } else {
                         return '';
                       }
@@ -413,12 +413,13 @@ class _ProductCalculatorState extends State<ProductCalculator> {
             ),
           ),
           actions: <Widget>[
-            TextButton(
-              child: Text('Approve'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
+            /// TIDAK PAKE BUTTON
+            // TextButton(/// v
+            //   child: Text('Approve'),
+            //   onPressed: () {
+            //     Navigator.of(context).pop();
+            //   },
+            // ),
           ],
         );
       },
@@ -429,8 +430,9 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
   String setTglBayar() {
     var now = new DateTime.now();
+    var newDate = new DateTime(now.year, now.month, now.day + 15);
     var formatter = new DateFormat('dd.MM.yyyy');
-    String formatted = formatter.format(now);
+    String formatted = formatter.format(newDate);
     _tglBayar = formatted;
     return _tglBayar;
   }
