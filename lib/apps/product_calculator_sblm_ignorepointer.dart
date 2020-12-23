@@ -11,11 +11,13 @@ import 'package:toast/toast.dart';
 import 'package:voidrealm/apps/logo_danafix_in_stack.dart';
 // import 'package:voidrealm/apps/logo_ojk.dart';
 import 'package:voidrealm/apps/logo_ojk_in_stack.dart';
+import 'package:voidrealm/apps/registrasi/reg040b_otp.dart';
 import 'package:voidrealm/apps/t_10m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/t_3m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/t_6m_akan_anda_terima.dart';
 import 'package:voidrealm/apps/text_2625.dart';
 import 'package:voidrealm/apps/text_525.dart';
+import 'package:voidrealm/apps/text_label_slider_hari.dart';
 import 'package:voidrealm/apps/text_tablerow.dart';
 import 'package:voidrealm/apps/text_cicilan_per_bulan.dart';
 import 'package:voidrealm/apps/text_dapatkan_sekarang.dart';
@@ -256,11 +258,11 @@ class _ProductCalculatorState extends State<ProductCalculator> {
 
     // We create the tooltip on the first use
     superTooltip = SuperTooltip(
-      arrowBaseWidth: 10.0,
-      arrowLength: 10.0,
-      arrowTipDistance: 1.0,///5
-      hasShadow: true,
-      maxHeight: 150,
+        arrowBaseWidth: 10.0,
+        arrowLength: 10.0,
+        arrowTipDistance: 1.0,///5
+        hasShadow: true,
+        maxHeight: 150,
       // borderColor: Colors.green,
       // borderWidth: 1.0,
       // snapsFarAwayVertically: true,
@@ -436,6 +438,14 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     return _tglBayar;
   }
 
+  String setTglNowUtkBayar() {
+    var now = new DateTime.now();
+    var formatter = new DateFormat('dd.MM.yyyy');
+    String formatted = formatter.format(now);
+    _tglBayar = formatted;
+    return _tglBayar;
+  }
+
   @override
   Widget build(BuildContext context) {
     return IgnorePointer(
@@ -544,6 +554,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                   ),
                                 ]
                             ),
+
                             /// 2. ANDA MENGEMBALIKAN
                             TableRow(
                                 children: [
@@ -666,7 +677,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                             Container(
                                                               margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
                                                               child: Text(
-                                                                '28.10.2020',
+                                                                setTglNowUtkBayar(),//'28.10.2020',
                                                                 style: TextStyle(
                                                                     color: Colors.blue[900],
                                                                     fontSize: 13,
@@ -1129,13 +1140,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 fontSize: 10
                                             )
                                         ),
-                                        Text(
-                                            '(104 hari)',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 10
-                                            )
-                                        )
+                                        TextLabelSliderHari(teks: '(104 hari)')
                                       ]
                                   ),
                                 ),
@@ -1151,13 +1156,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                 fontSize: 10
                                             )
                                         ),
-                                        Text(
-                                            '(134 hari)',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 10
-                                            )
-                                        )
+                                        TextLabelSliderHari(teks: '(134 hari)')
                                       ]
                                   ),
                                 ),
@@ -1173,13 +1172,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                               fontSize: 10
                                           ),
                                         ),
-                                        Text(
-                                          '(164 hari)',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 10
-                                          ),
-                                        )
+                                        TextLabelSliderHari(teks: '(164 hari)')
                                       ]
                                   ),
                                 )
@@ -1205,7 +1198,12 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                             padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
                             color: Colors.blue[900],
                             onPressed: (){
-                              print('Button dapatkan dana sekarang');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Reg040BOTP()
+                                  )
+                              );
                             },
                             child: TextDapatkanSekarang(),
                           ),
@@ -1218,13 +1216,13 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                 /// PAKE onTap BISA TAPI MGKN LEBIH HANDAL PAKE Focus
                 _isTapped ?
                 Positioned(
-                  left: MediaQuery.of(context).size.width / 2 - 50,
-                  top: MediaQuery.of(context).size.height / 6.5,
+                  left: 120,
+                  top: 90,
                   child: SpeechBubble(
                     color: Colors.grey[100],
                     nipHeight: 8,
                     nipLocation: NipLocation.LEFT,
-                    width: 100,
+                    width: 120,
                     child: Text(
                       'Besar pinjaman yang disetujui bisa sedikit berbeda setelah '
                           'skor pembayaran Anda dicek',
