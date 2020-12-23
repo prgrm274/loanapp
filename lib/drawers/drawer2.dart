@@ -22,7 +22,7 @@ class _Drawer2State extends State<Drawer2> {
                     image: DecorationImage(
                         image: AssetImage("lib/assets/image.jpg"),
                         fit: BoxFit.cover)),
-                child: Text("Header"),
+                child: Text("Gambar mobil dan danafix"),
               ),
             ),
           ),
@@ -30,37 +30,25 @@ class _Drawer2State extends State<Drawer2> {
             flex: 2,
             child: ListView(children: [
               ListTile(
-                title: Text("Home"),
+                title: Text("Tanya Jawab"),
                 onTap: () {
                   Navigator.of(context).pop();
                 },
               ),
               ListTile(
-                title: Text("Main"),
+                title: Text("Hubungi kami!"),
                 onTap: () {
                   Navigator.of(context).pop();
                 },
               ),
               ListTile(
-                title: Text("Page"),
+                title: Text("Ganti password Anda"),
                 onTap: () {
                   Navigator.of(context).pop();
                 },
               ),
               ListTile(
-                title: Text("Payment"),
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: Text("Products"),
-                onTap: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              ListTile(
-                title: Text("Shipping"),
+                title: Text("Keluar"),
                 onTap: () {
                   Navigator.of(context).pop();
                 },

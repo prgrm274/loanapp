@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/apps/registrasi/reg070.dart';
 import 'package:voidrealm/apps/registrasi/reg080_saudara_kontak.dart';
+import 'package:voidrealm/apps/user/user_page.dart';
 
 class Reg080Button extends StatefulWidget {
   Reg080Button({Key key}) : super(key: key);
@@ -22,7 +23,7 @@ class _Reg080ButtonState extends State<Reg080Button> {
             /// TO REGISTRASI
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Reg080()),
+              MaterialPageRoute(builder: (context) => UserPage()),
             );
           },
           textColor: Colors.white,
