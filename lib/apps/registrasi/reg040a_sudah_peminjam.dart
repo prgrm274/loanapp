@@ -89,13 +89,10 @@ class _Login040State extends State<Login040> {
               children: <Widget>[
                 Expanded(
                   child: Column(
-                    children: <Widget>[
-
-                      /// NOMOR HP
-                      Align(
-                        alignment: Alignment.center,
-                        child: Container(
-                          // margin: EdgeInsets.fromLTRB(40, 100, 40, 20),
+                      children: <Widget>[
+                        /// NOMOR HP
+                        Container(
+                            margin: EdgeInsets.fromLTRB(40, 20, 40, 0),
                             alignment: Alignment.topLeft,
                             // color: Colors.blue,
                             child: Text(
@@ -108,140 +105,135 @@ class _Login040State extends State<Login040> {
                           //   },
                           // ),
                         ),
-                      ),
 
-                      /// TEXTFIELD NOMOR
-                      Expanded(
-                        child: Container(
-                            child: GestureDetector(
-                              onTap: (){
-                                FocusScopeNode currentFocus = FocusScope.of(context);
-                                if (!currentFocus.hasPrimaryFocus) {
-                                  currentFocus.unfocus();
-                                }
-                                print('onTap click is working!');
-                              },
-                              child: TextField(
-                                onChanged: (String s) {
-                                  // final val = TextSelection.collapsed(offset: tecHape.text.length);
-                                  // tecHape.selection = val;
-                                },
-                                /// THE INPUT FORMAT FOR THE KEYBOARD
-                                // keyboardType: TextInputType.number,//text, email, phone
+                        Expanded(
+                          child: Container(
+                              margin: EdgeInsets.fromLTRB(40, 10, 40, 20),
+                              child: Column(
+                                  children: <Widget>[
+                                    /// TEXTFIELD NOMOR
+                                    GestureDetector(
+                                      onTap: (){
+                                        FocusScopeNode currentFocus = FocusScope.of(context);
+                                        if (!currentFocus.hasPrimaryFocus) {
+                                          currentFocus.unfocus();
+                                        }
+                                        print('onTap click is working!');
+                                      },
+                                      child: TextField(
+                                        onChanged: (String s) {
+                                          // final val = TextSelection.collapsed(offset: tecHape.text.length);
+                                          // tecHape.selection = val;
+                                        },
+                                        /// THE INPUT FORMAT FOR THE KEYBOARD
+                                        // keyboardType: TextInputType.number,//text, email, phone
 
-                                /// HIDE THE KEYBOARD
-                                readOnly: true,
-                                showCursor: true,
-                                // onTap: (){
-                                //   NumPad(controller: numpadController);
-                                // },
-                                decoration: InputDecoration(
-                                  /// suffixIcon: Icon(Icons.cancel),
-                                  suffixIcon: IconButton(
-                                      onPressed: () => tecHape.clear(),
-                                      icon: Icon(Icons.clear, color: Colors.white60)
-                                  ),
-                                  hintText: '08',
-                                  hintStyle: TextStyle(color: Colors.white70),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white60, width: 1),
-                                      borderRadius: BorderRadius.circular(4.2)
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(color: Colors.white, width: 3),
-                                      borderRadius: BorderRadius.circular(4.2)
-                                  ),
-                                ),
-                                controller: tecHape,
-                              ),
-                            )
-                        ),
-                      ),
+                                        /// HIDE THE KEYBOARD
+                                        readOnly: true,
+                                        showCursor: true,
+                                        // onTap: (){
+                                        //   NumPad(controller: numpadController);
+                                        // },
+                                        decoration: InputDecoration(
+                                          /// suffixIcon: Icon(Icons.cancel),
+                                          suffixIcon: IconButton(
+                                              onPressed: () => tecHape.clear(),
+                                              icon: Icon(Icons.clear, color: Colors.white60)
+                                          ),
+                                          hintText: '08',
+                                          hintStyle: TextStyle(color: Colors.white70),
+                                          enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(color: Colors.white60, width: 1),
+                                              borderRadius: BorderRadius.circular(4.2)
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(color: Colors.white, width: 3),
+                                              borderRadius: BorderRadius.circular(4.2)
+                                          ),
+                                        ),
+                                        controller: tecHape,
+                                      ),
+                                    ),
 
-                      /// TEXTFIELD PASSWORD
-                      Expanded(
-                        child: Container(
-                          child: TextField(
-                            controller: tecPasw,
-                            readOnly: true,
-                            showCursor: true,
-                            decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: () => tecPasw.clear(),
-                                icon: Icon(Icons.clear, color: Colors.white60,),
-                              ),
-                              hintText: 'Kata kunci',
-                              hintStyle: TextStyle(
-                                  color: Colors.white70
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white60,
-                                  width: 1,
-                                ),
-                                borderRadius: BorderRadius.circular(4.2),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                  width: 3,
-                                ),
-                                borderRadius: BorderRadius.circular(4.2),
-                              ),
-                            ),
+                                    /// TEXTFIELD PASSWORD
+                                    Container(
+                                      margin: EdgeInsets.only(top: 10),
+                                      child: TextField(
+                                        controller: tecPasw,
+                                        readOnly: true,
+                                        showCursor: true,
+                                        decoration: InputDecoration(
+                                          suffixIcon: IconButton(
+                                            onPressed: () => tecPasw.clear(),
+                                            icon: Icon(Icons.clear, color: Colors.white60),
+                                          ),
+                                          hintText: 'Kata kunci',
+                                          hintStyle: TextStyle(color: Colors.white70),
+                                          enabledBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.white60, width: 1),
+                                            borderRadius: BorderRadius.circular(4.2),
+                                          ),
+                                          focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide(color: Colors.white, width: 3),
+                                            borderRadius: BorderRadius.circular(4.2),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+
+                                    /// LABEL LUPA PASSWORD
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(40, 20, 40, 0),
+                                      child: Linkify(
+                                          text: 'Saya tidak tahu password saya',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              decoration: TextDecoration.underline,
+                                              fontSize: 12
+                                          )
+                                      ),
+                                    ),
+                                  ]
+                              )
                           ),
                         ),
-                      ),
 
-                      /// LABEL LUPA PASSWORD
-                      Container(
-                        margin: EdgeInsets.fromLTRB(40, 20, 40, 0),
-                        child: Linkify(
-                            text: 'Saya tidak tahu password saya',
-                            style: TextStyle(
-                                color: Colors.white,
-                                decoration: TextDecoration.underline
+                        /// NUMPAD BEFORE
+                        // Container(
+                        //   height: 200,
+                        //   // child: CustomNumpad2(),
+                        //   child: FlutterNumpadWidgetExample())
+
+                        /// BUTTON MASUK
+                        Container(
+                            margin: EdgeInsets.fromLTRB(0, 20, 15, 0),
+                            child: Align(
+                                alignment: FractionalOffset.centerRight,
+                                child: RaisedButton(
+                                    elevation: 0,
+                                    padding: EdgeInsets.fromLTRB(25, 15, 25, 15),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => Reg050()),
+                                      );
+                                    },
+                                    textColor: Colors.white60,
+                                    color: Colors.cyan[400],
+                                    child: Text('MASUK'),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5.0),
+                                        side: BorderSide(color: Colors.cyan)
+                                    )
+                                )
                             )
                         ),
-                      ),
-
-                      /// before
-                      /// NUMPAD
-                      // Container(
-                      //   height: 200,
-                      //   // child: CustomNumpad2(),
-                      //   child: FlutterNumpadWidgetExample())
-
-                      /// BUTTON MASUK
-                      Container(
-                          margin: EdgeInsets.fromLTRB(0, 20, 15, 0),
-                          child: Align(
-                              alignment: FractionalOffset.centerRight,
-                              child: RaisedButton(
-                                  elevation: 0,
-                                  padding: EdgeInsets.fromLTRB(25, 15, 25, 15),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(builder: (context) => Reg050()),
-                                    );
-                                  },
-                                  textColor: Colors.white60,
-                                  color: Colors.cyan[400],
-                                  child: Text('MASUK'),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5.0),
-                                      side: BorderSide(color: Colors.cyan)
-                                  )
-                              )
-                          )
-                      ),
-                    ]
+                      ]
                   ),
                 ),
 
                 /// GRID BUTTONS
-                /// SEBELUMNYA BISA PAKE EXPANDED / FLEXIBLE
+                /// SEBELUMNYA PAKE EXPANDED JADI AGAK LUAS
                 /// TAPI TERLALU BESAR KARENA MEMENUHI
                 Container(
                   // margin: EdgeInsets.fromLTRB(0, 20, 0, 0),///0,50,0,0
@@ -290,7 +282,6 @@ class _Login040State extends State<Login040> {
                             value: '1',/// 1,
                             longPressValue: '1',
                             child: Container(
-                                padding: EdgeInsets.only(top: 20, bottom: 20),
                                 width: 70,
                                 decoration: BoxDecoration(
                                   border: Border(
@@ -422,33 +413,33 @@ class _Login040State extends State<Login040> {
                           //     title: '1'),
 
                           GridButtonItem(
-                              title: '5',
-                              textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24
-                              ),
+                            title: '5',
+                            textStyle: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24
+                            ),
                             value: '5',
                             longPressValue: '5',
-                              child: Container(
-                                width: 70,
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0
-                                        )
+                            child: Container(
+                              width: 70,
+                              decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                          color: Colors.white,
+                                          width: 1.0
+                                      )
+                                  )
+                              ),
+                              child: Align(
+                                alignment: FractionalOffset.center,
+                                child: Text('5',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24
                                     )
                                 ),
-                                child: Align(
-                                  alignment: FractionalOffset.center,
-                                  child: Text('5',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 24
-                                      )
-                                  ),
-                                ),
                               ),
+                            ),
                           ),
 
                           GridButtonItem(
@@ -575,7 +566,7 @@ class _Login040State extends State<Login040> {
                               value: '9',
                               longPressValue: '9'),
 
-                          /// FLEX WILL MAKE IT WIDER
+                          /// FLEX WILL MAKE IT WIDER LIKE CONSTRAIN IN ANDROID
                           // GridButtonItem(title: 'Title 3', flex: 2),
                         ],
                         [
@@ -619,9 +610,6 @@ class _Login040State extends State<Login040> {
                       ]
                   ),
                 ),
-
-                /// GRID BUTTONS 2
-
               ],
             ),
           ),
