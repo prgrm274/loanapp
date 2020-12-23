@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/apps/registrasi/reg040a_sudah_peminjam.dart';
+import 'package:voidrealm/apps/registrasi/reg040a_sudah_peminjam.dart';
 
 class TextSudahPeminjam extends StatefulWidget {
   TextSudahPeminjam({Key key}) : super(key: key);

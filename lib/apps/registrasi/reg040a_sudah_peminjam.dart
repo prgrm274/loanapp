@@ -82,35 +82,37 @@ class _Login040State extends State<Login040> {
           onFocusChange: (punyaFokus) {
 
           },
-          child: Center(
-            child: Container(
-              padding: const EdgeInsets.all(5.0),
-              color: Colors.cyan,
-              child: Column(
-                children: <Widget>[
-                  Row(
-                      children: <Widget>[
-                        /// NOMOR HP
-                        Align(
-                          alignment: Alignment.center,
-                          child: Container(
-                            // margin: EdgeInsets.fromLTRB(40, 100, 40, 20),
-                              alignment: Alignment.topLeft,
-                              // color: Colors.blue,
-                              child: Text(
-                                  'Nomor hp',
-                                  style: TextStyle(color: Colors.white)
-                              )
-                            // child: TextField(
-                            //   onChanged: (text) {
-                            //     print("First text field: $text");
-                            //   },
-                            // ),
-                          ),
-                        ),
+          child: Container(
+            padding: const EdgeInsets.all(5.0),
+            color: Colors.cyan,
+            child: Column(
+              children: <Widget>[
+                Expanded(
+                  child: Column(
+                    children: <Widget>[
 
-                        /// TEXTFIELD NOMOR
-                        Container(
+                      /// NOMOR HP
+                      Align(
+                        alignment: Alignment.center,
+                        child: Container(
+                          // margin: EdgeInsets.fromLTRB(40, 100, 40, 20),
+                            alignment: Alignment.topLeft,
+                            // color: Colors.blue,
+                            child: Text(
+                                'Nomor hp',
+                                style: TextStyle(color: Colors.white)
+                            )
+                          // child: TextField(
+                          //   onChanged: (text) {
+                          //     print("First text field: $text");
+                          //   },
+                          // ),
+                        ),
+                      ),
+
+                      /// TEXTFIELD NOMOR
+                      Expanded(
+                        child: Container(
                             child: GestureDetector(
                               onTap: (){
                                 FocusScopeNode currentFocus = FocusScope.of(context);
@@ -154,9 +156,11 @@ class _Login040State extends State<Login040> {
                               ),
                             )
                         ),
+                      ),
 
-                        /// TEXTFIELD PASSWORD
-                        Container(
+                      /// TEXTFIELD PASSWORD
+                      Expanded(
+                        child: Container(
                           child: TextField(
                             controller: tecPasw,
                             readOnly: true,
@@ -187,55 +191,58 @@ class _Login040State extends State<Login040> {
                             ),
                           ),
                         ),
+                      ),
 
-                        /// LABEL LUPA PASSWORD
-                        Container(
-                          margin: EdgeInsets.fromLTRB(40, 20, 40, 0),
-                          child: Linkify(
-                              text: 'Saya tidak tahu password saya',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  decoration: TextDecoration.underline
-                              )
-                          ),
-                        ),
-
-                        /// before
-                        /// NUMPAD
-                        // Container(
-                        //   height: 200,
-                        //   // child: CustomNumpad2(),
-                        //   child: FlutterNumpadWidgetExample())
-
-                        /// BUTTON MASUK
-                        Container(
-                            margin: EdgeInsets.fromLTRB(0, 20, 15, 0),
-                            child: Align(
-                                alignment: FractionalOffset.centerRight,
-                                child: RaisedButton(
-                                    elevation: 0,
-                                    padding: EdgeInsets.fromLTRB(25, 15, 25, 15),
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(builder: (context) => Reg050()),
-                                      );
-                                    },
-                                    textColor: Colors.white60,
-                                    color: Colors.cyan[400],
-                                    child: Text('MASUK'),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(5.0),
-                                        side: BorderSide(color: Colors.cyan)
-                                    )
-                                )
+                      /// LABEL LUPA PASSWORD
+                      Container(
+                        margin: EdgeInsets.fromLTRB(40, 20, 40, 0),
+                        child: Linkify(
+                            text: 'Saya tidak tahu password saya',
+                            style: TextStyle(
+                                color: Colors.white,
+                                decoration: TextDecoration.underline
                             )
                         ),
-                      ]
-                  ),
+                      ),
 
-                  /// GRID BUTTONS
-                  Container(
+                      /// before
+                      /// NUMPAD
+                      // Container(
+                      //   height: 200,
+                      //   // child: CustomNumpad2(),
+                      //   child: FlutterNumpadWidgetExample())
+
+                      /// BUTTON MASUK
+                      Container(
+                          margin: EdgeInsets.fromLTRB(0, 20, 15, 0),
+                          child: Align(
+                              alignment: FractionalOffset.centerRight,
+                              child: RaisedButton(
+                                  elevation: 0,
+                                  padding: EdgeInsets.fromLTRB(25, 15, 25, 15),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(builder: (context) => Reg050()),
+                                    );
+                                  },
+                                  textColor: Colors.white60,
+                                  color: Colors.cyan[400],
+                                  child: Text('MASUK'),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      side: BorderSide(color: Colors.cyan)
+                                  )
+                              )
+                          )
+                      ),
+                    ]
+                  ),
+                ),
+
+                /// GRID BUTTONS
+                Expanded(
+                  child: Container(
                     // margin: EdgeInsets.fromLTRB(0, 20, 0, 0),///0,50,0,0
                     // height: MediaQuery.of(context).size.height * .35,
                     child: GridButton(
@@ -266,26 +273,44 @@ class _Login040State extends State<Login040> {
 
                           /// BY CUSTOM VARIABLE
                         },
-                        hideSurroundingBorder: true,
                         borderColor: Colors.transparent,
+                        hideSurroundingBorder: true,
                         items: [
                           [
-                            GridButtonItem(title: '1', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
+                            GridButtonItem(
+                              title: '1',
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24
+                              ),
                               // value: (dynamic v) {
                               //   Fluttertoast.showToast(msg: '1', toastLength: Toast.LENGTH_SHORT);
                               // },
                               value: 1,
                               child: Container(
+                                  padding: EdgeInsets.only(top: 20, bottom: 20),
                                   width: 70,
                                   decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(
-                                          color: Colors.white, width: 1.0))),
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.white,
+                                            width: 1.0
+                                        )
+                                    ),
+                                    color: Colors.red,
+                                  ),
                                   child: Align(
                                       alignment: FractionalOffset.center,
                                       /// PRIORITAS TEXT MELEBIHI GRIDBUTTONITEM TITLE
-                                      child: Text('1', style: TextStyle(
-                                          color: Colors.white, fontSize: 24)))),
+                                      child: Text(
+                                          '1',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 24
+                                          )
+                                      )
+                                  )
+                              ),
                             ),
 
                             // GridButtonItem(
@@ -295,56 +320,89 @@ class _Login040State extends State<Login040> {
                             //         }),
                             //     title: '1'),
 
-                            GridButtonItem(title: '2', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
+                            GridButtonItem(
+                                title: '2',
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 24),
                                 child: Container(
                                     width: 70,
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(
-                                            color: Colors.white, width: 1.0))),
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.white,
+                                                width: 1.0
+                                            )
+                                        )
+                                    ),
                                     child: Align(
                                         alignment: FractionalOffset.center,
-                                        child: Text('2', style: TextStyle(
-                                            color: Colors.white, fontSize: 24)))),
-                                value: '2',
-                                longPressValue: 'long'
-                            ),
-                            GridButtonItem(title: '3', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
-                                child: Container(
-                                    width: 70,
-                                    decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(
-                                            color: Colors.white, width: 1.0))),
-                                    child: Align(
-                                        alignment: FractionalOffset.center,
-                                        child: Text('3', style: TextStyle(
-                                            color: Colors.white, fontSize: 24))
+                                        child: Text('2',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 24
+                                            )
+                                        )
                                     )
                                 ),
-                                value: '3', longPressValue: 'long'
-                            ),
+                                value: '2',
+                                longPressValue: 'long'),
+                            GridButtonItem(
+                                title: '3',
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 24),
+                                child: Container(
+                                    width: 70,
+                                    decoration: BoxDecoration(
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.white,
+                                                width: 1.0
+                                            )
+                                        )
+                                    ),
+                                    child: Align(
+                                        alignment: FractionalOffset.center,
+                                        child: Text('3',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 24
+                                            )
+                                        )
+                                    )
+                                ),
+                                value: '3',
+                                longPressValue: 'long'),
 
                             /// FLEX WILL MAKE IT WIDER
                             // GridButtonItem(title: 'Title 3', flex: 2),
                           ],
-
                           [
-                            GridButtonItem(title: '4', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
+                            GridButtonItem(
+                                title: '4',
+                                textStyle: TextStyle(
+                                    color: Colors.white, fontSize: 24),
                                 child: Container(
                                     width: 70,
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(
-                                            color: Colors.white,
-                                            width: 1.0))),
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.white,
+                                                width: 1.0
+                                            )
+                                        )
+                                    ),
                                     child: Align(
                                         alignment: FractionalOffset.center,
-                                        child: Text('4', style: TextStyle(
-                                            color: Colors.white, fontSize: 24)))),
+                                        child: Text('4',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 24
+                                            )
+                                        )
+                                    )
+                                ),
                                 value: '4',
-                                longPressValue: 'long'
-                            ),
+                                longPressValue: 'long'),
                             // GridButtonItem(
                             //     child: RaisedButton(
                             //         onPressed: (){
@@ -352,135 +410,206 @@ class _Login040State extends State<Login040> {
                             //         }),
                             //     title: '1'),
 
-                            GridButtonItem(title: '5', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
+                            GridButtonItem(
+                                title: '5',
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24
+                                ),
                                 child: Container(
                                   width: 70,
                                   decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(
-                                          color: Colors.white,
-                                          width: 1.0))),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.white,
+                                              width: 1.0
+                                          )
+                                      )
+                                  ),
                                   child: Align(
                                     alignment: FractionalOffset.center,
-                                    child: Text('5', style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 24
-                                    )),
+                                    child: Text('5',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 24
+                                        )
+                                    ),
                                   ),
                                 ),
                                 value: '5',
-                                longPressValue: 'long'
-                            ),
+                                longPressValue: 'long'),
 
-                            GridButtonItem(title: '6', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
+                            GridButtonItem(
+                                title: '6',
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24
+                                ),
                                 child: Container(
                                   width: 70,
                                   decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(
-                                          color: Colors.white,
-                                          width: 1.0))),
+                                      border: Border(
+                                          bottom: BorderSide(
+                                              color: Colors.white,
+                                              width: 1.0
+                                          )
+                                      )
+                                  ),
                                   child: Align(
                                     alignment: FractionalOffset.center,
-                                    child: Text('6', style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 24
-                                    )),
+                                    child: Text('6',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 24
+                                        )
+                                    ),
                                   ),
                                 ),
                                 value: '6',
-                                longPressValue: 'long'
-                            ),
+                                longPressValue: 'long'),
 
                             /// FLEX WILL MAKE IT WIDER
                             // GridButtonItem(title: 'Title 3', flex: 2),
                           ],
-
                           [
-                            GridButtonItem(title: '7', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
+                            GridButtonItem(
+                                title: '7',
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24
+                                ),
                                 child: Container(
                                     width: 70,
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(
-                                            color: Colors.white, width: 1.0))),
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.white,
+                                                width: 1.0
+                                            )
+                                        )
+                                    ),
                                     child: Align(
                                         alignment: FractionalOffset.center,
-                                        child: Text('7', style: TextStyle(
-                                            color: Colors.white, fontSize: 24)))
+                                        child: Text('7',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 24
+                                            )
+                                        )
+                                    )
                                 ),
                                 // value: (dynamic v) {
                                 //   Fluttertoast.showToast(msg: '7', toastLength: Toast.LENGTH_SHORT);
                                 // }
                                 value: '7',
-                                longPressValue: 'long'
-                            ),
+                                longPressValue: 'long'),
 
-                            GridButtonItem(title: '8', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
+                            GridButtonItem(
+                                title: '8',
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24
+                                ),
                                 child: Container(
                                     width: 70,
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(
-                                            color: Colors.white, width: 1.0))),
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.white,
+                                                width: 1.0
+                                            )
+                                        )
+                                    ),
                                     child: Align(
                                         alignment: FractionalOffset.center,
-                                        child: Text('8', style: TextStyle(
-                                            color: Colors.white, fontSize: 24))
+                                        child: Text('8',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 24
+                                            )
+                                        )
                                     )
                                 ),
                                 value: '8',
-                                longPressValue: 'long'
-                            ),
+                                longPressValue: 'long'),
 
-                            GridButtonItem(title: '9', textStyle: TextStyle(
-                                color: Colors.white, fontSize: 24),
+                            GridButtonItem(
+                                title: '9',
+                                textStyle: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24
+                                ),
                                 child: Container(
                                     width: 70,
                                     decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(
-                                            color: Colors.white, width: 1.0))),
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.white,
+                                                width: 1.0
+                                            )
+                                        )
+                                    ),
                                     child: Align(
                                         alignment: FractionalOffset.center,
-                                        child: Text('9', style: TextStyle(
-                                            color: Colors.white, fontSize: 24)))),
+                                        child: Text('9',
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 24
+                                            )
+                                        )
+                                    )
+                                ),
                                 value: '9',
-                                longPressValue: 'long'
-                            ),
+                                longPressValue: 'long'),
+
                             /// FLEX WILL MAKE IT WIDER
                             // GridButtonItem(title: 'Title 3', flex: 2),
                           ],
-
                           [
                             // backspaceItem,
 
                             GridButtonItem(title: ''),
 
-                            GridButtonItem(title: '0',
-                              textStyle: TextStyle(color: Colors.white, fontSize: 24),
-                              value: 0,/// IF NULL, WILL USE THE TITLE
+                            GridButtonItem(
+                              title: '0',
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 24
+                              ),
+                              value: 0,
+
+                              /// IF NULL, WILL USE THE TITLE
                             ),
 
-                            GridButtonItem(child: Container(
-                                width: double.infinity,
-                                height: double.infinity,
-                                child: RaisedButton(
-                                    onPressed: (){
-                                      tecHape.text = tecHape.text.toString().substring(0, tecHape.text.length - 1);
-                                    },
-                                    elevation: 0,
-                                    color: Colors.cyan,
-                                    child: Icon(Icons.backspace, color: Colors.white, size: 28)))
+                            GridButtonItem(
+                                child: Container(
+                                    width: double.infinity,
+                                    height: double.infinity,
+                                    child: RaisedButton(
+                                        onPressed: () {
+                                          tecHape.text = tecHape.text
+                                              .toString()
+                                              .substring(0, tecHape.text.length - 1);
+                                        },
+                                        elevation: 0,
+                                        color: Colors.cyan,
+                                        child: Icon(
+                                            Icons.backspace,
+                                            color: Colors.white,
+                                            size: 28
+                                        )
+                                    )
+                                )
                             ),
                           ],
                         ]
                     ),
                   ),
+                ),
 
-                  /// GRID BUTTONS 2
+                /// GRID BUTTONS 2
 
-                ],
-              ),
+              ],
             ),
           ),
         )
