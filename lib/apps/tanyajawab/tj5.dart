@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TanyaJawab4 extends StatefulWidget {
-  TanyaJawab4({Key key}) : super(key: key);
+class TanyaJawab5 extends StatefulWidget {
+  TanyaJawab5({Key key}) : super(key: key);
 
   @override
-  _TanyaJawab4State createState() => _TanyaJawab4State();
+  _TanyaJawab5State createState() => _TanyaJawab5State();
 }
 
-class _TanyaJawab4State extends State<TanyaJawab4> {
+class _TanyaJawab5State extends State<TanyaJawab5> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +47,7 @@ class _TanyaJawab4State extends State<TanyaJawab4> {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                        'Dokumen apa saja yang perlu disiapkan?',
+                        'Bagaimana mengetahui jika saya telah menerima pencairan tersebut?',
                         style: TextStyle(color: Colors.grey[400])
                     ),
                   ),
@@ -62,10 +62,8 @@ class _TanyaJawab4State extends State<TanyaJawab4> {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                            '- Anda hanya siapkan:\n'
-                            '- nomor KTP,\n'
-                            '- kontak saudara tidak serumah,\n'
-                            '- Kontak kantor tempat Anda bekerja\n'
+                        '- Persetujuan pinjaman Anda akan dikonfirmasi oleh staf kami dan '
+                            'proses pencairan pinjaman akan dikonfirmasi dengan SMS.'
                     ),
                   )
                 ],

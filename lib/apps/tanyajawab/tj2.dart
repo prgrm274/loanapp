@@ -15,7 +15,7 @@ class _TanyaJawab2State extends State<TanyaJawab2> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.cyan,
-          title: Text('Apa produk Danafix?'),
+          title: Text('Pertanyaan'),
           titleSpacing: 10.0,
           leading: InkWell(
             onTap: () {

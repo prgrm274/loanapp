@@ -72,8 +72,6 @@ class _Reg040BOTPState extends State<Reg040BOTP> {
             },
             splashColor: Colors.red,
             child: new Container(
-              /// kotaknya navigation icon
-              ///
                 padding: const EdgeInsets.fromLTRB(12.0, 16.0, 16.0, 16.0),
                 child: Icon(
                     Icons.arrow_back_rounded,

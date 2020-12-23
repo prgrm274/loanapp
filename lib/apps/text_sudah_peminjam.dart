@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/apps/registrasi/reg040a_sudah_peminjam.dart';
 
 class TextSudahPeminjam extends StatefulWidget {
   TextSudahPeminjam({Key key}) : super(key: key);
@@ -10,12 +11,24 @@ class TextSudahPeminjam extends StatefulWidget {
 class _TextSudahPeminjamState extends State<TextSudahPeminjam> {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'SUDAH MENJADI PEMINJAM',
-      style: TextStyle(
-        color: Colors.white,
-        decoration: TextDecoration.underline,
-        // fontSize: 12
+    return Container(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Login040()
+              )
+          );
+        },
+        child: Text(
+          'SUDAH MENJADI PEMINJAM',
+          style: TextStyle(
+            color: Colors.white,
+            decoration: TextDecoration.underline,
+            // fontSize: 12
+          ),
+        ),
       ),
     );
   }

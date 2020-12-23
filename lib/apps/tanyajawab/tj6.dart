@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TanyaJawab4 extends StatefulWidget {
-  TanyaJawab4({Key key}) : super(key: key);
+class TanyaJawab6 extends StatefulWidget {
+  TanyaJawab6({Key key}) : super(key: key);
 
   @override
-  _TanyaJawab4State createState() => _TanyaJawab4State();
+  _TanyaJawab6State createState() => _TanyaJawab6State();
 }
 
-class _TanyaJawab4State extends State<TanyaJawab4> {
+class _TanyaJawab6State extends State<TanyaJawab6> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +47,7 @@ class _TanyaJawab4State extends State<TanyaJawab4> {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                        'Dokumen apa saja yang perlu disiapkan?',
+                        'Di kota mana layanan pinjaman DanaFix bisa dilakukan?',
                         style: TextStyle(color: Colors.grey[400])
                     ),
                   ),
@@ -62,10 +62,7 @@ class _TanyaJawab4State extends State<TanyaJawab4> {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                            '- Anda hanya siapkan:\n'
-                            '- nomor KTP,\n'
-                            '- kontak saudara tidak serumah,\n'
-                            '- Kontak kantor tempat Anda bekerja\n'
+                        '- DanaFix melayani seluruh wilayah Indonesia'
                     ),
                   )
                 ],

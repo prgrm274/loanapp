@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class TanyaJawab4 extends StatefulWidget {
-  TanyaJawab4({Key key}) : super(key: key);
+class TanyaJawab12 extends StatefulWidget {
+  TanyaJawab12({Key key}) : super(key: key);
 
   @override
-  _TanyaJawab4State createState() => _TanyaJawab4State();
+  _TanyaJawab12State createState() =>
+      _TanyaJawab12State();
 }
 
-class _TanyaJawab4State extends State<TanyaJawab4> {
+class _TanyaJawab12State extends State<TanyaJawab12> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +48,7 @@ class _TanyaJawab4State extends State<TanyaJawab4> {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                        'Dokumen apa saja yang perlu disiapkan?',
+                        'Apakah mungkin melakukan pelunasan lebih awal?',
                         style: TextStyle(color: Colors.grey[400])
                     ),
                   ),
@@ -62,10 +63,9 @@ class _TanyaJawab4State extends State<TanyaJawab4> {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                            '- Anda hanya siapkan:\n'
-                            '- nomor KTP,\n'
-                            '- kontak saudara tidak serumah,\n'
-                            '- Kontak kantor tempat Anda bekerja\n'
+                        'Anda bisa melakukan pelunasan lebih awal setelah minimal setengah '
+                            'dari periode kontrak, namun tidak diperkenankan jika pinjaman '
+                            'belum melewati 7 hari kalender'
                     ),
                   )
                 ],

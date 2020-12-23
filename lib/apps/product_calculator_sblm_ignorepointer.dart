@@ -95,6 +95,22 @@ class _ProductCalculatorState extends State<ProductCalculator> {
     );
   }
 
+  /// CICILAN WITH LESS RIGHT MARGIN
+  Widget setUangCicilan(String nominal) {
+    return Container(
+      alignment: Alignment.centerRight,
+      margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
+      child: Text(
+        nominal,
+        style: TextStyle(
+            color: Colors.blue[900],
+            fontSize: 13,
+            fontFamily: 'Sans'
+        ),
+      ),
+    );
+  }
+
   Widget _setTextUangTerima() {
     if (sliderPnjm == 0.0) {
       return setUang('Rp. 500.000');
@@ -153,38 +169,38 @@ class _ProductCalculatorState extends State<ProductCalculator> {
   Widget _setTextCicilan() {
     if (sliderPnjm == 0.0) {
       if (sliderHari == 3.5) {
-        return setUang('Rp 200.000');
+        return setUangCicilan('Rp 200.000');
       } else if (sliderHari == 4.5) {
-        return setUang('Rp 175.000');
+        return setUangCicilan('Rp 175.000');
       } else if (sliderHari == 5.5) {
-        return setUang('Rp 159.000');
+        return setUangCicilan('Rp 159.000');
       }
     } else if (sliderPnjm == 2.0) {
       if (sliderHari == 3.5) {
-        return setUang('Rp 400.000');
+        return setUangCicilan('Rp 400.000');
       } else if (sliderHari == 4.5) {
-        return setUang('Rp 350.000');
+        return setUangCicilan('Rp 350.000');
       } else if (sliderHari == 5.5) {
-        return setUang('Rp 317.000');
+        return setUangCicilan('Rp 317.000');
       }
     } else if (sliderPnjm == 4.0) {
       if (sliderHari == 3.5) {
-        return setUang('Rp 600.000');
+        return setUangCicilan('Rp 600.000');
       } else if (sliderHari == 4.5) {
-        return setUang('Rp 525.000');
+        return setUangCicilan('Rp 525.000');
       } else if (sliderHari == 5.5) {
-        return setUang('Rp 475.000');
+        return setUangCicilan('Rp 475.000');
       }
     } else if (sliderPnjm == 6.0) {
       if (sliderHari == 3.5) {
-        return setUang('Rp 800.000');
+        return setUangCicilan('Rp 800.000');
       } else if (sliderHari == 4.5) {
-        return setUang('Rp 700.000');
+        return setUangCicilan('Rp 700.000');
       } else if (sliderHari == 5.5) {
-        return setUang('Rp 634.000');
+        return setUangCicilan('Rp 634.000');
       }
     }
-    return setUang('');
+    return setUangCicilan('');
   }
 
   TextSpan _setThumbValue() {
@@ -536,8 +552,8 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                           ),
                                                         ),
                                                         Icon(
-                                                          Icons.calendar_today_outlined,
-                                                          color: Colors.blueAccent,
+                                                          Icons.info_outlined,
+                                                          color: Colors.blue[800],
                                                           size: 20,
                                                         ),
                                                       ]
@@ -669,10 +685,10 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                       margin: EdgeInsets.fromLTRB(0, 0, 10, 0),
                                                       child: Row(
                                                           children: <Widget>[
-                                                            Icon(
-                                                              Icons.calendar_today_outlined,
-                                                              color: Colors.blueAccent,
-                                                              size: 20,
+                                                            Image(
+                                                              height: 16,
+                                                              width: 16,
+                                                              image: AssetImage('lib/assets/calendar_icon.png'),
                                                             ),
                                                             Container(
                                                               margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
@@ -739,7 +755,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                                                             child: _setTextCicilan(),
                                                           ),
                                                           Icon(
-                                                            Icons.calendar_today_outlined,
+                                                            Icons.info_outlined,
                                                             color: Colors.red,
                                                             size: 20,
                                                           ),
@@ -1227,9 +1243,7 @@ class _ProductCalculatorState extends State<ProductCalculator> {
                       'Besar pinjaman yang disetujui bisa sedikit berbeda setelah '
                           'skor pembayaran Anda dicek',
                       softWrap: true,
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
+                      style: TextStyle(fontSize: 10),
                       // textAlign: TextAlign.justify,
                     ),
                   ),

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class TanyaJawab4 extends StatefulWidget {
-  TanyaJawab4({Key key}) : super(key: key);
+class TanyaJawab7 extends StatefulWidget {
+  TanyaJawab7({Key key}) : super(key: key);
 
   @override
-  _TanyaJawab4State createState() => _TanyaJawab4State();
+  _TanyaJawab7State createState() => _TanyaJawab7State();
 }
 
-class _TanyaJawab4State extends State<TanyaJawab4> {
+class _TanyaJawab7State extends State<TanyaJawab7> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -47,7 +47,7 @@ class _TanyaJawab4State extends State<TanyaJawab4> {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                        'Dokumen apa saja yang perlu disiapkan?',
+                        'Apa yang harus saya lakukan jika belum menerima SMS konfirmasi dari DanaFix?',
                         style: TextStyle(color: Colors.grey[400])
                     ),
                   ),
@@ -62,10 +62,9 @@ class _TanyaJawab4State extends State<TanyaJawab4> {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                            '- Anda hanya siapkan:\n'
-                            '- nomor KTP,\n'
-                            '- kontak saudara tidak serumah,\n'
-                            '- Kontak kantor tempat Anda bekerja\n'
+                        '- Harap hubungi kami -> http://danafix.id/contact-us'
+                            '- Hotline: 14086'
+                            '- E-mail: info@danafix.id'
                     ),
                   )
                 ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voidrealm/dropdownbuttons/j_dropdown1.dart';
-import 'package:voidrealm/textediting/login_040_textfield_numpad.dart';
+import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/apps/registrasi/reg040a_sudah_peminjam.dart';
 import 'package:voidrealm/textediting/j_textfield1_no_appbar.dart';
 
 class Dialog1 extends StatefulWidget {

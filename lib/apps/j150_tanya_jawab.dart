@@ -117,9 +117,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                           color: Colors.grey[300],
                         ),
@@ -145,9 +143,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -203,9 +199,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                           color: Colors.grey[300],
                         ),
@@ -216,9 +210,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -244,9 +236,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                           color: Colors.grey[300],
                         ),
@@ -260,9 +250,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                           alignment: Alignment.centerLeft,
                           decoration: BoxDecoration(
                             border: Border(
-                                bottom: BorderSide(
-                                    width: 1, color: Colors.grey[400]
-                                )
+                                bottom: BorderSide(width: 1, color: Colors.grey[400])
                             ),
                           ),
                           padding: EdgeInsets.all(10),
@@ -288,9 +276,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -316,9 +302,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -344,9 +328,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -372,9 +354,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -400,9 +380,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                           color: Colors.grey[300],
                         ),
@@ -416,9 +394,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -444,9 +420,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -472,9 +446,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                           color: Colors.grey[300],
                         ),
@@ -488,9 +460,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -516,9 +486,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -544,9 +512,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -572,9 +538,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
@@ -600,9 +564,7 @@ class _J150TanyaJawabState extends State<J150TanyaJawab> {
                         alignment: Alignment.centerLeft,
                         decoration: BoxDecoration(
                           border: Border(
-                              bottom: BorderSide(
-                                  width: 1, color: Colors.grey[400]
-                              )
+                              bottom: BorderSide(width: 1, color: Colors.grey[400])
                           ),
                         ),
                         padding: EdgeInsets.all(10),
