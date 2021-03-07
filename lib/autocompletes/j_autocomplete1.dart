@@ -121,7 +121,8 @@ class _FirstPageState extends State<FirstPage> {
     }));
 
     return new Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: false,
+//        resizeToAvoidBottomPadding: false,//?: false,
         appBar: new AppBar(
             title: new Text('AutoComplete TextField Demo Simple'),
             actions: [
@@ -234,7 +235,8 @@ class _SecondPageState extends State<SecondPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
+//        resizeToAvoidBottomPadding: false,//?
       appBar: new AppBar(
         title: new Text('AutoComplete TextField Demo Complex'),
       ),

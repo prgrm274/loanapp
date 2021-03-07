@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // import 'package:voidrealm/appbars/progress/sles_progress_indicator1.dart';
 import 'package:voidrealm/appbars/title040.dart';
-import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/apps/registrasi/reg040a_sudah_peminjam.dart';
+import 'package:voidrealm/apps/registrasi/reg040a_sudah_peminjam.dart';
 
 class Login040Body extends StatefulWidget implements PreferredSizeWidget {
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:voidrealm/apps/permissions/permission_request.dart';
 import 'package:voidrealm/apps/permissions/permission_request_material.dart';
 import 'package:voidrealm/apps/registrasi/reg050.dart';
-import 'file:///D:/JUNED/PROJECTS/Flutter_Voidrealm/voidrealm/lib/apps/registrasi/reg040b_otp.dart';
+import 'package:voidrealm/apps/registrasi/reg040b_otp.dart';
 
 class Splash extends StatefulWidget {
   Splash({Key key}) : super(key: key);
